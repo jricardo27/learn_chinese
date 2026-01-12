@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Learner - Offline</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1><i class="fas fa-book-open"></i> Word Learner</h1>
+            <div class="controls">
+                <input type="text" id="search" placeholder="Search words...">
+                <button id="shuffle"><i class="fas fa-random"></i> Shuffle</button>
+                <button id="playAll"><i class="fas fa-play-circle"></i> Play All</button>
+            </div>
+        </header>
+        
+        <main>
+            <div id="word-container" class="word-container"></div>
+        </main>
+        
+        <footer>
+            <div id="player">
+                <button id="prev"><i class="fas fa-backward"></i></button>
+                <button id="playPause"><i class="fas fa-play"></i></button>
+                <button id="next"><i class="fas fa-forward"></i></button>
+                <span id="current-word">Click any word to start</span>
+                <input type="range" id="volume" min="0" max="100" value="80">
+                <i class="fas fa-volume-up"></i>
+            </div>
+            <p>Total words: <span id="word-count">0</span> | Works offline!</p>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
