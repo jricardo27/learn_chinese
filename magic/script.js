@@ -1,5 +1,5 @@
 // Configuration - Update these based on your files
-const TOTAL_WORDS = 323; // Change this to your total number of words
+const TOTAL_WORDS = 391; // Change this to your total number of words
 const WORD_PREFIX = "word_"; // Your filename prefix
 const IMAGE_EXTENSION = ".jpg";
 const AUDIO_EXTENSION = ".mp3";
@@ -23,7 +23,7 @@ class WordLearner {
     
     loadWords() {
         // Generate word data based on your file naming convention
-        for (let i = 1; i < TOTAL_WORDS; i++) {
+        for (let i = 0; i < TOTAL_WORDS; i++) {
             const wordNumber = i.toString().padStart(3, '0');
             this.words.push({
                 id: i,
