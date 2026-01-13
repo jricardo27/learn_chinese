@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,34 +8,56 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <div class="app-container">
-        <header>
-            <h1><i class="fas fa-book-open"></i> Word Learner</h1>
-            <div class="controls">
-                <input type="text" id="search" placeholder="Search words...">
-                <button id="shuffle"><i class="fas fa-random"></i> Shuffle</button>
-                <button id="playAll"><i class="fas fa-play-circle"></i> Play All</button>
+        <header class="sticky-header">
+            <div class="header-top">
+                <h1><i class="fas fa-book-open"></i> Word Learner</h1>
+                <div class="global-controls">
+                    <button id="shuffle"><i class="fas fa-random"></i> Shuffle</button>
+                    <button id="interactiveMode" class="toggle-btn"><i class="fas fa-hand-pointer"></i> Interactive
+                        Mode</button>
+                    <div class="setting-item">
+                        <span title="Delay between words in auto mode"><i class="fas fa-clock"></i> Delay:</span>
+                        <input type="number" id="playDelay" min="0" max="10" step="0.5" value="3.5"
+                            style="width: 50px; padding: 5px; border-radius: 5px; border: 1px solid #ddd;">
+                        <span>s</span>
+                    </div>
+                    <span id="word-count-display">Total: <span id="word-count">0</span></span>
+                </div>
+            </div>
+
+            <div class="player-controls">
+                <div class="nav-controls">
+                    <button id="prev"><i class="fas fa-backward"></i></button>
+                    <button id="playPause"><i class="fas fa-play"></i></button>
+                    <button id="stop"><i class="fas fa-stop"></i></button>
+                    <button id="next"><i class="fas fa-forward"></i></button>
+                </div>
+
+                <div class="playback-info">
+                    <span id="current-word">Click any word to start</span>
+                </div>
+
+                <div class="volume-controls">
+                    <i class="fas fa-volume-down"></i>
+                    <input type="range" id="volume" min="0" max="100" value="80">
+                    <i class="fas fa-volume-up"></i>
+                </div>
+
+                <div class="search-box">
+                    <input type="text" id="search" placeholder="Search words...">
+                </div>
             </div>
         </header>
-        
+
         <main>
             <div id="word-container" class="word-container"></div>
         </main>
-        
-        <footer>
-            <div id="player">
-                <button id="prev"><i class="fas fa-backward"></i></button>
-                <button id="playPause"><i class="fas fa-play"></i></button>
-                <button id="next"><i class="fas fa-forward"></i></button>
-                <span id="current-word">Click any word to start</span>
-                <input type="range" id="volume" min="0" max="100" value="80">
-                <i class="fas fa-volume-up"></i>
-            </div>
-            <p>Total words: <span id="word-count">0</span></p>
-        </footer>
     </div>
-    
+
     <script src="script.js"></script>
 </body>
+
 </html>
