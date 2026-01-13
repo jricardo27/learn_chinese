@@ -1,0 +1,802 @@
+{
+  "word_000.jpg": {
+    "pinyin": "yī gè shǒu zhǐ",
+    "chinese": "1 一个手指"
+  },
+  "word_001.jpg": {
+    "pinyin": "liǎng zhī xiǎo māo",
+    "chinese": "2 两只小猫"
+  },
+  "word_002.jpg": {
+    "pinyin": "sān zhī wū guī",
+    "chinese": "3 三只乌龟"
+  },
+  "word_003.jpg": {
+    "pinyin": "sì zhī xióng māo",
+    "chinese": "4 四只熊猫"
+  },
+  "word_004.jpg": {
+    "pinyin": "wǔ zhī tuó niǎo",
+    "chinese": "5 五只鸵鸟"
+  },
+  "word_005.jpg": {
+    "pinyin": "liù zhī bái tù",
+    "chinese": "6 六只白兔"
+  },
+  "word_006.jpg": {
+    "pinyin": "qī kē bái cài",
+    "chinese": "7 七棵白菜"
+  },
+  "word_007.jpg": {
+    "pinyin": "bā piàn xī guā",
+    "chinese": "8 八片西瓜"
+  },
+  "word_008.jpg": {
+    "pinyin": "jiǔ tiáo jīn yú",
+    "chinese": "9 九条金鱼"
+  },
+  "word_009.jpg": {
+    "pinyin": "shí zhī táo zi",
+    "chinese": "10 十只桃子"
+  },
+  "word_010.jpg": {
+    "pinyin": "cháng",
+    "chinese": "长"
+  },
+  "word_011.jpg": {
+    "pinyin": "cū",
+    "chinese": "粗"
+  },
+  "word_012.jpg": {
+    "pinyin": "shàng",
+    "chinese": "上"
+  },
+  "word_013.jpg": {
+    "pinyin": "xià",
+    "chinese": "下"
+  },
+  "word_014.jpg": {
+    "pinyin": "zuǒ",
+    "chinese": "左"
+  },
+  "word_015.jpg": {
+    "pinyin": "yòu",
+    "chinese": "右"
+  },
+  "word_016.jpg": {
+    "pinyin": "dà",
+    "chinese": "大"
+  },
+  "word_017.jpg": {
+    "pinyin": "xiǎo",
+    "chinese": "小"
+  },
+  "word_018.jpg": {
+    "pinyin": "duō",
+    "chinese": "多"
+  },
+  "word_019.jpg": {
+    "pinyin": "shǎo",
+    "chinese": "少"
+  },
+  "word_020.jpg": {
+    "pinyin": "qī qiǎo bǎn",
+    "chinese": "七巧板"
+  },
+  "word_021.jpg": {
+    "pinyin": "hóng",
+    "chinese": "红"
+  },
+  "word_022.jpg": {
+    "pinyin": "chéng",
+    "chinese": "橙"
+  },
+  "word_023.jpg": {
+    "pinyin": "huáng",
+    "chinese": "黄"
+  },
+  "word_024.jpg": {
+    "pinyin": "lǜ",
+    "chinese": "绿"
+  },
+  "word_025.jpg": {
+    "pinyin": "lán",
+    "chinese": "蓝"
+  },
+  "word_026.jpg": {
+    "pinyin": "zhèng fāng xíng",
+    "chinese": "正方形"
+  },
+  "word_027.jpg": {
+    "pinyin": "cháng fāng xíng",
+    "chinese": "长方形"
+  },
+  "word_028.jpg": {
+    "pinyin": "sān jiǎo xíng",
+    "chinese": "三角形"
+  },
+  "word_029.jpg": {
+    "pinyin": "yuán xíng",
+    "chinese": "圆形"
+  },
+  "word_030.jpg": {
+    "pinyin": "tī xíng",
+    "chinese": "梯形"
+  },
+  "word_031.jpg": {
+    "pinyin": "tuǒ yuán xíng",
+    "chinese": "椭圆形"
+  },
+  "word_032.jpg": {
+    "pinyin": "zhōng guó",
+    "chinese": "中国"
+  },
+  "word_033.jpg": {
+    "pinyin": "guó qí",
+    "chinese": "国旗"
+  },
+  "word_034.jpg": {
+    "pinyin": "guó huī",
+    "chinese": "国徽"
+  },
+  "word_035.jpg": {
+    "pinyin": "tiān ān mén",
+    "chinese": "天安门"
+  },
+  "word_036.jpg": {
+    "pinyin": "jì niàn bēi",
+    "chinese": "纪念碑"
+  },
+  "word_037.jpg": {
+    "pinyin": "cǎi hóng",
+    "chinese": "彩虹"
+  },
+  "word_038.jpg": {
+    "pinyin": "chūn",
+    "chinese": "春"
+  },
+  "word_039.jpg": {
+    "pinyin": "xià",
+    "chinese": "夏"
+  },
+  "word_040.jpg": {
+    "pinyin": "qiū",
+    "chinese": "秋"
+  },
+  "word_041.jpg": {
+    "pinyin": "dōng",
+    "chinese": "冬"
+  },
+  "word_042.jpg": {
+    "pinyin": "tài yang",
+    "chinese": "太阳"
+  },
+  "word_043.jpg": {
+    "pinyin": "yuè liang",
+    "chinese": "月亮"
+  },
+  "word_044.jpg": {
+    "pinyin": "xīng xing",
+    "chinese": "星星"
+  },
+  "word_045.jpg": {
+    "pinyin": "fēng",
+    "chinese": "风"
+  },
+  "word_046.jpg": {
+    "pinyin": "yǔ",
+    "chinese": "雨"
+  },
+  "word_047.jpg": {
+    "pinyin": "léi diàn",
+    "chinese": "雷电"
+  },
+  "word_048.jpg": {
+    "pinyin": "shuǐ",
+    "chinese": "水"
+  },
+  "word_049.jpg": {
+    "pinyin": "huǒ",
+    "chinese": "火"
+  },
+  "word_050.jpg": {
+    "pinyin": "hǎi",
+    "chinese": "海"
+  },
+  "word_051.jpg": {
+    "pinyin": "hé",
+    "chinese": "河"
+  },
+  "word_052.jpg": {
+    "pinyin": "hú",
+    "chinese": "湖"
+  },
+  "word_053.jpg": {
+    "pinyin": "sēn lín",
+    "chinese": "森林"
+  },
+  "word_054.jpg": {
+    "pinyin": "cǎo yuán",
+    "chinese": "草原"
+  },
+  "word_055.jpg": {
+    "pinyin": "shā mò",
+    "chinese": "沙漠"
+  },
+  "word_056.jpg": {
+    "pinyin": "tián yě",
+    "chinese": "田野"
+  },
+  "word_057.jpg": {
+    "pinyin": "pù bù",
+    "chinese": "瀑布"
+  },
+  "word_058.jpg": {
+    "pinyin": "shān",
+    "chinese": "山"
+  },
+  "word_059.jpg": {
+    "pinyin": "yún",
+    "chinese": "云"
+  },
+  "word_060.jpg": {
+    "pinyin": "tíng",
+    "chinese": "亭"
+  },
+  "word_061.jpg": {
+    "pinyin": "fáng zi",
+    "chinese": "房子"
+  },
+  "word_062.jpg": {
+    "pinyin": "xué xiào",
+    "chinese": "学校"
+  },
+  "word_063.jpg": {
+    "pinyin": "yī yuàn",
+    "chinese": "医院"
+  },
+  "word_064.jpg": {
+    "pinyin": "yín háng",
+    "chinese": "银行"
+  },
+  "word_065.jpg": {
+    "pinyin": "yòu ér yuán",
+    "chinese": "幼儿园"
+  },
+  "word_066.jpg": {
+    "pinyin": "gōng yuán",
+    "chinese": "公园"
+  },
+  "word_067.jpg": {
+    "pinyin": "diàn shì tǎ",
+    "chinese": "电视塔"
+  },
+  "word_068.jpg": {
+    "pinyin": "yóu yǒng chí",
+    "chinese": "游泳池"
+  },
+  "word_069.jpg": {
+    "pinyin": "dà lóu",
+    "chinese": "大楼"
+  },
+  "word_070.jpg": {
+    "pinyin": "lì jiāo qiáo",
+    "chinese": "立交桥"
+  },
+  "word_071.jpg": {
+    "pinyin": "gōng lù",
+    "chinese": "公路"
+  },
+  "word_072.jpg": {
+    "pinyin": "cháng chéng",
+    "chinese": "长城"
+  },
+  "word_073.jpg": {
+    "pinyin": "tǎ",
+    "chinese": "塔"
+  },
+  "word_074.jpg": {
+    "pinyin": "yǎn",
+    "chinese": "眼"
+  },
+  "word_075.jpg": {
+    "pinyin": "bí",
+    "chinese": "鼻"
+  },
+  "word_076.jpg": {
+    "pinyin": "yá",
+    "chinese": "牙"
+  },
+  "word_077.jpg": {
+    "pinyin": "shé",
+    "chinese": "舌"
+  },
+  "word_078.jpg": {
+    "pinyin": "zhǐ jia",
+    "chinese": "指甲"
+  },
+  "word_079.jpg": {
+    "pinyin": "méi mao",
+    "chinese": "眉毛"
+  },
+  "word_080.jpg": {
+    "pinyin": "tóu fa",
+    "chinese": "头发"
+  },
+  "word_081.jpg": {
+    "pinyin": "jiǎo",
+    "chinese": "脚"
+  },
+  "word_082.jpg": {
+    "pinyin": "shǒu",
+    "chinese": "手"
+  },
+  "word_083.jpg": {
+    "pinyin": "shǒu zhǐ",
+    "chinese": "手指"
+  },
+  "word_084.jpg": {
+    "pinyin": "yé ye",
+    "chinese": "爷爷"
+  },
+  "word_085.jpg": {
+    "pinyin": "nǎi nai",
+    "chinese": "奶奶"
+  },
+  "word_086.jpg": {
+    "pinyin": "gē ge",
+    "chinese": "哥哥"
+  },
+  "word_087.jpg": {
+    "pinyin": "jiě jie",
+    "chinese": "姐姐"
+  },
+  "word_088.jpg": {
+    "pinyin": "dì di",
+    "chinese": "弟弟"
+  },
+  "word_089.jpg": {
+    "pinyin": "mèi mei",
+    "chinese": "妹妹"
+  },
+  "word_090.jpg": {
+    "pinyin": "xué sheng",
+    "chinese": "学生"
+  },
+  "word_091.jpg": {
+    "pinyin": "tiào wǔ",
+    "chinese": "跳舞"
+  },
+  "word_092.jpg": {
+    "pinyin": "chàng gē",
+    "chinese": "唱歌"
+  },
+  "word_093.jpg": {
+    "pinyin": "huà huà",
+    "chinese": "画画"
+  },
+  "word_094.jpg": {
+    "pinyin": "tī qiú",
+    "chinese": "踢球"
+  },
+  "word_095.jpg": {
+    "pinyin": "tiào shéng",
+    "chinese": "跳绳"
+  },
+  "word_096.jpg": {
+    "pinyin": "yóu yǒng",
+    "chinese": "游泳"
+  },
+  "word_097.jpg": {
+    "pinyin": "pá shān",
+    "chinese": "爬山"
+  },
+  "word_098.jpg": {
+    "pinyin": "qí chē",
+    "chinese": "骑车"
+  },
+  "word_099.jpg": {
+    "pinyin": "bá hé",
+    "chinese": "拔河"
+  },
+  "word_100.jpg": {
+    "pinyin": "tiào gāo",
+    "chinese": "跳高"
+  },
+  "word_101.jpg": {
+    "pinyin": "tiào yuǎn",
+    "chinese": "跳远"
+  },
+  "word_102.jpg": {
+    "pinyin": "zuò cāo",
+    "chinese": "做操"
+  },
+  "word_103.jpg": {
+    "pinyin": "lì",
+    "chinese": "立"
+  },
+  "word_104.jpg": {
+    "pinyin": "zuò",
+    "chinese": "坐"
+  },
+  "word_105.jpg": {
+    "pinyin": "zǒu",
+    "chinese": "走"
+  },
+  "word_106.jpg": {
+    "pinyin": "shuā yá",
+    "chinese": "刷牙"
+  },
+  "word_107.jpg": {
+    "pinyin": "xǐ liǎn",
+    "chinese": "洗脸"
+  },
+  "word_108.jpg": {
+    "pinyin": "shuì jiào",
+    "chinese": "睡觉"
+  },
+  "word_109.jpg": {
+    "pinyin": "chuān yī",
+    "chinese": "穿衣"
+  },
+  "word_110.jpg": {
+    "pinyin": "chī fàn",
+    "chinese": "吃饭"
+  },
+  "word_111.jpg": {
+    "pinyin": "hē shuǐ",
+    "chinese": "喝水"
+  },
+  "word_112.jpg": {
+    "pinyin": "kàn shū",
+    "chinese": "看书"
+  },
+  "word_113.jpg": {
+    "pinyin": "xiě zì",
+    "chinese": "写字"
+  },
+  "word_114.jpg": {
+    "pinyin": "xǐ wǎn",
+    "chinese": "洗碗"
+  },
+  "word_115.jpg": {
+    "pinyin": "sǎo dì",
+    "chinese": "扫地"
+  },
+  "word_116.jpg": {
+    "pinyin": "jiāo huā",
+    "chinese": "浇花"
+  },
+  "word_117.jpg": {
+    "pinyin": "zhí shù",
+    "chinese": "植树"
+  },
+  "word_118.jpg": {
+    "pinyin": "jì zhě",
+    "chinese": "记者"
+  },
+  "word_119.jpg": {
+    "pinyin": "jià shǐ yuán",
+    "chinese": "驾驶员"
+  },
+  "word_120.jpg": {
+    "pinyin": "jiě fàng jūn",
+    "chinese": "解放军"
+  },
+  "word_121.jpg": {
+    "pinyin": "kōng jūn",
+    "chinese": "空军"
+  },
+  "word_122.jpg": {
+    "pinyin": "hǎi jūn",
+    "chinese": "海军"
+  },
+  "word_123.jpg": {
+    "pinyin": "jǐng chá",
+    "chinese": "警察"
+  },
+  "word_124.jpg": {
+    "pinyin": "gōng rén",
+    "chinese": "工人"
+  },
+  "word_125.jpg": {
+    "pinyin": "nóng mín",
+    "chinese": "农民"
+  },
+  "word_126.jpg": {
+    "pinyin": "lǎo shī",
+    "chinese": "老师"
+  },
+  "word_127.jpg": {
+    "pinyin": "yī sheng",
+    "chinese": "医生"
+  },
+  "word_128.jpg": {
+    "pinyin": "kē xué jiā",
+    "chinese": "科学家"
+  },
+  "word_129.jpg": {
+    "pinyin": "yùn dòng yuán",
+    "chinese": "运动员"
+  },
+  "word_130.jpg": {
+    "pinyin": "xiàng rì kuí",
+    "chinese": "向日葵"
+  },
+  "word_131.jpg": {
+    "pinyin": "mǔ dān",
+    "chinese": "牡丹"
+  },
+  "word_132.jpg": {
+    "pinyin": "qiān niú huā",
+    "chinese": "牵牛花"
+  },
+  "word_133.jpg": {
+    "pinyin": "méi huā",
+    "chinese": "梅花"
+  },
+  "word_134.jpg": {
+    "pinyin": "jú huā",
+    "chinese": "菊花"
+  },
+  "word_135.jpg": {
+    "pinyin": "hé huā",
+    "chinese": "荷花"
+  },
+  "word_136.jpg": {
+    "pinyin": "zhuō zi",
+    "chinese": "桌子"
+  },
+  "word_137.jpg": {
+    "pinyin": "yǐ zi",
+    "chinese": "椅子"
+  },
+  "word_138.jpg": {
+    "pinyin": "shā fā",
+    "chinese": "沙发"
+  },
+  "word_139.jpg": {
+    "pinyin": "chuáng",
+    "chinese": "床"
+  },
+  "word_140.jpg": {
+    "pinyin": "bèi zi",
+    "chinese": "被子"
+  },
+  "word_141.jpg": {
+    "pinyin": "shàn zi",
+    "chinese": "扇子"
+  },
+  "word_142.jpg": {
+    "pinyin": "shuǐ xiān",
+    "chinese": "水仙"
+  },
+  "word_143.jpg": {
+    "pinyin": "yù lán huā",
+    "chinese": "玉兰花"
+  },
+  "word_144.jpg": {
+    "pinyin": "chá huā",
+    "chinese": "茶花"
+  },
+  "word_145.jpg": {
+    "pinyin": "yù jīn xiāng",
+    "chinese": "郁金香"
+  },
+  "word_146.jpg": {
+    "pinyin": "sōng shù",
+    "chinese": "松树"
+  },
+  "word_147.jpg": {
+    "pinyin": "liǔ shù",
+    "chinese": "柳树"
+  },
+  "word_148.jpg": {
+    "pinyin": "mián huā",
+    "chinese": "棉花"
+  },
+  "word_149.jpg": {
+    "pinyin": "mó gu",
+    "chinese": "蘑菇"
+  },
+  "word_150.jpg": {
+    "pinyin": "gān zhè",
+    "chinese": "甘蔗"
+  },
+  "word_151.jpg": {
+    "pinyin": "shuǐ dào",
+    "chinese": "水稻"
+  },
+  "word_152.jpg": {
+    "pinyin": "xiǎo mài",
+    "chinese": "小麦"
+  },
+  "word_153.jpg": {
+    "pinyin": "gāo liáng",
+    "chinese": "高粱"
+  },
+  "word_154.jpg": {
+    "pinyin": "yù mǐ",
+    "chinese": "玉米"
+  },
+  "word_155.jpg": {
+    "pinyin": "hǎi dài",
+    "chinese": "海带"
+  },
+  "word_156.jpg": {
+    "pinyin": "dà suàn",
+    "chinese": "大蒜"
+  },
+  "word_157.jpg": {
+    "pinyin": "zhú sǔn",
+    "chinese": "竹笋"
+  },
+  "word_158.jpg": {
+    "pinyin": "lì zi",
+    "chinese": "栗子"
+  },
+  "word_159.jpg": {
+    "pinyin": "pú tao",
+    "chinese": "葡萄"
+  },
+  "word_160.jpg": {
+    "pinyin": "píng guǒ",
+    "chinese": "苹果"
+  },
+  "word_161.jpg": {
+    "pinyin": "xiāng jiāo",
+    "chinese": "香蕉"
+  },
+  "word_162.jpg": {
+    "pinyin": "lí",
+    "chinese": "梨"
+  },
+  "word_163.jpg": {
+    "pinyin": "yīng táo",
+    "chinese": "樱桃"
+  },
+  "word_164.jpg": {
+    "pinyin": "shí liu",
+    "chinese": "石榴"
+  },
+  "word_165.jpg": {
+    "pinyin": "táo",
+    "chinese": "桃"
+  },
+  "word_166.jpg": {
+    "pinyin": "xī guā",
+    "chinese": "西瓜"
+  },
+  "word_167.jpg": {
+    "pinyin": "lì zhī",
+    "chinese": "荔枝"
+  },
+  "word_168.jpg": {
+    "pinyin": "shì zi",
+    "chinese": "柿子"
+  },
+  "word_169.jpg": {
+    "pinyin": "luó bo",
+    "chinese": "萝卜"
+  },
+  "word_170.jpg": {
+    "pinyin": "ǒu",
+    "chinese": "藕"
+  },
+  "word_171.jpg": {
+    "pinyin": "dōng guā",
+    "chinese": "冬瓜"
+  },
+  "word_172.jpg": {
+    "pinyin": "nán guā",
+    "chinese": "南瓜"
+  },
+  "word_173.jpg": {
+    "pinyin": "qié zi",
+    "chinese": "茄子"
+  },
+  "word_174.jpg": {
+    "pinyin": "qīng cài",
+    "chinese": "青菜"
+  },
+  "word_175.jpg": {
+    "pinyin": "bō cài",
+    "chinese": "菠菜"
+  },
+  "word_176.jpg": {
+    "pinyin": "cōng",
+    "chinese": "葱"
+  },
+  "word_177.jpg": {
+    "pinyin": "bái cài",
+    "chinese": "白菜"
+  },
+  "word_178.jpg": {
+    "pinyin": "huā cài",
+    "chinese": "花菜"
+  },
+  "word_179.jpg": {
+    "pinyin": "huáng guā",
+    "chinese": "黄瓜"
+  },
+  "word_180.jpg": {
+    "pinyin": "là jiāo",
+    "chinese": "辣椒"
+  },
+  "word_181.jpg": {
+    "pinyin": "dòu jiǎo",
+    "chinese": "豆角"
+  },
+  "word_182.jpg": {
+    "pinyin": "yáng cōng",
+    "chinese": "洋葱"
+  },
+  "word_183.jpg": {
+    "pinyin": "qiū qiān",
+    "chinese": "秋千"
+  },
+  "word_184.jpg": {
+    "pinyin": "huá tī",
+    "chinese": "滑梯"
+  },
+  "word_185.jpg": {
+    "pinyin": "qiāo qiāo bǎn",
+    "chinese": "跷跷板"
+  },
+  "word_186.jpg": {
+    "pinyin": "mù mǎ",
+    "chinese": "木马"
+  },
+  "word_187.jpg": {
+    "pinyin": "jī mù",
+    "chinese": "积木"
+  },
+  "word_188.jpg": {
+    "pinyin": "huǒ chái",
+    "chinese": "火柴"
+  },
+  "word_189.jpg": {
+    "pinyin": "là zhú",
+    "chinese": "蜡烛"
+  },
+  "word_190.jpg": {
+    "pinyin": "zhuàn bǐ dāo",
+    "chinese": "转笔刀"
+  },
+  "word_191.jpg": {
+    "pinyin": "bǐ",
+    "chinese": "笔"
+  },
+  "word_192.jpg": {
+    "pinyin": "zhǐ",
+    "chinese": "纸"
+  },
+  "word_193.jpg": {
+    "pinyin": "mò shuǐ",
+    "chinese": "墨水"
+  },
+  "word_194.jpg": {
+    "pinyin": "chǐ",
+    "chinese": "尺"
+  },
+  "word_195.jpg": {
+    "pinyin": "yī",
+    "chinese": "衣"
+  },
+  "word_196.jpg": {
+    "pinyin": "qún",
+    "chinese": "裙"
+  },
+  "word_197.jpg": {
+    "pinyin": "kù",
+    "chinese": "裤"
+  },
+  "word_198.jpg": {
+    "pinyin": "mào zi",
+    "chinese": "帽子"
+  },
+  "word_199.jpg": {
+    "pinyin": "wà zi",
+    "chinese": "袜子"
+  }
+}
