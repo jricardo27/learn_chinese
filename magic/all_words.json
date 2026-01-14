@@ -1,1570 +1,2072 @@
 {
   "word_000.jpg": {
     "pinyin": "yī gè shǒu zhǐ",
-    "chinese": "1 一个手指"
+    "hanzi": "1 一个手指",
+    "english": ""
   },
   "word_001.jpg": {
     "pinyin": "liǎng zhī xiǎo māo",
-    "chinese": "2 两只小猫"
+    "hanzi": "2 两只小猫",
+    "english": ""
   },
   "word_002.jpg": {
     "pinyin": "sān zhī wū guī",
-    "chinese": "3 三只乌龟"
+    "hanzi": "3 三只乌龟",
+    "english": ""
   },
   "word_003.jpg": {
     "pinyin": "sì zhī xióng māo",
-    "chinese": "4 四只熊猫"
+    "hanzi": "4 四只熊猫",
+    "english": ""
   },
   "word_004.jpg": {
     "pinyin": "wǔ zhī tuó niǎo",
-    "chinese": "5 五只鸵鸟"
+    "hanzi": "5 五只鸵鸟",
+    "english": ""
   },
   "word_005.jpg": {
     "pinyin": "liù zhī bái tù",
-    "chinese": "6 六只白兔"
+    "hanzi": "6 六只白兔",
+    "english": ""
   },
   "word_006.jpg": {
     "pinyin": "qī kē bái cài",
-    "chinese": "7 七棵白菜"
+    "hanzi": "7 七棵白菜",
+    "english": ""
   },
   "word_007.jpg": {
     "pinyin": "bā piàn xī guā",
-    "chinese": "8 八片西瓜"
+    "hanzi": "8 八片西瓜",
+    "english": ""
   },
   "word_008.jpg": {
     "pinyin": "jiǔ tiáo jīn yú",
-    "chinese": "9 九条金鱼"
+    "hanzi": "9 九条金鱼",
+    "english": ""
   },
   "word_009.jpg": {
     "pinyin": "shí zhī táo zi",
-    "chinese": "10 十只桃子"
+    "hanzi": "10 十只桃子",
+    "english": ""
   },
   "word_010.jpg": {
     "pinyin": "cháng",
-    "chinese": "长"
+    "hanzi": "长",
+    "english": ""
   },
   "word_011.jpg": {
-    "pinyin": "cū",
-    "chinese": "粗"
+    "pinyin": "duăn",
+    "hanzi": "短",
+    "english": ""
   },
   "word_012.jpg": {
-    "pinyin": "shàng",
-    "chinese": "上"
+    "pinyin": "cū",
+    "hanzi": "粗",
+    "english": ""
   },
   "word_013.jpg": {
-    "pinyin": "xià",
-    "chinese": "下"
+    "pinyin": "xì",
+    "hanzi": "细",
+    "english": ""
   },
   "word_014.jpg": {
-    "pinyin": "zuǒ",
-    "chinese": "左"
+    "pinyin": "shàng",
+    "hanzi": "上",
+    "english": ""
   },
   "word_015.jpg": {
-    "pinyin": "yòu",
-    "chinese": "右"
+    "pinyin": "xià",
+    "hanzi": "下",
+    "english": ""
   },
   "word_016.jpg": {
-    "pinyin": "dà",
-    "chinese": "大"
+    "pinyin": "zuǒ",
+    "hanzi": "左",
+    "english": ""
   },
   "word_017.jpg": {
-    "pinyin": "xiǎo",
-    "chinese": "小"
+    "pinyin": "yòu",
+    "hanzi": "右",
+    "english": ""
   },
   "word_018.jpg": {
-    "pinyin": "duō",
-    "chinese": "多"
+    "pinyin": "dà",
+    "hanzi": "大",
+    "english": ""
   },
   "word_019.jpg": {
-    "pinyin": "shǎo",
-    "chinese": "少"
+    "pinyin": "xiǎo",
+    "hanzi": "小",
+    "english": ""
   },
   "word_020.jpg": {
-    "pinyin": "qī qiǎo bǎn",
-    "chinese": "七巧板"
+    "pinyin": "duō",
+    "hanzi": "多",
+    "english": ""
   },
   "word_021.jpg": {
-    "pinyin": "hóng",
-    "chinese": "红"
+    "pinyin": "shǎo",
+    "hanzi": "少",
+    "english": ""
   },
   "word_022.jpg": {
-    "pinyin": "chéng",
-    "chinese": "橙"
+    "pinyin": "qī qiǎo bǎn",
+    "hanzi": "七巧板",
+    "english": ""
   },
   "word_023.jpg": {
-    "pinyin": "huáng",
-    "chinese": "黄"
+    "pinyin": "hóng",
+    "hanzi": "红",
+    "english": ""
   },
   "word_024.jpg": {
-    "pinyin": "lǜ",
-    "chinese": "绿"
+    "pinyin": "chéng",
+    "hanzi": "橙",
+    "english": ""
   },
   "word_025.jpg": {
-    "pinyin": "lán",
-    "chinese": "蓝"
+    "pinyin": "huáng",
+    "hanzi": "黄",
+    "english": ""
   },
   "word_026.jpg": {
-    "pinyin": "zhèng fāng xíng",
-    "chinese": "正方形"
+    "pinyin": "lǜ",
+    "hanzi": "绿",
+    "english": ""
   },
   "word_027.jpg": {
-    "pinyin": "cháng fāng xíng",
-    "chinese": "长方形"
+    "pinyin": "qīng",
+    "hanzi": "青",
+    "english": ""
   },
   "word_028.jpg": {
-    "pinyin": "sān jiǎo xíng",
-    "chinese": "三角形"
+    "pinyin": "lán",
+    "hanzi": "蓝",
+    "english": ""
   },
   "word_029.jpg": {
-    "pinyin": "yuán xíng",
-    "chinese": "圆形"
+    "pinyin": "zǐ",
+    "hanzi": "紫",
+    "english": ""
   },
   "word_030.jpg": {
-    "pinyin": "tī xíng",
-    "chinese": "梯形"
+    "pinyin": "zhèng fāng xíng",
+    "hanzi": "正方形",
+    "english": ""
   },
   "word_031.jpg": {
-    "pinyin": "tuǒ yuán xíng",
-    "chinese": "椭圆形"
+    "pinyin": "cháng fāng xíng",
+    "hanzi": "长方形",
+    "english": ""
   },
   "word_032.jpg": {
-    "pinyin": "zhōng guó",
-    "chinese": "中国"
+    "pinyin": "sān jiǎo xíng",
+    "hanzi": "三角形",
+    "english": ""
   },
   "word_033.jpg": {
-    "pinyin": "guó qí",
-    "chinese": "国旗"
+    "pinyin": "yuán xíng",
+    "hanzi": "圆形",
+    "english": ""
   },
   "word_034.jpg": {
-    "pinyin": "guó huī",
-    "chinese": "国徽"
+    "pinyin": "tī xíng",
+    "hanzi": "梯形",
+    "english": ""
   },
   "word_035.jpg": {
-    "pinyin": "tiān ān mén",
-    "chinese": "天安门"
+    "pinyin": "tuǒ yuán xíng",
+    "hanzi": "椭圆形",
+    "english": ""
   },
   "word_036.jpg": {
-    "pinyin": "jì niàn bēi",
-    "chinese": "纪念碑"
+    "pinyin": "zhōng guó",
+    "hanzi": "中国",
+    "english": ""
   },
   "word_037.jpg": {
-    "pinyin": "cǎi hóng",
-    "chinese": "彩虹"
+    "pinyin": "guó qí",
+    "hanzi": "国旗",
+    "english": ""
   },
   "word_038.jpg": {
-    "pinyin": "chūn",
-    "chinese": "春"
+    "pinyin": "guó huī",
+    "hanzi": "国徽",
+    "english": ""
   },
   "word_039.jpg": {
-    "pinyin": "xià",
-    "chinese": "夏"
+    "pinyin": "tiān ān mén",
+    "hanzi": "天安门",
+    "english": ""
   },
   "word_040.jpg": {
-    "pinyin": "qiū",
-    "chinese": "秋"
+    "pinyin": "jì niàn bēi",
+    "hanzi": "纪念碑",
+    "english": ""
   },
   "word_041.jpg": {
-    "pinyin": "dōng",
-    "chinese": "冬"
+    "pinyin": "cǎi hóng",
+    "hanzi": "彩虹",
+    "english": ""
   },
   "word_042.jpg": {
-    "pinyin": "tài yang",
-    "chinese": "太阳"
+    "pinyin": "chūn",
+    "hanzi": "春",
+    "english": ""
   },
   "word_043.jpg": {
-    "pinyin": "yuè liang",
-    "chinese": "月亮"
+    "pinyin": "xià",
+    "hanzi": "夏",
+    "english": ""
   },
   "word_044.jpg": {
-    "pinyin": "xīng xing",
-    "chinese": "星星"
+    "pinyin": "qiū",
+    "hanzi": "秋",
+    "english": ""
   },
   "word_045.jpg": {
-    "pinyin": "fēng",
-    "chinese": "风"
+    "pinyin": "dōng",
+    "hanzi": "冬",
+    "english": ""
   },
   "word_046.jpg": {
-    "pinyin": "yǔ",
-    "chinese": "雨"
+    "pinyin": "tài yang",
+    "hanzi": "太阳",
+    "english": ""
   },
   "word_047.jpg": {
-    "pinyin": "léi diàn",
-    "chinese": "雷电"
+    "pinyin": "yuè liang",
+    "hanzi": "月亮",
+    "english": ""
   },
   "word_048.jpg": {
-    "pinyin": "shuǐ",
-    "chinese": "水"
+    "pinyin": "xīng xing",
+    "hanzi": "星星",
+    "english": ""
   },
   "word_049.jpg": {
-    "pinyin": "huǒ",
-    "chinese": "火"
+    "pinyin": "fēng",
+    "hanzi": "风",
+    "english": ""
   },
   "word_050.jpg": {
-    "pinyin": "hǎi",
-    "chinese": "海"
+    "pinyin": "yǔ",
+    "hanzi": "雨",
+    "english": ""
   },
   "word_051.jpg": {
-    "pinyin": "hé",
-    "chinese": "河"
+    "pinyin": "léi diàn",
+    "hanzi": "雷电",
+    "english": ""
   },
   "word_052.jpg": {
-    "pinyin": "hú",
-    "chinese": "湖"
+    "pinyin": "shuǐ",
+    "hanzi": "水",
+    "english": ""
   },
   "word_053.jpg": {
-    "pinyin": "sēn lín",
-    "chinese": "森林"
+    "pinyin": "huǒ",
+    "hanzi": "火",
+    "english": ""
   },
   "word_054.jpg": {
-    "pinyin": "cǎo yuán",
-    "chinese": "草原"
+    "pinyin": "hǎi",
+    "hanzi": "海",
+    "english": ""
   },
   "word_055.jpg": {
-    "pinyin": "shā mò",
-    "chinese": "沙漠"
+    "pinyin": "hé",
+    "hanzi": "河",
+    "english": ""
   },
   "word_056.jpg": {
-    "pinyin": "tián yě",
-    "chinese": "田野"
+    "pinyin": "hú",
+    "hanzi": "湖",
+    "english": ""
   },
   "word_057.jpg": {
-    "pinyin": "pù bù",
-    "chinese": "瀑布"
+    "pinyin": "sēn lín",
+    "hanzi": "森林",
+    "english": ""
   },
   "word_058.jpg": {
-    "pinyin": "shān",
-    "chinese": "山"
+    "pinyin": "cǎo yuán",
+    "hanzi": "草原",
+    "english": ""
   },
   "word_059.jpg": {
-    "pinyin": "yún",
-    "chinese": "云"
+    "pinyin": "shā mò",
+    "hanzi": "沙漠",
+    "english": ""
   },
   "word_060.jpg": {
-    "pinyin": "tíng",
-    "chinese": "亭"
+    "pinyin": "tián yě",
+    "hanzi": "田野",
+    "english": ""
   },
   "word_061.jpg": {
-    "pinyin": "fáng zi",
-    "chinese": "房子"
+    "pinyin": "pù bù",
+    "hanzi": "瀑布",
+    "english": ""
   },
   "word_062.jpg": {
-    "pinyin": "xué xiào",
-    "chinese": "学校"
+    "pinyin": "shān",
+    "hanzi": "山",
+    "english": ""
   },
   "word_063.jpg": {
-    "pinyin": "yī yuàn",
-    "chinese": "医院"
+    "pinyin": "yún",
+    "hanzi": "云",
+    "english": ""
   },
   "word_064.jpg": {
-    "pinyin": "yín háng",
-    "chinese": "银行"
+    "pinyin": "tíng",
+    "hanzi": "亭",
+    "english": ""
   },
   "word_065.jpg": {
-    "pinyin": "yòu ér yuán",
-    "chinese": "幼儿园"
+    "pinyin": "fáng zi",
+    "hanzi": "房子",
+    "english": ""
   },
   "word_066.jpg": {
-    "pinyin": "gōng yuán",
-    "chinese": "公园"
+    "pinyin": "xué xiào",
+    "hanzi": "学校",
+    "english": ""
   },
   "word_067.jpg": {
-    "pinyin": "diàn shì tǎ",
-    "chinese": "电视塔"
+    "pinyin": "yī yuàn",
+    "hanzi": "医院",
+    "english": ""
   },
   "word_068.jpg": {
-    "pinyin": "yóu yǒng chí",
-    "chinese": "游泳池"
+    "pinyin": "yín háng",
+    "hanzi": "银行",
+    "english": ""
   },
   "word_069.jpg": {
-    "pinyin": "dà lóu",
-    "chinese": "大楼"
+    "pinyin": "yòu ér yuán",
+    "hanzi": "幼儿园",
+    "english": ""
   },
   "word_070.jpg": {
-    "pinyin": "lì jiāo qiáo",
-    "chinese": "立交桥"
+    "pinyin": "gōng yuán",
+    "hanzi": "公园",
+    "english": ""
   },
   "word_071.jpg": {
-    "pinyin": "gōng lù",
-    "chinese": "公路"
+    "pinyin": "diàn shì tǎ",
+    "hanzi": "电视塔",
+    "english": ""
   },
   "word_072.jpg": {
-    "pinyin": "cháng chéng",
-    "chinese": "长城"
+    "pinyin": "yóu yǒng chí",
+    "hanzi": "游泳池",
+    "english": ""
   },
   "word_073.jpg": {
-    "pinyin": "tǎ",
-    "chinese": "塔"
+    "pinyin": "dà lóu",
+    "hanzi": "大楼",
+    "english": ""
   },
   "word_074.jpg": {
-    "pinyin": "yǎn",
-    "chinese": "眼"
+    "pinyin": "lì jiāo qiáo",
+    "hanzi": "立交桥",
+    "english": ""
   },
   "word_075.jpg": {
-    "pinyin": "bí",
-    "chinese": "鼻"
+    "pinyin": "gōng lù",
+    "hanzi": "公路",
+    "english": ""
   },
   "word_076.jpg": {
-    "pinyin": "yá",
-    "chinese": "牙"
+    "pinyin": "cháng chéng",
+    "hanzi": "长城",
+    "english": ""
   },
   "word_077.jpg": {
-    "pinyin": "shé",
-    "chinese": "舌"
+    "pinyin": "tǎ",
+    "hanzi": "塔",
+    "english": ""
   },
   "word_078.jpg": {
-    "pinyin": "zhǐ jia",
-    "chinese": "指甲"
+    "pinyin": "yǎn",
+    "hanzi": "眼",
+    "english": ""
   },
   "word_079.jpg": {
-    "pinyin": "méi mao",
-    "chinese": "眉毛"
+    "pinyin": "bí",
+    "hanzi": "鼻",
+    "english": ""
   },
   "word_080.jpg": {
-    "pinyin": "tóu fa",
-    "chinese": "头发"
+    "pinyin": "ěr",
+    "hanzi": "耳",
+    "english": ""
   },
   "word_081.jpg": {
-    "pinyin": "jiǎo",
-    "chinese": "脚"
+    "pinyin": "kǒu",
+    "hanzi": "口",
+    "english": ""
   },
   "word_082.jpg": {
-    "pinyin": "shǒu",
-    "chinese": "手"
+    "pinyin": "yá",
+    "hanzi": "牙",
+    "english": ""
   },
   "word_083.jpg": {
-    "pinyin": "shǒu zhǐ",
-    "chinese": "手指"
+    "pinyin": "shé",
+    "hanzi": "舌",
+    "english": ""
   },
   "word_084.jpg": {
-    "pinyin": "yé ye",
-    "chinese": "爷爷"
+    "pinyin": "zhǐ jia",
+    "hanzi": "指甲",
+    "english": ""
   },
   "word_085.jpg": {
-    "pinyin": "nǎi nai",
-    "chinese": "奶奶"
+    "pinyin": "méi mao",
+    "hanzi": "眉毛",
+    "english": ""
   },
   "word_086.jpg": {
-    "pinyin": "gē ge",
-    "chinese": "哥哥"
+    "pinyin": "tóu fa",
+    "hanzi": "头发",
+    "english": ""
   },
   "word_087.jpg": {
-    "pinyin": "jiě jie",
-    "chinese": "姐姐"
+    "pinyin": "jiǎo",
+    "hanzi": "脚",
+    "english": ""
   },
   "word_088.jpg": {
-    "pinyin": "dì di",
-    "chinese": "弟弟"
+    "pinyin": "shǒu",
+    "hanzi": "手",
+    "english": ""
   },
   "word_089.jpg": {
-    "pinyin": "mèi mei",
-    "chinese": "妹妹"
+    "pinyin": "shǒu zhǐ",
+    "hanzi": "手指",
+    "english": ""
   },
   "word_090.jpg": {
-    "pinyin": "xué sheng",
-    "chinese": "学生"
+    "pinyin": "yé ye",
+    "hanzi": "爷爷",
+    "english": ""
   },
   "word_091.jpg": {
-    "pinyin": "tiào wǔ",
-    "chinese": "跳舞"
+    "pinyin": "nǎi nai",
+    "hanzi": "奶奶",
+    "english": ""
   },
   "word_092.jpg": {
-    "pinyin": "chàng gē",
-    "chinese": "唱歌"
+    "pinyin": "bàba",
+    "hanzi": "爸爸",
+    "english": ""
   },
   "word_093.jpg": {
-    "pinyin": "huà huà",
-    "chinese": "画画"
+    "pinyin": "mãma",
+    "hanzi": "妈妈",
+    "english": ""
   },
   "word_094.jpg": {
-    "pinyin": "tī qiú",
-    "chinese": "踢球"
+    "pinyin": "gē ge",
+    "hanzi": "哥哥",
+    "english": ""
   },
   "word_095.jpg": {
-    "pinyin": "tiào shéng",
-    "chinese": "跳绳"
+    "pinyin": "jiě jie",
+    "hanzi": "姐姐",
+    "english": ""
   },
   "word_096.jpg": {
-    "pinyin": "yóu yǒng",
-    "chinese": "游泳"
+    "pinyin": "dì di",
+    "hanzi": "弟弟",
+    "english": ""
   },
   "word_097.jpg": {
-    "pinyin": "pá shān",
-    "chinese": "爬山"
+    "pinyin": "mèi mei",
+    "hanzi": "妹妹",
+    "english": ""
   },
   "word_098.jpg": {
-    "pinyin": "qí chē",
-    "chinese": "骑车"
+    "pinyin": "xué sheng",
+    "hanzi": "学生",
+    "english": ""
   },
   "word_099.jpg": {
-    "pinyin": "bá hé",
-    "chinese": "拔河"
+    "pinyin": "tiào wǔ",
+    "hanzi": "跳舞",
+    "english": ""
   },
   "word_100.jpg": {
-    "pinyin": "tiào gāo",
-    "chinese": "跳高"
+    "pinyin": "chàng gē",
+    "hanzi": "唱歌",
+    "english": ""
   },
   "word_101.jpg": {
-    "pinyin": "tiào yuǎn",
-    "chinese": "跳远"
+    "pinyin": "huà huà",
+    "hanzi": "画画",
+    "english": ""
   },
   "word_102.jpg": {
-    "pinyin": "zuò cāo",
-    "chinese": "做操"
+    "pinyin": "tī qiú",
+    "hanzi": "踢球",
+    "english": ""
   },
   "word_103.jpg": {
-    "pinyin": "lì",
-    "chinese": "立"
+    "pinyin": "tiào shéng",
+    "hanzi": "跳绳",
+    "english": ""
   },
   "word_104.jpg": {
-    "pinyin": "zuò",
-    "chinese": "坐"
+    "pinyin": "yóu yǒng",
+    "hanzi": "游泳",
+    "english": ""
   },
   "word_105.jpg": {
-    "pinyin": "zǒu",
-    "chinese": "走"
+    "pinyin": "pá shān",
+    "hanzi": "爬山",
+    "english": ""
   },
   "word_106.jpg": {
-    "pinyin": "shuā yá",
-    "chinese": "刷牙"
+    "pinyin": "qí chē",
+    "hanzi": "骑车",
+    "english": ""
   },
   "word_107.jpg": {
-    "pinyin": "xǐ liǎn",
-    "chinese": "洗脸"
+    "pinyin": "bá hé",
+    "hanzi": "拔河",
+    "english": ""
   },
   "word_108.jpg": {
-    "pinyin": "shuì jiào",
-    "chinese": "睡觉"
+    "pinyin": "tiào gāo",
+    "hanzi": "跳高",
+    "english": ""
   },
   "word_109.jpg": {
-    "pinyin": "chuān yī",
-    "chinese": "穿衣"
+    "pinyin": "tiào yuǎn",
+    "hanzi": "跳远",
+    "english": ""
   },
   "word_110.jpg": {
-    "pinyin": "chī fàn",
-    "chinese": "吃饭"
+    "pinyin": "zuò cāo",
+    "hanzi": "做操",
+    "english": ""
   },
   "word_111.jpg": {
-    "pinyin": "hē shuǐ",
-    "chinese": "喝水"
+    "pinyin": "lì",
+    "hanzi": "立",
+    "english": ""
   },
   "word_112.jpg": {
-    "pinyin": "kàn shū",
-    "chinese": "看书"
+    "pinyin": "zuò",
+    "hanzi": "坐",
+    "english": ""
   },
   "word_113.jpg": {
-    "pinyin": "xiě zì",
-    "chinese": "写字"
+    "pinyin": "zǒu",
+    "hanzi": "走",
+    "english": ""
   },
   "word_114.jpg": {
-    "pinyin": "xǐ wǎn",
-    "chinese": "洗碗"
+    "pinyin": "shuā yá",
+    "hanzi": "刷牙",
+    "english": ""
   },
   "word_115.jpg": {
-    "pinyin": "sǎo dì",
-    "chinese": "扫地"
+    "pinyin": "xǐ liǎn",
+    "hanzi": "洗脸",
+    "english": ""
   },
   "word_116.jpg": {
-    "pinyin": "jiāo huā",
-    "chinese": "浇花"
+    "pinyin": "shuì jiào",
+    "hanzi": "睡觉",
+    "english": ""
   },
   "word_117.jpg": {
-    "pinyin": "zhí shù",
-    "chinese": "植树"
+    "pinyin": "chuān yī",
+    "hanzi": "穿衣",
+    "english": ""
   },
   "word_118.jpg": {
-    "pinyin": "jì zhě",
-    "chinese": "记者"
+    "pinyin": "chī fàn",
+    "hanzi": "吃饭",
+    "english": ""
   },
   "word_119.jpg": {
-    "pinyin": "jià shǐ yuán",
-    "chinese": "驾驶员"
+    "pinyin": "hē shuǐ",
+    "hanzi": "喝水",
+    "english": ""
   },
   "word_120.jpg": {
-    "pinyin": "jiě fàng jūn",
-    "chinese": "解放军"
+    "pinyin": "kàn shū",
+    "hanzi": "看书",
+    "english": ""
   },
   "word_121.jpg": {
-    "pinyin": "kōng jūn",
-    "chinese": "空军"
+    "pinyin": "xiě zì",
+    "hanzi": "写字",
+    "english": ""
   },
   "word_122.jpg": {
-    "pinyin": "hǎi jūn",
-    "chinese": "海军"
+    "pinyin": "xǐ wǎn",
+    "hanzi": "洗碗",
+    "english": ""
   },
   "word_123.jpg": {
-    "pinyin": "jǐng chá",
-    "chinese": "警察"
+    "pinyin": "sǎo dì",
+    "hanzi": "扫地",
+    "english": ""
   },
   "word_124.jpg": {
-    "pinyin": "gōng rén",
-    "chinese": "工人"
+    "pinyin": "jiāo huā",
+    "hanzi": "浇花",
+    "english": ""
   },
   "word_125.jpg": {
-    "pinyin": "nóng mín",
-    "chinese": "农民"
+    "pinyin": "zhí shù",
+    "hanzi": "植树",
+    "english": ""
   },
   "word_126.jpg": {
-    "pinyin": "lǎo shī",
-    "chinese": "老师"
+    "pinyin": "jì zhě",
+    "hanzi": "记者",
+    "english": ""
   },
   "word_127.jpg": {
-    "pinyin": "yī sheng",
-    "chinese": "医生"
+    "pinyin": "jià shǐ yuán",
+    "hanzi": "驾驶员",
+    "english": ""
   },
   "word_128.jpg": {
-    "pinyin": "kē xué jiā",
-    "chinese": "科学家"
+    "pinyin": "jiě fàng jūn",
+    "hanzi": "解放军",
+    "english": ""
   },
   "word_129.jpg": {
-    "pinyin": "yùn dòng yuán",
-    "chinese": "运动员"
+    "pinyin": "kōng jūn",
+    "hanzi": "空军",
+    "english": ""
   },
   "word_130.jpg": {
-    "pinyin": "xiàng rì kuí",
-    "chinese": "向日葵"
+    "pinyin": "hǎi jūn",
+    "hanzi": "海军",
+    "english": ""
   },
   "word_131.jpg": {
-    "pinyin": "mǔ dān",
-    "chinese": "牡丹"
+    "pinyin": "jǐng chá",
+    "hanzi": "警察",
+    "english": ""
   },
   "word_132.jpg": {
-    "pinyin": "qiān niú huā",
-    "chinese": "牵牛花"
+    "pinyin": "gōng rén",
+    "hanzi": "工人",
+    "english": ""
   },
   "word_133.jpg": {
-    "pinyin": "méi huā",
-    "chinese": "梅花"
+    "pinyin": "nóng mín",
+    "hanzi": "农民",
+    "english": ""
   },
   "word_134.jpg": {
-    "pinyin": "jú huā",
-    "chinese": "菊花"
+    "pinyin": "lǎo shī",
+    "hanzi": "老师",
+    "english": ""
   },
   "word_135.jpg": {
-    "pinyin": "hé huā",
-    "chinese": "荷花"
+    "pinyin": "yī sheng",
+    "hanzi": "医生",
+    "english": ""
   },
   "word_136.jpg": {
-    "pinyin": "zhuō zi",
-    "chinese": "桌子"
+    "pinyin": "kē xué jiā",
+    "hanzi": "科学家",
+    "english": ""
   },
   "word_137.jpg": {
-    "pinyin": "yǐ zi",
-    "chinese": "椅子"
+    "pinyin": "yùn dòng yuán",
+    "hanzi": "运动员",
+    "english": ""
   },
   "word_138.jpg": {
-    "pinyin": "shā fā",
-    "chinese": "沙发"
+    "pinyin": "xiàng rì kuí",
+    "hanzi": "向日葵",
+    "english": ""
   },
   "word_139.jpg": {
-    "pinyin": "chuáng",
-    "chinese": "床"
+    "pinyin": "mǔ dān",
+    "hanzi": "牡丹",
+    "english": ""
   },
   "word_140.jpg": {
-    "pinyin": "bèi zi",
-    "chinese": "被子"
+    "pinyin": "qiān niú huā",
+    "hanzi": "牵牛花",
+    "english": ""
   },
   "word_141.jpg": {
-    "pinyin": "shàn zi",
-    "chinese": "扇子"
+    "pinyin": "méi huā",
+    "hanzi": "梅花",
+    "english": ""
   },
   "word_142.jpg": {
-    "pinyin": "shuǐ xiān",
-    "chinese": "水仙"
+    "pinyin": "jú huā",
+    "hanzi": "菊花",
+    "english": ""
   },
   "word_143.jpg": {
-    "pinyin": "yù lán huā",
-    "chinese": "玉兰花"
+    "pinyin": "hé huā",
+    "hanzi": "荷花",
+    "english": ""
   },
   "word_144.jpg": {
-    "pinyin": "chá huā",
-    "chinese": "茶花"
+    "pinyin": "zhuō zi",
+    "hanzi": "桌子",
+    "english": ""
   },
   "word_145.jpg": {
-    "pinyin": "yù jīn xiāng",
-    "chinese": "郁金香"
+    "pinyin": "yǐ zi",
+    "hanzi": "椅子",
+    "english": ""
   },
   "word_146.jpg": {
-    "pinyin": "sōng shù",
-    "chinese": "松树"
+    "pinyin": "shā fā",
+    "hanzi": "沙发",
+    "english": ""
   },
   "word_147.jpg": {
-    "pinyin": "liǔ shù",
-    "chinese": "柳树"
+    "pinyin": "chuáng",
+    "hanzi": "床",
+    "english": ""
   },
   "word_148.jpg": {
-    "pinyin": "mián huā",
-    "chinese": "棉花"
+    "pinyin": "bèi zi",
+    "hanzi": "被子",
+    "english": ""
   },
   "word_149.jpg": {
-    "pinyin": "mó gu",
-    "chinese": "蘑菇"
+    "pinyin": "shàn zi",
+    "hanzi": "扇子",
+    "english": ""
   },
   "word_150.jpg": {
-    "pinyin": "gān zhè",
-    "chinese": "甘蔗"
+    "pinyin": "shuǐ xiān",
+    "hanzi": "水仙",
+    "english": ""
   },
   "word_151.jpg": {
-    "pinyin": "shuǐ dào",
-    "chinese": "水稻"
+    "pinyin": "yù lán huā",
+    "hanzi": "玉兰花",
+    "english": ""
   },
   "word_152.jpg": {
-    "pinyin": "xiǎo mài",
-    "chinese": "小麦"
+    "pinyin": "chá huā",
+    "hanzi": "茶花",
+    "english": ""
   },
   "word_153.jpg": {
-    "pinyin": "gāo liáng",
-    "chinese": "高粱"
+    "pinyin": "yù jīn xiāng",
+    "hanzi": "郁金香",
+    "english": ""
   },
   "word_154.jpg": {
-    "pinyin": "yù mǐ",
-    "chinese": "玉米"
+    "pinyin": "sōng shù",
+    "hanzi": "松树",
+    "english": ""
   },
   "word_155.jpg": {
-    "pinyin": "hǎi dài",
-    "chinese": "海带"
+    "pinyin": "liǔ shù",
+    "hanzi": "柳树",
+    "english": ""
   },
   "word_156.jpg": {
-    "pinyin": "dà suàn",
-    "chinese": "大蒜"
+    "pinyin": "mián huā",
+    "hanzi": "棉花",
+    "english": ""
   },
   "word_157.jpg": {
-    "pinyin": "zhú sǔn",
-    "chinese": "竹笋"
+    "pinyin": "zhúzi",
+    "hanzi": "竹구",
+    "english": ""
   },
   "word_158.jpg": {
-    "pinyin": "lì zi",
-    "chinese": "栗子"
+    "pinyin": "mó gu",
+    "hanzi": "蘑菇",
+    "english": ""
   },
   "word_159.jpg": {
-    "pinyin": "pú tao",
-    "chinese": "葡萄"
+    "pinyin": "gān zhè",
+    "hanzi": "甘蔗",
+    "english": ""
   },
   "word_160.jpg": {
-    "pinyin": "píng guǒ",
-    "chinese": "苹果"
+    "pinyin": "shuǐ dào",
+    "hanzi": "水稻",
+    "english": ""
   },
   "word_161.jpg": {
-    "pinyin": "xiāng jiāo",
-    "chinese": "香蕉"
+    "pinyin": "xiǎo mài",
+    "hanzi": "小麦",
+    "english": ""
   },
   "word_162.jpg": {
-    "pinyin": "lí",
-    "chinese": "梨"
+    "pinyin": "gāo liáng",
+    "hanzi": "高粱",
+    "english": ""
   },
   "word_163.jpg": {
-    "pinyin": "yīng táo",
-    "chinese": "樱桃"
+    "pinyin": "yù mǐ",
+    "hanzi": "玉米",
+    "english": ""
   },
   "word_164.jpg": {
-    "pinyin": "shí liu",
-    "chinese": "石榴"
+    "pinyin": "hǎi dài",
+    "hanzi": "海带",
+    "english": ""
   },
   "word_165.jpg": {
-    "pinyin": "táo",
-    "chinese": "桃"
+    "pinyin": "dà suàn",
+    "hanzi": "大蒜",
+    "english": ""
   },
   "word_166.jpg": {
-    "pinyin": "xī guā",
-    "chinese": "西瓜"
+    "pinyin": "zhú sǔn",
+    "hanzi": "竹笋",
+    "english": ""
   },
   "word_167.jpg": {
-    "pinyin": "lì zhī",
-    "chinese": "荔枝"
+    "pinyin": "lì zi",
+    "hanzi": "栗子",
+    "english": ""
   },
   "word_168.jpg": {
-    "pinyin": "shì zi",
-    "chinese": "柿子"
+    "pinyin": "pú tao",
+    "hanzi": "葡萄",
+    "english": ""
   },
   "word_169.jpg": {
-    "pinyin": "luó bo",
-    "chinese": "萝卜"
+    "pinyin": "píng guǒ",
+    "hanzi": "苹果",
+    "english": ""
   },
   "word_170.jpg": {
-    "pinyin": "ǒu",
-    "chinese": "藕"
+    "pinyin": "xiāng jiāo",
+    "hanzi": "香蕉",
+    "english": ""
   },
   "word_171.jpg": {
-    "pinyin": "dōng guā",
-    "chinese": "冬瓜"
+    "pinyin": "lízi",
+    "hanzi": "梨子",
+    "english": ""
   },
   "word_172.jpg": {
-    "pinyin": "nán guā",
-    "chinese": "南瓜"
+    "pinyin": "yīng táo",
+    "hanzi": "樱桃",
+    "english": ""
   },
   "word_173.jpg": {
-    "pinyin": "qié zi",
-    "chinese": "茄子"
+    "pinyin": "shí liu",
+    "hanzi": "石榴",
+    "english": ""
   },
   "word_174.jpg": {
-    "pinyin": "qīng cài",
-    "chinese": "青菜"
+    "pinyin": "táozi",
+    "hanzi": "桃子",
+    "english": ""
   },
   "word_175.jpg": {
-    "pinyin": "bō cài",
-    "chinese": "菠菜"
+    "pinyin": "xī guā",
+    "hanzi": "西瓜",
+    "english": ""
   },
   "word_176.jpg": {
-    "pinyin": "cōng",
-    "chinese": "葱"
+    "pinyin": "lì zhī",
+    "hanzi": "荔枝",
+    "english": ""
   },
   "word_177.jpg": {
-    "pinyin": "bái cài",
-    "chinese": "白菜"
+    "pinyin": "shì zi",
+    "hanzi": "柿子",
+    "english": ""
   },
   "word_178.jpg": {
-    "pinyin": "huā cài",
-    "chinese": "花菜"
+    "pinyin": "luó bo",
+    "hanzi": "萝卜",
+    "english": ""
   },
   "word_179.jpg": {
-    "pinyin": "huáng guā",
-    "chinese": "黄瓜"
+    "pinyin": "ǒu",
+    "hanzi": "藕",
+    "english": ""
   },
   "word_180.jpg": {
-    "pinyin": "là jiāo",
-    "chinese": "辣椒"
+    "pinyin": "dōng guā",
+    "hanzi": "冬瓜",
+    "english": ""
   },
   "word_181.jpg": {
-    "pinyin": "dòu jiǎo",
-    "chinese": "豆角"
+    "pinyin": "nán guā",
+    "hanzi": "南瓜",
+    "english": ""
   },
   "word_182.jpg": {
-    "pinyin": "yáng cōng",
-    "chinese": "洋葱"
+    "pinyin": "qié zi",
+    "hanzi": "茄子",
+    "english": ""
   },
   "word_183.jpg": {
-    "pinyin": "qiū qiān",
-    "chinese": "秋千"
+    "pinyin": "qīng cài",
+    "hanzi": "青菜",
+    "english": ""
   },
   "word_184.jpg": {
-    "pinyin": "huá tī",
-    "chinese": "滑梯"
+    "pinyin": "bō cài",
+    "hanzi": "菠菜",
+    "english": ""
   },
   "word_185.jpg": {
-    "pinyin": "qiāo qiāo bǎn",
-    "chinese": "跷跷板"
+    "pinyin": "cōng",
+    "hanzi": "葱",
+    "english": ""
   },
   "word_186.jpg": {
-    "pinyin": "mù mǎ",
-    "chinese": "木马"
+    "pinyin": "bái cài",
+    "hanzi": "白菜",
+    "english": ""
   },
   "word_187.jpg": {
-    "pinyin": "jī mù",
-    "chinese": "积木"
+    "pinyin": "huā cài",
+    "hanzi": "花菜",
+    "english": ""
   },
   "word_188.jpg": {
-    "pinyin": "huǒ chái",
-    "chinese": "火柴"
+    "pinyin": "huáng guā",
+    "hanzi": "黄瓜",
+    "english": ""
   },
   "word_189.jpg": {
-    "pinyin": "là zhú",
-    "chinese": "蜡烛"
+    "pinyin": "là jiāo",
+    "hanzi": "辣椒",
+    "english": ""
   },
   "word_190.jpg": {
-    "pinyin": "zhuàn bǐ dāo",
-    "chinese": "转笔刀"
+    "pinyin": "dòu jiǎo",
+    "hanzi": "豆角",
+    "english": ""
   },
   "word_191.jpg": {
-    "pinyin": "bǐ",
-    "chinese": "笔"
+    "pinyin": "yáng cōng",
+    "hanzi": "洋葱",
+    "english": ""
   },
   "word_192.jpg": {
-    "pinyin": "zhǐ",
-    "chinese": "纸"
+    "pinyin": "qiū qiān",
+    "hanzi": "秋千",
+    "english": ""
   },
   "word_193.jpg": {
-    "pinyin": "mò shuǐ",
-    "chinese": "墨水"
+    "pinyin": "huá tī",
+    "hanzi": "滑梯",
+    "english": ""
   },
   "word_194.jpg": {
-    "pinyin": "chǐ",
-    "chinese": "尺"
+    "pinyin": "qiāo qiāo bǎn",
+    "hanzi": "跷跷板",
+    "english": ""
   },
   "word_195.jpg": {
-    "pinyin": "yī",
-    "chinese": "衣"
+    "pinyin": "mù mǎ",
+    "hanzi": "木马",
+    "english": ""
   },
   "word_196.jpg": {
-    "pinyin": "qún",
-    "chinese": "裙"
+    "pinyin": "jī mù",
+    "hanzi": "积木",
+    "english": ""
   },
   "word_197.jpg": {
-    "pinyin": "kù",
-    "chinese": "裤"
+    "pinyin": "huǒ chái",
+    "hanzi": "火柴",
+    "english": ""
   },
   "word_198.jpg": {
-    "pinyin": "mào zi",
-    "chinese": "帽子"
+    "pinyin": "là zhú",
+    "hanzi": "蜡烛",
+    "english": ""
   },
   "word_199.jpg": {
-    "pinyin": "wà zi",
-    "chinese": "袜子"
+    "pinyin": "zhuàn bǐ dāo",
+    "hanzi": "转笔刀",
+    "english": ""
   },
   "word_200.jpg": {
-    "pinyin": "",
-    "chinese": ""
+    "pinyin": "bǐ",
+    "hanzi": "笔",
+    "english": ""
   },
   "word_201.jpg": {
-    "pinyin": "",
-    "chinese": ""
+    "pinyin": "zhǐ",
+    "hanzi": "纸",
+    "english": ""
   },
   "word_202.jpg": {
-    "pinyin": "",
-    "chinese": ""
+    "pinyin": "mò shuǐ",
+    "hanzi": "墨水",
+    "english": ""
   },
   "word_203.jpg": {
-    "pinyin": "",
-    "chinese": ""
+    "pinyin": "chǐ",
+    "hanzi": "尺",
+    "english": ""
   },
   "word_204.jpg": {
-    "pinyin": "",
-    "chinese": ""
+    "pinyin": "yī",
+    "hanzi": "衣",
+    "english": ""
   },
   "word_205.jpg": {
-    "pinyin": "",
-    "chinese": ""
+    "pinyin": "qún",
+    "hanzi": "裙",
+    "english": ""
   },
   "word_206.jpg": {
-    "pinyin": "",
-    "chinese": ""
+    "pinyin": "kù",
+    "hanzi": "裤",
+    "english": ""
   },
   "word_207.jpg": {
-    "pinyin": "",
-    "chinese": ""
+    "pinyin": "mào zi",
+    "hanzi": "帽子",
+    "english": ""
   },
   "word_208.jpg": {
-    "pinyin": "",
-    "chinese": ""
+    "pinyin": "wà zi",
+    "hanzi": "袜子",
+    "english": ""
   },
   "word_209.jpg": {
-    "pinyin": "",
-    "chinese": ""
+    "pinyin": "zhěn tou",
+    "hanzi": "枕头",
+    "english": ""
   },
   "word_210.jpg": {
-    "pinyin": "",
-    "chinese": ""
+    "pinyin": "bēi zi",
+    "hanzi": "杯子",
+    "english": ""
   },
   "word_211.jpg": {
-    "pinyin": "",
-    "chinese": ""
+    "pinyin": "shū bāo",
+    "hanzi": "书包",
+    "english": ""
   },
   "word_212.jpg": {
-    "pinyin": "",
-    "chinese": ""
+    "pinyin": "shǒu tào",
+    "hanzi": "手套",
+    "english": ""
   },
   "word_213.jpg": {
-    "pinyin": "",
-    "chinese": ""
+    "pinyin": "xié",
+    "hanzi": "鞋",
+    "english": ""
   },
   "word_214.jpg": {
-    "pinyin": "",
-    "chinese": ""
+    "pinyin": "dāo",
+    "hanzi": "刀",
+    "english": ""
   },
   "word_215.jpg": {
-    "pinyin": "",
-    "chinese": ""
+    "pinyin": "jiǎn dāo",
+    "hanzi": "剪刀",
+    "english": ""
   },
   "word_216.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "钳子",
+    "english": ""
   },
   "word_217.jpg": {
-    "pinyin": "",
-    "chinese": ""
+    "pinyin": "jù zi",
+    "hanzi": "锯子",
+    "english": ""
   },
   "word_218.jpg": {
-    "pinyin": "",
-    "chinese": ""
+    "pinyin": "fǔ tóu",
+    "hanzi": "斧头",
+    "english": ""
   },
   "word_219.jpg": {
-    "pinyin": "",
-    "chinese": ""
+    "pinyin": "láng tou",
+    "hanzi": "榔头",
+    "english": ""
   },
   "word_220.jpg": {
-    "pinyin": "",
-    "chinese": ""
+    "pinyin": "yào shi",
+    "hanzi": "钥匙",
+    "english": ""
   },
   "word_221.jpg": {
-    "pinyin": "",
-    "chinese": ""
+    "pinyin": "suǒ",
+    "hanzi": "锁",
+    "english": ""
   },
   "word_222.jpg": {
-    "pinyin": "",
-    "chinese": ""
+    "pinyin": "lián dāo",
+    "hanzi": "镰刀",
+    "english": ""
   },
   "word_223.jpg": {
-    "pinyin": "",
-    "chinese": ""
+    "pinyin": "chú tou",
+    "hanzi": "锄头",
+    "english": ""
   },
   "word_224.jpg": {
-    "pinyin": "",
-    "chinese": ""
+    "pinyin": "tiě qiāo",
+    "hanzi": "铁锹",
+    "english": ""
   },
   "word_225.jpg": {
-    "pinyin": "",
-    "chinese": ""
+    "pinyin": "gǎo",
+    "hanzi": "镐",
+    "english": ""
   },
   "word_226.jpg": {
-    "pinyin": "",
-    "chinese": ""
+    "pinyin": "sào zhou",
+    "hanzi": "扫帚",
+    "english": ""
   },
   "word_227.jpg": {
-    "pinyin": "",
-    "chinese": ""
+    "pinyin": "bò ji",
+    "hanzi": "簸箕",
+    "english": ""
   },
   "word_228.jpg": {
-    "pinyin": "",
-    "chinese": ""
+    "pinyin": "wǎn",
+    "hanzi": "碗",
+    "english": ""
   },
   "word_229.jpg": {
-    "pinyin": "",
-    "chinese": ""
+    "pinyin": "kuài zi",
+    "hanzi": "筷子",
+    "english": ""
   },
   "word_230.jpg": {
-    "pinyin": "",
-    "chinese": ""
+    "pinyin": "tiáo gēng",
+    "hanzi": "调羹",
+    "english": ""
   },
   "word_231.jpg": {
-    "pinyin": "",
-    "chinese": ""
+    "pinyin": "sháo",
+    "hanzi": "勺",
+    "english": ""
   },
   "word_232.jpg": {
-    "pinyin": "",
-    "chinese": ""
+    "pinyin": "nuǎn shuǐ píng",
+    "hanzi": "暖水瓶",
+    "english": ""
   },
   "word_233.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "锅",
+    "english": ""
   },
   "word_234.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "脸盆",
+    "english": ""
   },
   "word_235.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "镜子",
+    "english": ""
   },
   "word_236.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "牙膏",
+    "english": ""
   },
   "word_237.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "才刷",
+    "english": ""
   },
   "word_238.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "毛巾",
+    "english": ""
   },
   "word_239.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "香皂",
+    "english": ""
   },
   "word_240.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "刷子",
+    "english": ""
   },
   "word_241.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "画",
+    "english": ""
   },
   "word_242.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "门",
+    "english": ""
   },
   "word_243.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "窗",
+    "english": ""
   },
   "word_244.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "电熨斗",
+    "english": ""
   },
   "word_245.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "电水壶",
+    "english": ""
   },
   "word_246.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "钢琴",
+    "english": ""
   },
   "word_247.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "电子琴",
+    "english": ""
   },
   "word_248.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "小提琴",
+    "english": ""
   },
   "word_249.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "古筝",
+    "english": ""
   },
   "word_250.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "胡琴",
+    "english": ""
   },
   "word_251.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "笛子",
+    "english": ""
   },
   "word_252.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "锣",
+    "english": ""
   },
   "word_253.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "鼓",
+    "english": ""
   },
   "word_254.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "喇叭",
+    "english": ""
   },
   "word_255.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "台灯",
+    "english": ""
   },
   "word_256.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "壁灯",
+    "english": ""
   },
   "word_257.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "电灯泡",
+    "english": ""
   },
   "word_258.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "电视机",
+    "english": ""
   },
   "word_259.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "电冰箱",
+    "english": ""
   },
   "word_260.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "空调",
+    "english": ""
   },
   "word_261.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "电脑",
+    "english": ""
   },
   "word_262.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "影碟机",
+    "english": ""
   },
   "word_263.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "电饭锅",
+    "english": ""
   },
   "word_264.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "洗袋机",
+    "english": ""
   },
   "word_265.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "照相机",
+    "english": ""
   },
   "word_266.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "音响",
+    "english": ""
   },
   "word_267.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "计算器",
+    "english": ""
   },
   "word_268.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "微波炉",
+    "english": ""
   },
   "word_269.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "手机",
+    "english": ""
   },
   "word_270.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "手表",
+    "english": ""
   },
   "word_271.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "种",
+    "english": ""
   },
   "word_272.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "电风扇",
+    "english": ""
   },
   "word_273.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "吸尘器",
+    "english": ""
   },
   "word_274.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "电筒",
+    "english": ""
   },
   "word_275.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "罐头",
+    "english": ""
   },
   "word_276.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "汉堡",
+    "english": ""
   },
   "word_277.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "面包",
+    "english": ""
   },
   "word_278.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "冰淇淋",
+    "english": ""
   },
   "word_279.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "巧克力",
+    "english": ""
   },
   "word_280.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "蛋糕",
+    "english": ""
   },
   "word_281.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "饼干",
+    "english": ""
   },
   "word_282.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "米饭",
+    "english": ""
   },
   "word_283.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "面条",
+    "english": ""
   },
   "word_284.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "大饼",
+    "english": ""
   },
   "word_285.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "包子",
+    "english": ""
   },
   "word_286.jpg": {
     "pinyin": "",
-    "chinese": ""
+    "hanzi": "馒头",
+    "english": ""
   },
   "word_287.jpg": {
-    "pinyin": "鸳鸯",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "饺子",
+    "english": ""
   },
   "word_288.jpg": {
-    "pinyin": "鹦鹉",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "火腿肠",
+    "english": ""
   },
   "word_289.jpg": {
-    "pinyin": "鸽子",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "糖果",
+    "english": ""
   },
   "word_290.jpg": {
-    "pinyin": "燕子",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "饮料",
+    "english": ""
   },
   "word_291.jpg": {
-    "pinyin": "白鹤",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "鸡蛋",
+    "english": ""
   },
   "word_292.jpg": {
-    "pinyin": "鹰",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "气球",
+    "english": ""
   },
   "word_293.jpg": {
-    "pinyin": "鹈鹕",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "风筝",
+    "english": ""
   },
   "word_294.jpg": {
-    "pinyin": "猫头鹰",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "足球",
+    "english": ""
   },
   "word_295.jpg": {
-    "pinyin": "蜜蜂",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "篮球",
+    "english": ""
   },
   "word_296.jpg": {
-    "pinyin": "苍蝇",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "排球",
+    "english": ""
   },
   "word_297.jpg": {
-    "pinyin": "蝗虫",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "羽毛球",
+    "english": ""
   },
   "word_298.jpg": {
-    "pinyin": "蜘蛛",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "蝴蝶",
+    "english": ""
   },
   "word_299.jpg": {
-    "pinyin": "蝉",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "蜻蜓",
+    "english": ""
   },
   "word_300.jpg": {
-    "pinyin": "mayi",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "孔雀",
+    "english": ""
   },
   "word_301.jpg": {
-    "pinyin": "公鸡",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "喜鹊",
+    "english": ""
   },
   "word_302.jpg": {
-    "pinyin": "母鸡",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "鸳鸯",
+    "english": ""
   },
   "word_303.jpg": {
-    "pinyin": "鹅",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "鹦鹉",
+    "english": ""
   },
   "word_304.jpg": {
-    "pinyin": "兔",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "鸽子",
+    "english": ""
   },
   "word_305.jpg": {
-    "pinyin": "蚕",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "海鸥",
+    "english": ""
   },
   "word_306.jpg": {
-    "pinyin": "蜗牛",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "燕子",
+    "english": ""
   },
   "word_307.jpg": {
-    "pinyin": "猪",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "白鹤",
+    "english": ""
   },
   "word_308.jpg": {
-    "pinyin": "马",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "鹰",
+    "english": ""
   },
   "word_309.jpg": {
-    "pinyin": "奶牛",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "鹈鹕",
+    "english": ""
   },
   "word_310.jpg": {
-    "pinyin": "山羊",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "猫头鹰",
+    "english": ""
   },
   "word_311.jpg": {
-    "pinyin": "猫",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "蜜蜂",
+    "english": ""
   },
   "word_312.jpg": {
-    "pinyin": "长颈鹿",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "苍蝇",
+    "english": ""
   },
   "word_313.jpg": {
-    "pinyin": "梅花鹿",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "蝗虫",
+    "english": ""
   },
   "word_314.jpg": {
-    "pinyin": "羚羊",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "蜘蛛",
+    "english": ""
   },
   "word_315.jpg": {
-    "pinyin": "绵羊",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "蝉",
+    "english": ""
   },
   "word_316.jpg": {
-    "pinyin": "松鼠",
-    "chinese": ""
+    "pinyin": "mayi",
+    "hanzi": "蚂蚁",
+    "english": ""
   },
   "word_317.jpg": {
-    "pinyin": "水牛",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "螳螂",
+    "english": ""
   },
   "word_318.jpg": {
-    "pinyin": "猴",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "公鸡",
+    "english": ""
   },
   "word_319.jpg": {
-    "pinyin": "袋鼠",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "母鸡",
+    "english": ""
   },
   "word_320.jpg": {
-    "pinyin": "蝙蝠",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "鹅",
+    "english": ""
   },
   "word_321.jpg": {
-    "pinyin": "老鼠",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "兔",
+    "english": ""
   },
   "word_322.jpg": {
-    "pinyin": "穿山甲",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "蚕",
+    "english": ""
   },
   "word_323.jpg": {
-    "pinyin": "恐龙",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "蜗牛",
+    "english": ""
   },
   "word_324.jpg": {
-    "pinyin": "骆驼",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "猪",
+    "english": ""
   },
   "word_325.jpg": {
-    "pinyin": "熊",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "马",
+    "english": ""
   },
   "word_326.jpg": {
-    "pinyin": "星星",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "奶牛",
+    "english": ""
   },
   "word_327.jpg": {
-    "pinyin": "狐狸",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "山羊",
+    "english": ""
   },
   "word_328.jpg": {
-    "pinyin": "狼",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "猫",
+    "english": ""
   },
   "word_329.jpg": {
-    "pinyin": "狮",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "长颈鹿",
+    "english": ""
   },
   "word_330.jpg": {
-    "pinyin": "虎",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "梅花鹿",
+    "english": ""
   },
   "word_331.jpg": {
-    "pinyin": "大象",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "羚羊",
+    "english": ""
   },
   "word_332.jpg": {
-    "pinyin": "豹",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "绵羊",
+    "english": ""
   },
   "word_333.jpg": {
-    "pinyin": "犀牛",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "松鼠",
+    "english": ""
   },
   "word_334.jpg": {
-    "pinyin": "狗",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "斑马",
+    "english": ""
   },
   "word_335.jpg": {
-    "pinyin": "熊猫",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "水牛",
+    "english": ""
   },
   "word_336.jpg": {
-    "pinyin": "棕熊",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "猴",
+    "english": ""
   },
   "word_337.jpg": {
-    "pinyin": "鳄鱼",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "袋鼠",
+    "english": ""
   },
   "word_338.jpg": {
-    "pinyin": "鲨鱼",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "蝙蝠",
+    "english": ""
   },
   "word_339.jpg": {
-    "pinyin": "河马",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "刺猬",
+    "english": ""
   },
   "word_340.jpg": {
-    "pinyin": "海象",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "老鼠",
+    "english": ""
   },
   "word_341.jpg": {
-    "pinyin": "企鹅",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "穿山甲",
+    "english": ""
   },
   "word_342.jpg": {
-    "pinyin": "金鱼",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "恐龙",
+    "english": ""
   },
   "word_343.jpg": {
-    "pinyin": "鲸鱼",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "骆驼",
+    "english": ""
   },
   "word_344.jpg": {
-    "pinyin": "海豹",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "熊",
+    "english": ""
   },
   "word_345.jpg": {
-    "pinyin": "驾驭",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "星星",
+    "english": ""
   },
   "word_346.jpg": {
-    "pinyin": "青蛙",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "狐狸",
+    "english": ""
   },
   "word_347.jpg": {
-    "pinyin": "大炮",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "狼",
+    "english": ""
   },
   "word_348.jpg": {
-    "pinyin": "军舰",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "狮",
+    "english": ""
   },
   "word_349.jpg": {
-    "pinyin": "火箭",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "虎",
+    "english": ""
   },
   "word_350.jpg": {
-    "pinyin": "手枪",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "大象",
+    "english": ""
   },
   "word_351.jpg": {
-    "pinyin": "警车",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "豹",
+    "english": ""
   },
   "word_352.jpg": {
-    "pinyin": "救护车",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "犀牛",
+    "english": ""
   },
   "word_353.jpg": {
-    "pinyin": "三轮车",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "狗",
+    "english": ""
   },
   "word_354.jpg": {
-    "pinyin": "自行车",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "熊猫",
+    "english": ""
   },
   "word_355.jpg": {
-    "pinyin": "碰碰车",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "棕熊",
+    "english": ""
   },
   "word_356.jpg": {
-    "pinyin": "摩托车",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "鳄鱼",
+    "english": ""
   },
   "word_357.jpg": {
-    "pinyin": "童车",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "鲨鱼",
+    "english": ""
   },
   "word_358.jpg": {
-    "pinyin": "公共汽车",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "河马",
+    "english": ""
   },
   "word_359.jpg": {
-    "pinyin": "点车",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "海象",
+    "english": ""
   },
   "word_360.jpg": {
-    "pinyin": "双层客车",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "企鹅",
+    "english": ""
   },
   "word_361.jpg": {
-    "pinyin": "轿车",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "金鱼",
+    "english": ""
   },
   "word_362.jpg": {
-    "pinyin": "面包车",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "鲸鱼",
+    "english": ""
   },
   "word_363.jpg": {
-    "pinyin": "洒水车",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "海豹",
+    "english": ""
   },
   "word_364.jpg": {
-    "pinyin": "高速列车",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "甲鱼",
+    "english": ""
   },
   "word_365.jpg": {
-    "pinyin": "火车",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "青蛙",
+    "english": ""
   },
   "word_366.jpg": {
-    "pinyin": "工程抢险车",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "大炮",
+    "english": ""
   },
   "word_367.jpg": {
-    "pinyin": "货车",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "军舰",
+    "english": ""
   },
   "word_368.jpg": {
-    "pinyin": "汽车",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "火箭",
+    "english": ""
   },
   "word_369.jpg": {
-    "pinyin": "赛车",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "手枪",
+    "english": ""
   },
   "word_370.jpg": {
-    "pinyin": "自卸货车",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "警车",
+    "english": ""
   },
   "word_371.jpg": {
-    "pinyin": "推土车",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "救护车",
+    "english": ""
   },
   "word_372.jpg": {
-    "pinyin": "压路车",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "三轮车",
+    "english": ""
   },
   "word_373.jpg": {
-    "pinyin": "挖土车",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "自行车",
+    "english": ""
   },
   "word_374.jpg": {
-    "pinyin": "集装箱货车",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "碰碰车",
+    "english": ""
   },
   "word_375.jpg": {
-    "pinyin": "翻斗车",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "缆车",
+    "english": ""
   },
   "word_376.jpg": {
-    "pinyin": "油罐车",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "摩托车",
+    "english": ""
   },
   "word_377.jpg": {
-    "pinyin": "拖拉机",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "童车",
+    "english": ""
   },
   "word_378.jpg": {
-    "pinyin": "飞机",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "公共汽车",
+    "english": ""
   },
   "word_379.jpg": {
-    "pinyin": "客机",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "电车",
+    "english": ""
   },
   "word_380.jpg": {
-    "pinyin": "水上飞机",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "双层客车",
+    "english": ""
   },
   "word_381.jpg": {
-    "pinyin": "长江客轮",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "轿车",
+    "english": ""
   },
   "word_382.jpg": {
-    "pinyin": "渡轮",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "面包车",
+    "english": ""
   },
   "word_383.jpg": {
-    "pinyin": "气垫船",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "洒水车",
+    "english": ""
   },
   "word_384.jpg": {
-    "pinyin": "快艇",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "高速列车",
+    "english": ""
   },
   "word_385.jpg": {
-    "pinyin": "交通艇",
-    "chinese": ""
+    "pinyin": "",
+    "hanzi": "火车",
+    "english": ""
   },
   "word_386.jpg": {
-    "pinyin": "水翼船",
-    "chinese": "shuǐ yì chuán"
+    "pinyin": "",
+    "hanzi": "工程抢险车",
+    "english": ""
   },
   "word_387.jpg": {
-    "pinyin": "油轮",
-    "chinese": "yóu lún"
+    "pinyin": "",
+    "hanzi": "货车",
+    "english": ""
   },
   "word_388.jpg": {
-    "pinyin": "游船",
-    "chinese": "yóu chuán"
+    "pinyin": "",
+    "hanzi": "汽车",
+    "english": ""
   },
   "word_389.jpg": {
-    "pinyin": "双体船",
-    "chinese": "shuāng tǐ chuán"
+    "pinyin": "",
+    "hanzi": "赛车",
+    "english": ""
   },
   "word_390.jpg": {
-    "pinyin": "帆船",
-    "chinese": "fān chuán"
+    "pinyin": "",
+    "hanzi": "自卸货车",
+    "english": ""
   },
   "word_391.jpg": {
+    "pinyin": "",
+    "hanzi": "推土车",
+    "english": ""
+  },
+  "word_392.jpg": {
+    "pinyin": "",
+    "hanzi": "压路车",
+    "english": ""
+  },
+  "word_393.jpg": {
+    "pinyin": "",
+    "hanzi": "挖土车",
+    "english": ""
+  },
+  "word_394.jpg": {
+    "pinyin": "",
+    "hanzi": "集装箱货车",
+    "english": ""
+  },
+  "word_395.jpg": {
+    "pinyin": "",
+    "hanzi": "翻斗车",
+    "english": ""
+  },
+  "word_396.jpg": {
+    "pinyin": "",
+    "hanzi": "油罐车",
+    "english": ""
+  },
+  "word_397.jpg": {
+    "pinyin": "",
+    "hanzi": "拖拉机",
+    "english": ""
+  },
+  "word_398.jpg": {
+    "pinyin": "",
+    "hanzi": "飞机",
+    "english": ""
+  },
+  "word_399.jpg": {
+    "pinyin": "",
+    "hanzi": "客机",
+    "english": ""
+  },
+  "word_400.jpg": {
+    "pinyin": "",
+    "hanzi": "直升飞机",
+    "english": ""
+  },
+  "word_401.jpg": {
+    "pinyin": "",
+    "hanzi": "水上飞机",
+    "english": ""
+  },
+  "word_402.jpg": {
+    "pinyin": "",
+    "hanzi": "长江客轮",
+    "english": ""
+  },
+  "word_403.jpg": {
+    "pinyin": "",
+    "hanzi": "渡轮",
+    "english": ""
+  },
+  "word_404.jpg": {
+    "pinyin": "",
+    "hanzi": "气垫船",
+    "english": ""
+  },
+  "word_405.jpg": {
+    "pinyin": "",
+    "hanzi": "快艇",
+    "english": ""
+  },
+  "word_406.jpg": {
+    "pinyin": "",
+    "hanzi": "交通艇",
+    "english": ""
+  },
+  "word_407.jpg": {
+    "pinyin": "水翼船",
+    "hanzi": "shuǐ yì chuán",
+    "english": ""
+  },
+  "word_408.jpg": {
+    "pinyin": "",
+    "hanzi": "拖轮",
+    "english": ""
+  },
+  "word_409.jpg": {
+    "pinyin": "油轮",
+    "hanzi": "yóu lún",
+    "english": ""
+  },
+  "word_410.jpg": {
+    "pinyin": "游船",
+    "hanzi": "yóu chuán",
+    "english": ""
+  },
+  "word_411.jpg": {
+    "pinyin": "双体船",
+    "hanzi": "shuāng tǐ chuán",
+    "english": ""
+  },
+  "word_412.jpg": {
+    "pinyin": "帆船",
+    "hanzi": "fān chuán",
+    "english": ""
+  },
+  "word_413.jpg": {
     "pinyin": "木船",
-    "chinese": "mù chuán"
+    "hanzi": "mù chuán",
+    "english": ""
   }
 }
