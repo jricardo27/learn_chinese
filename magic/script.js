@@ -74,6 +74,9 @@ class WordLearner {
                     });
                 }
             }
+            // Shuffle by default
+            this.words.sort(() => Math.random() - 0.5);
+
             this.renderHome();
             this.updateWordCount();
         } catch (error) {
