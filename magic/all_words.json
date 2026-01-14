@@ -2,2071 +2,5052 @@
   "word_000.jpg": {
     "pinyin": "yī gè shǒu zhǐ",
     "hanzi": "1 一个手指",
-    "english": ""
+    "english": "1 one finger",
+    "categories": [
+      "numbers",
+      "body parts"
+    ],
+    "tones": [
+      1,
+      4,
+      3,
+      3
+    ]
   },
   "word_001.jpg": {
     "pinyin": "liǎng zhī xiǎo māo",
     "hanzi": "2 两只小猫",
-    "english": ""
+    "english": "2 two small cats",
+    "categories": [
+      "numbers",
+      "animals",
+      "cats"
+    ],
+    "tones": [
+      3,
+      1,
+      3,
+      1
+    ]
   },
   "word_002.jpg": {
     "pinyin": "sān zhī wū guī",
     "hanzi": "3 三只乌龟",
-    "english": ""
+    "english": "3 three turtles",
+    "categories": [
+      "numbers",
+      "animals",
+      "reptiles"
+    ],
+    "tones": [
+      1,
+      1,
+      1,
+      1
+    ]
   },
   "word_003.jpg": {
     "pinyin": "sì zhī xióng māo",
     "hanzi": "4 四只熊猫",
-    "english": ""
+    "english": "4 four pandas",
+    "categories": [
+      "numbers",
+      "animals",
+      "pandas"
+    ],
+    "tones": [
+      4,
+      1,
+      2,
+      1
+    ]
   },
   "word_004.jpg": {
     "pinyin": "wǔ zhī tuó niǎo",
     "hanzi": "5 五只鸵鸟",
-    "english": ""
+    "english": "5 five ostriches",
+    "categories": [
+      "numbers",
+      "animals",
+      "birds"
+    ],
+    "tones": [
+      3,
+      1,
+      2,
+      3
+    ]
   },
   "word_005.jpg": {
     "pinyin": "liù zhī bái tù",
     "hanzi": "6 六只白兔",
-    "english": ""
+    "english": "6 six white rabbits",
+    "categories": [
+      "numbers",
+      "animals",
+      "rabbits"
+    ],
+    "tones": [
+      4,
+      1,
+      2,
+      4
+    ]
   },
   "word_006.jpg": {
     "pinyin": "qī kē bái cài",
     "hanzi": "7 七棵白菜",
-    "english": ""
+    "english": "7 seven cabbages",
+    "categories": [
+      "numbers",
+      "vegetables",
+      "plants"
+    ],
+    "tones": [
+      1,
+      1,
+      2,
+      4
+    ]
   },
   "word_007.jpg": {
     "pinyin": "bā piàn xī guā",
     "hanzi": "8 八片西瓜",
-    "english": ""
+    "english": "8 eight slices of watermelon",
+    "categories": [
+      "numbers",
+      "fruits"
+    ],
+    "tones": [
+      1,
+      4,
+      1,
+      1
+    ]
   },
   "word_008.jpg": {
     "pinyin": "jiǔ tiáo jīn yú",
     "hanzi": "9 九条金鱼",
-    "english": ""
+    "english": "9 nine goldfish",
+    "categories": [
+      "numbers",
+      "animals",
+      "fish"
+    ],
+    "tones": [
+      3,
+      2,
+      1,
+      2
+    ]
   },
   "word_009.jpg": {
     "pinyin": "shí zhī táo zi",
     "hanzi": "10 十只桃子",
-    "english": ""
+    "english": "10 ten peaches",
+    "categories": [
+      "numbers",
+      "fruits"
+    ],
+    "tones": [
+      2,
+      1,
+      2,
+      5
+    ]
   },
   "word_010.jpg": {
     "pinyin": "cháng",
     "hanzi": "长",
-    "english": ""
+    "english": "long",
+    "categories": [
+      "adjectives",
+      "description"
+    ],
+    "tones": [
+      2
+    ]
   },
   "word_011.jpg": {
-    "pinyin": "duăn",
+    "pinyin": "duǎn",
     "hanzi": "短",
-    "english": ""
+    "english": "short",
+    "categories": [
+      "adjectives",
+      "description"
+    ],
+    "tones": [
+      3
+    ]
   },
   "word_012.jpg": {
     "pinyin": "cū",
     "hanzi": "粗",
-    "english": ""
+    "english": "thick",
+    "categories": [
+      "adjectives",
+      "description"
+    ],
+    "tones": [
+      1
+    ]
   },
   "word_013.jpg": {
     "pinyin": "xì",
     "hanzi": "细",
-    "english": ""
+    "english": "thin",
+    "categories": [
+      "adjectives",
+      "description"
+    ],
+    "tones": [
+      4
+    ]
   },
   "word_014.jpg": {
     "pinyin": "shàng",
     "hanzi": "上",
-    "english": ""
+    "english": "up",
+    "categories": [
+      "directions"
+    ],
+    "tones": [
+      4
+    ]
   },
   "word_015.jpg": {
     "pinyin": "xià",
     "hanzi": "下",
-    "english": ""
+    "english": "down",
+    "categories": [
+      "directions"
+    ],
+    "tones": [
+      4
+    ]
   },
   "word_016.jpg": {
     "pinyin": "zuǒ",
     "hanzi": "左",
-    "english": ""
+    "english": "left",
+    "categories": [
+      "directions"
+    ],
+    "tones": [
+      3
+    ]
   },
   "word_017.jpg": {
     "pinyin": "yòu",
     "hanzi": "右",
-    "english": ""
+    "english": "right",
+    "categories": [
+      "directions"
+    ],
+    "tones": [
+      4
+    ]
   },
   "word_018.jpg": {
     "pinyin": "dà",
     "hanzi": "大",
-    "english": ""
+    "english": "big",
+    "categories": [
+      "adjectives",
+      "size"
+    ],
+    "tones": [
+      4
+    ]
   },
   "word_019.jpg": {
     "pinyin": "xiǎo",
     "hanzi": "小",
-    "english": ""
+    "english": "small",
+    "categories": [
+      "adjectives",
+      "size"
+    ],
+    "tones": [
+      3
+    ]
   },
   "word_020.jpg": {
     "pinyin": "duō",
     "hanzi": "多",
-    "english": ""
+    "english": "many",
+    "categories": [
+      "quantity"
+    ],
+    "tones": [
+      1
+    ]
   },
   "word_021.jpg": {
     "pinyin": "shǎo",
     "hanzi": "少",
-    "english": ""
+    "english": "few",
+    "categories": [
+      "quantity"
+    ],
+    "tones": [
+      3
+    ]
   },
   "word_022.jpg": {
     "pinyin": "qī qiǎo bǎn",
     "hanzi": "七巧板",
-    "english": ""
+    "english": "tangram",
+    "categories": [
+      "games",
+      "toys"
+    ],
+    "tones": [
+      1,
+      3,
+      3
+    ]
   },
   "word_023.jpg": {
     "pinyin": "hóng",
     "hanzi": "红",
-    "english": ""
+    "english": "red",
+    "categories": [
+      "colors"
+    ],
+    "tones": [
+      2
+    ]
   },
   "word_024.jpg": {
     "pinyin": "chéng",
     "hanzi": "橙",
-    "english": ""
+    "english": "orange",
+    "categories": [
+      "colors"
+    ],
+    "tones": [
+      2
+    ]
   },
   "word_025.jpg": {
     "pinyin": "huáng",
     "hanzi": "黄",
-    "english": ""
+    "english": "yellow",
+    "categories": [
+      "colors"
+    ],
+    "tones": [
+      2
+    ]
   },
   "word_026.jpg": {
     "pinyin": "lǜ",
     "hanzi": "绿",
-    "english": ""
+    "english": "green",
+    "categories": [
+      "colors"
+    ],
+    "tones": [
+      4
+    ]
   },
   "word_027.jpg": {
     "pinyin": "qīng",
     "hanzi": "青",
-    "english": ""
+    "english": "blue-green",
+    "categories": [
+      "colors"
+    ],
+    "tones": [
+      1
+    ]
   },
   "word_028.jpg": {
     "pinyin": "lán",
     "hanzi": "蓝",
-    "english": ""
+    "english": "blue",
+    "categories": [
+      "colors"
+    ],
+    "tones": [
+      2
+    ]
   },
   "word_029.jpg": {
     "pinyin": "zǐ",
     "hanzi": "紫",
-    "english": ""
+    "english": "purple",
+    "categories": [
+      "colors"
+    ],
+    "tones": [
+      3
+    ]
   },
   "word_030.jpg": {
     "pinyin": "zhèng fāng xíng",
     "hanzi": "正方形",
-    "english": ""
+    "english": "square",
+    "categories": [
+      "shapes"
+    ],
+    "tones": [
+      4,
+      1,
+      2
+    ]
   },
   "word_031.jpg": {
     "pinyin": "cháng fāng xíng",
     "hanzi": "长方形",
-    "english": ""
+    "english": "rectangle",
+    "categories": [
+      "shapes"
+    ],
+    "tones": [
+      2,
+      1,
+      2
+    ]
   },
   "word_032.jpg": {
     "pinyin": "sān jiǎo xíng",
     "hanzi": "三角形",
-    "english": ""
+    "english": "triangle",
+    "categories": [
+      "shapes"
+    ],
+    "tones": [
+      1,
+      3,
+      2
+    ]
   },
   "word_033.jpg": {
     "pinyin": "yuán xíng",
     "hanzi": "圆形",
-    "english": ""
+    "english": "circle",
+    "categories": [
+      "shapes"
+    ],
+    "tones": [
+      2,
+      2
+    ]
   },
   "word_034.jpg": {
     "pinyin": "tī xíng",
     "hanzi": "梯形",
-    "english": ""
+    "english": "trapezoid",
+    "categories": [
+      "shapes"
+    ],
+    "tones": [
+      1,
+      2
+    ]
   },
   "word_035.jpg": {
     "pinyin": "tuǒ yuán xíng",
     "hanzi": "椭圆形",
-    "english": ""
+    "english": "oval",
+    "categories": [
+      "shapes"
+    ],
+    "tones": [
+      3,
+      2,
+      2
+    ]
   },
   "word_036.jpg": {
     "pinyin": "zhōng guó",
     "hanzi": "中国",
-    "english": ""
+    "english": "China",
+    "categories": [
+      "countries"
+    ],
+    "tones": [
+      1,
+      2
+    ]
   },
   "word_037.jpg": {
     "pinyin": "guó qí",
     "hanzi": "国旗",
-    "english": ""
+    "english": "national flag",
+    "categories": [
+      "flags"
+    ],
+    "tones": [
+      2,
+      2
+    ]
   },
   "word_038.jpg": {
     "pinyin": "guó huī",
     "hanzi": "国徽",
-    "english": ""
+    "english": "national emblem",
+    "categories": [
+      "symbols"
+    ],
+    "tones": [
+      2,
+      1
+    ]
   },
   "word_039.jpg": {
     "pinyin": "tiān ān mén",
     "hanzi": "天安门",
-    "english": ""
+    "english": "Tiananmen",
+    "categories": [
+      "places"
+    ],
+    "tones": [
+      1,
+      1,
+      2
+    ]
   },
   "word_040.jpg": {
     "pinyin": "jì niàn bēi",
     "hanzi": "纪念碑",
-    "english": ""
+    "english": "monument",
+    "categories": [
+      "places"
+    ],
+    "tones": [
+      4,
+      4,
+      1
+    ]
   },
   "word_041.jpg": {
     "pinyin": "cǎi hóng",
     "hanzi": "彩虹",
-    "english": ""
+    "english": "rainbow",
+    "categories": [
+      "nature",
+      "weather"
+    ],
+    "tones": [
+      3,
+      2
+    ]
   },
   "word_042.jpg": {
     "pinyin": "chūn",
     "hanzi": "春",
-    "english": ""
+    "english": "spring",
+    "categories": [
+      "seasons"
+    ],
+    "tones": [
+      1
+    ]
   },
   "word_043.jpg": {
     "pinyin": "xià",
     "hanzi": "夏",
-    "english": ""
+    "english": "summer",
+    "categories": [
+      "seasons"
+    ],
+    "tones": [
+      4
+    ]
   },
   "word_044.jpg": {
     "pinyin": "qiū",
     "hanzi": "秋",
-    "english": ""
+    "english": "autumn",
+    "categories": [
+      "seasons"
+    ],
+    "tones": [
+      1
+    ]
   },
   "word_045.jpg": {
     "pinyin": "dōng",
     "hanzi": "冬",
-    "english": ""
+    "english": "winter",
+    "categories": [
+      "seasons"
+    ],
+    "tones": [
+      1
+    ]
   },
   "word_046.jpg": {
     "pinyin": "tài yang",
     "hanzi": "太阳",
-    "english": ""
+    "english": "sun",
+    "categories": [
+      "nature"
+    ],
+    "tones": [
+      4,
+      2
+    ]
   },
   "word_047.jpg": {
     "pinyin": "yuè liang",
     "hanzi": "月亮",
-    "english": ""
+    "english": "moon",
+    "categories": [
+      "nature"
+    ],
+    "tones": [
+      4,
+      5
+    ]
   },
   "word_048.jpg": {
     "pinyin": "xīng xing",
     "hanzi": "星星",
-    "english": ""
+    "english": "stars",
+    "categories": [
+      "nature"
+    ],
+    "tones": [
+      1,
+      5
+    ]
   },
   "word_049.jpg": {
     "pinyin": "fēng",
     "hanzi": "风",
-    "english": ""
+    "english": "wind",
+    "categories": [
+      "weather"
+    ],
+    "tones": [
+      1
+    ]
   },
   "word_050.jpg": {
     "pinyin": "yǔ",
     "hanzi": "雨",
-    "english": ""
+    "english": "rain",
+    "categories": [
+      "weather"
+    ],
+    "tones": [
+      3
+    ]
   },
   "word_051.jpg": {
     "pinyin": "léi diàn",
     "hanzi": "雷电",
-    "english": ""
+    "english": "thunder and lightning",
+    "categories": [
+      "weather"
+    ],
+    "tones": [
+      2,
+      4
+    ]
   },
   "word_052.jpg": {
     "pinyin": "shuǐ",
     "hanzi": "水",
-    "english": ""
+    "english": "water",
+    "categories": [
+      "nature"
+    ],
+    "tones": [
+      3
+    ]
   },
   "word_053.jpg": {
     "pinyin": "huǒ",
     "hanzi": "火",
-    "english": ""
+    "english": "fire",
+    "categories": [
+      "nature"
+    ],
+    "tones": [
+      3
+    ]
   },
   "word_054.jpg": {
     "pinyin": "hǎi",
     "hanzi": "海",
-    "english": ""
+    "english": "sea",
+    "categories": [
+      "nature"
+    ],
+    "tones": [
+      3
+    ]
   },
   "word_055.jpg": {
     "pinyin": "hé",
     "hanzi": "河",
-    "english": ""
+    "english": "river",
+    "categories": [
+      "nature"
+    ],
+    "tones": [
+      2
+    ]
   },
   "word_056.jpg": {
     "pinyin": "hú",
     "hanzi": "湖",
-    "english": ""
+    "english": "lake",
+    "categories": [
+      "nature"
+    ],
+    "tones": [
+      2
+    ]
   },
   "word_057.jpg": {
     "pinyin": "sēn lín",
     "hanzi": "森林",
-    "english": ""
+    "english": "forest",
+    "categories": [
+      "nature"
+    ],
+    "tones": [
+      1,
+      2
+    ]
   },
   "word_058.jpg": {
     "pinyin": "cǎo yuán",
     "hanzi": "草原",
-    "english": ""
+    "english": "grassland",
+    "categories": [
+      "nature"
+    ],
+    "tones": [
+      3,
+      2
+    ]
   },
   "word_059.jpg": {
     "pinyin": "shā mò",
     "hanzi": "沙漠",
-    "english": ""
+    "english": "desert",
+    "categories": [
+      "nature"
+    ],
+    "tones": [
+      1,
+      4
+    ]
   },
   "word_060.jpg": {
     "pinyin": "tián yě",
     "hanzi": "田野",
-    "english": ""
+    "english": "field",
+    "categories": [
+      "nature"
+    ],
+    "tones": [
+      2,
+      3
+    ]
   },
   "word_061.jpg": {
     "pinyin": "pù bù",
     "hanzi": "瀑布",
-    "english": ""
+    "english": "waterfall",
+    "categories": [
+      "nature"
+    ],
+    "tones": [
+      4,
+      4
+    ]
   },
   "word_062.jpg": {
     "pinyin": "shān",
     "hanzi": "山",
-    "english": ""
+    "english": "mountain",
+    "categories": [
+      "nature"
+    ],
+    "tones": [
+      1
+    ]
   },
   "word_063.jpg": {
     "pinyin": "yún",
     "hanzi": "云",
-    "english": ""
+    "english": "cloud",
+    "categories": [
+      "weather"
+    ],
+    "tones": [
+      2
+    ]
   },
   "word_064.jpg": {
     "pinyin": "tíng",
     "hanzi": "亭",
-    "english": ""
+    "english": "pavilion",
+    "categories": [
+      "buildings"
+    ],
+    "tones": [
+      2
+    ]
   },
   "word_065.jpg": {
     "pinyin": "fáng zi",
     "hanzi": "房子",
-    "english": ""
+    "english": "house",
+    "categories": [
+      "buildings"
+    ],
+    "tones": [
+      2,
+      5
+    ]
   },
   "word_066.jpg": {
     "pinyin": "xué xiào",
     "hanzi": "学校",
-    "english": ""
+    "english": "school",
+    "categories": [
+      "buildings"
+    ],
+    "tones": [
+      2,
+      4
+    ]
   },
   "word_067.jpg": {
     "pinyin": "yī yuàn",
     "hanzi": "医院",
-    "english": ""
+    "english": "hospital",
+    "categories": [
+      "buildings"
+    ],
+    "tones": [
+      1,
+      4
+    ]
   },
   "word_068.jpg": {
     "pinyin": "yín háng",
     "hanzi": "银行",
-    "english": ""
+    "english": "bank",
+    "categories": [
+      "buildings"
+    ],
+    "tones": [
+      2,
+      2
+    ]
   },
   "word_069.jpg": {
     "pinyin": "yòu ér yuán",
     "hanzi": "幼儿园",
-    "english": ""
+    "english": "kindergarten",
+    "categories": [
+      "buildings"
+    ],
+    "tones": [
+      4,
+      2,
+      2
+    ]
   },
   "word_070.jpg": {
     "pinyin": "gōng yuán",
     "hanzi": "公园",
-    "english": ""
+    "english": "park",
+    "categories": [
+      "places"
+    ],
+    "tones": [
+      1,
+      2
+    ]
   },
   "word_071.jpg": {
     "pinyin": "diàn shì tǎ",
     "hanzi": "电视塔",
-    "english": ""
+    "english": "TV tower",
+    "categories": [
+      "buildings"
+    ],
+    "tones": [
+      4,
+      4,
+      3
+    ]
   },
   "word_072.jpg": {
     "pinyin": "yóu yǒng chí",
     "hanzi": "游泳池",
-    "english": ""
+    "english": "swimming pool",
+    "categories": [
+      "places"
+    ],
+    "tones": [
+      2,
+      3,
+      2
+    ]
   },
   "word_073.jpg": {
     "pinyin": "dà lóu",
     "hanzi": "大楼",
-    "english": ""
+    "english": "tall building",
+    "categories": [
+      "buildings"
+    ],
+    "tones": [
+      4,
+      2
+    ]
   },
   "word_074.jpg": {
     "pinyin": "lì jiāo qiáo",
     "hanzi": "立交桥",
-    "english": ""
+    "english": "overpass",
+    "categories": [
+      "buildings"
+    ],
+    "tones": [
+      4,
+      1,
+      2
+    ]
   },
   "word_075.jpg": {
     "pinyin": "gōng lù",
     "hanzi": "公路",
-    "english": ""
+    "english": "highway",
+    "categories": [
+      "transport"
+    ],
+    "tones": [
+      1,
+      4
+    ]
   },
   "word_076.jpg": {
     "pinyin": "cháng chéng",
     "hanzi": "长城",
-    "english": ""
+    "english": "Great Wall",
+    "categories": [
+      "places"
+    ],
+    "tones": [
+      2,
+      2
+    ]
   },
   "word_077.jpg": {
     "pinyin": "tǎ",
     "hanzi": "塔",
-    "english": ""
+    "english": "tower",
+    "categories": [
+      "buildings"
+    ],
+    "tones": [
+      3
+    ]
   },
   "word_078.jpg": {
     "pinyin": "yǎn",
     "hanzi": "眼",
-    "english": ""
+    "english": "eye",
+    "categories": [
+      "body parts"
+    ],
+    "tones": [
+      3
+    ]
   },
   "word_079.jpg": {
     "pinyin": "bí",
     "hanzi": "鼻",
-    "english": ""
+    "english": "nose",
+    "categories": [
+      "body parts"
+    ],
+    "tones": [
+      2
+    ]
   },
   "word_080.jpg": {
     "pinyin": "ěr",
     "hanzi": "耳",
-    "english": ""
+    "english": "ear",
+    "categories": [
+      "body parts"
+    ],
+    "tones": [
+      3
+    ]
   },
   "word_081.jpg": {
     "pinyin": "kǒu",
     "hanzi": "口",
-    "english": ""
+    "english": "mouth",
+    "categories": [
+      "body parts"
+    ],
+    "tones": [
+      3
+    ]
   },
   "word_082.jpg": {
     "pinyin": "yá",
     "hanzi": "牙",
-    "english": ""
+    "english": "tooth",
+    "categories": [
+      "body parts"
+    ],
+    "tones": [
+      2
+    ]
   },
   "word_083.jpg": {
     "pinyin": "shé",
     "hanzi": "舌",
-    "english": ""
+    "english": "tongue",
+    "categories": [
+      "body parts"
+    ],
+    "tones": [
+      2
+    ]
   },
   "word_084.jpg": {
     "pinyin": "zhǐ jia",
     "hanzi": "指甲",
-    "english": ""
+    "english": "fingernail",
+    "categories": [
+      "body parts"
+    ],
+    "tones": [
+      3,
+      5
+    ]
   },
   "word_085.jpg": {
     "pinyin": "méi mao",
     "hanzi": "眉毛",
-    "english": ""
+    "english": "eyebrow",
+    "categories": [
+      "body parts"
+    ],
+    "tones": [
+      2,
+      5
+    ]
   },
   "word_086.jpg": {
     "pinyin": "tóu fa",
     "hanzi": "头发",
-    "english": ""
+    "english": "hair",
+    "categories": [
+      "body parts"
+    ],
+    "tones": [
+      2,
+      5
+    ]
   },
   "word_087.jpg": {
     "pinyin": "jiǎo",
     "hanzi": "脚",
-    "english": ""
+    "english": "foot",
+    "categories": [
+      "body parts"
+    ],
+    "tones": [
+      3
+    ]
   },
   "word_088.jpg": {
     "pinyin": "shǒu",
     "hanzi": "手",
-    "english": ""
+    "english": "hand",
+    "categories": [
+      "body parts"
+    ],
+    "tones": [
+      3
+    ]
   },
   "word_089.jpg": {
     "pinyin": "shǒu zhǐ",
     "hanzi": "手指",
-    "english": ""
+    "english": "finger",
+    "categories": [
+      "body parts"
+    ],
+    "tones": [
+      3,
+      3
+    ]
   },
   "word_090.jpg": {
     "pinyin": "yé ye",
     "hanzi": "爷爷",
-    "english": ""
+    "english": "grandfather",
+    "categories": [
+      "family"
+    ],
+    "tones": [
+      2,
+      5
+    ]
   },
   "word_091.jpg": {
     "pinyin": "nǎi nai",
     "hanzi": "奶奶",
-    "english": ""
+    "english": "grandmother",
+    "categories": [
+      "family"
+    ],
+    "tones": [
+      3,
+      5
+    ]
   },
   "word_092.jpg": {
-    "pinyin": "bàba",
+    "pinyin": "bà ba",
     "hanzi": "爸爸",
-    "english": ""
+    "english": "father",
+    "categories": [
+      "family"
+    ],
+    "tones": [
+      4,
+      5
+    ]
   },
   "word_093.jpg": {
-    "pinyin": "mãma",
+    "pinyin": "mā ma",
     "hanzi": "妈妈",
-    "english": ""
+    "english": "mother",
+    "categories": [
+      "family"
+    ],
+    "tones": [
+      1,
+      5
+    ]
   },
   "word_094.jpg": {
     "pinyin": "gē ge",
     "hanzi": "哥哥",
-    "english": ""
+    "english": "older brother",
+    "categories": [
+      "family"
+    ],
+    "tones": [
+      1,
+      5
+    ]
   },
   "word_095.jpg": {
     "pinyin": "jiě jie",
     "hanzi": "姐姐",
-    "english": ""
+    "english": "older sister",
+    "categories": [
+      "family"
+    ],
+    "tones": [
+      3,
+      5
+    ]
   },
   "word_096.jpg": {
     "pinyin": "dì di",
     "hanzi": "弟弟",
-    "english": ""
+    "english": "younger brother",
+    "categories": [
+      "family"
+    ],
+    "tones": [
+      4,
+      5
+    ]
   },
   "word_097.jpg": {
     "pinyin": "mèi mei",
     "hanzi": "妹妹",
-    "english": ""
+    "english": "younger sister",
+    "categories": [
+      "family"
+    ],
+    "tones": [
+      4,
+      5
+    ]
   },
   "word_098.jpg": {
     "pinyin": "xué sheng",
     "hanzi": "学生",
-    "english": ""
+    "english": "student",
+    "categories": [
+      "professions"
+    ],
+    "tones": [
+      2,
+      5
+    ]
   },
   "word_099.jpg": {
     "pinyin": "tiào wǔ",
     "hanzi": "跳舞",
-    "english": ""
+    "english": "dance",
+    "categories": [
+      "actions"
+    ],
+    "tones": [
+      4,
+      3
+    ]
   },
   "word_100.jpg": {
     "pinyin": "chàng gē",
     "hanzi": "唱歌",
-    "english": ""
+    "english": "sing",
+    "categories": [
+      "actions"
+    ],
+    "tones": [
+      4,
+      1
+    ]
   },
   "word_101.jpg": {
     "pinyin": "huà huà",
     "hanzi": "画画",
-    "english": ""
+    "english": "draw",
+    "categories": [
+      "actions"
+    ],
+    "tones": [
+      4,
+      4
+    ]
   },
   "word_102.jpg": {
     "pinyin": "tī qiú",
     "hanzi": "踢球",
-    "english": ""
+    "english": "play football",
+    "categories": [
+      "actions",
+      "sports"
+    ],
+    "tones": [
+      1,
+      2
+    ]
   },
   "word_103.jpg": {
     "pinyin": "tiào shéng",
     "hanzi": "跳绳",
-    "english": ""
+    "english": "jump rope",
+    "categories": [
+      "actions",
+      "sports"
+    ],
+    "tones": [
+      4,
+      2
+    ]
   },
   "word_104.jpg": {
     "pinyin": "yóu yǒng",
     "hanzi": "游泳",
-    "english": ""
+    "english": "swim",
+    "categories": [
+      "actions",
+      "sports"
+    ],
+    "tones": [
+      2,
+      3
+    ]
   },
   "word_105.jpg": {
     "pinyin": "pá shān",
     "hanzi": "爬山",
-    "english": ""
+    "english": "climb mountain",
+    "categories": [
+      "actions"
+    ],
+    "tones": [
+      2,
+      1
+    ]
   },
   "word_106.jpg": {
     "pinyin": "qí chē",
     "hanzi": "骑车",
-    "english": ""
+    "english": "ride bike",
+    "categories": [
+      "actions"
+    ],
+    "tones": [
+      2,
+      1
+    ]
   },
   "word_107.jpg": {
     "pinyin": "bá hé",
     "hanzi": "拔河",
-    "english": ""
+    "english": "tug of war",
+    "categories": [
+      "sports"
+    ],
+    "tones": [
+      2,
+      2
+    ]
   },
   "word_108.jpg": {
     "pinyin": "tiào gāo",
     "hanzi": "跳高",
-    "english": ""
+    "english": "high jump",
+    "categories": [
+      "sports"
+    ],
+    "tones": [
+      4,
+      1
+    ]
   },
   "word_109.jpg": {
     "pinyin": "tiào yuǎn",
     "hanzi": "跳远",
-    "english": ""
+    "english": "long jump",
+    "categories": [
+      "sports"
+    ],
+    "tones": [
+      4,
+      3
+    ]
   },
   "word_110.jpg": {
     "pinyin": "zuò cāo",
     "hanzi": "做操",
-    "english": ""
+    "english": "do exercises",
+    "categories": [
+      "actions"
+    ],
+    "tones": [
+      4,
+      1
+    ]
   },
   "word_111.jpg": {
     "pinyin": "lì",
     "hanzi": "立",
-    "english": ""
+    "english": "stand",
+    "categories": [
+      "actions"
+    ],
+    "tones": [
+      4
+    ]
   },
   "word_112.jpg": {
     "pinyin": "zuò",
     "hanzi": "坐",
-    "english": ""
+    "english": "sit",
+    "categories": [
+      "actions"
+    ],
+    "tones": [
+      4
+    ]
   },
   "word_113.jpg": {
     "pinyin": "zǒu",
     "hanzi": "走",
-    "english": ""
+    "english": "walk",
+    "categories": [
+      "actions"
+    ],
+    "tones": [
+      3
+    ]
   },
   "word_114.jpg": {
     "pinyin": "shuā yá",
     "hanzi": "刷牙",
-    "english": ""
+    "english": "brush teeth",
+    "categories": [
+      "daily life"
+    ],
+    "tones": [
+      1,
+      2
+    ]
   },
   "word_115.jpg": {
     "pinyin": "xǐ liǎn",
     "hanzi": "洗脸",
-    "english": ""
+    "english": "wash face",
+    "categories": [
+      "daily life"
+    ],
+    "tones": [
+      3,
+      3
+    ]
   },
   "word_116.jpg": {
     "pinyin": "shuì jiào",
     "hanzi": "睡觉",
-    "english": ""
+    "english": "sleep",
+    "categories": [
+      "daily life"
+    ],
+    "tones": [
+      4,
+      4
+    ]
   },
   "word_117.jpg": {
     "pinyin": "chuān yī",
     "hanzi": "穿衣",
-    "english": ""
+    "english": "wear clothes",
+    "categories": [
+      "daily life"
+    ],
+    "tones": [
+      1,
+      1
+    ]
   },
   "word_118.jpg": {
     "pinyin": "chī fàn",
     "hanzi": "吃饭",
-    "english": ""
+    "english": "eat meal",
+    "categories": [
+      "daily life"
+    ],
+    "tones": [
+      1,
+      4
+    ]
   },
   "word_119.jpg": {
     "pinyin": "hē shuǐ",
     "hanzi": "喝水",
-    "english": ""
+    "english": "drink water",
+    "categories": [
+      "daily life"
+    ],
+    "tones": [
+      1,
+      3
+    ]
   },
   "word_120.jpg": {
     "pinyin": "kàn shū",
     "hanzi": "看书",
-    "english": ""
+    "english": "read book",
+    "categories": [
+      "daily life"
+    ],
+    "tones": [
+      4,
+      1
+    ]
   },
   "word_121.jpg": {
     "pinyin": "xiě zì",
     "hanzi": "写字",
-    "english": ""
+    "english": "write",
+    "categories": [
+      "daily life"
+    ],
+    "tones": [
+      3,
+      4
+    ]
   },
   "word_122.jpg": {
     "pinyin": "xǐ wǎn",
     "hanzi": "洗碗",
-    "english": ""
+    "english": "wash dishes",
+    "categories": [
+      "daily life"
+    ],
+    "tones": [
+      3,
+      3
+    ]
   },
   "word_123.jpg": {
     "pinyin": "sǎo dì",
     "hanzi": "扫地",
-    "english": ""
+    "english": "sweep floor",
+    "categories": [
+      "daily life"
+    ],
+    "tones": [
+      3,
+      4
+    ]
   },
   "word_124.jpg": {
     "pinyin": "jiāo huā",
     "hanzi": "浇花",
-    "english": ""
+    "english": "water flowers",
+    "categories": [
+      "daily life"
+    ],
+    "tones": [
+      1,
+      1
+    ]
   },
   "word_125.jpg": {
     "pinyin": "zhí shù",
     "hanzi": "植树",
-    "english": ""
+    "english": "plant tree",
+    "categories": [
+      "actions"
+    ],
+    "tones": [
+      2,
+      4
+    ]
   },
   "word_126.jpg": {
     "pinyin": "jì zhě",
     "hanzi": "记者",
-    "english": ""
+    "english": "journalist",
+    "categories": [
+      "professions"
+    ],
+    "tones": [
+      4,
+      3
+    ]
   },
   "word_127.jpg": {
     "pinyin": "jià shǐ yuán",
     "hanzi": "驾驶员",
-    "english": ""
+    "english": "driver",
+    "categories": [
+      "professions"
+    ],
+    "tones": [
+      4,
+      3,
+      2
+    ]
   },
   "word_128.jpg": {
     "pinyin": "jiě fàng jūn",
     "hanzi": "解放军",
-    "english": ""
+    "english": "PLA soldier",
+    "categories": [
+      "professions"
+    ],
+    "tones": [
+      3,
+      4,
+      1
+    ]
   },
   "word_129.jpg": {
     "pinyin": "kōng jūn",
     "hanzi": "空军",
-    "english": ""
+    "english": "air force",
+    "categories": [
+      "professions"
+    ],
+    "tones": [
+      1,
+      1
+    ]
   },
   "word_130.jpg": {
     "pinyin": "hǎi jūn",
     "hanzi": "海军",
-    "english": ""
+    "english": "navy",
+    "categories": [
+      "professions"
+    ],
+    "tones": [
+      3,
+      1
+    ]
   },
   "word_131.jpg": {
     "pinyin": "jǐng chá",
     "hanzi": "警察",
-    "english": ""
+    "english": "police",
+    "categories": [
+      "professions"
+    ],
+    "tones": [
+      3,
+      2
+    ]
   },
   "word_132.jpg": {
     "pinyin": "gōng rén",
     "hanzi": "工人",
-    "english": ""
+    "english": "worker",
+    "categories": [
+      "professions"
+    ],
+    "tones": [
+      1,
+      2
+    ]
   },
   "word_133.jpg": {
     "pinyin": "nóng mín",
     "hanzi": "农民",
-    "english": ""
+    "english": "farmer",
+    "categories": [
+      "professions"
+    ],
+    "tones": [
+      2,
+      2
+    ]
   },
   "word_134.jpg": {
     "pinyin": "lǎo shī",
     "hanzi": "老师",
-    "english": ""
+    "english": "teacher",
+    "categories": [
+      "professions"
+    ],
+    "tones": [
+      3,
+      1
+    ]
   },
   "word_135.jpg": {
     "pinyin": "yī sheng",
     "hanzi": "医生",
-    "english": ""
+    "english": "doctor",
+    "categories": [
+      "professions"
+    ],
+    "tones": [
+      1,
+      5
+    ]
   },
   "word_136.jpg": {
     "pinyin": "kē xué jiā",
     "hanzi": "科学家",
-    "english": ""
+    "english": "scientist",
+    "categories": [
+      "professions"
+    ],
+    "tones": [
+      1,
+      2,
+      1
+    ]
   },
   "word_137.jpg": {
     "pinyin": "yùn dòng yuán",
     "hanzi": "运动员",
-    "english": ""
+    "english": "athlete",
+    "categories": [
+      "professions"
+    ],
+    "tones": [
+      4,
+      4,
+      2
+    ]
   },
   "word_138.jpg": {
     "pinyin": "xiàng rì kuí",
     "hanzi": "向日葵",
-    "english": ""
+    "english": "sunflower",
+    "categories": [
+      "plants",
+      "flowers"
+    ],
+    "tones": [
+      4,
+      4,
+      2
+    ]
   },
   "word_139.jpg": {
     "pinyin": "mǔ dān",
     "hanzi": "牡丹",
-    "english": ""
+    "english": "peony",
+    "categories": [
+      "plants",
+      "flowers"
+    ],
+    "tones": [
+      3,
+      1
+    ]
   },
   "word_140.jpg": {
     "pinyin": "qiān niú huā",
     "hanzi": "牵牛花",
-    "english": ""
+    "english": "morning glory",
+    "categories": [
+      "plants",
+      "flowers"
+    ],
+    "tones": [
+      1,
+      2,
+      1
+    ]
   },
   "word_141.jpg": {
     "pinyin": "méi huā",
     "hanzi": "梅花",
-    "english": ""
+    "english": "plum blossom",
+    "categories": [
+      "plants",
+      "flowers"
+    ],
+    "tones": [
+      2,
+      1
+    ]
   },
   "word_142.jpg": {
     "pinyin": "jú huā",
     "hanzi": "菊花",
-    "english": ""
+    "english": "chrysanthemum",
+    "categories": [
+      "plants",
+      "flowers"
+    ],
+    "tones": [
+      2,
+      1
+    ]
   },
   "word_143.jpg": {
     "pinyin": "hé huā",
     "hanzi": "荷花",
-    "english": ""
+    "english": "lotus",
+    "categories": [
+      "plants",
+      "flowers"
+    ],
+    "tones": [
+      2,
+      1
+    ]
   },
   "word_144.jpg": {
     "pinyin": "zhuō zi",
     "hanzi": "桌子",
-    "english": ""
+    "english": "table",
+    "categories": [
+      "furniture"
+    ],
+    "tones": [
+      1,
+      5
+    ]
   },
   "word_145.jpg": {
     "pinyin": "yǐ zi",
     "hanzi": "椅子",
-    "english": ""
+    "english": "chair",
+    "categories": [
+      "furniture"
+    ],
+    "tones": [
+      3,
+      5
+    ]
   },
   "word_146.jpg": {
     "pinyin": "shā fā",
     "hanzi": "沙发",
-    "english": ""
+    "english": "sofa",
+    "categories": [
+      "furniture"
+    ],
+    "tones": [
+      1,
+      1
+    ]
   },
   "word_147.jpg": {
     "pinyin": "chuáng",
     "hanzi": "床",
-    "english": ""
+    "english": "bed",
+    "categories": [
+      "furniture"
+    ],
+    "tones": [
+      2
+    ]
   },
   "word_148.jpg": {
     "pinyin": "bèi zi",
     "hanzi": "被子",
-    "english": ""
+    "english": "quilt",
+    "categories": [
+      "household"
+    ],
+    "tones": [
+      4,
+      5
+    ]
   },
   "word_149.jpg": {
     "pinyin": "shàn zi",
     "hanzi": "扇子",
-    "english": ""
+    "english": "fan",
+    "categories": [
+      "household"
+    ],
+    "tones": [
+      4,
+      5
+    ]
   },
   "word_150.jpg": {
     "pinyin": "shuǐ xiān",
     "hanzi": "水仙",
-    "english": ""
+    "english": "narcissus",
+    "categories": [
+      "plants",
+      "flowers"
+    ],
+    "tones": [
+      3,
+      1
+    ]
   },
   "word_151.jpg": {
     "pinyin": "yù lán huā",
     "hanzi": "玉兰花",
-    "english": ""
+    "english": "magnolia",
+    "categories": [
+      "plants",
+      "flowers"
+    ],
+    "tones": [
+      4,
+      2,
+      1
+    ]
   },
   "word_152.jpg": {
     "pinyin": "chá huā",
     "hanzi": "茶花",
-    "english": ""
+    "english": "camellia",
+    "categories": [
+      "plants",
+      "flowers"
+    ],
+    "tones": [
+      2,
+      1
+    ]
   },
   "word_153.jpg": {
     "pinyin": "yù jīn xiāng",
     "hanzi": "郁金香",
-    "english": ""
+    "english": "tulip",
+    "categories": [
+      "plants",
+      "flowers"
+    ],
+    "tones": [
+      4,
+      1,
+      1
+    ]
   },
   "word_154.jpg": {
     "pinyin": "sōng shù",
     "hanzi": "松树",
-    "english": ""
+    "english": "pine tree",
+    "categories": [
+      "plants",
+      "trees"
+    ],
+    "tones": [
+      1,
+      4
+    ]
   },
   "word_155.jpg": {
     "pinyin": "liǔ shù",
     "hanzi": "柳树",
-    "english": ""
+    "english": "willow tree",
+    "categories": [
+      "plants",
+      "trees"
+    ],
+    "tones": [
+      3,
+      4
+    ]
   },
   "word_156.jpg": {
     "pinyin": "mián huā",
     "hanzi": "棉花",
-    "english": ""
+    "english": "cotton",
+    "categories": [
+      "plants"
+    ],
+    "tones": [
+      2,
+      5
+    ]
   },
   "word_157.jpg": {
-    "pinyin": "zhúzi",
-    "hanzi": "竹구",
-    "english": ""
+    "pinyin": "zhú zi",
+    "hanzi": "竹子",
+    "english": "bamboo",
+    "categories": [
+      "plants"
+    ],
+    "tones": [
+      2,
+      5
+    ]
   },
   "word_158.jpg": {
     "pinyin": "mó gu",
     "hanzi": "蘑菇",
-    "english": ""
+    "english": "mushroom",
+    "categories": [
+      "plants",
+      "food"
+    ],
+    "tones": [
+      2,
+      5
+    ]
   },
   "word_159.jpg": {
     "pinyin": "gān zhè",
     "hanzi": "甘蔗",
-    "english": ""
+    "english": "sugarcane",
+    "categories": [
+      "plants"
+    ],
+    "tones": [
+      1,
+      4
+    ]
   },
   "word_160.jpg": {
     "pinyin": "shuǐ dào",
     "hanzi": "水稻",
-    "english": ""
+    "english": "rice plant",
+    "categories": [
+      "plants"
+    ],
+    "tones": [
+      3,
+      4
+    ]
   },
   "word_161.jpg": {
     "pinyin": "xiǎo mài",
     "hanzi": "小麦",
-    "english": ""
+    "english": "wheat",
+    "categories": [
+      "plants"
+    ],
+    "tones": [
+      3,
+      4
+    ]
   },
   "word_162.jpg": {
     "pinyin": "gāo liáng",
     "hanzi": "高粱",
-    "english": ""
+    "english": "sorghum",
+    "categories": [
+      "plants"
+    ],
+    "tones": [
+      1,
+      2
+    ]
   },
   "word_163.jpg": {
     "pinyin": "yù mǐ",
     "hanzi": "玉米",
-    "english": ""
+    "english": "corn",
+    "categories": [
+      "plants",
+      "food"
+    ],
+    "tones": [
+      4,
+      3
+    ]
   },
   "word_164.jpg": {
     "pinyin": "hǎi dài",
     "hanzi": "海带",
-    "english": ""
+    "english": "kelp",
+    "categories": [
+      "food",
+      "seafood"
+    ],
+    "tones": [
+      3,
+      4
+    ]
   },
   "word_165.jpg": {
     "pinyin": "dà suàn",
     "hanzi": "大蒜",
-    "english": ""
+    "english": "garlic",
+    "categories": [
+      "vegetables"
+    ],
+    "tones": [
+      4,
+      4
+    ]
   },
   "word_166.jpg": {
     "pinyin": "zhú sǔn",
     "hanzi": "竹笋",
-    "english": ""
+    "english": "bamboo shoots",
+    "categories": [
+      "vegetables"
+    ],
+    "tones": [
+      2,
+      3
+    ]
   },
   "word_167.jpg": {
     "pinyin": "lì zi",
     "hanzi": "栗子",
-    "english": ""
+    "english": "chestnut",
+    "categories": [
+      "fruits"
+    ],
+    "tones": [
+      4,
+      5
+    ]
   },
   "word_168.jpg": {
     "pinyin": "pú tao",
     "hanzi": "葡萄",
-    "english": ""
+    "english": "grape",
+    "categories": [
+      "fruits"
+    ],
+    "tones": [
+      2,
+      5
+    ]
   },
   "word_169.jpg": {
     "pinyin": "píng guǒ",
     "hanzi": "苹果",
-    "english": ""
+    "english": "apple",
+    "categories": [
+      "fruits"
+    ],
+    "tones": [
+      2,
+      3
+    ]
   },
   "word_170.jpg": {
     "pinyin": "xiāng jiāo",
     "hanzi": "香蕉",
-    "english": ""
+    "english": "banana",
+    "categories": [
+      "fruits"
+    ],
+    "tones": [
+      1,
+      1
+    ]
   },
   "word_171.jpg": {
-    "pinyin": "lízi",
+    "pinyin": "lí zi",
     "hanzi": "梨子",
-    "english": ""
+    "english": "pear",
+    "categories": [
+      "fruits"
+    ],
+    "tones": [
+      2,
+      5
+    ]
   },
   "word_172.jpg": {
     "pinyin": "yīng táo",
     "hanzi": "樱桃",
-    "english": ""
+    "english": "cherry",
+    "categories": [
+      "fruits"
+    ],
+    "tones": [
+      1,
+      2
+    ]
   },
   "word_173.jpg": {
     "pinyin": "shí liu",
     "hanzi": "石榴",
-    "english": ""
+    "english": "pomegranate",
+    "categories": [
+      "fruits"
+    ],
+    "tones": [
+      2,
+      5
+    ]
   },
   "word_174.jpg": {
-    "pinyin": "táozi",
+    "pinyin": "táo zi",
     "hanzi": "桃子",
-    "english": ""
+    "english": "peach",
+    "categories": [
+      "fruits"
+    ],
+    "tones": [
+      2,
+      5
+    ]
   },
   "word_175.jpg": {
     "pinyin": "xī guā",
     "hanzi": "西瓜",
-    "english": ""
+    "english": "watermelon",
+    "categories": [
+      "fruits"
+    ],
+    "tones": [
+      1,
+      1
+    ]
   },
   "word_176.jpg": {
     "pinyin": "lì zhī",
     "hanzi": "荔枝",
-    "english": ""
+    "english": "lychee",
+    "categories": [
+      "fruits"
+    ],
+    "tones": [
+      4,
+      1
+    ]
   },
   "word_177.jpg": {
     "pinyin": "shì zi",
     "hanzi": "柿子",
-    "english": ""
+    "english": "persimmon",
+    "categories": [
+      "fruits"
+    ],
+    "tones": [
+      4,
+      5
+    ]
   },
   "word_178.jpg": {
     "pinyin": "luó bo",
     "hanzi": "萝卜",
-    "english": ""
+    "english": "radish",
+    "categories": [
+      "vegetables"
+    ],
+    "tones": [
+      2,
+      5
+    ]
   },
   "word_179.jpg": {
     "pinyin": "ǒu",
     "hanzi": "藕",
-    "english": ""
+    "english": "lotus root",
+    "categories": [
+      "vegetables"
+    ],
+    "tones": [
+      3
+    ]
   },
   "word_180.jpg": {
     "pinyin": "dōng guā",
     "hanzi": "冬瓜",
-    "english": ""
+    "english": "winter melon",
+    "categories": [
+      "vegetables"
+    ],
+    "tones": [
+      1,
+      1
+    ]
   },
   "word_181.jpg": {
     "pinyin": "nán guā",
     "hanzi": "南瓜",
-    "english": ""
+    "english": "pumpkin",
+    "categories": [
+      "vegetables"
+    ],
+    "tones": [
+      2,
+      1
+    ]
   },
   "word_182.jpg": {
     "pinyin": "qié zi",
     "hanzi": "茄子",
-    "english": ""
+    "english": "eggplant",
+    "categories": [
+      "vegetables"
+    ],
+    "tones": [
+      2,
+      5
+    ]
   },
   "word_183.jpg": {
     "pinyin": "qīng cài",
     "hanzi": "青菜",
-    "english": ""
+    "english": "green vegetable",
+    "categories": [
+      "vegetables"
+    ],
+    "tones": [
+      1,
+      4
+    ]
   },
   "word_184.jpg": {
     "pinyin": "bō cài",
     "hanzi": "菠菜",
-    "english": ""
+    "english": "spinach",
+    "categories": [
+      "vegetables"
+    ],
+    "tones": [
+      1,
+      4
+    ]
   },
   "word_185.jpg": {
     "pinyin": "cōng",
     "hanzi": "葱",
-    "english": ""
+    "english": "green onion",
+    "categories": [
+      "vegetables"
+    ],
+    "tones": [
+      1
+    ]
   },
   "word_186.jpg": {
     "pinyin": "bái cài",
     "hanzi": "白菜",
-    "english": ""
+    "english": "Chinese cabbage",
+    "categories": [
+      "vegetables"
+    ],
+    "tones": [
+      2,
+      4
+    ]
   },
   "word_187.jpg": {
     "pinyin": "huā cài",
     "hanzi": "花菜",
-    "english": ""
+    "english": "cauliflower",
+    "categories": [
+      "vegetables"
+    ],
+    "tones": [
+      1,
+      4
+    ]
   },
   "word_188.jpg": {
     "pinyin": "huáng guā",
     "hanzi": "黄瓜",
-    "english": ""
+    "english": "cucumber",
+    "categories": [
+      "vegetables"
+    ],
+    "tones": [
+      2,
+      1
+    ]
   },
   "word_189.jpg": {
     "pinyin": "là jiāo",
     "hanzi": "辣椒",
-    "english": ""
+    "english": "chili pepper",
+    "categories": [
+      "vegetables"
+    ],
+    "tones": [
+      4,
+      1
+    ]
   },
   "word_190.jpg": {
     "pinyin": "dòu jiǎo",
     "hanzi": "豆角",
-    "english": ""
+    "english": "green bean",
+    "categories": [
+      "vegetables"
+    ],
+    "tones": [
+      4,
+      3
+    ]
   },
   "word_191.jpg": {
     "pinyin": "yáng cōng",
     "hanzi": "洋葱",
-    "english": ""
+    "english": "onion",
+    "categories": [
+      "vegetables"
+    ],
+    "tones": [
+      2,
+      1
+    ]
   },
   "word_192.jpg": {
     "pinyin": "qiū qiān",
     "hanzi": "秋千",
-    "english": ""
+    "english": "swing",
+    "categories": [
+      "toys"
+    ],
+    "tones": [
+      1,
+      1
+    ]
   },
   "word_193.jpg": {
     "pinyin": "huá tī",
     "hanzi": "滑梯",
-    "english": ""
+    "english": "slide",
+    "categories": [
+      "toys"
+    ],
+    "tones": [
+      2,
+      1
+    ]
   },
   "word_194.jpg": {
     "pinyin": "qiāo qiāo bǎn",
     "hanzi": "跷跷板",
-    "english": ""
+    "english": "seesaw",
+    "categories": [
+      "toys"
+    ],
+    "tones": [
+      1,
+      1,
+      3
+    ]
   },
   "word_195.jpg": {
     "pinyin": "mù mǎ",
     "hanzi": "木马",
-    "english": ""
+    "english": "rocking horse",
+    "categories": [
+      "toys"
+    ],
+    "tones": [
+      4,
+      3
+    ]
   },
   "word_196.jpg": {
     "pinyin": "jī mù",
     "hanzi": "积木",
-    "english": ""
+    "english": "building blocks",
+    "categories": [
+      "toys"
+    ],
+    "tones": [
+      1,
+      4
+    ]
   },
   "word_197.jpg": {
     "pinyin": "huǒ chái",
     "hanzi": "火柴",
-    "english": ""
+    "english": "match",
+    "categories": [
+      "household"
+    ],
+    "tones": [
+      3,
+      2
+    ]
   },
   "word_198.jpg": {
     "pinyin": "là zhú",
     "hanzi": "蜡烛",
-    "english": ""
+    "english": "candle",
+    "categories": [
+      "household"
+    ],
+    "tones": [
+      4,
+      2
+    ]
   },
   "word_199.jpg": {
     "pinyin": "zhuàn bǐ dāo",
     "hanzi": "转笔刀",
-    "english": ""
+    "english": "pencil sharpener",
+    "categories": [
+      "school"
+    ],
+    "tones": [
+      4,
+      3,
+      1
+    ]
   },
   "word_200.jpg": {
     "pinyin": "bǐ",
     "hanzi": "笔",
-    "english": ""
+    "english": "pen/pencil",
+    "categories": [
+      "school"
+    ],
+    "tones": [
+      3
+    ]
   },
   "word_201.jpg": {
     "pinyin": "zhǐ",
     "hanzi": "纸",
-    "english": ""
+    "english": "paper",
+    "categories": [
+      "school"
+    ],
+    "tones": [
+      3
+    ]
   },
   "word_202.jpg": {
     "pinyin": "mò shuǐ",
     "hanzi": "墨水",
-    "english": ""
+    "english": "ink",
+    "categories": [
+      "school"
+    ],
+    "tones": [
+      4,
+      3
+    ]
   },
   "word_203.jpg": {
     "pinyin": "chǐ",
     "hanzi": "尺",
-    "english": ""
+    "english": "ruler",
+    "categories": [
+      "school"
+    ],
+    "tones": [
+      3
+    ]
   },
   "word_204.jpg": {
     "pinyin": "yī",
     "hanzi": "衣",
-    "english": ""
+    "english": "clothes",
+    "categories": [
+      "clothing"
+    ],
+    "tones": [
+      1
+    ]
   },
   "word_205.jpg": {
     "pinyin": "qún",
     "hanzi": "裙",
-    "english": ""
+    "english": "skirt",
+    "categories": [
+      "clothing"
+    ],
+    "tones": [
+      2
+    ]
   },
   "word_206.jpg": {
     "pinyin": "kù",
     "hanzi": "裤",
-    "english": ""
+    "english": "pants",
+    "categories": [
+      "clothing"
+    ],
+    "tones": [
+      4
+    ]
   },
   "word_207.jpg": {
     "pinyin": "mào zi",
     "hanzi": "帽子",
-    "english": ""
+    "english": "hat",
+    "categories": [
+      "clothing"
+    ],
+    "tones": [
+      4,
+      5
+    ]
   },
   "word_208.jpg": {
     "pinyin": "wà zi",
     "hanzi": "袜子",
-    "english": ""
+    "english": "socks",
+    "categories": [
+      "clothing"
+    ],
+    "tones": [
+      4,
+      5
+    ]
   },
   "word_209.jpg": {
     "pinyin": "zhěn tou",
     "hanzi": "枕头",
-    "english": ""
+    "english": "pillow",
+    "categories": [
+      "household"
+    ],
+    "tones": [
+      3,
+      5
+    ]
   },
   "word_210.jpg": {
     "pinyin": "bēi zi",
     "hanzi": "杯子",
-    "english": ""
+    "english": "cup",
+    "categories": [
+      "household"
+    ],
+    "tones": [
+      1,
+      5
+    ]
   },
   "word_211.jpg": {
     "pinyin": "shū bāo",
     "hanzi": "书包",
-    "english": ""
+    "english": "schoolbag",
+    "categories": [
+      "school"
+    ],
+    "tones": [
+      1,
+      1
+    ]
   },
   "word_212.jpg": {
     "pinyin": "shǒu tào",
     "hanzi": "手套",
-    "english": ""
+    "english": "gloves",
+    "categories": [
+      "clothing"
+    ],
+    "tones": [
+      3,
+      4
+    ]
   },
   "word_213.jpg": {
     "pinyin": "xié",
     "hanzi": "鞋",
-    "english": ""
+    "english": "shoes",
+    "categories": [
+      "clothing"
+    ],
+    "tones": [
+      2
+    ]
   },
   "word_214.jpg": {
     "pinyin": "dāo",
     "hanzi": "刀",
-    "english": ""
+    "english": "knife",
+    "categories": [
+      "tools"
+    ],
+    "tones": [
+      1
+    ]
   },
   "word_215.jpg": {
     "pinyin": "jiǎn dāo",
     "hanzi": "剪刀",
-    "english": ""
+    "english": "scissors",
+    "categories": [
+      "tools"
+    ],
+    "tones": [
+      3,
+      1
+    ]
   },
   "word_216.jpg": {
-    "pinyin": "",
+    "pinyin": "qián zi",
     "hanzi": "钳子",
-    "english": ""
+    "english": "pliers",
+    "categories": [
+      "tools"
+    ],
+    "tones": [
+      2,
+      5
+    ]
   },
   "word_217.jpg": {
     "pinyin": "jù zi",
     "hanzi": "锯子",
-    "english": ""
+    "english": "saw",
+    "categories": [
+      "tools"
+    ],
+    "tones": [
+      4,
+      5
+    ]
   },
   "word_218.jpg": {
     "pinyin": "fǔ tóu",
     "hanzi": "斧头",
-    "english": ""
+    "english": "axe",
+    "categories": [
+      "tools"
+    ],
+    "tones": [
+      3,
+      2
+    ]
   },
   "word_219.jpg": {
     "pinyin": "láng tou",
     "hanzi": "榔头",
-    "english": ""
+    "english": "hammer",
+    "categories": [
+      "tools"
+    ],
+    "tones": [
+      2,
+      5
+    ]
   },
   "word_220.jpg": {
     "pinyin": "yào shi",
     "hanzi": "钥匙",
-    "english": ""
+    "english": "key",
+    "categories": [
+      "household"
+    ],
+    "tones": [
+      4,
+      5
+    ]
   },
   "word_221.jpg": {
     "pinyin": "suǒ",
     "hanzi": "锁",
-    "english": ""
+    "english": "lock",
+    "categories": [
+      "household"
+    ],
+    "tones": [
+      3
+    ]
   },
   "word_222.jpg": {
     "pinyin": "lián dāo",
     "hanzi": "镰刀",
-    "english": ""
+    "english": "sickle",
+    "categories": [
+      "tools"
+    ],
+    "tones": [
+      2,
+      1
+    ]
   },
   "word_223.jpg": {
     "pinyin": "chú tou",
     "hanzi": "锄头",
-    "english": ""
+    "english": "hoe",
+    "categories": [
+      "tools"
+    ],
+    "tones": [
+      2,
+      5
+    ]
   },
   "word_224.jpg": {
     "pinyin": "tiě qiāo",
     "hanzi": "铁锹",
-    "english": ""
+    "english": "shovel",
+    "categories": [
+      "tools"
+    ],
+    "tones": [
+      3,
+      1
+    ]
   },
   "word_225.jpg": {
     "pinyin": "gǎo",
     "hanzi": "镐",
-    "english": ""
+    "english": "pickaxe",
+    "categories": [
+      "tools"
+    ],
+    "tones": [
+      3
+    ]
   },
   "word_226.jpg": {
     "pinyin": "sào zhou",
     "hanzi": "扫帚",
-    "english": ""
+    "english": "broom",
+    "categories": [
+      "household"
+    ],
+    "tones": [
+      4,
+      5
+    ]
   },
   "word_227.jpg": {
     "pinyin": "bò ji",
     "hanzi": "簸箕",
-    "english": ""
+    "english": "dustpan",
+    "categories": [
+      "household"
+    ],
+    "tones": [
+      4,
+      1
+    ]
   },
   "word_228.jpg": {
     "pinyin": "wǎn",
     "hanzi": "碗",
-    "english": ""
+    "english": "bowl",
+    "categories": [
+      "kitchen"
+    ],
+    "tones": [
+      3
+    ]
   },
   "word_229.jpg": {
     "pinyin": "kuài zi",
     "hanzi": "筷子",
-    "english": ""
+    "english": "chopsticks",
+    "categories": [
+      "kitchen"
+    ],
+    "tones": [
+      4,
+      5
+    ]
   },
   "word_230.jpg": {
     "pinyin": "tiáo gēng",
     "hanzi": "调羹",
-    "english": ""
+    "english": "spoon",
+    "categories": [
+      "kitchen"
+    ],
+    "tones": [
+      2,
+      1
+    ]
   },
   "word_231.jpg": {
     "pinyin": "sháo",
     "hanzi": "勺",
-    "english": ""
+    "english": "spoon",
+    "categories": [
+      "kitchen"
+    ],
+    "tones": [
+      2
+    ]
   },
   "word_232.jpg": {
     "pinyin": "nuǎn shuǐ píng",
     "hanzi": "暖水瓶",
-    "english": ""
+    "english": "thermos",
+    "categories": [
+      "kitchen"
+    ],
+    "tones": [
+      3,
+      3,
+      2
+    ]
   },
   "word_233.jpg": {
-    "pinyin": "",
+    "pinyin": "guō",
     "hanzi": "锅",
-    "english": ""
+    "english": "pot",
+    "categories": [
+      "kitchen"
+    ],
+    "tones": [
+      1
+    ]
   },
   "word_234.jpg": {
-    "pinyin": "",
+    "pinyin": "liǎn pén",
     "hanzi": "脸盆",
-    "english": ""
+    "english": "washbasin",
+    "categories": [
+      "household"
+    ],
+    "tones": [
+      3,
+      2
+    ]
   },
   "word_235.jpg": {
-    "pinyin": "",
+    "pinyin": "jìng zi",
     "hanzi": "镜子",
-    "english": ""
+    "english": "mirror",
+    "categories": [
+      "household"
+    ],
+    "tones": [
+      4,
+      5
+    ]
   },
   "word_236.jpg": {
-    "pinyin": "",
+    "pinyin": "yá gāo",
     "hanzi": "牙膏",
-    "english": ""
+    "english": "toothpaste",
+    "categories": [
+      "daily life"
+    ],
+    "tones": [
+      2,
+      1
+    ]
   },
   "word_237.jpg": {
-    "pinyin": "",
-    "hanzi": "才刷",
-    "english": ""
+    "pinyin": "yá shuā",
+    "hanzi": "牙刷",
+    "english": "toothbrush",
+    "categories": [
+      "daily life"
+    ],
+    "tones": [
+      2,
+      1
+    ]
   },
   "word_238.jpg": {
-    "pinyin": "",
+    "pinyin": "máo jīn",
     "hanzi": "毛巾",
-    "english": ""
+    "english": "towel",
+    "categories": [
+      "daily life"
+    ],
+    "tones": [
+      2,
+      1
+    ]
   },
   "word_239.jpg": {
-    "pinyin": "",
+    "pinyin": "xiāng zào",
     "hanzi": "香皂",
-    "english": ""
+    "english": "soap",
+    "categories": [
+      "daily life"
+    ],
+    "tones": [
+      1,
+      4
+    ]
   },
   "word_240.jpg": {
-    "pinyin": "",
+    "pinyin": "shuā zi",
     "hanzi": "刷子",
-    "english": ""
+    "english": "brush",
+    "categories": [
+      "household"
+    ],
+    "tones": [
+      1,
+      5
+    ]
   },
   "word_241.jpg": {
-    "pinyin": "",
+    "pinyin": "huà",
     "hanzi": "画",
-    "english": ""
+    "english": "painting",
+    "categories": [
+      "art"
+    ],
+    "tones": [
+      4
+    ]
   },
   "word_242.jpg": {
-    "pinyin": "",
+    "pinyin": "mén",
     "hanzi": "门",
-    "english": ""
+    "english": "door",
+    "categories": [
+      "house"
+    ],
+    "tones": [
+      2
+    ]
   },
   "word_243.jpg": {
-    "pinyin": "",
+    "pinyin": "chuāng",
     "hanzi": "窗",
-    "english": ""
+    "english": "window",
+    "categories": [
+      "house"
+    ],
+    "tones": [
+      1
+    ]
   },
   "word_244.jpg": {
-    "pinyin": "",
+    "pinyin": "diàn yùn dǒu",
     "hanzi": "电熨斗",
-    "english": ""
+    "english": "iron",
+    "categories": [
+      "household"
+    ],
+    "tones": [
+      4,
+      4,
+      3
+    ]
   },
   "word_245.jpg": {
-    "pinyin": "",
+    "pinyin": "diàn shuǐ hú",
     "hanzi": "电水壶",
-    "english": ""
+    "english": "electric kettle",
+    "categories": [
+      "kitchen"
+    ],
+    "tones": [
+      4,
+      3,
+      2
+    ]
   },
   "word_246.jpg": {
-    "pinyin": "",
+    "pinyin": "gāng qín",
     "hanzi": "钢琴",
-    "english": ""
+    "english": "piano",
+    "categories": [
+      "music"
+    ],
+    "tones": [
+      1,
+      2
+    ]
   },
   "word_247.jpg": {
-    "pinyin": "",
+    "pinyin": "diàn zǐ qín",
     "hanzi": "电子琴",
-    "english": ""
+    "english": "electronic keyboard",
+    "categories": [
+      "music"
+    ],
+    "tones": [
+      4,
+      3,
+      2
+    ]
   },
   "word_248.jpg": {
-    "pinyin": "",
+    "pinyin": "xiǎo tí qín",
     "hanzi": "小提琴",
-    "english": ""
+    "english": "violin",
+    "categories": [
+      "music"
+    ],
+    "tones": [
+      3,
+      2,
+      2
+    ]
   },
   "word_249.jpg": {
-    "pinyin": "",
+    "pinyin": "gǔ zhēng",
     "hanzi": "古筝",
-    "english": ""
+    "english": "guzheng",
+    "categories": [
+      "music"
+    ],
+    "tones": [
+      3,
+      1
+    ]
   },
   "word_250.jpg": {
-    "pinyin": "",
+    "pinyin": "hú qín",
     "hanzi": "胡琴",
-    "english": ""
+    "english": "huqin",
+    "categories": [
+      "music"
+    ],
+    "tones": [
+      2,
+      2
+    ]
   },
   "word_251.jpg": {
-    "pinyin": "",
+    "pinyin": "dí zi",
     "hanzi": "笛子",
-    "english": ""
+    "english": "flute",
+    "categories": [
+      "music"
+    ],
+    "tones": [
+      2,
+      5
+    ]
   },
   "word_252.jpg": {
-    "pinyin": "",
+    "pinyin": "luó",
     "hanzi": "锣",
-    "english": ""
+    "english": "gong",
+    "categories": [
+      "music"
+    ],
+    "tones": [
+      2
+    ]
   },
   "word_253.jpg": {
-    "pinyin": "",
+    "pinyin": "gǔ",
     "hanzi": "鼓",
-    "english": ""
+    "english": "drum",
+    "categories": [
+      "music"
+    ],
+    "tones": [
+      3
+    ]
   },
   "word_254.jpg": {
-    "pinyin": "",
+    "pinyin": "lǎ ba",
     "hanzi": "喇叭",
-    "english": ""
+    "english": "trumpet",
+    "categories": [
+      "music"
+    ],
+    "tones": [
+      3,
+      5
+    ]
   },
   "word_255.jpg": {
-    "pinyin": "",
+    "pinyin": "tái dēng",
     "hanzi": "台灯",
-    "english": ""
+    "english": "desk lamp",
+    "categories": [
+      "household"
+    ],
+    "tones": [
+      2,
+      1
+    ]
   },
   "word_256.jpg": {
-    "pinyin": "",
+    "pinyin": "bì dēng",
     "hanzi": "壁灯",
-    "english": ""
+    "english": "wall lamp",
+    "categories": [
+      "household"
+    ],
+    "tones": [
+      4,
+      1
+    ]
   },
   "word_257.jpg": {
-    "pinyin": "",
+    "pinyin": "diàn dēng pào",
     "hanzi": "电灯泡",
-    "english": ""
+    "english": "light bulb",
+    "categories": [
+      "household"
+    ],
+    "tones": [
+      4,
+      1,
+      4
+    ]
   },
   "word_258.jpg": {
-    "pinyin": "",
+    "pinyin": "diàn shì jī",
     "hanzi": "电视机",
-    "english": ""
+    "english": "television",
+    "categories": [
+      "electronics"
+    ],
+    "tones": [
+      4,
+      4,
+      1
+    ]
   },
   "word_259.jpg": {
-    "pinyin": "",
+    "pinyin": "diàn bīng xiāng",
     "hanzi": "电冰箱",
-    "english": ""
+    "english": "refrigerator",
+    "categories": [
+      "electronics"
+    ],
+    "tones": [
+      4,
+      1,
+      1
+    ]
   },
   "word_260.jpg": {
-    "pinyin": "",
+    "pinyin": "kōng tiáo",
     "hanzi": "空调",
-    "english": ""
+    "english": "air conditioner",
+    "categories": [
+      "electronics"
+    ],
+    "tones": [
+      1,
+      2
+    ]
   },
   "word_261.jpg": {
-    "pinyin": "",
+    "pinyin": "diàn nǎo",
     "hanzi": "电脑",
-    "english": ""
+    "english": "computer",
+    "categories": [
+      "electronics"
+    ],
+    "tones": [
+      4,
+      3
+    ]
   },
   "word_262.jpg": {
-    "pinyin": "",
+    "pinyin": "yǐng dié jī",
     "hanzi": "影碟机",
-    "english": ""
+    "english": "DVD player",
+    "categories": [
+      "electronics"
+    ],
+    "tones": [
+      3,
+      2,
+      1
+    ]
   },
   "word_263.jpg": {
-    "pinyin": "",
+    "pinyin": "diàn fàn guō",
     "hanzi": "电饭锅",
-    "english": ""
+    "english": "rice cooker",
+    "categories": [
+      "kitchen"
+    ],
+    "tones": [
+      4,
+      4,
+      1
+    ]
   },
   "word_264.jpg": {
-    "pinyin": "",
-    "hanzi": "洗袋机",
-    "english": ""
+    "pinyin": "xǐ yī jī",
+    "hanzi": "洗衣机",
+    "english": "washing machine",
+    "categories": [
+      "electronics"
+    ],
+    "tones": [
+      3,
+      1,
+      1
+    ]
   },
   "word_265.jpg": {
-    "pinyin": "",
+    "pinyin": "zhào xiàng jī",
     "hanzi": "照相机",
-    "english": ""
+    "english": "camera",
+    "categories": [
+      "electronics"
+    ],
+    "tones": [
+      4,
+      4,
+      1
+    ]
   },
   "word_266.jpg": {
-    "pinyin": "",
+    "pinyin": "yīn xiǎng",
     "hanzi": "音响",
-    "english": ""
+    "english": "stereo",
+    "categories": [
+      "electronics"
+    ],
+    "tones": [
+      1,
+      3
+    ]
   },
   "word_267.jpg": {
-    "pinyin": "",
+    "pinyin": "jì suàn qì",
     "hanzi": "计算器",
-    "english": ""
+    "english": "calculator",
+    "categories": [
+      "school"
+    ],
+    "tones": [
+      4,
+      4,
+      4
+    ]
   },
   "word_268.jpg": {
-    "pinyin": "",
+    "pinyin": "wēi bō lú",
     "hanzi": "微波炉",
-    "english": ""
+    "english": "microwave",
+    "categories": [
+      "kitchen"
+    ],
+    "tones": [
+      1,
+      1,
+      2
+    ]
   },
   "word_269.jpg": {
-    "pinyin": "",
+    "pinyin": "shǒu jī",
     "hanzi": "手机",
-    "english": ""
+    "english": "mobile phone",
+    "categories": [
+      "electronics"
+    ],
+    "tones": [
+      3,
+      1
+    ]
   },
   "word_270.jpg": {
-    "pinyin": "",
+    "pinyin": "shǒu biǎo",
     "hanzi": "手表",
-    "english": ""
+    "english": "watch",
+    "categories": [
+      "accessories"
+    ],
+    "tones": [
+      3,
+      3
+    ]
   },
   "word_271.jpg": {
-    "pinyin": "",
+    "pinyin": "zhǒng",
     "hanzi": "种",
-    "english": ""
+    "english": "kind/type",
+    "categories": [
+      "quantity"
+    ],
+    "tones": [
+      3
+    ]
   },
   "word_272.jpg": {
-    "pinyin": "",
+    "pinyin": "diàn fēng shàn",
     "hanzi": "电风扇",
-    "english": ""
+    "english": "electric fan",
+    "categories": [
+      "electronics"
+    ],
+    "tones": [
+      4,
+      1,
+      4
+    ]
   },
   "word_273.jpg": {
-    "pinyin": "",
+    "pinyin": "xī chén qì",
     "hanzi": "吸尘器",
-    "english": ""
+    "english": "vacuum cleaner",
+    "categories": [
+      "electronics"
+    ],
+    "tones": [
+      1,
+      2,
+      4
+    ]
   },
   "word_274.jpg": {
-    "pinyin": "",
+    "pinyin": "diàn tǒng",
     "hanzi": "电筒",
-    "english": ""
+    "english": "flashlight",
+    "categories": [
+      "household"
+    ],
+    "tones": [
+      4,
+      3
+    ]
   },
   "word_275.jpg": {
-    "pinyin": "",
+    "pinyin": "guàn tou",
     "hanzi": "罐头",
-    "english": ""
+    "english": "canned food",
+    "categories": [
+      "food"
+    ],
+    "tones": [
+      4,
+      5
+    ]
   },
   "word_276.jpg": {
-    "pinyin": "",
+    "pinyin": "hàn bǎo",
     "hanzi": "汉堡",
-    "english": ""
+    "english": "hamburger",
+    "categories": [
+      "food"
+    ],
+    "tones": [
+      4,
+      3
+    ]
   },
   "word_277.jpg": {
-    "pinyin": "",
+    "pinyin": "miàn bāo",
     "hanzi": "面包",
-    "english": ""
+    "english": "bread",
+    "categories": [
+      "food"
+    ],
+    "tones": [
+      4,
+      1
+    ]
   },
   "word_278.jpg": {
-    "pinyin": "",
+    "pinyin": "bīng qí lín",
     "hanzi": "冰淇淋",
-    "english": ""
+    "english": "ice cream",
+    "categories": [
+      "food"
+    ],
+    "tones": [
+      1,
+      2,
+      2
+    ]
   },
   "word_279.jpg": {
-    "pinyin": "",
+    "pinyin": "qiǎo kè lì",
     "hanzi": "巧克力",
-    "english": ""
+    "english": "chocolate",
+    "categories": [
+      "food"
+    ],
+    "tones": [
+      3,
+      4,
+      4
+    ]
   },
   "word_280.jpg": {
-    "pinyin": "",
+    "pinyin": "dàn gāo",
     "hanzi": "蛋糕",
-    "english": ""
+    "english": "cake",
+    "categories": [
+      "food"
+    ],
+    "tones": [
+      4,
+      1
+    ]
   },
   "word_281.jpg": {
-    "pinyin": "",
+    "pinyin": "bǐng gān",
     "hanzi": "饼干",
-    "english": ""
+    "english": "biscuit",
+    "categories": [
+      "food"
+    ],
+    "tones": [
+      3,
+      1
+    ]
   },
   "word_282.jpg": {
-    "pinyin": "",
+    "pinyin": "mǐ fàn",
     "hanzi": "米饭",
-    "english": ""
+    "english": "rice",
+    "categories": [
+      "food"
+    ],
+    "tones": [
+      3,
+      4
+    ]
   },
   "word_283.jpg": {
-    "pinyin": "",
+    "pinyin": "miàn tiáo",
     "hanzi": "面条",
-    "english": ""
+    "english": "noodles",
+    "categories": [
+      "food"
+    ],
+    "tones": [
+      4,
+      2
+    ]
   },
   "word_284.jpg": {
-    "pinyin": "",
+    "pinyin": "dà bǐng",
     "hanzi": "大饼",
-    "english": ""
+    "english": "big pancake",
+    "categories": [
+      "food"
+    ],
+    "tones": [
+      4,
+      3
+    ]
   },
   "word_285.jpg": {
-    "pinyin": "",
+    "pinyin": "bāo zi",
     "hanzi": "包子",
-    "english": ""
+    "english": "steamed bun",
+    "categories": [
+      "food"
+    ],
+    "tones": [
+      1,
+      5
+    ]
   },
   "word_286.jpg": {
-    "pinyin": "",
+    "pinyin": "mán tou",
     "hanzi": "馒头",
-    "english": ""
+    "english": "steamed bread",
+    "categories": [
+      "food"
+    ],
+    "tones": [
+      2,
+      5
+    ]
   },
   "word_287.jpg": {
-    "pinyin": "",
+    "pinyin": "jiǎo zi",
     "hanzi": "饺子",
-    "english": ""
+    "english": "dumpling",
+    "categories": [
+      "food"
+    ],
+    "tones": [
+      3,
+      5
+    ]
   },
   "word_288.jpg": {
-    "pinyin": "",
+    "pinyin": "huǒ tuǐ cháng",
     "hanzi": "火腿肠",
-    "english": ""
+    "english": "ham sausage",
+    "categories": [
+      "food"
+    ],
+    "tones": [
+      3,
+      3,
+      2
+    ]
   },
   "word_289.jpg": {
-    "pinyin": "",
+    "pinyin": "táng guǒ",
     "hanzi": "糖果",
-    "english": ""
+    "english": "candy",
+    "categories": [
+      "food"
+    ],
+    "tones": [
+      2,
+      3
+    ]
   },
   "word_290.jpg": {
-    "pinyin": "",
+    "pinyin": "yǐn liào",
     "hanzi": "饮料",
-    "english": ""
+    "english": "drink",
+    "categories": [
+      "food"
+    ],
+    "tones": [
+      3,
+      4
+    ]
   },
   "word_291.jpg": {
-    "pinyin": "",
+    "pinyin": "jī dàn",
     "hanzi": "鸡蛋",
-    "english": ""
+    "english": "egg",
+    "categories": [
+      "food"
+    ],
+    "tones": [
+      1,
+      4
+    ]
   },
   "word_292.jpg": {
-    "pinyin": "",
+    "pinyin": "qì qiú",
     "hanzi": "气球",
-    "english": ""
+    "english": "balloon",
+    "categories": [
+      "toys"
+    ],
+    "tones": [
+      4,
+      2
+    ]
   },
   "word_293.jpg": {
-    "pinyin": "",
+    "pinyin": "fēng zhēng",
     "hanzi": "风筝",
-    "english": ""
+    "english": "kite",
+    "categories": [
+      "toys"
+    ],
+    "tones": [
+      1,
+      5
+    ]
   },
   "word_294.jpg": {
-    "pinyin": "",
+    "pinyin": "zú qiú",
     "hanzi": "足球",
-    "english": ""
+    "english": "football",
+    "categories": [
+      "sports"
+    ],
+    "tones": [
+      2,
+      2
+    ]
   },
   "word_295.jpg": {
-    "pinyin": "",
+    "pinyin": "lán qiú",
     "hanzi": "篮球",
-    "english": ""
+    "english": "basketball",
+    "categories": [
+      "sports"
+    ],
+    "tones": [
+      2,
+      2
+    ]
   },
   "word_296.jpg": {
-    "pinyin": "",
+    "pinyin": "pái qiú",
     "hanzi": "排球",
-    "english": ""
+    "english": "volleyball",
+    "categories": [
+      "sports"
+    ],
+    "tones": [
+      2,
+      2
+    ]
   },
   "word_297.jpg": {
-    "pinyin": "",
+    "pinyin": "yǔ máo qiú",
     "hanzi": "羽毛球",
-    "english": ""
+    "english": "badminton",
+    "categories": [
+      "sports"
+    ],
+    "tones": [
+      3,
+      2,
+      2
+    ]
   },
   "word_298.jpg": {
-    "pinyin": "",
+    "pinyin": "hú dié",
     "hanzi": "蝴蝶",
-    "english": ""
+    "english": "butterfly",
+    "categories": [
+      "animals",
+      "insects"
+    ],
+    "tones": [
+      2,
+      2
+    ]
   },
   "word_299.jpg": {
-    "pinyin": "",
+    "pinyin": "qīng tíng",
     "hanzi": "蜻蜓",
-    "english": ""
+    "english": "dragonfly",
+    "categories": [
+      "animals",
+      "insects"
+    ],
+    "tones": [
+      1,
+      2
+    ]
   },
   "word_300.jpg": {
-    "pinyin": "",
+    "pinyin": "kǒng què",
     "hanzi": "孔雀",
-    "english": ""
+    "english": "peacock",
+    "categories": [
+      "animals",
+      "birds"
+    ],
+    "tones": [
+      3,
+      4
+    ]
   },
   "word_301.jpg": {
-    "pinyin": "",
+    "pinyin": "xǐ què",
     "hanzi": "喜鹊",
-    "english": ""
+    "english": "magpie",
+    "categories": [
+      "animals",
+      "birds"
+    ],
+    "tones": [
+      3,
+      4
+    ]
   },
   "word_302.jpg": {
-    "pinyin": "",
+    "pinyin": "yuān yāng",
     "hanzi": "鸳鸯",
-    "english": ""
+    "english": "mandarin duck",
+    "categories": [
+      "animals",
+      "birds"
+    ],
+    "tones": [
+      1,
+      1
+    ]
   },
   "word_303.jpg": {
-    "pinyin": "",
+    "pinyin": "yīng wǔ",
     "hanzi": "鹦鹉",
-    "english": ""
+    "english": "parrot",
+    "categories": [
+      "animals",
+      "birds"
+    ],
+    "tones": [
+      1,
+      3
+    ]
   },
   "word_304.jpg": {
-    "pinyin": "",
+    "pinyin": "gē zi",
     "hanzi": "鸽子",
-    "english": ""
+    "english": "pigeon",
+    "categories": [
+      "animals",
+      "birds"
+    ],
+    "tones": [
+      1,
+      5
+    ]
   },
   "word_305.jpg": {
-    "pinyin": "",
+    "pinyin": "hǎi ōu",
     "hanzi": "海鸥",
-    "english": ""
+    "english": "seagull",
+    "categories": [
+      "animals",
+      "birds"
+    ],
+    "tones": [
+      3,
+      1
+    ]
   },
   "word_306.jpg": {
-    "pinyin": "",
+    "pinyin": "yàn zi",
     "hanzi": "燕子",
-    "english": ""
+    "english": "swallow",
+    "categories": [
+      "animals",
+      "birds"
+    ],
+    "tones": [
+      4,
+      5
+    ]
   },
   "word_307.jpg": {
-    "pinyin": "",
+    "pinyin": "bái hè",
     "hanzi": "白鹤",
-    "english": ""
+    "english": "white crane",
+    "categories": [
+      "animals",
+      "birds"
+    ],
+    "tones": [
+      2,
+      4
+    ]
   },
   "word_308.jpg": {
-    "pinyin": "",
+    "pinyin": "yīng",
     "hanzi": "鹰",
-    "english": ""
+    "english": "eagle",
+    "categories": [
+      "animals",
+      "birds"
+    ],
+    "tones": [
+      1
+    ]
   },
   "word_309.jpg": {
-    "pinyin": "",
+    "pinyin": "tí hú",
     "hanzi": "鹈鹕",
-    "english": ""
+    "english": "pelican",
+    "categories": [
+      "animals",
+      "birds"
+    ],
+    "tones": [
+      2,
+      2
+    ]
   },
   "word_310.jpg": {
-    "pinyin": "",
+    "pinyin": "māo tóu yīng",
     "hanzi": "猫头鹰",
-    "english": ""
+    "english": "owl",
+    "categories": [
+      "animals",
+      "birds"
+    ],
+    "tones": [
+      1,
+      2,
+      1
+    ]
   },
   "word_311.jpg": {
-    "pinyin": "",
+    "pinyin": "mì fēng",
     "hanzi": "蜜蜂",
-    "english": ""
+    "english": "bee",
+    "categories": [
+      "animals",
+      "insects"
+    ],
+    "tones": [
+      4,
+      1
+    ]
   },
   "word_312.jpg": {
-    "pinyin": "",
+    "pinyin": "cāng ying",
     "hanzi": "苍蝇",
-    "english": ""
+    "english": "fly",
+    "categories": [
+      "animals",
+      "insects"
+    ],
+    "tones": [
+      1,
+      5
+    ]
   },
   "word_313.jpg": {
-    "pinyin": "",
+    "pinyin": "huáng chóng",
     "hanzi": "蝗虫",
-    "english": ""
+    "english": "locust",
+    "categories": [
+      "animals",
+      "insects"
+    ],
+    "tones": [
+      2,
+      2
+    ]
   },
   "word_314.jpg": {
-    "pinyin": "",
+    "pinyin": "zhī zhū",
     "hanzi": "蜘蛛",
-    "english": ""
+    "english": "spider",
+    "categories": [
+      "animals",
+      "insects"
+    ],
+    "tones": [
+      1,
+      1
+    ]
   },
   "word_315.jpg": {
-    "pinyin": "",
+    "pinyin": "chán",
     "hanzi": "蝉",
-    "english": ""
+    "english": "cicada",
+    "categories": [
+      "animals",
+      "insects"
+    ],
+    "tones": [
+      2
+    ]
   },
   "word_316.jpg": {
-    "pinyin": "mayi",
+    "pinyin": "mǎ yǐ",
     "hanzi": "蚂蚁",
-    "english": ""
+    "english": "ant",
+    "categories": [
+      "animals",
+      "insects"
+    ],
+    "tones": [
+      3,
+      3
+    ]
   },
   "word_317.jpg": {
-    "pinyin": "",
+    "pinyin": "táng láng",
     "hanzi": "螳螂",
-    "english": ""
+    "english": "mantis",
+    "categories": [
+      "animals",
+      "insects"
+    ],
+    "tones": [
+      2,
+      2
+    ]
   },
   "word_318.jpg": {
-    "pinyin": "",
+    "pinyin": "gōng jī",
     "hanzi": "公鸡",
-    "english": ""
+    "english": "rooster",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      1,
+      1
+    ]
   },
   "word_319.jpg": {
-    "pinyin": "",
+    "pinyin": "mǔ jī",
     "hanzi": "母鸡",
-    "english": ""
+    "english": "hen",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      3,
+      1
+    ]
   },
   "word_320.jpg": {
-    "pinyin": "",
+    "pinyin": "é",
     "hanzi": "鹅",
-    "english": ""
+    "english": "goose",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      2
+    ]
   },
   "word_321.jpg": {
-    "pinyin": "",
+    "pinyin": "tù",
     "hanzi": "兔",
-    "english": ""
+    "english": "rabbit",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      4
+    ]
   },
   "word_322.jpg": {
-    "pinyin": "",
+    "pinyin": "cán",
     "hanzi": "蚕",
-    "english": ""
+    "english": "silkworm",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      2
+    ]
   },
   "word_323.jpg": {
-    "pinyin": "",
+    "pinyin": "wō niú",
     "hanzi": "蜗牛",
-    "english": ""
+    "english": "snail",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      1,
+      2
+    ]
   },
   "word_324.jpg": {
-    "pinyin": "",
+    "pinyin": "zhū",
     "hanzi": "猪",
-    "english": ""
+    "english": "pig",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      1
+    ]
   },
   "word_325.jpg": {
-    "pinyin": "",
+    "pinyin": "mǎ",
     "hanzi": "马",
-    "english": ""
+    "english": "horse",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      3
+    ]
   },
   "word_326.jpg": {
-    "pinyin": "",
+    "pinyin": "nǎi niú",
     "hanzi": "奶牛",
-    "english": ""
+    "english": "cow",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      3,
+      2
+    ]
   },
   "word_327.jpg": {
-    "pinyin": "",
+    "pinyin": "shān yáng",
     "hanzi": "山羊",
-    "english": ""
+    "english": "goat",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      1,
+      2
+    ]
   },
   "word_328.jpg": {
-    "pinyin": "",
+    "pinyin": "māo",
     "hanzi": "猫",
-    "english": ""
+    "english": "cat",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      1
+    ]
   },
   "word_329.jpg": {
-    "pinyin": "",
+    "pinyin": "cháng jǐng lù",
     "hanzi": "长颈鹿",
-    "english": ""
+    "english": "giraffe",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      2,
+      3,
+      4
+    ]
   },
   "word_330.jpg": {
-    "pinyin": "",
+    "pinyin": "méi huā lù",
     "hanzi": "梅花鹿",
-    "english": ""
+    "english": "sika deer",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      2,
+      1,
+      4
+    ]
   },
   "word_331.jpg": {
-    "pinyin": "",
+    "pinyin": "líng yáng",
     "hanzi": "羚羊",
-    "english": ""
+    "english": "antelope",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      2,
+      2
+    ]
   },
   "word_332.jpg": {
-    "pinyin": "",
+    "pinyin": "mián yáng",
     "hanzi": "绵羊",
-    "english": ""
+    "english": "sheep",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      2,
+      2
+    ]
   },
   "word_333.jpg": {
-    "pinyin": "",
+    "pinyin": "sōng shǔ",
     "hanzi": "松鼠",
-    "english": ""
+    "english": "squirrel",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      1,
+      3
+    ]
   },
   "word_334.jpg": {
-    "pinyin": "",
+    "pinyin": "bān mǎ",
     "hanzi": "斑马",
-    "english": ""
+    "english": "zebra",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      1,
+      3
+    ]
   },
   "word_335.jpg": {
-    "pinyin": "",
+    "pinyin": "shuǐ niú",
     "hanzi": "水牛",
-    "english": ""
+    "english": "water buffalo",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      3,
+      2
+    ]
   },
   "word_336.jpg": {
-    "pinyin": "",
+    "pinyin": "hóu",
     "hanzi": "猴",
-    "english": ""
+    "english": "monkey",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      2
+    ]
   },
   "word_337.jpg": {
-    "pinyin": "",
+    "pinyin": "dài shǔ",
     "hanzi": "袋鼠",
-    "english": ""
+    "english": "kangaroo",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      4,
+      3
+    ]
   },
   "word_338.jpg": {
-    "pinyin": "",
+    "pinyin": "biān fú",
     "hanzi": "蝙蝠",
-    "english": ""
+    "english": "bat",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      1,
+      2
+    ]
   },
   "word_339.jpg": {
-    "pinyin": "",
+    "pinyin": "cì wei",
     "hanzi": "刺猬",
-    "english": ""
+    "english": "hedgehog",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      4,
+      5
+    ]
   },
   "word_340.jpg": {
-    "pinyin": "",
+    "pinyin": "lǎo shǔ",
     "hanzi": "老鼠",
-    "english": ""
+    "english": "mouse",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      3,
+      3
+    ]
   },
   "word_341.jpg": {
-    "pinyin": "",
+    "pinyin": "chuān shān jiǎ",
     "hanzi": "穿山甲",
-    "english": ""
+    "english": "pangolin",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      1,
+      1,
+      3
+    ]
   },
   "word_342.jpg": {
-    "pinyin": "",
+    "pinyin": "kǒng lóng",
     "hanzi": "恐龙",
-    "english": ""
+    "english": "dinosaur",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      3,
+      2
+    ]
   },
   "word_343.jpg": {
-    "pinyin": "",
+    "pinyin": "luò tuo",
     "hanzi": "骆驼",
-    "english": ""
+    "english": "camel",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      4,
+      5
+    ]
   },
   "word_344.jpg": {
-    "pinyin": "",
+    "pinyin": "xióng",
     "hanzi": "熊",
-    "english": ""
+    "english": "bear",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      2
+    ]
   },
   "word_345.jpg": {
-    "pinyin": "",
+    "pinyin": "xīng xing",
     "hanzi": "星星",
-    "english": ""
+    "english": "star",
+    "categories": [
+      "nature"
+    ],
+    "tones": [
+      1,
+      5
+    ]
   },
   "word_346.jpg": {
-    "pinyin": "",
+    "pinyin": "hú li",
     "hanzi": "狐狸",
-    "english": ""
+    "english": "fox",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      2,
+      5
+    ]
   },
   "word_347.jpg": {
-    "pinyin": "",
+    "pinyin": "láng",
     "hanzi": "狼",
-    "english": ""
+    "english": "wolf",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      2
+    ]
   },
   "word_348.jpg": {
-    "pinyin": "",
+    "pinyin": "shī",
     "hanzi": "狮",
-    "english": ""
+    "english": "lion",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      1
+    ]
   },
   "word_349.jpg": {
-    "pinyin": "",
+    "pinyin": "hǔ",
     "hanzi": "虎",
-    "english": ""
+    "english": "tiger",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      3
+    ]
   },
   "word_350.jpg": {
-    "pinyin": "",
+    "pinyin": "dà xiàng",
     "hanzi": "大象",
-    "english": ""
+    "english": "elephant",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      4,
+      4
+    ]
   },
   "word_351.jpg": {
-    "pinyin": "",
+    "pinyin": "bào",
     "hanzi": "豹",
-    "english": ""
+    "english": "leopard",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      4
+    ]
   },
   "word_352.jpg": {
-    "pinyin": "",
+    "pinyin": "xī niú",
     "hanzi": "犀牛",
-    "english": ""
+    "english": "rhinoceros",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      1,
+      2
+    ]
   },
   "word_353.jpg": {
-    "pinyin": "",
+    "pinyin": "gǒu",
     "hanzi": "狗",
-    "english": ""
+    "english": "dog",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      3
+    ]
   },
   "word_354.jpg": {
-    "pinyin": "",
+    "pinyin": "xióng māo",
     "hanzi": "熊猫",
-    "english": ""
+    "english": "panda",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      2,
+      1
+    ]
   },
   "word_355.jpg": {
-    "pinyin": "",
+    "pinyin": "zōng xióng",
     "hanzi": "棕熊",
-    "english": ""
+    "english": "brown bear",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      1,
+      2
+    ]
   },
   "word_356.jpg": {
-    "pinyin": "",
+    "pinyin": "è yú",
     "hanzi": "鳄鱼",
-    "english": ""
+    "english": "crocodile",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      4,
+      2
+    ]
   },
   "word_357.jpg": {
-    "pinyin": "",
+    "pinyin": "shā yú",
     "hanzi": "鲨鱼",
-    "english": ""
+    "english": "shark",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      1,
+      2
+    ]
   },
   "word_358.jpg": {
-    "pinyin": "",
+    "pinyin": "hé mǎ",
     "hanzi": "河马",
-    "english": ""
+    "english": "hippopotamus",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      2,
+      3
+    ]
   },
   "word_359.jpg": {
-    "pinyin": "",
+    "pinyin": "hǎi xiàng",
     "hanzi": "海象",
-    "english": ""
+    "english": "walrus",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      3,
+      4
+    ]
   },
   "word_360.jpg": {
-    "pinyin": "",
+    "pinyin": "qǐ é",
     "hanzi": "企鹅",
-    "english": ""
+    "english": "penguin",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      3,
+      2
+    ]
   },
   "word_361.jpg": {
-    "pinyin": "",
+    "pinyin": "jīn yú",
     "hanzi": "金鱼",
-    "english": ""
+    "english": "goldfish",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      1,
+      2
+    ]
   },
   "word_362.jpg": {
-    "pinyin": "",
+    "pinyin": "jīng yú",
     "hanzi": "鲸鱼",
-    "english": ""
+    "english": "whale",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      1,
+      2
+    ]
   },
   "word_363.jpg": {
-    "pinyin": "",
+    "pinyin": "hǎi bào",
     "hanzi": "海豹",
-    "english": ""
+    "english": "seal",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      3,
+      4
+    ]
   },
   "word_364.jpg": {
-    "pinyin": "",
+    "pinyin": "jiǎ yú",
     "hanzi": "甲鱼",
-    "english": ""
+    "english": "softshell turtle",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      3,
+      2
+    ]
   },
   "word_365.jpg": {
-    "pinyin": "",
+    "pinyin": "qīng wā",
     "hanzi": "青蛙",
-    "english": ""
+    "english": "frog",
+    "categories": [
+      "animals"
+    ],
+    "tones": [
+      1,
+      2
+    ]
   },
   "word_366.jpg": {
-    "pinyin": "",
+    "pinyin": "dà pào",
     "hanzi": "大炮",
-    "english": ""
+    "english": "cannon",
+    "categories": [
+      "military"
+    ],
+    "tones": [
+      4,
+      4
+    ]
   },
   "word_367.jpg": {
-    "pinyin": "",
+    "pinyin": "jūn jiàn",
     "hanzi": "军舰",
-    "english": ""
+    "english": "warship",
+    "categories": [
+      "military"
+    ],
+    "tones": [
+      1,
+      4
+    ]
   },
   "word_368.jpg": {
-    "pinyin": "",
+    "pinyin": "huǒ jiàn",
     "hanzi": "火箭",
-    "english": ""
+    "english": "rocket",
+    "categories": [
+      "military"
+    ],
+    "tones": [
+      3,
+      4
+    ]
   },
   "word_369.jpg": {
-    "pinyin": "",
+    "pinyin": "shǒu qiāng",
     "hanzi": "手枪",
-    "english": ""
+    "english": "pistol",
+    "categories": [
+      "military"
+    ],
+    "tones": [
+      3,
+      1
+    ]
   },
   "word_370.jpg": {
-    "pinyin": "",
+    "pinyin": "jǐng chē",
     "hanzi": "警车",
-    "english": ""
+    "english": "police car",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      3,
+      1
+    ]
   },
   "word_371.jpg": {
-    "pinyin": "",
+    "pinyin": "jiù hù chē",
     "hanzi": "救护车",
-    "english": ""
+    "english": "ambulance",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      4,
+      4,
+      1
+    ]
   },
   "word_372.jpg": {
-    "pinyin": "",
+    "pinyin": "sān lún chē",
     "hanzi": "三轮车",
-    "english": ""
+    "english": "tricycle",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      1,
+      2,
+      1
+    ]
   },
   "word_373.jpg": {
-    "pinyin": "",
+    "pinyin": "zì xíng chē",
     "hanzi": "自行车",
-    "english": ""
+    "english": "bicycle",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      4,
+      2,
+      1
+    ]
   },
   "word_374.jpg": {
-    "pinyin": "",
+    "pinyin": "pèng pèng chē",
     "hanzi": "碰碰车",
-    "english": ""
+    "english": "bumper car",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      4,
+      4,
+      1
+    ]
   },
   "word_375.jpg": {
-    "pinyin": "",
+    "pinyin": "lǎn chē",
     "hanzi": "缆车",
-    "english": ""
+    "english": "cable car",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      3,
+      1
+    ]
   },
   "word_376.jpg": {
-    "pinyin": "",
+    "pinyin": "mó tuō chē",
     "hanzi": "摩托车",
-    "english": ""
+    "english": "motorcycle",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      2,
+      1,
+      1
+    ]
   },
   "word_377.jpg": {
-    "pinyin": "",
+    "pinyin": "tóng chē",
     "hanzi": "童车",
-    "english": ""
+    "english": "baby stroller",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      2,
+      1
+    ]
   },
   "word_378.jpg": {
-    "pinyin": "",
+    "pinyin": "gōng gòng qì chē",
     "hanzi": "公共汽车",
-    "english": ""
+    "english": "bus",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      1,
+      4,
+      4,
+      1
+    ]
   },
   "word_379.jpg": {
-    "pinyin": "",
+    "pinyin": "diàn chē",
     "hanzi": "电车",
-    "english": ""
+    "english": "tram",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      4,
+      1
+    ]
   },
   "word_380.jpg": {
-    "pinyin": "",
+    "pinyin": "shuāng céng kè chē",
     "hanzi": "双层客车",
-    "english": ""
+    "english": "double-decker bus",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      1,
+      2,
+      4,
+      1
+    ]
   },
   "word_381.jpg": {
-    "pinyin": "",
+    "pinyin": "jiào chē",
     "hanzi": "轿车",
-    "english": ""
+    "english": "sedan",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      4,
+      1
+    ]
   },
   "word_382.jpg": {
-    "pinyin": "",
+    "pinyin": "miàn bāo chē",
     "hanzi": "面包车",
-    "english": ""
+    "english": "van",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      4,
+      1,
+      1
+    ]
   },
   "word_383.jpg": {
-    "pinyin": "",
+    "pinyin": "sǎ shuǐ chē",
     "hanzi": "洒水车",
-    "english": ""
+    "english": "water sprinkler truck",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      3,
+      3,
+      1
+    ]
   },
   "word_384.jpg": {
-    "pinyin": "",
+    "pinyin": "gāo sù liè chē",
     "hanzi": "高速列车",
-    "english": ""
+    "english": "high-speed train",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      1,
+      4,
+      4,
+      1
+    ]
   },
   "word_385.jpg": {
-    "pinyin": "",
+    "pinyin": "huǒ chē",
     "hanzi": "火车",
-    "english": ""
+    "english": "train",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      3,
+      1
+    ]
   },
   "word_386.jpg": {
-    "pinyin": "",
+    "pinyin": "gōng chéng qiǎng xiǎn chē",
     "hanzi": "工程抢险车",
-    "english": ""
+    "english": "rescue engineering vehicle",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      1,
+      2,
+      3,
+      3,
+      1
+    ]
   },
   "word_387.jpg": {
-    "pinyin": "",
+    "pinyin": "huò chē",
     "hanzi": "货车",
-    "english": ""
+    "english": "truck",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      4,
+      1
+    ]
   },
   "word_388.jpg": {
-    "pinyin": "",
+    "pinyin": "qì chē",
     "hanzi": "汽车",
-    "english": ""
+    "english": "car",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      4,
+      1
+    ]
   },
   "word_389.jpg": {
-    "pinyin": "",
+    "pinyin": "sài chē",
     "hanzi": "赛车",
-    "english": ""
+    "english": "racing car",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      4,
+      1
+    ]
   },
   "word_390.jpg": {
-    "pinyin": "",
+    "pinyin": "zì xiè huò chē",
     "hanzi": "自卸货车",
-    "english": ""
+    "english": "dump truck",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      4,
+      4,
+      4,
+      1
+    ]
   },
   "word_391.jpg": {
-    "pinyin": "",
+    "pinyin": "tuī tǔ chē",
     "hanzi": "推土车",
-    "english": ""
+    "english": "bulldozer",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      1,
+      3,
+      1
+    ]
   },
   "word_392.jpg": {
-    "pinyin": "",
+    "pinyin": "yā lù chē",
     "hanzi": "压路车",
-    "english": ""
+    "english": "road roller",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      1,
+      4,
+      1
+    ]
   },
   "word_393.jpg": {
-    "pinyin": "",
+    "pinyin": "wā tǔ chē",
     "hanzi": "挖土车",
-    "english": ""
+    "english": "excavator",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      1,
+      3,
+      1
+    ]
   },
   "word_394.jpg": {
-    "pinyin": "",
+    "pinyin": "jí zhuāng xiāng huò chē",
     "hanzi": "集装箱货车",
-    "english": ""
+    "english": "container truck",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      2,
+      1,
+      1,
+      4,
+      1
+    ]
   },
   "word_395.jpg": {
-    "pinyin": "",
+    "pinyin": "fān dǒu chē",
     "hanzi": "翻斗车",
-    "english": ""
+    "english": "tipper truck",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      1,
+      3,
+      1
+    ]
   },
   "word_396.jpg": {
-    "pinyin": "",
+    "pinyin": "yóu guàn chē",
     "hanzi": "油罐车",
-    "english": ""
+    "english": "oil tanker",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      2,
+      4,
+      1
+    ]
   },
   "word_397.jpg": {
-    "pinyin": "",
+    "pinyin": "tuō lā jī",
     "hanzi": "拖拉机",
-    "english": ""
+    "english": "tractor",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      1,
+      1,
+      1
+    ]
   },
   "word_398.jpg": {
-    "pinyin": "",
+    "pinyin": "fēi jī",
     "hanzi": "飞机",
-    "english": ""
+    "english": "airplane",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      1,
+      1
+    ]
   },
   "word_399.jpg": {
-    "pinyin": "",
+    "pinyin": "kè jī",
     "hanzi": "客机",
-    "english": ""
+    "english": "passenger plane",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      4,
+      1
+    ]
   },
   "word_400.jpg": {
-    "pinyin": "",
+    "pinyin": "zhí shēng fēi jī",
     "hanzi": "直升飞机",
-    "english": ""
+    "english": "helicopter",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      2,
+      1,
+      1,
+      1
+    ]
   },
   "word_401.jpg": {
-    "pinyin": "",
+    "pinyin": "shuǐ shàng fēi jī",
     "hanzi": "水上飞机",
-    "english": ""
+    "english": "seaplane",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      3,
+      4,
+      1,
+      1
+    ]
   },
   "word_402.jpg": {
-    "pinyin": "",
+    "pinyin": "cháng jiāng kè lún",
     "hanzi": "长江客轮",
-    "english": ""
+    "english": "Yangtze passenger ship",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      2,
+      1,
+      4,
+      2
+    ]
   },
   "word_403.jpg": {
-    "pinyin": "",
+    "pinyin": "dù lún",
     "hanzi": "渡轮",
-    "english": ""
+    "english": "ferry",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      4,
+      2
+    ]
   },
   "word_404.jpg": {
-    "pinyin": "",
+    "pinyin": "qì diàn chuán",
     "hanzi": "气垫船",
-    "english": ""
+    "english": "hovercraft",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      4,
+      4,
+      2
+    ]
   },
   "word_405.jpg": {
-    "pinyin": "",
+    "pinyin": "kuài tǐng",
     "hanzi": "快艇",
-    "english": ""
+    "english": "speedboat",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      4,
+      3
+    ]
   },
   "word_406.jpg": {
-    "pinyin": "",
+    "pinyin": "jiāo tōng tǐng",
     "hanzi": "交通艇",
-    "english": ""
+    "english": "transport boat",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      1,
+      1,
+      3
+    ]
   },
   "word_407.jpg": {
-    "pinyin": "水翼船",
-    "hanzi": "shuǐ yì chuán",
-    "english": ""
+    "pinyin": "shuǐ yì chuán",
+    "hanzi": "水翼船",
+    "english": "hydrofoil",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      3,
+      4,
+      2
+    ]
   },
   "word_408.jpg": {
-    "pinyin": "",
+    "pinyin": "tuō lún",
     "hanzi": "拖轮",
-    "english": ""
+    "english": "tugboat",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      1,
+      2
+    ]
   },
   "word_409.jpg": {
-    "pinyin": "油轮",
-    "hanzi": "yóu lún",
-    "english": ""
+    "pinyin": "yóu lún",
+    "hanzi": "油轮",
+    "english": "oil tanker",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      2,
+      2
+    ]
   },
   "word_410.jpg": {
-    "pinyin": "游船",
-    "hanzi": "yóu chuán",
-    "english": ""
+    "pinyin": "yóu chuán",
+    "hanzi": "游船",
+    "english": "cruise ship",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      2,
+      2
+    ]
   },
   "word_411.jpg": {
-    "pinyin": "双体船",
-    "hanzi": "shuāng tǐ chuán",
-    "english": ""
+    "pinyin": "shuāng tǐ chuán",
+    "hanzi": "双体船",
+    "english": "catamaran",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      1,
+      3,
+      2
+    ]
   },
   "word_412.jpg": {
-    "pinyin": "帆船",
-    "hanzi": "fān chuán",
-    "english": ""
+    "pinyin": "fān chuán",
+    "hanzi": "帆船",
+    "english": "sailboat",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      1,
+      2
+    ]
   },
   "word_413.jpg": {
-    "pinyin": "木船",
-    "hanzi": "mù chuán",
-    "english": ""
+    "pinyin": "mù chuán",
+    "hanzi": "木船",
+    "english": "wooden boat",
+    "categories": [
+      "vehicles"
+    ],
+    "tones": [
+      4,
+      2
+    ]
   }
 }
