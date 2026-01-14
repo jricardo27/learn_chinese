@@ -64,13 +64,69 @@ body {
 }
 
 .player-controls {
-    padding: 15px 25px;
+    padding: 12px 25px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    background: #fdfbff;
+    border-bottom: 2px solid #f0f4ff;
     gap: 20px;
-    flex-wrap: wrap;
-    background: #f8f9ff;
-    border-bottom: 1px solid #eee;
+}
+
+.player-info {
+    flex: 1;
+}
+
+.player-info h4 {
+    font-size: 1.1em;
+    color: #333;
+    font-weight: 600;
+    margin: 0;
+}
+
+.player-buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.player-buttons button {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: white;
+    color: #4a00e0;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(74, 0, 224, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.player-buttons button:hover {
+    transform: scale(1.1);
+    background: #4a00e0;
+    color: white;
+    box-shadow: 0 6px 15px rgba(74, 0, 224, 0.25);
+}
+
+.player-buttons button:active {
+    transform: scale(0.95);
+}
+
+#playPause {
+    width: 52px;
+    height: 52px;
+    font-size: 1.4em;
+    background: linear-gradient(135deg, #4a00e0 0%, #8e2de2 100%);
+    color: white;
+}
+
+#playPause:hover {
+    transform: scale(1.1) rotate(5deg);
 }
 
 .nav-controls {
@@ -150,8 +206,8 @@ main {
 
 .word-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
 }
 
 /* Word Cards */
@@ -181,19 +237,17 @@ main {
 
 .word-image {
     width: 100%;
-    height: 140px;
-    object-fit: contain;
-    padding: 15px;
+    height: 350px;
+    object-fit: cover;
+    object-position: 0 100%;
     background: #fff;
+    transition: transform 0.3s ease;
 }
 
 /* Hide top 20% of image in quiz mode to prevent seeing the hanzi */
+/* Hide top of image when playing/active */
 .word-card.playing .word-image {
-    object-fit: cover;
-    object-position: 0 100%;
-    height: 112px;
-    /* 80% of 140px */
-    padding-top: 0;
+    filter: brightness(1.1);
 }
 
 .word-info {
@@ -227,14 +281,15 @@ main {
         align-items: stretch;
     }
 
-    .player-controls {
-        flex-direction: column;
-        gap: 15px;
-    }
+
 
     .nav-controls {
         width: 100%;
         justify-content: center;
+    }
+
+    .word-container {
+        grid-template-columns: 1fr;
     }
 
     .playback-info {
@@ -244,14 +299,28 @@ main {
 
 /* Active Recall Mode */
 .blur-text {
-    filter: blur(8px);
+    filter: blur(12px);
+    /* Stronger blur */
     user-select: none;
     transition: filter 0.3s ease;
     cursor: pointer;
 }
 
 .blur-text:hover {
-    filter: blur(4px);
+    filter: blur(6px);
+}
+
+.recall-text.blur-text {
+    filter: blur(15px);
+    background-color: #e0e0e0 !important;
+    color: transparent !important;
+    text-shadow: none !important;
+    border-radius: 8px;
+    padding: 10px 20px;
+    margin: 10px auto;
+    width: fit-content;
+    min-width: 200px;
+    display: block;
 }
 
 .word-card.revealed .blur-text {
@@ -448,10 +517,309 @@ main {
     color: #28a745;
 }
 
-.score-wrong {
+.recall-info-container {
+    text-align: center;
+    margin-bottom: 30px;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.recall-text {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #333;
+}
+
+#recallPinyin {
+    font-size: 1.8em;
+    color: #666;
+    font-weight: normal;
+}
+
+.nav-btn-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.recall-card.revealed .recall-text {
+    filter: none;
+    background: transparent;
+    color: inherit !important;
+}
+
+/* Shadowing Mode */
+.shadowing-header {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.shadowing-mode-toggle {
+    display: flex;
+    justify-content: center;
+}
+
+.shadowing-info-container {
+    text-align: center;
+    margin-bottom: 20px;
+    min-height: 80px;
+}
+
+.shadowing-text {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.shadowing-text-pinyin {
+    font-size: 1.8em;
+    color: #666;
+}
+
+.shadowing-status {
+    text-align: center;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+    color: #555;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.shadowing-status.recording {
+    background: #ffe6e6;
     color: #dc3545;
+    animation: pulse 1.5s infinite;
+}
+
+.shadowing-status.playing {
+    background: #e6f3ff;
+    color: #0066cc;
+}
+
+.record-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+.record-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+}
+
+.record-btn:active {
+    transform: translateY(0);
+}
+
+.record-btn i {
+    margin-right: 8px;
+}
+
+.pause-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #ffa500 0%, #ff8c00 100%);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 165, 0, 0.4);
+}
+
+.pause-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 165, 0, 0.6);
+}
+
+.pause-btn i {
+    margin-right: 8px;
 }
 
 .hidden {
     display: none !important;
+}
+
+/* Home Screen Styles */
+.home-screen {
+    padding: 60px 40px;
+    background: #fdfbff;
+    min-height: calc(100vh - 140px);
+    text-align: center;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.home-title {
+    font-size: 3em;
+    background: linear-gradient(to right, #4a00e0, #8e2de2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+.home-subtitle {
+    font-size: 1.4em;
+    color: #666;
+    margin-bottom: 50px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mode-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.mode-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.mode-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(142, 45, 226, 0.2);
+    border-color: rgba(142, 45, 226, 0.3);
+}
+
+.mode-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5em;
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+}
+
+.standard-icon {
+    color: #4a00e0;
+    background: rgba(74, 0, 224, 0.1);
+}
+
+.mode-card:hover .standard-icon {
+    background: rgba(74, 0, 224, 0.2);
+    transform: scale(1.1);
+}
+
+.recall-icon {
+    color: #e91e63;
+    background: rgba(233, 30, 99, 0.1);
+}
+
+.mode-card:hover .recall-icon {
+    background: rgba(233, 30, 99, 0.2);
+    transform: scale(1.1);
+}
+
+.shadowing-icon {
+    color: #ff9800;
+    background: rgba(255, 152, 0, 0.1);
+}
+
+.mode-card:hover .shadowing-icon {
+    background: rgba(255, 152, 0, 0.2);
+    transform: scale(1.1);
+}
+
+.quiz-icon {
+    color: #00b894;
+    background: rgba(0, 184, 148, 0.1);
+}
+
+.mode-card:hover .quiz-icon {
+    background: rgba(0, 184, 148, 0.2);
+    transform: scale(1.1);
+}
+
+.mode-card h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.mode-card p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+.mode-start-btn {
+    background: linear-gradient(to right, #4a00e0, #8e2de2);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.2s;
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.mode-card:hover .mode-start-btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.home-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+}
+
+.home-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
 }

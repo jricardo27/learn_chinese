@@ -1,5 +1,5 @@
 // Configuration - Update these based on your files
-const TOTAL_WORDS = 392; // Change this to your total number of words
+const TOTAL_WORDS = 414; // Change this to your total number of words
 const WORD_PREFIX = "word_"; // Your filename prefix
 const IMAGE_EXTENSION = ".jpg";
 const AUDIO_EXTENSION = ".mp3";
@@ -48,7 +48,7 @@ class WordLearner {
                 if (wordData) {
                     this.words.push({
                         id: i,
-                        chinese: wordData.chinese,
+                        chinese: wordData.hanzi,
                         pinyin: wordData.pinyin,
                         image: `images/${filename}`,
                         audio: `audio/${WORD_PREFIX}${wordNumber}${AUDIO_EXTENSION}`,
@@ -67,7 +67,7 @@ class WordLearner {
                     });
                 }
             }
-            this.renderWords();
+            this.renderHome();
             this.updateWordCount();
         } catch (error) {
             console.error('Error loading word data:', error);
@@ -87,47 +87,37 @@ class WordLearner {
                 number: i + 1
             });
         }
-        this.renderWords();
+        this.renderHome();
         this.updateWordCount();
     }
 
     setMode(mode) {
+        if (mode === 'home') {
+            this.renderHome();
+            return;
+        }
+
         this.currentMode = mode;
         this.stopPlayback();
 
-        // UI updates
-        document.getElementById('recallSettings').style.display = (mode === 'recall') ? 'block' : 'none';
-        document.getElementById('quizScore').style.display = (mode === 'quiz') ? 'flex' : 'none';
+        // UI transitions
+        document.getElementById('home-screen').style.display = 'none';
+        document.getElementById('word-container').classList.remove('hidden');
+        document.getElementById('goHome').style.visibility = 'visible';
 
-        // Reset quiz scores
+        // Sync Dropdown
+        const dropdown = document.getElementById('learningMode');
+        if (dropdown) dropdown.value = mode;
+
         if (mode === 'quiz') {
             this.quizCorrect = 0;
             this.quizWrong = 0;
             this.updateQuizScore();
-            document.body.classList.add('quiz-mode');
-        } else {
-            document.body.classList.remove('quiz-mode');
         }
 
-        if (mode === 'shadowing') {
-            navigator.mediaDevices.getUserMedia({ audio: true })
-                .then(stream => {
-                    this.mediaRecorder = new MediaRecorder(stream);
-                    this.mediaRecorder.ondataavailable = e => {
-                        this.audioChunks.push(e.data);
-                    };
-                    this.mediaRecorder.onstop = () => {
-                        const audioBlob = new Blob(this.audioChunks, { type: 'audio/wav' });
-                        this.userAudio = new Audio(URL.createObjectURL(audioBlob));
-                        this.playUserRecording();
-                    };
-                })
-                .catch(err => {
-                    console.error("Mic access denied", err);
-                    alert("Microphone needed for shadowing mode!");
-                    document.getElementById('learningMode').value = 'standard';
-                    this.setMode('standard');
-                });
+        if (mode === 'recall') {
+            document.getElementById('hidePinyin').checked = true;
+            document.getElementById('hideChinese').checked = true;
         }
 
         this.renderWords();
@@ -141,52 +131,51 @@ class WordLearner {
         document.getElementById('liveWrongCount').textContent = this.quizWrong;
     }
 
+    renderHome() {
+        this.currentMode = 'home';
+        this.stopPlayback(); // Stops audio and hides overlays
+
+        document.getElementById('home-screen').style.display = 'block';
+        document.getElementById('word-container').classList.add('hidden');
+
+        const homeBtn = document.getElementById('goHome');
+        if (homeBtn) homeBtn.style.visibility = 'hidden';
+    }
+
     renderWords(filteredWords = null) {
         const wordsToRender = filteredWords || this.words;
         const container = document.getElementById('word-container');
-
-        if (this.currentMode === 'quiz') {
-            container.innerHTML = `
-                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh; text-align: center; padding: 40px 20px; color: #666;">
-                    <i class="fas fa-play-circle" style="font-size: 4em; margin-bottom: 20px; color: #8e2de2;"></i>
-                    <h2 style="font-size: 2em; margin-bottom: 15px;">Quiz Mode</h2>
-                    <p style="font-size: 1.2em; margin-bottom: 10px;">Press the Play button to start the quiz!</p>
-                    <p style="margin-top: 20px; font-size: 1.1em;">Score: <span style="color: #28a745;">✅ ${this.quizCorrect}</span> / <span style="color: #dc3545;">❌ ${this.quizWrong}</span></p>
-                </div>
-            `;
-            return;
-        }
+        container.style.display = 'grid';
 
         container.innerHTML = wordsToRender.map(word => {
             let blurPinyin = this.currentMode === 'recall' && document.getElementById('hidePinyin').checked ? 'blur-text' : '';
             let blurChinese = this.currentMode === 'recall' && document.getElementById('hideChinese').checked ? 'blur-text' : '';
 
             return `
-            <div class="word-card" data-id="${word.id}">
-                <img src="${word.image}" alt="Word Image" class="word-image">
-                <div class="word-info">
-                    <h3 class="${blurChinese}">${word.chinese}</h3>
-                    <p class="${blurPinyin}">${word.pinyin}</p>
-                    <small>#${word.number}</small>
+                <div class="word-card" data-id="${word.id}">
+                    <img src="${word.image}" alt="Word Image" class="word-image">
+                    <div class="word-info">
+                        <h3 class="${blurChinese}">${word.chinese}</h3>
+                        <p class="${blurPinyin}">${word.pinyin}</p>
+                        <small>#${word.number}</small>
+                    </div>
                 </div>
-            </div>
-        `}).join('');
+            `
+        }).join('');
 
+        // Card Listeners
         document.querySelectorAll('.word-card').forEach(card => {
-            card.addEventListener('click', (e) => {
+            card.addEventListener('click', () => {
                 const wordId = parseInt(card.dataset.id);
-
                 if (this.currentMode === 'recall') {
                     card.classList.toggle('revealed');
                 }
-
-                if (this.isPlayingAll) this.stopPlayback();
                 this.playWord(wordId, true);
             });
         });
     }
 
-    async playWord(wordId, userInitiated = false) {
+    async playWord(wordId, userInitiated = false, autoPlay = false) {
         const word = this.words.find(w => w.id === wordId);
         if (!word) return;
 
@@ -204,11 +193,24 @@ class WordLearner {
             this.userAudio = null;
         }
 
-        // Quiz mode uses different rendering
+        // Mode-specific overlays
         if (this.currentMode === 'quiz') {
             this.showQuizOverlay(word);
             return;
         }
+        if (this.currentMode === 'recall') {
+            this.showRecallOverlay(word);
+            return;
+        }
+        if (this.currentMode === 'shadowing') {
+            this.showShadowingOverlay(word, autoPlay);
+            return;
+        }
+        if (this.currentMode === 'standard') {
+            this.showStandardOverlay(word, autoPlay);
+            return;
+        }
+
 
         // UI Updates
         document.querySelectorAll('.word-card').forEach(c => c.classList.remove('playing'));
@@ -237,7 +239,8 @@ class WordLearner {
         this.currentAudio.addEventListener('canplaythrough', () => {
             this.currentAudio.play().catch(console.error);
             this.updateStatusText(word);
-            document.getElementById('playPause').innerHTML = '<i class="fas fa-pause"></i>';
+            const btn = document.getElementById('playPause');
+            if (btn) btn.innerHTML = '<i class="fas fa-pause"></i>';
         });
 
         this.currentAudio.addEventListener('ended', onAudioEnd);
@@ -343,6 +346,254 @@ class WordLearner {
         }, 2000);
     }
 
+    showRecallOverlay(word) {
+        const overlay = document.getElementById('recallOverlay');
+        const recallCard = overlay.querySelector('.recall-card');
+        const recallImage = document.getElementById('recallImage');
+        const chineseDiv = document.getElementById('recallChinese');
+        const pinyinDiv = document.getElementById('recallPinyin');
+
+        // Reset state
+        recallCard.classList.remove('revealed');
+        this.currentWordIndex = word.id;
+
+        // Settings-based blur
+        chineseDiv.classList.remove('blur-text');
+        pinyinDiv.classList.remove('blur-text');
+
+        if (document.getElementById('hideChinese').checked) chineseDiv.classList.add('blur-text');
+        if (document.getElementById('hidePinyin').checked) pinyinDiv.classList.add('blur-text');
+
+        // Set content
+        recallImage.src = word.image;
+        chineseDiv.textContent = word.chinese || '???';
+        pinyinDiv.textContent = word.pinyin || 'Unknown';
+
+        // Handlers
+        document.getElementById('recallReveal').onclick = () => {
+            recallCard.classList.add('revealed');
+            const audio = new Audio(word.audio);
+            audio.play();
+        };
+
+        document.getElementById('recallNext').onclick = () => {
+            // Find current word index in array
+            const currentIdx = this.words.findIndex(w => w.id === word.id);
+            if (currentIdx !== -1 && currentIdx < this.words.length - 1) {
+                this.playWord(this.words[currentIdx + 1].id);
+            }
+        };
+
+        document.getElementById('recallPrev').onclick = () => {
+            // Find current word index in array
+            const currentIdx = this.words.findIndex(w => w.id === word.id);
+            if (currentIdx !== -1 && currentIdx > 0) {
+                this.playWord(this.words[currentIdx - 1].id);
+            }
+        };
+
+        document.getElementById('finishRecall').onclick = () => {
+            this.stopPlayback();
+        };
+
+        overlay.classList.remove('hidden');
+        this.updateStatusText(word, "Recall: Try to remember before revealing!");
+    }
+
+    showShadowingOverlay(word, autoPlay = false) {
+        const overlay = document.getElementById('shadowingOverlay');
+        const shadowingImage = document.getElementById('shadowingImage');
+        const chineseDiv = document.getElementById('shadowingChinese');
+        const pinyinDiv = document.getElementById('shadowingPinyin');
+        const statusDiv = document.getElementById('shadowingStatus');
+        const playBtn = document.getElementById('shadowingPlay');
+        const recordBtn = document.getElementById('shadowingRecord');
+        const pauseBtn = document.getElementById('shadowingPause');
+        const autoRecordCheckbox = document.getElementById('autoRecord');
+        const autoContinueCheckbox = document.getElementById('autoContinue');
+
+        this.currentWordIndex = word.id;
+        this.shadowingState = 'idle';
+
+        // Set content
+        shadowingImage.src = word.image;
+        chineseDiv.textContent = word.chinese || '???';
+        pinyinDiv.textContent = word.pinyin || 'Unknown';
+
+        // Initial Status
+        if (autoPlay) {
+            statusDiv.innerHTML = '<i class="fas fa-sync"></i> Auto-continuing...';
+            statusDiv.className = 'shadowing-status playing';
+        } else {
+            statusDiv.innerHTML = '<i class="fas fa-info-circle"></i> Ready to practice';
+            statusDiv.className = 'shadowing-status';
+        }
+
+        // Logic for Start/Pause button state
+        const updatePlayButton = () => {
+            if (autoContinueCheckbox.checked) {
+                if (this.shadowingLoopActive) {
+                    playBtn.innerHTML = '<i class="fas fa-pause"></i> Pause Practice';
+                    playBtn.className = 'pause-btn'; // Re-use pause style
+                    playBtn.style.background = 'linear-gradient(135deg, #ffa500 0%, #ff8c00 100%)';
+                } else {
+                    playBtn.innerHTML = '<i class="fas fa-play"></i> Start Practice';
+                    playBtn.className = 'replay-btn';
+                    playBtn.style.background = ''; // Reset to default
+                }
+            } else {
+                playBtn.innerHTML = '<i class="fas fa-play"></i> Play Audio';
+                playBtn.className = 'replay-btn';
+                playBtn.style.background = '';
+                this.shadowingLoopActive = false; // Disable loop if unchecked
+            }
+        };
+
+        // Show/hide buttons based on settings
+        const updateButtonVisibility = () => {
+            updatePlayButton();
+            if (autoRecordCheckbox.checked) {
+                recordBtn.style.display = 'none';
+                pauseBtn.style.display = 'none';
+            } else {
+                recordBtn.style.display = this.shadowingState === 'idle' ? 'block' : 'none';
+                pauseBtn.style.display = this.shadowingState === 'recording' ? 'block' : 'none';
+            }
+        };
+
+        const playAudioSequence = () => {
+            statusDiv.innerHTML = '<i class="fas fa-volume-up"></i> Playing native audio...';
+            statusDiv.className = 'shadowing-status playing';
+
+            const audio = new Audio(word.audio);
+            this.currentAudio = audio; // Track to stop if needed
+            audio.play();
+
+            audio.onended = () => {
+                this.currentAudio = null;
+                if (autoRecordCheckbox.checked) {
+                    setTimeout(() => this.startShadowingRecording(word, statusDiv, updateButtonVisibility), 500);
+                } else {
+                    statusDiv.innerHTML = '<i class="fas fa-microphone"></i> Click Record when ready';
+                    statusDiv.className = 'shadowing-status';
+                    this.shadowingLoopActive = false; // Break loop if manual record
+                    updateButtonVisibility();
+                }
+            };
+        };
+
+        // Play Loop / Start Handler
+        playBtn.onclick = () => {
+            if (autoContinueCheckbox.checked) {
+                if (this.shadowingLoopActive) {
+                    // Pause requested
+                    this.shadowingLoopActive = false;
+                    this.stopPlayback(false); // Stop audio/recording but keep overlay
+                    updateButtonVisibility();
+                    statusDiv.innerHTML = '<i class="fas fa-pause-circle"></i> Paused';
+                } else {
+                    // Start requested
+                    this.shadowingLoopActive = true;
+                    updateButtonVisibility();
+                    playAudioSequence();
+                }
+            } else {
+                // Standard Play
+                playAudioSequence();
+            }
+        };
+
+        // Manual record button
+        recordBtn.onclick = () => {
+            this.startShadowingRecording(word, statusDiv, updateButtonVisibility);
+        };
+
+        // Pause recording button
+        pauseBtn.onclick = () => {
+            if (this.mediaRecorder && this.mediaRecorder.state === 'recording') {
+                this.mediaRecorder.stop();
+                updateButtonVisibility();
+            }
+        };
+
+        // Settings Listeners
+        autoRecordCheckbox.onchange = updateButtonVisibility;
+        autoContinueCheckbox.onchange = updateButtonVisibility;
+
+        // Navigation (Breaks loop)
+        const handleNav = (nextId) => {
+            this.shadowingLoopActive = false;
+            this.playWord(nextId);
+        };
+
+        document.getElementById('shadowingNext').onclick = () => {
+            const currentIdx = this.words.findIndex(w => w.id === word.id);
+            if (currentIdx < this.words.length - 1) handleNav(this.words[currentIdx + 1].id);
+        };
+
+        document.getElementById('shadowingPrev').onclick = () => {
+            const currentIdx = this.words.findIndex(w => w.id === word.id);
+            if (currentIdx > 0) handleNav(this.words[currentIdx - 1].id);
+        };
+
+        document.getElementById('finishShadowing').onclick = () => {
+            this.shadowingLoopActive = false;
+            this.stopPlayback();
+        };
+
+        updateButtonVisibility();
+        overlay.classList.remove('hidden');
+        this.updateStatusText(word, "Shadowing: Listen, then repeat!");
+
+        // Auto-start if looping
+        if (autoPlay && this.shadowingLoopActive) {
+            setTimeout(playAudioSequence, 500);
+        }
+    }
+
+    startShadowingRecording(word, statusDiv, updateButtonVisibility) {
+        if (!this.mediaRecorder) {
+            statusDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Microphone not available';
+            statusDiv.className = 'shadowing-status';
+            return;
+        }
+
+        this.shadowingState = 'recording';
+        this.audioChunks = [];
+        this.mediaRecorder.start();
+
+        statusDiv.innerHTML = '<i class="fas fa-microphone"></i> 🔴 Recording... (3 seconds)';
+        statusDiv.className = 'shadowing-status recording';
+        updateButtonVisibility();
+
+        setTimeout(() => {
+            if (this.mediaRecorder.state === 'recording') {
+                this.mediaRecorder.stop();
+                this.shadowingState = 'playback';
+                statusDiv.innerHTML = '<i class="fas fa-headphones"></i> Playing your recording...';
+                statusDiv.className = 'shadowing-status playing';
+                updateButtonVisibility();
+
+                // Check for auto-continue
+                const autoContinue = document.getElementById('autoContinue');
+                if (autoContinue && autoContinue.checked) {
+                    setTimeout(() => {
+                        const currentIdx = this.words.findIndex(w => w.id === word.id);
+                        if (currentIdx !== -1 && currentIdx < this.words.length - 1) {
+                            this.playWord(this.words[currentIdx + 1].id, false, true);
+                        } else {
+                            // If last word, stop loop
+                            this.shadowingLoopActive = false;
+                            statusDiv.innerHTML = '<i class="fas fa-check-circle"></i> Practice complete!';
+                            statusDiv.className = 'shadowing-status';
+                            updateButtonVisibility();
+                        }
+                    }, 3500); // Wait for playback + buffer
+                }
+            }
+        }, 3000);
+    }
+
     startRecording() {
         if (!this.mediaRecorder) return;
 
@@ -355,8 +606,115 @@ class WordLearner {
                 this.mediaRecorder.stop();
             }
         }, 3000);
+
     }
 
+    showStandardOverlay(word, autoPlay = false) {
+        const overlay = document.getElementById('standardOverlay');
+        const img = document.getElementById('standardImage');
+        const chinese = document.getElementById('standardChinese');
+        const pinyin = document.getElementById('standardPinyin');
+        const playBtn = document.getElementById('standardPlay');
+        const autoContinue = document.getElementById('standardAutoContinue');
+
+        this.currentWordIndex = word.id;
+
+        img.src = word.image;
+        chinese.textContent = word.chinese;
+        pinyin.textContent = word.pinyin;
+
+        const updatePlayButton = () => {
+            if (autoContinue.checked) {
+                if (this.standardLoopActive) {
+                    playBtn.innerHTML = '<i class="fas fa-pause"></i> Pause';
+                    // Apply pause styling
+                    playBtn.className = 'pause-btn';
+                    playBtn.style.background = 'linear-gradient(135deg, #ffa500 0%, #ff8c00 100%)';
+                } else {
+                    playBtn.innerHTML = '<i class="fas fa-play"></i> Start';
+                    playBtn.className = 'replay-btn';
+                    playBtn.style.background = '';
+                }
+            } else {
+                playBtn.innerHTML = '<i class="fas fa-play"></i> Play Audio';
+                playBtn.className = 'replay-btn';
+                playBtn.style.background = '';
+                this.standardLoopActive = false;
+            }
+        };
+
+        const playAudio = () => {
+            const audio = new Audio(word.audio);
+            this.currentAudio = audio;
+            audio.play();
+
+            audio.onended = () => {
+                this.currentAudio = null;
+                if (this.standardLoopActive && autoContinue.checked) {
+                    const delay = parseFloat(document.getElementById('playDelay').value) * 1000 || 2000;
+                    setTimeout(() => {
+                        if (this.standardLoopActive) {
+                            const currentIdx = this.words.findIndex(w => w.id === word.id);
+                            if (currentIdx !== -1 && currentIdx < this.words.length - 1) {
+                                this.playWord(this.words[currentIdx + 1].id, false, true);
+                            } else {
+                                this.standardLoopActive = false;
+                                updatePlayButton();
+                            }
+                        }
+                    }, delay);
+                } else {
+                    // If manual play, just stop (don't break loop variable if just checking audio)
+                    // But here if loop was NOT active, we stay inactive.
+                    updatePlayButton();
+                }
+            };
+        };
+
+        playBtn.onclick = () => {
+            if (autoContinue.checked) {
+                if (this.standardLoopActive) {
+                    this.standardLoopActive = false;
+                    this.stopPlayback(false);
+                    updatePlayButton();
+                } else {
+                    this.standardLoopActive = true;
+                    updatePlayButton();
+                    playAudio();
+                }
+            } else {
+                playAudio();
+            }
+        };
+
+        autoContinue.onchange = updatePlayButton;
+
+        // Navigation
+        const handleNav = (nextId) => {
+            this.standardLoopActive = false;
+            this.playWord(nextId);
+        };
+        document.getElementById('standardNext').onclick = () => {
+            const currentIdx = this.words.findIndex(w => w.id === word.id);
+            if (currentIdx < this.words.length - 1) handleNav(this.words[currentIdx + 1].id);
+        };
+        document.getElementById('standardPrev').onclick = () => {
+            const currentIdx = this.words.findIndex(w => w.id === word.id);
+            if (currentIdx > 0) handleNav(this.words[currentIdx - 1].id);
+        };
+        document.getElementById('finishStandard').onclick = () => {
+            this.standardLoopActive = false;
+            this.stopPlayback();
+        };
+
+        updatePlayButton();
+        overlay.classList.remove('hidden');
+        this.updateStatusText(word, "Standard View");
+
+        if (autoPlay && this.standardLoopActive) {
+            setTimeout(playAudio, 500);
+        }
+    }
     playUserRecording() {
         if (!this.userAudio) return;
 
@@ -384,7 +742,8 @@ class WordLearner {
     }
 
     resetPlayButton() {
-        document.getElementById('playPause').innerHTML = '<i class="fas fa-play"></i>';
+        const btn = document.getElementById('playPause');
+        if (btn) btn.innerHTML = '<i class="fas fa-play"></i>';
     }
 
     updateStatusText(word, overrideText = null) {
@@ -402,19 +761,9 @@ class WordLearner {
         this.isPlayingAll = true;
 
         if (this.playAllQueue.length === 0) {
-            // In quiz mode, shuffle the words
-            if (this.currentMode === 'quiz') {
-                const shuffled = [...this.words].sort(() => Math.random() - 0.5);
-                this.playAllQueue = shuffled.map(w => w.id);
-            } else {
-                let startIdx = 0;
-                if (this.currentWordIndex !== -1) {
-                    const currentWordObj = this.words.find(w => w.id === this.currentWordIndex);
-                    const idx = this.words.indexOf(currentWordObj);
-                    if (idx !== -1) startIdx = idx;
-                }
-                this.playAllQueue = this.words.slice(startIdx).map(w => w.id);
-            }
+            // Shuffle words for all modes to improve learning
+            const shuffled = [...this.words].sort(() => Math.random() - 0.5);
+            this.playAllQueue = shuffled.map(w => w.id);
         }
         this.playNextInQueue();
     }
@@ -437,10 +786,11 @@ class WordLearner {
             clearTimeout(this.autoNextTimeout);
             this.autoNextTimeout = null;
         }
-        document.getElementById('playPause').innerHTML = '<i class="fas fa-play"></i>';
+        const btn = document.getElementById('playPause');
+        if (btn) btn.innerHTML = '<i class="fas fa-play"></i>';
     }
 
-    stopPlayback() {
+    stopPlayback(hideOverlays = true) {
         this.isPlayingAll = false;
         this.playAllQueue = [];
         this.pausePlayback();
@@ -449,96 +799,119 @@ class WordLearner {
             this.mediaRecorder.stop();
         }
 
-        // Hide quiz overlay if visible
-        document.getElementById('quizOverlay').classList.add('hidden');
+        // Hide overlays if visible and requested
+        if (hideOverlays) {
+            document.getElementById('quizOverlay').classList.add('hidden');
+            document.getElementById('recallOverlay').classList.add('hidden');
+            document.getElementById('shadowingOverlay').classList.add('hidden');
+            document.getElementById('standardOverlay').classList.add('hidden');
+        }
 
         document.getElementById('current-word').textContent = 'Stopped';
         document.querySelectorAll('.word-card').forEach(card => {
             card.classList.remove('playing');
         });
 
-        if (this.currentMode === 'quiz') this.renderWords();
+        if (this.currentMode === 'quiz' && hideOverlays) this.renderWords();
     }
 
     toggleInteractiveMode() {
         this.interactiveMode = !this.interactiveMode;
-        const btn = document.getElementById('interactiveMode');
-        btn.classList.toggle('active');
     }
 
     setupEventListeners() {
-        document.getElementById('learningMode').addEventListener('change', (e) => {
-            this.setMode(e.target.value);
-        });
+        // Mode State
+        const modeSelect = document.getElementById('learningMode');
+        if (modeSelect) modeSelect.onchange = (e) => this.setMode(e.target.value);
+
+        document.getElementById('goHome').onclick = () => this.setMode('home');
 
         document.getElementById('hidePinyin').addEventListener('change', () => this.renderWords());
         document.getElementById('hideChinese').addEventListener('change', () => this.renderWords());
 
+        // Player Controls
+        document.getElementById('playPause').onclick = () => this.togglePlayback();
+        document.getElementById('stop').onclick = () => this.stopPlayback();
+        document.getElementById('prev').onclick = () => {
+            const newIndex = Math.max(0, this.currentWordIndex - 1);
+            this.playWord(newIndex, true);
+        };
+        document.getElementById('next').onclick = () => {
+            const newIndex = Math.min(this.words.length - 1, this.currentWordIndex + 1);
+            this.playWord(newIndex, true);
+        };
+
+        // Interactive Loop
+        document.getElementById('interactiveMode').onclick = () => this.toggleInteractiveMode();
+
+        // Volume
+        const volumeSlider = document.getElementById('volume');
+        volumeSlider.addEventListener('input', (e) => {
+            if (this.currentAudio) this.currentAudio.volume = e.target.value / 100;
+        });
+
+        // Search
         document.getElementById('search').addEventListener('input', (e) => {
             const searchTerm = e.target.value.toLowerCase();
             const filtered = this.words.filter(word =>
                 word.chinese.includes(searchTerm) ||
-                word.pinyin.toLowerCase().includes(searchTerm) ||
-                word.number.toString().includes(searchTerm)
+                word.pinyin.toLowerCase().includes(searchTerm)
             );
             this.renderWords(filtered);
-            this.updateWordCount(filtered.length);
         });
 
         document.getElementById('shuffle').addEventListener('click', () => {
             this.words.sort(() => Math.random() - 0.5);
             this.renderWords();
-            this.stopPlayback();
-            this.currentWordIndex = -1;
         });
 
-        document.getElementById('interactiveMode').addEventListener('click', () => {
-            this.toggleInteractiveMode();
-        });
-
-        document.getElementById('stop').addEventListener('click', () => this.stopPlayback());
-
-        document.getElementById('prev').addEventListener('click', () => {
-            const currentObj = this.words.find(w => w.id === this.currentWordIndex);
-            const idx = this.words.indexOf(currentObj);
-            if (idx !== -1 && idx > 0) this.playWord(this.words[idx - 1].id, true);
-        });
-
-        document.getElementById('playPause').addEventListener('click', () => {
-            if ((this.currentAudio && !this.currentAudio.paused) || (this.userAudio && !this.userAudio.paused)) {
-                this.pausePlayback();
-            } else {
-                if (this.currentAudio && this.currentAudio.paused && !this.userAudio) {
-                    this.currentAudio.play();
-                    document.getElementById('playPause').innerHTML = '<i class="fas fa-pause"></i>';
-                } else {
-                    this.playAllWords();
-                }
-            }
-        });
-
-        document.getElementById('next').addEventListener('click', () => {
-            const currentObj = this.words.find(w => w.id === this.currentWordIndex);
-            const idx = this.words.indexOf(currentObj);
-            if (idx !== -1 && idx < this.words.length - 1) this.playWord(this.words[idx + 1].id, true);
-        });
-
-        document.getElementById('volume').addEventListener('input', (e) => {
-            if (this.currentAudio) this.currentAudio.volume = e.target.value / 100;
-        });
-
+        // Keyboard Shortcuts
         document.addEventListener('keydown', (e) => {
-            if (e.key === ' ' && e.target === document.body) e.preventDefault();
+            if (e.target.tagName === 'INPUT') return;
+
             switch (e.key) {
-                case ' ':
-                    if (this.isPlayingAll && this.interactiveMode) this.playNextInQueue();
-                    else document.getElementById('playPause').click();
+                case ' ': // Space triggers play/action
+                    e.preventDefault();
+                    if (this.currentMode === 'home') return;
+
+                    // If an overlay is active, trigger its specific play button
+                    if (!document.getElementById('standardOverlay').classList.contains('hidden')) {
+                        document.getElementById('standardPlay').click();
+                    } else if (!document.getElementById('shadowingOverlay').classList.contains('hidden')) {
+                        document.getElementById('shadowingPlay').click();
+                    } else if (!document.getElementById('recallOverlay').classList.contains('hidden')) {
+                        document.getElementById('recallReveal').click();
+                    } else if (!document.getElementById('quizOverlay').classList.contains('hidden')) {
+                        // In quiz, space might not have a default action or pick first?
+                    } else {
+                        // Global toggle
+                        this.togglePlayback();
+                    }
                     break;
-                case 'ArrowLeft': document.getElementById('prev').click(); break;
-                case 'ArrowRight': document.getElementById('next').click(); break;
-                case 'Escape': this.stopPlayback(); break;
+                case 'ArrowLeft':
+                    document.getElementById('prev').click();
+                    break;
+                case 'ArrowRight':
+                    document.getElementById('next').click();
+                    break;
+                case 'Escape':
+                    this.stopPlayback();
+                    break;
             }
         });
+    }
+
+    togglePlayback() {
+        this.isPlayingAll = !this.isPlayingAll;
+        const btn = document.getElementById('playPause');
+        if (this.isPlayingAll) {
+            btn.innerHTML = '<i class="fas fa-pause"></i>';
+            if (this.currentWordIndex === -1) this.currentWordIndex = 0;
+            this.playWord(this.currentWordIndex);
+        } else {
+            btn.innerHTML = '<i class="fas fa-play"></i>';
+            this.pausePlayback();
+        }
     }
 
     updateWordCount(count = null) {
