@@ -35,8 +35,13 @@ class WordLearner {
 
     async loadWords() {
         try {
-            const response = await fetch('all_words.json');
-            const data = await response.json();
+            let data;
+            if (typeof WORDS_DATA !== 'undefined') {
+                data = WORDS_DATA;
+            } else {
+                const response = await fetch('all_words.json');
+                data = await response.json();
+            }
 
             this.words = [];
 
@@ -98,6 +103,7 @@ class WordLearner {
         }
 
         this.currentMode = mode;
+        this.currentWordIndex = -1;
         this.stopPlayback();
 
         // UI transitions
@@ -120,7 +126,27 @@ class WordLearner {
             document.getElementById('hideChinese').checked = true;
         }
 
+        if (mode === 'shadowing') {
+            this.initVoiceRecorder();
+        }
+
         this.renderWords();
+    }
+
+    async initVoiceRecorder() {
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            this.mediaRecorder = new MediaRecorder(stream);
+            this.mediaRecorder.ondataavailable = e => this.audioChunks.push(e.data);
+            this.mediaRecorder.onstop = () => {
+                const audioBlob = new Blob(this.audioChunks, { type: 'audio/wav' });
+                this.userAudio = new Audio(URL.createObjectURL(audioBlob));
+                this.playUserRecording();
+            };
+        } catch (err) {
+            console.error("Mic access denied", err);
+            // Don't alert, just update status in UI if needed
+        }
     }
 
     updateQuizScore() {
@@ -145,8 +171,45 @@ class WordLearner {
     renderWords(filteredWords = null) {
         const wordsToRender = filteredWords || this.words;
         const container = document.getElementById('word-container');
-        container.style.display = 'grid';
 
+        // Check if we should show mode welcome screen
+        // If we are at index -1 (start of session) and not searching
+        if (this.currentMode !== 'home' && this.currentWordIndex === -1 && !filteredWords) {
+            container.style.display = 'block';
+            const modeConfig = {
+                'quiz': { title: 'Quiz Mode', icon: 'fa-vial', desc: 'Test your knowledge with 414 words.' },
+                'recall': { title: 'Recall Mode', icon: 'fa-brain', desc: 'Hide Chinese or Pinyin to practice your memory.' },
+                'shadowing': { title: 'Shadowing Mode', icon: 'fa-microphone', desc: 'Listen and record yourself to perfect your accent.' },
+                'standard': { title: 'Standard Mode', icon: 'fa-book-open', desc: 'Traditional flashcard style learning.' }
+            };
+
+            const config = modeConfig[this.currentMode];
+            container.innerHTML = `
+                <div class="welcome-screen" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh; text-align: center; background: #fdfbff; border-radius: 30px; box-shadow: inset 0 0 50px rgba(74,0,224,0.02);">
+                    <div style="width: 120px; height: 120px; background: rgba(74,0,224,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 30px;">
+                        <i class="fas ${config.icon}" style="font-size: 3.5em; color: #4a00e0;"></i>
+                    </div>
+                    <h2 style="font-size: 3em; color: #333; margin-bottom: 15px;">${config.title}</h2>
+                    <p style="font-size: 1.2em; color: #666; max-width: 500px; margin-bottom: 40px;">${config.desc}</p>
+                    <button id="startSessionBtn" style="background: linear-gradient(135deg, #4a00e0 0%, #8e2de2 100%); color: white; border: none; padding: 18px 50px; border-radius: 50px; font-size: 1.3em; font-weight: bold; cursor: pointer; transition: all 0.3s; box-shadow: 0 10px 25px rgba(74,0,224,0.3);">
+                        <i class="fas fa-play" style="margin-right: 12px;"></i> Start Session
+                    </button>
+                    <button id="showGridBtn" style="margin-top: 20px; background: none; border: none; color: #4a00e0; font-weight: 600; cursor: pointer; text-decoration: underline;">Or browse word list first</button>
+                </div>
+            `;
+
+            document.getElementById('startSessionBtn').onclick = () => {
+                this.currentWordIndex = 0;
+                this.playWord(this.words[0].id, true);
+            };
+            document.getElementById('showGridBtn').onclick = () => {
+                this.currentWordIndex = -2; // Special state to skip welcome screen
+                this.renderWords();
+            };
+            return;
+        }
+
+        container.style.display = 'grid';
         container.innerHTML = wordsToRender.map(word => {
             let blurPinyin = this.currentMode === 'recall' && document.getElementById('hidePinyin').checked ? 'blur-text' : '';
             let blurChinese = this.currentMode === 'recall' && document.getElementById('hideChinese').checked ? 'blur-text' : '';
@@ -203,11 +266,11 @@ class WordLearner {
             return;
         }
         if (this.currentMode === 'shadowing') {
-            this.showShadowingOverlay(word, autoPlay);
+            this.showShadowingOverlay(word, userInitiated || autoPlay);
             return;
         }
         if (this.currentMode === 'standard') {
-            this.showStandardOverlay(word, autoPlay);
+            this.showStandardOverlay(word, userInitiated || autoPlay);
             return;
         }
 
@@ -545,9 +608,8 @@ class WordLearner {
         overlay.classList.remove('hidden');
         this.updateStatusText(word, "Shadowing: Listen, then repeat!");
 
-        // Auto-start if looping
-        if (autoPlay && this.shadowingLoopActive) {
-            setTimeout(playAudioSequence, 500);
+        if (autoPlay) {
+            setTimeout(playAudioSequence, 100);
         }
     }
 
@@ -711,8 +773,8 @@ class WordLearner {
         overlay.classList.remove('hidden');
         this.updateStatusText(word, "Standard View");
 
-        if (autoPlay && this.standardLoopActive) {
-            setTimeout(playAudio, 500);
+        if (autoPlay) {
+            setTimeout(playAudio, 100);
         }
     }
     playUserRecording() {
@@ -744,6 +806,7 @@ class WordLearner {
     resetPlayButton() {
         const btn = document.getElementById('playPause');
         if (btn) btn.innerHTML = '<i class="fas fa-play"></i>';
+        this.isPlayingAll = false;
     }
 
     updateStatusText(word, overrideText = null) {
@@ -863,6 +926,13 @@ class WordLearner {
         document.getElementById('shuffle').addEventListener('click', () => {
             this.words.sort(() => Math.random() - 0.5);
             this.renderWords();
+
+            // If overlay is open, jump to the new first word
+            const overlays = ['standardOverlay', 'shadowingOverlay', 'recallOverlay', 'quizOverlay'];
+            const visibleOverlay = overlays.find(id => !document.getElementById(id).classList.contains('hidden'));
+            if (visibleOverlay && this.words.length > 0) {
+                this.playWord(this.words[0].id, true);
+            }
         });
 
         // Keyboard Shortcuts

@@ -1,3 +1,4 @@
+const WORDS_DATA = 
 {
   "word_000.jpg": {
     "pinyin": "yī gè shǒu zhǐ",
@@ -12,7 +13,8 @@
       4,
       3,
       3
-    ]
+    ],
+    "classifier": "个"
   },
   "word_001.jpg": {
     "pinyin": "liǎng zhī xiǎo māo",
@@ -28,7 +30,8 @@
       1,
       3,
       1
-    ]
+    ],
+    "classifier": "只"
   },
   "word_002.jpg": {
     "pinyin": "sān zhī wū guī",
@@ -44,7 +47,8 @@
       1,
       1,
       1
-    ]
+    ],
+    "classifier": "只"
   },
   "word_003.jpg": {
     "pinyin": "sì zhī xióng māo",
@@ -60,7 +64,8 @@
       1,
       2,
       1
-    ]
+    ],
+    "classifier": "只"
   },
   "word_004.jpg": {
     "pinyin": "wǔ zhī tuó niǎo",
@@ -76,7 +81,8 @@
       1,
       2,
       3
-    ]
+    ],
+    "classifier": "只"
   },
   "word_005.jpg": {
     "pinyin": "liù zhī bái tù",
@@ -92,7 +98,8 @@
       1,
       2,
       4
-    ]
+    ],
+    "classifier": "只"
   },
   "word_006.jpg": {
     "pinyin": "qī kē bái cài",
@@ -108,7 +115,8 @@
       1,
       2,
       4
-    ]
+    ],
+    "classifier": "棵"
   },
   "word_007.jpg": {
     "pinyin": "bā piàn xī guā",
@@ -123,7 +131,8 @@
       4,
       1,
       1
-    ]
+    ],
+    "classifier": "片"
   },
   "word_008.jpg": {
     "pinyin": "jiǔ tiáo jīn yú",
@@ -139,7 +148,8 @@
       2,
       1,
       2
-    ]
+    ],
+    "classifier": "条"
   },
   "word_009.jpg": {
     "pinyin": "shí zhī táo zi",
@@ -154,7 +164,8 @@
       1,
       2,
       5
-    ]
+    ],
+    "classifier": "个"
   },
   "word_010.jpg": {
     "pinyin": "cháng",
@@ -166,7 +177,8 @@
     ],
     "tones": [
       2
-    ]
+    ],
+    "classifier": null
   },
   "word_011.jpg": {
     "pinyin": "duǎn",
@@ -178,7 +190,8 @@
     ],
     "tones": [
       3
-    ]
+    ],
+    "classifier": null
   },
   "word_012.jpg": {
     "pinyin": "cū",
@@ -190,7 +203,8 @@
     ],
     "tones": [
       1
-    ]
+    ],
+    "classifier": null
   },
   "word_013.jpg": {
     "pinyin": "xì",
@@ -202,7 +216,8 @@
     ],
     "tones": [
       4
-    ]
+    ],
+    "classifier": null
   },
   "word_014.jpg": {
     "pinyin": "shàng",
@@ -213,7 +228,8 @@
     ],
     "tones": [
       4
-    ]
+    ],
+    "classifier": null
   },
   "word_015.jpg": {
     "pinyin": "xià",
@@ -224,7 +240,8 @@
     ],
     "tones": [
       4
-    ]
+    ],
+    "classifier": null
   },
   "word_016.jpg": {
     "pinyin": "zuǒ",
@@ -235,7 +252,8 @@
     ],
     "tones": [
       3
-    ]
+    ],
+    "classifier": null
   },
   "word_017.jpg": {
     "pinyin": "yòu",
@@ -246,7 +264,8 @@
     ],
     "tones": [
       4
-    ]
+    ],
+    "classifier": null
   },
   "word_018.jpg": {
     "pinyin": "dà",
@@ -258,7 +277,8 @@
     ],
     "tones": [
       4
-    ]
+    ],
+    "classifier": null
   },
   "word_019.jpg": {
     "pinyin": "xiǎo",
@@ -270,7 +290,8 @@
     ],
     "tones": [
       3
-    ]
+    ],
+    "classifier": null
   },
   "word_020.jpg": {
     "pinyin": "duō",
@@ -281,7 +302,8 @@
     ],
     "tones": [
       1
-    ]
+    ],
+    "classifier": null
   },
   "word_021.jpg": {
     "pinyin": "shǎo",
@@ -292,7 +314,8 @@
     ],
     "tones": [
       3
-    ]
+    ],
+    "classifier": null
   },
   "word_022.jpg": {
     "pinyin": "qī qiǎo bǎn",
@@ -306,7 +329,8 @@
       1,
       3,
       3
-    ]
+    ],
+    "classifier": null
   },
   "word_023.jpg": {
     "pinyin": "hóng",
@@ -317,7 +341,8 @@
     ],
     "tones": [
       2
-    ]
+    ],
+    "classifier": null
   },
   "word_024.jpg": {
     "pinyin": "chéng",
@@ -328,7 +353,8 @@
     ],
     "tones": [
       2
-    ]
+    ],
+    "classifier": null
   },
   "word_025.jpg": {
     "pinyin": "huáng",
@@ -339,7 +365,8 @@
     ],
     "tones": [
       2
-    ]
+    ],
+    "classifier": null
   },
   "word_026.jpg": {
     "pinyin": "lǜ",
@@ -350,7 +377,8 @@
     ],
     "tones": [
       4
-    ]
+    ],
+    "classifier": null
   },
   "word_027.jpg": {
     "pinyin": "qīng",
@@ -361,7 +389,8 @@
     ],
     "tones": [
       1
-    ]
+    ],
+    "classifier": null
   },
   "word_028.jpg": {
     "pinyin": "lán",
@@ -372,7 +401,8 @@
     ],
     "tones": [
       2
-    ]
+    ],
+    "classifier": null
   },
   "word_029.jpg": {
     "pinyin": "zǐ",
@@ -383,7 +413,8 @@
     ],
     "tones": [
       3
-    ]
+    ],
+    "classifier": null
   },
   "word_030.jpg": {
     "pinyin": "zhèng fāng xíng",
@@ -396,7 +427,8 @@
       4,
       1,
       2
-    ]
+    ],
+    "classifier": null
   },
   "word_031.jpg": {
     "pinyin": "cháng fāng xíng",
@@ -409,7 +441,8 @@
       2,
       1,
       2
-    ]
+    ],
+    "classifier": null
   },
   "word_032.jpg": {
     "pinyin": "sān jiǎo xíng",
@@ -422,7 +455,8 @@
       1,
       3,
       2
-    ]
+    ],
+    "classifier": null
   },
   "word_033.jpg": {
     "pinyin": "yuán xíng",
@@ -434,7 +468,8 @@
     "tones": [
       2,
       2
-    ]
+    ],
+    "classifier": null
   },
   "word_034.jpg": {
     "pinyin": "tī xíng",
@@ -446,7 +481,8 @@
     "tones": [
       1,
       2
-    ]
+    ],
+    "classifier": null
   },
   "word_035.jpg": {
     "pinyin": "tuǒ yuán xíng",
@@ -459,7 +495,8 @@
       3,
       2,
       2
-    ]
+    ],
+    "classifier": null
   },
   "word_036.jpg": {
     "pinyin": "zhōng guó",
@@ -471,7 +508,8 @@
     "tones": [
       1,
       2
-    ]
+    ],
+    "classifier": null
   },
   "word_037.jpg": {
     "pinyin": "guó qí",
@@ -483,7 +521,8 @@
     "tones": [
       2,
       2
-    ]
+    ],
+    "classifier": "面"
   },
   "word_038.jpg": {
     "pinyin": "guó huī",
@@ -495,7 +534,8 @@
     "tones": [
       2,
       1
-    ]
+    ],
+    "classifier": null
   },
   "word_039.jpg": {
     "pinyin": "tiān ān mén",
@@ -508,7 +548,8 @@
       1,
       1,
       2
-    ]
+    ],
+    "classifier": null
   },
   "word_040.jpg": {
     "pinyin": "jì niàn bēi",
@@ -521,7 +562,8 @@
       4,
       4,
       1
-    ]
+    ],
+    "classifier": "座"
   },
   "word_041.jpg": {
     "pinyin": "cǎi hóng",
@@ -534,7 +576,8 @@
     "tones": [
       3,
       2
-    ]
+    ],
+    "classifier": "道"
   },
   "word_042.jpg": {
     "pinyin": "chūn",
@@ -545,7 +588,8 @@
     ],
     "tones": [
       1
-    ]
+    ],
+    "classifier": null
   },
   "word_043.jpg": {
     "pinyin": "xià",
@@ -556,7 +600,8 @@
     ],
     "tones": [
       4
-    ]
+    ],
+    "classifier": null
   },
   "word_044.jpg": {
     "pinyin": "qiū",
@@ -567,7 +612,8 @@
     ],
     "tones": [
       1
-    ]
+    ],
+    "classifier": null
   },
   "word_045.jpg": {
     "pinyin": "dōng",
@@ -578,7 +624,8 @@
     ],
     "tones": [
       1
-    ]
+    ],
+    "classifier": null
   },
   "word_046.jpg": {
     "pinyin": "tài yang",
@@ -590,7 +637,8 @@
     "tones": [
       4,
       2
-    ]
+    ],
+    "classifier": "个"
   },
   "word_047.jpg": {
     "pinyin": "yuè liang",
@@ -602,7 +650,8 @@
     "tones": [
       4,
       5
-    ]
+    ],
+    "classifier": "个"
   },
   "word_048.jpg": {
     "pinyin": "xīng xing",
@@ -614,7 +663,8 @@
     "tones": [
       1,
       5
-    ]
+    ],
+    "classifier": "颗"
   },
   "word_049.jpg": {
     "pinyin": "fēng",
@@ -625,7 +675,8 @@
     ],
     "tones": [
       1
-    ]
+    ],
+    "classifier": null
   },
   "word_050.jpg": {
     "pinyin": "yǔ",
@@ -636,7 +687,8 @@
     ],
     "tones": [
       3
-    ]
+    ],
+    "classifier": "场"
   },
   "word_051.jpg": {
     "pinyin": "léi diàn",
@@ -648,7 +700,8 @@
     "tones": [
       2,
       4
-    ]
+    ],
+    "classifier": null
   },
   "word_052.jpg": {
     "pinyin": "shuǐ",
@@ -659,7 +712,8 @@
     ],
     "tones": [
       3
-    ]
+    ],
+    "classifier": "杯"
   },
   "word_053.jpg": {
     "pinyin": "huǒ",
@@ -670,7 +724,8 @@
     ],
     "tones": [
       3
-    ]
+    ],
+    "classifier": "团"
   },
   "word_054.jpg": {
     "pinyin": "hǎi",
@@ -681,7 +736,8 @@
     ],
     "tones": [
       3
-    ]
+    ],
+    "classifier": null
   },
   "word_055.jpg": {
     "pinyin": "hé",
@@ -692,7 +748,8 @@
     ],
     "tones": [
       2
-    ]
+    ],
+    "classifier": "条"
   },
   "word_056.jpg": {
     "pinyin": "hú",
@@ -703,7 +760,8 @@
     ],
     "tones": [
       2
-    ]
+    ],
+    "classifier": "个"
   },
   "word_057.jpg": {
     "pinyin": "sēn lín",
@@ -715,7 +773,8 @@
     "tones": [
       1,
       2
-    ]
+    ],
+    "classifier": "片"
   },
   "word_058.jpg": {
     "pinyin": "cǎo yuán",
@@ -727,7 +786,8 @@
     "tones": [
       3,
       2
-    ]
+    ],
+    "classifier": "片"
   },
   "word_059.jpg": {
     "pinyin": "shā mò",
@@ -739,7 +799,8 @@
     "tones": [
       1,
       4
-    ]
+    ],
+    "classifier": "片"
   },
   "word_060.jpg": {
     "pinyin": "tián yě",
@@ -751,7 +812,8 @@
     "tones": [
       2,
       3
-    ]
+    ],
+    "classifier": "片"
   },
   "word_061.jpg": {
     "pinyin": "pù bù",
@@ -763,7 +825,8 @@
     "tones": [
       4,
       4
-    ]
+    ],
+    "classifier": "道"
   },
   "word_062.jpg": {
     "pinyin": "shān",
@@ -774,7 +837,8 @@
     ],
     "tones": [
       1
-    ]
+    ],
+    "classifier": "座"
   },
   "word_063.jpg": {
     "pinyin": "yún",
@@ -785,7 +849,8 @@
     ],
     "tones": [
       2
-    ]
+    ],
+    "classifier": "朵"
   },
   "word_064.jpg": {
     "pinyin": "tíng",
@@ -796,7 +861,8 @@
     ],
     "tones": [
       2
-    ]
+    ],
+    "classifier": "座"
   },
   "word_065.jpg": {
     "pinyin": "fáng zi",
@@ -808,7 +874,8 @@
     "tones": [
       2,
       5
-    ]
+    ],
+    "classifier": "间"
   },
   "word_066.jpg": {
     "pinyin": "xué xiào",
@@ -820,7 +887,8 @@
     "tones": [
       2,
       4
-    ]
+    ],
+    "classifier": "所"
   },
   "word_067.jpg": {
     "pinyin": "yī yuàn",
@@ -832,7 +900,8 @@
     "tones": [
       1,
       4
-    ]
+    ],
+    "classifier": "所"
   },
   "word_068.jpg": {
     "pinyin": "yín háng",
@@ -844,7 +913,8 @@
     "tones": [
       2,
       2
-    ]
+    ],
+    "classifier": "家"
   },
   "word_069.jpg": {
     "pinyin": "yòu ér yuán",
@@ -857,7 +927,8 @@
       4,
       2,
       2
-    ]
+    ],
+    "classifier": "所"
   },
   "word_070.jpg": {
     "pinyin": "gōng yuán",
@@ -869,7 +940,8 @@
     "tones": [
       1,
       2
-    ]
+    ],
+    "classifier": "个"
   },
   "word_071.jpg": {
     "pinyin": "diàn shì tǎ",
@@ -882,7 +954,8 @@
       4,
       4,
       3
-    ]
+    ],
+    "classifier": "座"
   },
   "word_072.jpg": {
     "pinyin": "yóu yǒng chí",
@@ -895,7 +968,8 @@
       2,
       3,
       2
-    ]
+    ],
+    "classifier": "个"
   },
   "word_073.jpg": {
     "pinyin": "dà lóu",
@@ -907,7 +981,8 @@
     "tones": [
       4,
       2
-    ]
+    ],
+    "classifier": "栋"
   },
   "word_074.jpg": {
     "pinyin": "lì jiāo qiáo",
@@ -920,7 +995,8 @@
       4,
       1,
       2
-    ]
+    ],
+    "classifier": "座"
   },
   "word_075.jpg": {
     "pinyin": "gōng lù",
@@ -932,7 +1008,8 @@
     "tones": [
       1,
       4
-    ]
+    ],
+    "classifier": "条"
   },
   "word_076.jpg": {
     "pinyin": "cháng chéng",
@@ -944,7 +1021,8 @@
     "tones": [
       2,
       2
-    ]
+    ],
+    "classifier": null
   },
   "word_077.jpg": {
     "pinyin": "tǎ",
@@ -955,7 +1033,8 @@
     ],
     "tones": [
       3
-    ]
+    ],
+    "classifier": "座"
   },
   "word_078.jpg": {
     "pinyin": "yǎn",
@@ -966,7 +1045,8 @@
     ],
     "tones": [
       3
-    ]
+    ],
+    "classifier": "只"
   },
   "word_079.jpg": {
     "pinyin": "bí",
@@ -977,7 +1057,8 @@
     ],
     "tones": [
       2
-    ]
+    ],
+    "classifier": "个"
   },
   "word_080.jpg": {
     "pinyin": "ěr",
@@ -988,7 +1069,8 @@
     ],
     "tones": [
       3
-    ]
+    ],
+    "classifier": "只"
   },
   "word_081.jpg": {
     "pinyin": "kǒu",
@@ -999,7 +1081,8 @@
     ],
     "tones": [
       3
-    ]
+    ],
+    "classifier": "张"
   },
   "word_082.jpg": {
     "pinyin": "yá",
@@ -1010,7 +1093,8 @@
     ],
     "tones": [
       2
-    ]
+    ],
+    "classifier": "颗"
   },
   "word_083.jpg": {
     "pinyin": "shé",
@@ -1021,7 +1105,8 @@
     ],
     "tones": [
       2
-    ]
+    ],
+    "classifier": "条"
   },
   "word_084.jpg": {
     "pinyin": "zhǐ jia",
@@ -1033,7 +1118,8 @@
     "tones": [
       3,
       5
-    ]
+    ],
+    "classifier": "片"
   },
   "word_085.jpg": {
     "pinyin": "méi mao",
@@ -1045,7 +1131,8 @@
     "tones": [
       2,
       5
-    ]
+    ],
+    "classifier": "根"
   },
   "word_086.jpg": {
     "pinyin": "tóu fa",
@@ -1057,7 +1144,8 @@
     "tones": [
       2,
       5
-    ]
+    ],
+    "classifier": "根"
   },
   "word_087.jpg": {
     "pinyin": "jiǎo",
@@ -1068,7 +1156,8 @@
     ],
     "tones": [
       3
-    ]
+    ],
+    "classifier": "只"
   },
   "word_088.jpg": {
     "pinyin": "shǒu",
@@ -1079,7 +1168,8 @@
     ],
     "tones": [
       3
-    ]
+    ],
+    "classifier": "只"
   },
   "word_089.jpg": {
     "pinyin": "shǒu zhǐ",
@@ -1091,7 +1181,8 @@
     "tones": [
       3,
       3
-    ]
+    ],
+    "classifier": "根"
   },
   "word_090.jpg": {
     "pinyin": "yé ye",
@@ -1103,7 +1194,8 @@
     "tones": [
       2,
       5
-    ]
+    ],
+    "classifier": "个"
   },
   "word_091.jpg": {
     "pinyin": "nǎi nai",
@@ -1115,7 +1207,8 @@
     "tones": [
       3,
       5
-    ]
+    ],
+    "classifier": "个"
   },
   "word_092.jpg": {
     "pinyin": "bà ba",
@@ -1127,7 +1220,8 @@
     "tones": [
       4,
       5
-    ]
+    ],
+    "classifier": "个"
   },
   "word_093.jpg": {
     "pinyin": "mā ma",
@@ -1139,7 +1233,8 @@
     "tones": [
       1,
       5
-    ]
+    ],
+    "classifier": "个"
   },
   "word_094.jpg": {
     "pinyin": "gē ge",
@@ -1151,7 +1246,8 @@
     "tones": [
       1,
       5
-    ]
+    ],
+    "classifier": "个"
   },
   "word_095.jpg": {
     "pinyin": "jiě jie",
@@ -1163,7 +1259,8 @@
     "tones": [
       3,
       5
-    ]
+    ],
+    "classifier": "个"
   },
   "word_096.jpg": {
     "pinyin": "dì di",
@@ -1175,7 +1272,8 @@
     "tones": [
       4,
       5
-    ]
+    ],
+    "classifier": "个"
   },
   "word_097.jpg": {
     "pinyin": "mèi mei",
@@ -1187,7 +1285,8 @@
     "tones": [
       4,
       5
-    ]
+    ],
+    "classifier": "个"
   },
   "word_098.jpg": {
     "pinyin": "xué sheng",
@@ -1199,7 +1298,8 @@
     "tones": [
       2,
       5
-    ]
+    ],
+    "classifier": "个"
   },
   "word_099.jpg": {
     "pinyin": "tiào wǔ",
@@ -1211,7 +1311,8 @@
     "tones": [
       4,
       3
-    ]
+    ],
+    "classifier": null
   },
   "word_100.jpg": {
     "pinyin": "chàng gē",
@@ -1223,7 +1324,8 @@
     "tones": [
       4,
       1
-    ]
+    ],
+    "classifier": null
   },
   "word_101.jpg": {
     "pinyin": "huà huà",
@@ -1235,7 +1337,8 @@
     "tones": [
       4,
       4
-    ]
+    ],
+    "classifier": null
   },
   "word_102.jpg": {
     "pinyin": "tī qiú",
@@ -1248,7 +1351,8 @@
     "tones": [
       1,
       2
-    ]
+    ],
+    "classifier": null
   },
   "word_103.jpg": {
     "pinyin": "tiào shéng",
@@ -1261,7 +1365,8 @@
     "tones": [
       4,
       2
-    ]
+    ],
+    "classifier": null
   },
   "word_104.jpg": {
     "pinyin": "yóu yǒng",
@@ -1274,7 +1379,8 @@
     "tones": [
       2,
       3
-    ]
+    ],
+    "classifier": null
   },
   "word_105.jpg": {
     "pinyin": "pá shān",
@@ -1286,7 +1392,8 @@
     "tones": [
       2,
       1
-    ]
+    ],
+    "classifier": null
   },
   "word_106.jpg": {
     "pinyin": "qí chē",
@@ -1298,7 +1405,8 @@
     "tones": [
       2,
       1
-    ]
+    ],
+    "classifier": null
   },
   "word_107.jpg": {
     "pinyin": "bá hé",
@@ -1310,7 +1418,8 @@
     "tones": [
       2,
       2
-    ]
+    ],
+    "classifier": null
   },
   "word_108.jpg": {
     "pinyin": "tiào gāo",
@@ -1322,7 +1431,8 @@
     "tones": [
       4,
       1
-    ]
+    ],
+    "classifier": null
   },
   "word_109.jpg": {
     "pinyin": "tiào yuǎn",
@@ -1334,7 +1444,8 @@
     "tones": [
       4,
       3
-    ]
+    ],
+    "classifier": null
   },
   "word_110.jpg": {
     "pinyin": "zuò cāo",
@@ -1346,7 +1457,8 @@
     "tones": [
       4,
       1
-    ]
+    ],
+    "classifier": null
   },
   "word_111.jpg": {
     "pinyin": "lì",
@@ -1357,7 +1469,8 @@
     ],
     "tones": [
       4
-    ]
+    ],
+    "classifier": null
   },
   "word_112.jpg": {
     "pinyin": "zuò",
@@ -1368,7 +1481,8 @@
     ],
     "tones": [
       4
-    ]
+    ],
+    "classifier": null
   },
   "word_113.jpg": {
     "pinyin": "zǒu",
@@ -1379,7 +1493,8 @@
     ],
     "tones": [
       3
-    ]
+    ],
+    "classifier": null
   },
   "word_114.jpg": {
     "pinyin": "shuā yá",
@@ -1391,7 +1506,8 @@
     "tones": [
       1,
       2
-    ]
+    ],
+    "classifier": null
   },
   "word_115.jpg": {
     "pinyin": "xǐ liǎn",
@@ -1403,7 +1519,8 @@
     "tones": [
       3,
       3
-    ]
+    ],
+    "classifier": null
   },
   "word_116.jpg": {
     "pinyin": "shuì jiào",
@@ -1415,7 +1532,8 @@
     "tones": [
       4,
       4
-    ]
+    ],
+    "classifier": null
   },
   "word_117.jpg": {
     "pinyin": "chuān yī",
@@ -1427,7 +1545,8 @@
     "tones": [
       1,
       1
-    ]
+    ],
+    "classifier": null
   },
   "word_118.jpg": {
     "pinyin": "chī fàn",
@@ -1439,7 +1558,8 @@
     "tones": [
       1,
       4
-    ]
+    ],
+    "classifier": null
   },
   "word_119.jpg": {
     "pinyin": "hē shuǐ",
@@ -1451,7 +1571,8 @@
     "tones": [
       1,
       3
-    ]
+    ],
+    "classifier": null
   },
   "word_120.jpg": {
     "pinyin": "kàn shū",
@@ -1463,7 +1584,8 @@
     "tones": [
       4,
       1
-    ]
+    ],
+    "classifier": null
   },
   "word_121.jpg": {
     "pinyin": "xiě zì",
@@ -1475,7 +1597,8 @@
     "tones": [
       3,
       4
-    ]
+    ],
+    "classifier": null
   },
   "word_122.jpg": {
     "pinyin": "xǐ wǎn",
@@ -1487,7 +1610,8 @@
     "tones": [
       3,
       3
-    ]
+    ],
+    "classifier": null
   },
   "word_123.jpg": {
     "pinyin": "sǎo dì",
@@ -1499,7 +1623,8 @@
     "tones": [
       3,
       4
-    ]
+    ],
+    "classifier": null
   },
   "word_124.jpg": {
     "pinyin": "jiāo huā",
@@ -1511,7 +1636,8 @@
     "tones": [
       1,
       1
-    ]
+    ],
+    "classifier": null
   },
   "word_125.jpg": {
     "pinyin": "zhí shù",
@@ -1523,7 +1649,8 @@
     "tones": [
       2,
       4
-    ]
+    ],
+    "classifier": null
   },
   "word_126.jpg": {
     "pinyin": "jì zhě",
@@ -1535,7 +1662,8 @@
     "tones": [
       4,
       3
-    ]
+    ],
+    "classifier": "个"
   },
   "word_127.jpg": {
     "pinyin": "jià shǐ yuán",
@@ -1548,7 +1676,8 @@
       4,
       3,
       2
-    ]
+    ],
+    "classifier": "个"
   },
   "word_128.jpg": {
     "pinyin": "jiě fàng jūn",
@@ -1561,7 +1690,8 @@
       3,
       4,
       1
-    ]
+    ],
+    "classifier": "个"
   },
   "word_129.jpg": {
     "pinyin": "kōng jūn",
@@ -1573,7 +1703,8 @@
     "tones": [
       1,
       1
-    ]
+    ],
+    "classifier": "个"
   },
   "word_130.jpg": {
     "pinyin": "hǎi jūn",
@@ -1585,7 +1716,8 @@
     "tones": [
       3,
       1
-    ]
+    ],
+    "classifier": "个"
   },
   "word_131.jpg": {
     "pinyin": "jǐng chá",
@@ -1597,7 +1729,8 @@
     "tones": [
       3,
       2
-    ]
+    ],
+    "classifier": "个"
   },
   "word_132.jpg": {
     "pinyin": "gōng rén",
@@ -1609,7 +1742,8 @@
     "tones": [
       1,
       2
-    ]
+    ],
+    "classifier": "个"
   },
   "word_133.jpg": {
     "pinyin": "nóng mín",
@@ -1621,7 +1755,8 @@
     "tones": [
       2,
       2
-    ]
+    ],
+    "classifier": "个"
   },
   "word_134.jpg": {
     "pinyin": "lǎo shī",
@@ -1633,7 +1768,8 @@
     "tones": [
       3,
       1
-    ]
+    ],
+    "classifier": "个"
   },
   "word_135.jpg": {
     "pinyin": "yī sheng",
@@ -1645,7 +1781,8 @@
     "tones": [
       1,
       5
-    ]
+    ],
+    "classifier": "个"
   },
   "word_136.jpg": {
     "pinyin": "kē xué jiā",
@@ -1658,7 +1795,8 @@
       1,
       2,
       1
-    ]
+    ],
+    "classifier": "个"
   },
   "word_137.jpg": {
     "pinyin": "yùn dòng yuán",
@@ -1671,7 +1809,8 @@
       4,
       4,
       2
-    ]
+    ],
+    "classifier": "个"
   },
   "word_138.jpg": {
     "pinyin": "xiàng rì kuí",
@@ -1685,7 +1824,8 @@
       4,
       4,
       2
-    ]
+    ],
+    "classifier": "棵"
   },
   "word_139.jpg": {
     "pinyin": "mǔ dān",
@@ -1698,7 +1838,8 @@
     "tones": [
       3,
       1
-    ]
+    ],
+    "classifier": "朵"
   },
   "word_140.jpg": {
     "pinyin": "qiān niú huā",
@@ -1712,7 +1853,8 @@
       1,
       2,
       1
-    ]
+    ],
+    "classifier": "朵"
   },
   "word_141.jpg": {
     "pinyin": "méi huā",
@@ -1725,7 +1867,8 @@
     "tones": [
       2,
       1
-    ]
+    ],
+    "classifier": "朵"
   },
   "word_142.jpg": {
     "pinyin": "jú huā",
@@ -1738,7 +1881,8 @@
     "tones": [
       2,
       1
-    ]
+    ],
+    "classifier": "朵"
   },
   "word_143.jpg": {
     "pinyin": "hé huā",
@@ -1751,7 +1895,8 @@
     "tones": [
       2,
       1
-    ]
+    ],
+    "classifier": "朵"
   },
   "word_144.jpg": {
     "pinyin": "zhuō zi",
@@ -1763,7 +1908,8 @@
     "tones": [
       1,
       5
-    ]
+    ],
+    "classifier": "张"
   },
   "word_145.jpg": {
     "pinyin": "yǐ zi",
@@ -1775,7 +1921,8 @@
     "tones": [
       3,
       5
-    ]
+    ],
+    "classifier": "把"
   },
   "word_146.jpg": {
     "pinyin": "shā fā",
@@ -1787,7 +1934,8 @@
     "tones": [
       1,
       1
-    ]
+    ],
+    "classifier": "张"
   },
   "word_147.jpg": {
     "pinyin": "chuáng",
@@ -1798,7 +1946,8 @@
     ],
     "tones": [
       2
-    ]
+    ],
+    "classifier": "张"
   },
   "word_148.jpg": {
     "pinyin": "bèi zi",
@@ -1810,7 +1959,8 @@
     "tones": [
       4,
       5
-    ]
+    ],
+    "classifier": "条"
   },
   "word_149.jpg": {
     "pinyin": "shàn zi",
@@ -1822,7 +1972,8 @@
     "tones": [
       4,
       5
-    ]
+    ],
+    "classifier": "把"
   },
   "word_150.jpg": {
     "pinyin": "shuǐ xiān",
@@ -1835,7 +1986,8 @@
     "tones": [
       3,
       1
-    ]
+    ],
+    "classifier": "株"
   },
   "word_151.jpg": {
     "pinyin": "yù lán huā",
@@ -1849,7 +2001,8 @@
       4,
       2,
       1
-    ]
+    ],
+    "classifier": "朵"
   },
   "word_152.jpg": {
     "pinyin": "chá huā",
@@ -1862,7 +2015,8 @@
     "tones": [
       2,
       1
-    ]
+    ],
+    "classifier": "朵"
   },
   "word_153.jpg": {
     "pinyin": "yù jīn xiāng",
@@ -1876,7 +2030,8 @@
       4,
       1,
       1
-    ]
+    ],
+    "classifier": "朵"
   },
   "word_154.jpg": {
     "pinyin": "sōng shù",
@@ -1889,7 +2044,8 @@
     "tones": [
       1,
       4
-    ]
+    ],
+    "classifier": "棵"
   },
   "word_155.jpg": {
     "pinyin": "liǔ shù",
@@ -1902,7 +2058,8 @@
     "tones": [
       3,
       4
-    ]
+    ],
+    "classifier": "棵"
   },
   "word_156.jpg": {
     "pinyin": "mián huā",
@@ -1914,7 +2071,8 @@
     "tones": [
       2,
       5
-    ]
+    ],
+    "classifier": "棵"
   },
   "word_157.jpg": {
     "pinyin": "zhú zi",
@@ -1926,7 +2084,8 @@
     "tones": [
       2,
       5
-    ]
+    ],
+    "classifier": "根"
   },
   "word_158.jpg": {
     "pinyin": "mó gu",
@@ -1939,7 +2098,8 @@
     "tones": [
       2,
       5
-    ]
+    ],
+    "classifier": "个"
   },
   "word_159.jpg": {
     "pinyin": "gān zhè",
@@ -1951,7 +2111,8 @@
     "tones": [
       1,
       4
-    ]
+    ],
+    "classifier": "根"
   },
   "word_160.jpg": {
     "pinyin": "shuǐ dào",
@@ -1963,7 +2124,8 @@
     "tones": [
       3,
       4
-    ]
+    ],
+    "classifier": "棵"
   },
   "word_161.jpg": {
     "pinyin": "xiǎo mài",
@@ -1975,7 +2137,8 @@
     "tones": [
       3,
       4
-    ]
+    ],
+    "classifier": "棵"
   },
   "word_162.jpg": {
     "pinyin": "gāo liáng",
@@ -1987,7 +2150,8 @@
     "tones": [
       1,
       2
-    ]
+    ],
+    "classifier": "棵"
   },
   "word_163.jpg": {
     "pinyin": "yù mǐ",
@@ -2000,7 +2164,8 @@
     "tones": [
       4,
       3
-    ]
+    ],
+    "classifier": "棵"
   },
   "word_164.jpg": {
     "pinyin": "hǎi dài",
@@ -2013,7 +2178,8 @@
     "tones": [
       3,
       4
-    ]
+    ],
+    "classifier": "条"
   },
   "word_165.jpg": {
     "pinyin": "dà suàn",
@@ -2025,7 +2191,8 @@
     "tones": [
       4,
       4
-    ]
+    ],
+    "classifier": "头"
   },
   "word_166.jpg": {
     "pinyin": "zhú sǔn",
@@ -2037,7 +2204,8 @@
     "tones": [
       2,
       3
-    ]
+    ],
+    "classifier": "根"
   },
   "word_167.jpg": {
     "pinyin": "lì zi",
@@ -2049,7 +2217,8 @@
     "tones": [
       4,
       5
-    ]
+    ],
+    "classifier": "个"
   },
   "word_168.jpg": {
     "pinyin": "pú tao",
@@ -2061,7 +2230,8 @@
     "tones": [
       2,
       5
-    ]
+    ],
+    "classifier": "串"
   },
   "word_169.jpg": {
     "pinyin": "píng guǒ",
@@ -2073,7 +2243,8 @@
     "tones": [
       2,
       3
-    ]
+    ],
+    "classifier": "个"
   },
   "word_170.jpg": {
     "pinyin": "xiāng jiāo",
@@ -2085,7 +2256,8 @@
     "tones": [
       1,
       1
-    ]
+    ],
+    "classifier": "根"
   },
   "word_171.jpg": {
     "pinyin": "lí zi",
@@ -2097,7 +2269,8 @@
     "tones": [
       2,
       5
-    ]
+    ],
+    "classifier": "个"
   },
   "word_172.jpg": {
     "pinyin": "yīng táo",
@@ -2109,7 +2282,8 @@
     "tones": [
       1,
       2
-    ]
+    ],
+    "classifier": "颗"
   },
   "word_173.jpg": {
     "pinyin": "shí liu",
@@ -2121,7 +2295,8 @@
     "tones": [
       2,
       5
-    ]
+    ],
+    "classifier": "个"
   },
   "word_174.jpg": {
     "pinyin": "táo zi",
@@ -2133,7 +2308,8 @@
     "tones": [
       2,
       5
-    ]
+    ],
+    "classifier": "个"
   },
   "word_175.jpg": {
     "pinyin": "xī guā",
@@ -2145,7 +2321,8 @@
     "tones": [
       1,
       1
-    ]
+    ],
+    "classifier": "个"
   },
   "word_176.jpg": {
     "pinyin": "lì zhī",
@@ -2157,7 +2334,8 @@
     "tones": [
       4,
       1
-    ]
+    ],
+    "classifier": "颗"
   },
   "word_177.jpg": {
     "pinyin": "shì zi",
@@ -2169,7 +2347,8 @@
     "tones": [
       4,
       5
-    ]
+    ],
+    "classifier": "个"
   },
   "word_178.jpg": {
     "pinyin": "luó bo",
@@ -2181,7 +2360,8 @@
     "tones": [
       2,
       5
-    ]
+    ],
+    "classifier": "根"
   },
   "word_179.jpg": {
     "pinyin": "ǒu",
@@ -2192,7 +2372,8 @@
     ],
     "tones": [
       3
-    ]
+    ],
+    "classifier": "节"
   },
   "word_180.jpg": {
     "pinyin": "dōng guā",
@@ -2204,7 +2385,8 @@
     "tones": [
       1,
       1
-    ]
+    ],
+    "classifier": "个"
   },
   "word_181.jpg": {
     "pinyin": "nán guā",
@@ -2216,7 +2398,8 @@
     "tones": [
       2,
       1
-    ]
+    ],
+    "classifier": "个"
   },
   "word_182.jpg": {
     "pinyin": "qié zi",
@@ -2228,7 +2411,8 @@
     "tones": [
       2,
       5
-    ]
+    ],
+    "classifier": "个"
   },
   "word_183.jpg": {
     "pinyin": "qīng cài",
@@ -2240,7 +2424,8 @@
     "tones": [
       1,
       4
-    ]
+    ],
+    "classifier": "棵"
   },
   "word_184.jpg": {
     "pinyin": "bō cài",
@@ -2252,7 +2437,8 @@
     "tones": [
       1,
       4
-    ]
+    ],
+    "classifier": "棵"
   },
   "word_185.jpg": {
     "pinyin": "cōng",
@@ -2263,7 +2449,8 @@
     ],
     "tones": [
       1
-    ]
+    ],
+    "classifier": "根"
   },
   "word_186.jpg": {
     "pinyin": "bái cài",
@@ -2275,7 +2462,8 @@
     "tones": [
       2,
       4
-    ]
+    ],
+    "classifier": "棵"
   },
   "word_187.jpg": {
     "pinyin": "huā cài",
@@ -2287,7 +2475,8 @@
     "tones": [
       1,
       4
-    ]
+    ],
+    "classifier": "棵"
   },
   "word_188.jpg": {
     "pinyin": "huáng guā",
@@ -2299,7 +2488,8 @@
     "tones": [
       2,
       1
-    ]
+    ],
+    "classifier": "根"
   },
   "word_189.jpg": {
     "pinyin": "là jiāo",
@@ -2311,7 +2501,8 @@
     "tones": [
       4,
       1
-    ]
+    ],
+    "classifier": "个"
   },
   "word_190.jpg": {
     "pinyin": "dòu jiǎo",
@@ -2323,7 +2514,8 @@
     "tones": [
       4,
       3
-    ]
+    ],
+    "classifier": "根"
   },
   "word_191.jpg": {
     "pinyin": "yáng cōng",
@@ -2335,7 +2527,8 @@
     "tones": [
       2,
       1
-    ]
+    ],
+    "classifier": "个"
   },
   "word_192.jpg": {
     "pinyin": "qiū qiān",
@@ -2347,7 +2540,8 @@
     "tones": [
       1,
       1
-    ]
+    ],
+    "classifier": "个"
   },
   "word_193.jpg": {
     "pinyin": "huá tī",
@@ -2359,7 +2553,8 @@
     "tones": [
       2,
       1
-    ]
+    ],
+    "classifier": "个"
   },
   "word_194.jpg": {
     "pinyin": "qiāo qiāo bǎn",
@@ -2372,7 +2567,8 @@
       1,
       1,
       3
-    ]
+    ],
+    "classifier": "个"
   },
   "word_195.jpg": {
     "pinyin": "mù mǎ",
@@ -2384,7 +2580,8 @@
     "tones": [
       4,
       3
-    ]
+    ],
+    "classifier": "匹"
   },
   "word_196.jpg": {
     "pinyin": "jī mù",
@@ -2396,7 +2593,8 @@
     "tones": [
       1,
       4
-    ]
+    ],
+    "classifier": "块"
   },
   "word_197.jpg": {
     "pinyin": "huǒ chái",
@@ -2408,7 +2606,8 @@
     "tones": [
       3,
       2
-    ]
+    ],
+    "classifier": "根"
   },
   "word_198.jpg": {
     "pinyin": "là zhú",
@@ -2420,7 +2619,8 @@
     "tones": [
       4,
       2
-    ]
+    ],
+    "classifier": "根"
   },
   "word_199.jpg": {
     "pinyin": "zhuàn bǐ dāo",
@@ -2433,7 +2633,8 @@
       4,
       3,
       1
-    ]
+    ],
+    "classifier": "把"
   },
   "word_200.jpg": {
     "pinyin": "bǐ",
@@ -2444,7 +2645,8 @@
     ],
     "tones": [
       3
-    ]
+    ],
+    "classifier": "支"
   },
   "word_201.jpg": {
     "pinyin": "zhǐ",
@@ -2455,7 +2657,8 @@
     ],
     "tones": [
       3
-    ]
+    ],
+    "classifier": "张"
   },
   "word_202.jpg": {
     "pinyin": "mò shuǐ",
@@ -2467,7 +2670,8 @@
     "tones": [
       4,
       3
-    ]
+    ],
+    "classifier": "瓶"
   },
   "word_203.jpg": {
     "pinyin": "chǐ",
@@ -2478,7 +2682,8 @@
     ],
     "tones": [
       3
-    ]
+    ],
+    "classifier": "把"
   },
   "word_204.jpg": {
     "pinyin": "yī",
@@ -2489,7 +2694,8 @@
     ],
     "tones": [
       1
-    ]
+    ],
+    "classifier": "件"
   },
   "word_205.jpg": {
     "pinyin": "qún",
@@ -2500,7 +2706,8 @@
     ],
     "tones": [
       2
-    ]
+    ],
+    "classifier": "条"
   },
   "word_206.jpg": {
     "pinyin": "kù",
@@ -2511,7 +2718,8 @@
     ],
     "tones": [
       4
-    ]
+    ],
+    "classifier": "条"
   },
   "word_207.jpg": {
     "pinyin": "mào zi",
@@ -2523,7 +2731,8 @@
     "tones": [
       4,
       5
-    ]
+    ],
+    "classifier": "顶"
   },
   "word_208.jpg": {
     "pinyin": "wà zi",
@@ -2535,7 +2744,8 @@
     "tones": [
       4,
       5
-    ]
+    ],
+    "classifier": "双"
   },
   "word_209.jpg": {
     "pinyin": "zhěn tou",
@@ -2547,7 +2757,8 @@
     "tones": [
       3,
       5
-    ]
+    ],
+    "classifier": "个"
   },
   "word_210.jpg": {
     "pinyin": "bēi zi",
@@ -2559,7 +2770,8 @@
     "tones": [
       1,
       5
-    ]
+    ],
+    "classifier": "个"
   },
   "word_211.jpg": {
     "pinyin": "shū bāo",
@@ -2571,7 +2783,8 @@
     "tones": [
       1,
       1
-    ]
+    ],
+    "classifier": "个"
   },
   "word_212.jpg": {
     "pinyin": "shǒu tào",
@@ -2583,7 +2796,8 @@
     "tones": [
       3,
       4
-    ]
+    ],
+    "classifier": "副"
   },
   "word_213.jpg": {
     "pinyin": "xié",
@@ -2594,7 +2808,8 @@
     ],
     "tones": [
       2
-    ]
+    ],
+    "classifier": "双"
   },
   "word_214.jpg": {
     "pinyin": "dāo",
@@ -2605,7 +2820,8 @@
     ],
     "tones": [
       1
-    ]
+    ],
+    "classifier": "把"
   },
   "word_215.jpg": {
     "pinyin": "jiǎn dāo",
@@ -2617,7 +2833,8 @@
     "tones": [
       3,
       1
-    ]
+    ],
+    "classifier": "把"
   },
   "word_216.jpg": {
     "pinyin": "qián zi",
@@ -2629,7 +2846,8 @@
     "tones": [
       2,
       5
-    ]
+    ],
+    "classifier": "把"
   },
   "word_217.jpg": {
     "pinyin": "jù zi",
@@ -2641,7 +2859,8 @@
     "tones": [
       4,
       5
-    ]
+    ],
+    "classifier": "把"
   },
   "word_218.jpg": {
     "pinyin": "fǔ tóu",
@@ -2653,7 +2872,8 @@
     "tones": [
       3,
       2
-    ]
+    ],
+    "classifier": "把"
   },
   "word_219.jpg": {
     "pinyin": "láng tou",
@@ -2665,7 +2885,8 @@
     "tones": [
       2,
       5
-    ]
+    ],
+    "classifier": "把"
   },
   "word_220.jpg": {
     "pinyin": "yào shi",
@@ -2677,7 +2898,8 @@
     "tones": [
       4,
       5
-    ]
+    ],
+    "classifier": "把"
   },
   "word_221.jpg": {
     "pinyin": "suǒ",
@@ -2688,7 +2910,8 @@
     ],
     "tones": [
       3
-    ]
+    ],
+    "classifier": "把"
   },
   "word_222.jpg": {
     "pinyin": "lián dāo",
@@ -2700,7 +2923,8 @@
     "tones": [
       2,
       1
-    ]
+    ],
+    "classifier": "把"
   },
   "word_223.jpg": {
     "pinyin": "chú tou",
@@ -2712,7 +2936,8 @@
     "tones": [
       2,
       5
-    ]
+    ],
+    "classifier": "把"
   },
   "word_224.jpg": {
     "pinyin": "tiě qiāo",
@@ -2724,7 +2949,8 @@
     "tones": [
       3,
       1
-    ]
+    ],
+    "classifier": "把"
   },
   "word_225.jpg": {
     "pinyin": "gǎo",
@@ -2735,7 +2961,8 @@
     ],
     "tones": [
       3
-    ]
+    ],
+    "classifier": "把"
   },
   "word_226.jpg": {
     "pinyin": "sào zhou",
@@ -2747,7 +2974,8 @@
     "tones": [
       4,
       5
-    ]
+    ],
+    "classifier": "把"
   },
   "word_227.jpg": {
     "pinyin": "bò ji",
@@ -2759,7 +2987,8 @@
     "tones": [
       4,
       1
-    ]
+    ],
+    "classifier": "个"
   },
   "word_228.jpg": {
     "pinyin": "wǎn",
@@ -2770,7 +2999,8 @@
     ],
     "tones": [
       3
-    ]
+    ],
+    "classifier": "个"
   },
   "word_229.jpg": {
     "pinyin": "kuài zi",
@@ -2782,7 +3012,8 @@
     "tones": [
       4,
       5
-    ]
+    ],
+    "classifier": "双"
   },
   "word_230.jpg": {
     "pinyin": "tiáo gēng",
@@ -2794,7 +3025,8 @@
     "tones": [
       2,
       1
-    ]
+    ],
+    "classifier": "把"
   },
   "word_231.jpg": {
     "pinyin": "sháo",
@@ -2805,7 +3037,8 @@
     ],
     "tones": [
       2
-    ]
+    ],
+    "classifier": "把"
   },
   "word_232.jpg": {
     "pinyin": "nuǎn shuǐ píng",
@@ -2818,7 +3051,8 @@
       3,
       3,
       2
-    ]
+    ],
+    "classifier": "个"
   },
   "word_233.jpg": {
     "pinyin": "guō",
@@ -2829,7 +3063,8 @@
     ],
     "tones": [
       1
-    ]
+    ],
+    "classifier": "口"
   },
   "word_234.jpg": {
     "pinyin": "liǎn pén",
@@ -2841,7 +3076,8 @@
     "tones": [
       3,
       2
-    ]
+    ],
+    "classifier": "个"
   },
   "word_235.jpg": {
     "pinyin": "jìng zi",
@@ -2853,7 +3089,8 @@
     "tones": [
       4,
       5
-    ]
+    ],
+    "classifier": "面"
   },
   "word_236.jpg": {
     "pinyin": "yá gāo",
@@ -2865,7 +3102,8 @@
     "tones": [
       2,
       1
-    ]
+    ],
+    "classifier": "支"
   },
   "word_237.jpg": {
     "pinyin": "yá shuā",
@@ -2877,7 +3115,8 @@
     "tones": [
       2,
       1
-    ]
+    ],
+    "classifier": "把"
   },
   "word_238.jpg": {
     "pinyin": "máo jīn",
@@ -2889,7 +3128,8 @@
     "tones": [
       2,
       1
-    ]
+    ],
+    "classifier": "条"
   },
   "word_239.jpg": {
     "pinyin": "xiāng zào",
@@ -2901,7 +3141,8 @@
     "tones": [
       1,
       4
-    ]
+    ],
+    "classifier": "块"
   },
   "word_240.jpg": {
     "pinyin": "shuā zi",
@@ -2913,7 +3154,8 @@
     "tones": [
       1,
       5
-    ]
+    ],
+    "classifier": "把"
   },
   "word_241.jpg": {
     "pinyin": "huà",
@@ -2924,7 +3166,8 @@
     ],
     "tones": [
       4
-    ]
+    ],
+    "classifier": "幅"
   },
   "word_242.jpg": {
     "pinyin": "mén",
@@ -2935,7 +3178,8 @@
     ],
     "tones": [
       2
-    ]
+    ],
+    "classifier": "扇"
   },
   "word_243.jpg": {
     "pinyin": "chuāng",
@@ -2946,7 +3190,8 @@
     ],
     "tones": [
       1
-    ]
+    ],
+    "classifier": "扇"
   },
   "word_244.jpg": {
     "pinyin": "diàn yùn dǒu",
@@ -2959,7 +3204,8 @@
       4,
       4,
       3
-    ]
+    ],
+    "classifier": "个"
   },
   "word_245.jpg": {
     "pinyin": "diàn shuǐ hú",
@@ -2972,7 +3218,8 @@
       4,
       3,
       2
-    ]
+    ],
+    "classifier": "个"
   },
   "word_246.jpg": {
     "pinyin": "gāng qín",
@@ -2984,7 +3231,8 @@
     "tones": [
       1,
       2
-    ]
+    ],
+    "classifier": "架"
   },
   "word_247.jpg": {
     "pinyin": "diàn zǐ qín",
@@ -2997,7 +3245,8 @@
       4,
       3,
       2
-    ]
+    ],
+    "classifier": "架"
   },
   "word_248.jpg": {
     "pinyin": "xiǎo tí qín",
@@ -3010,7 +3259,8 @@
       3,
       2,
       2
-    ]
+    ],
+    "classifier": "把"
   },
   "word_249.jpg": {
     "pinyin": "gǔ zhēng",
@@ -3022,7 +3272,8 @@
     "tones": [
       3,
       1
-    ]
+    ],
+    "classifier": "架"
   },
   "word_250.jpg": {
     "pinyin": "hú qín",
@@ -3034,7 +3285,8 @@
     "tones": [
       2,
       2
-    ]
+    ],
+    "classifier": "把"
   },
   "word_251.jpg": {
     "pinyin": "dí zi",
@@ -3046,7 +3298,8 @@
     "tones": [
       2,
       5
-    ]
+    ],
+    "classifier": "支"
   },
   "word_252.jpg": {
     "pinyin": "luó",
@@ -3057,7 +3310,8 @@
     ],
     "tones": [
       2
-    ]
+    ],
+    "classifier": "面"
   },
   "word_253.jpg": {
     "pinyin": "gǔ",
@@ -3068,7 +3322,8 @@
     ],
     "tones": [
       3
-    ]
+    ],
+    "classifier": "面"
   },
   "word_254.jpg": {
     "pinyin": "lǎ ba",
@@ -3080,7 +3335,8 @@
     "tones": [
       3,
       5
-    ]
+    ],
+    "classifier": "个"
   },
   "word_255.jpg": {
     "pinyin": "tái dēng",
@@ -3092,7 +3348,8 @@
     "tones": [
       2,
       1
-    ]
+    ],
+    "classifier": "盏"
   },
   "word_256.jpg": {
     "pinyin": "bì dēng",
@@ -3104,7 +3361,8 @@
     "tones": [
       4,
       1
-    ]
+    ],
+    "classifier": "盏"
   },
   "word_257.jpg": {
     "pinyin": "diàn dēng pào",
@@ -3117,7 +3375,8 @@
       4,
       1,
       4
-    ]
+    ],
+    "classifier": "个"
   },
   "word_258.jpg": {
     "pinyin": "diàn shì jī",
@@ -3130,7 +3389,8 @@
       4,
       4,
       1
-    ]
+    ],
+    "classifier": "台"
   },
   "word_259.jpg": {
     "pinyin": "diàn bīng xiāng",
@@ -3143,7 +3403,8 @@
       4,
       1,
       1
-    ]
+    ],
+    "classifier": "台"
   },
   "word_260.jpg": {
     "pinyin": "kōng tiáo",
@@ -3155,7 +3416,8 @@
     "tones": [
       1,
       2
-    ]
+    ],
+    "classifier": "台"
   },
   "word_261.jpg": {
     "pinyin": "diàn nǎo",
@@ -3167,7 +3429,8 @@
     "tones": [
       4,
       3
-    ]
+    ],
+    "classifier": "台"
   },
   "word_262.jpg": {
     "pinyin": "yǐng dié jī",
@@ -3180,7 +3443,8 @@
       3,
       2,
       1
-    ]
+    ],
+    "classifier": "台"
   },
   "word_263.jpg": {
     "pinyin": "diàn fàn guō",
@@ -3193,7 +3457,8 @@
       4,
       4,
       1
-    ]
+    ],
+    "classifier": "个"
   },
   "word_264.jpg": {
     "pinyin": "xǐ yī jī",
@@ -3206,7 +3471,8 @@
       3,
       1,
       1
-    ]
+    ],
+    "classifier": "台"
   },
   "word_265.jpg": {
     "pinyin": "zhào xiàng jī",
@@ -3219,7 +3485,8 @@
       4,
       4,
       1
-    ]
+    ],
+    "classifier": "台"
   },
   "word_266.jpg": {
     "pinyin": "yīn xiǎng",
@@ -3231,7 +3498,8 @@
     "tones": [
       1,
       3
-    ]
+    ],
+    "classifier": "套"
   },
   "word_267.jpg": {
     "pinyin": "jì suàn qì",
@@ -3244,7 +3512,8 @@
       4,
       4,
       4
-    ]
+    ],
+    "classifier": "个"
   },
   "word_268.jpg": {
     "pinyin": "wēi bō lú",
@@ -3257,7 +3526,8 @@
       1,
       1,
       2
-    ]
+    ],
+    "classifier": "台"
   },
   "word_269.jpg": {
     "pinyin": "shǒu jī",
@@ -3269,7 +3539,8 @@
     "tones": [
       3,
       1
-    ]
+    ],
+    "classifier": "部"
   },
   "word_270.jpg": {
     "pinyin": "shǒu biǎo",
@@ -3281,7 +3552,8 @@
     "tones": [
       3,
       3
-    ]
+    ],
+    "classifier": "块"
   },
   "word_271.jpg": {
     "pinyin": "zhǒng",
@@ -3292,7 +3564,8 @@
     ],
     "tones": [
       3
-    ]
+    ],
+    "classifier": null
   },
   "word_272.jpg": {
     "pinyin": "diàn fēng shàn",
@@ -3305,7 +3578,8 @@
       4,
       1,
       4
-    ]
+    ],
+    "classifier": "台"
   },
   "word_273.jpg": {
     "pinyin": "xī chén qì",
@@ -3318,7 +3592,8 @@
       1,
       2,
       4
-    ]
+    ],
+    "classifier": "台"
   },
   "word_274.jpg": {
     "pinyin": "diàn tǒng",
@@ -3330,7 +3605,8 @@
     "tones": [
       4,
       3
-    ]
+    ],
+    "classifier": "个"
   },
   "word_275.jpg": {
     "pinyin": "guàn tou",
@@ -3342,7 +3618,8 @@
     "tones": [
       4,
       5
-    ]
+    ],
+    "classifier": "罐"
   },
   "word_276.jpg": {
     "pinyin": "hàn bǎo",
@@ -3354,7 +3631,8 @@
     "tones": [
       4,
       3
-    ]
+    ],
+    "classifier": "个"
   },
   "word_277.jpg": {
     "pinyin": "miàn bāo",
@@ -3366,7 +3644,8 @@
     "tones": [
       4,
       1
-    ]
+    ],
+    "classifier": "个"
   },
   "word_278.jpg": {
     "pinyin": "bīng qí lín",
@@ -3379,7 +3658,8 @@
       1,
       2,
       2
-    ]
+    ],
+    "classifier": "个"
   },
   "word_279.jpg": {
     "pinyin": "qiǎo kè lì",
@@ -3392,7 +3672,8 @@
       3,
       4,
       4
-    ]
+    ],
+    "classifier": "块"
   },
   "word_280.jpg": {
     "pinyin": "dàn gāo",
@@ -3404,7 +3685,8 @@
     "tones": [
       4,
       1
-    ]
+    ],
+    "classifier": "块"
   },
   "word_281.jpg": {
     "pinyin": "bǐng gān",
@@ -3416,7 +3698,8 @@
     "tones": [
       3,
       1
-    ]
+    ],
+    "classifier": "块"
   },
   "word_282.jpg": {
     "pinyin": "mǐ fàn",
@@ -3428,7 +3711,8 @@
     "tones": [
       3,
       4
-    ]
+    ],
+    "classifier": "碗"
   },
   "word_283.jpg": {
     "pinyin": "miàn tiáo",
@@ -3440,7 +3724,8 @@
     "tones": [
       4,
       2
-    ]
+    ],
+    "classifier": "碗"
   },
   "word_284.jpg": {
     "pinyin": "dà bǐng",
@@ -3452,7 +3737,8 @@
     "tones": [
       4,
       3
-    ]
+    ],
+    "classifier": "张"
   },
   "word_285.jpg": {
     "pinyin": "bāo zi",
@@ -3464,7 +3750,8 @@
     "tones": [
       1,
       5
-    ]
+    ],
+    "classifier": "个"
   },
   "word_286.jpg": {
     "pinyin": "mán tou",
@@ -3476,7 +3763,8 @@
     "tones": [
       2,
       5
-    ]
+    ],
+    "classifier": "个"
   },
   "word_287.jpg": {
     "pinyin": "jiǎo zi",
@@ -3488,7 +3776,8 @@
     "tones": [
       3,
       5
-    ]
+    ],
+    "classifier": "个"
   },
   "word_288.jpg": {
     "pinyin": "huǒ tuǐ cháng",
@@ -3501,7 +3790,8 @@
       3,
       3,
       2
-    ]
+    ],
+    "classifier": "根"
   },
   "word_289.jpg": {
     "pinyin": "táng guǒ",
@@ -3513,7 +3803,8 @@
     "tones": [
       2,
       3
-    ]
+    ],
+    "classifier": "颗"
   },
   "word_290.jpg": {
     "pinyin": "yǐn liào",
@@ -3525,7 +3816,8 @@
     "tones": [
       3,
       4
-    ]
+    ],
+    "classifier": "瓶"
   },
   "word_291.jpg": {
     "pinyin": "jī dàn",
@@ -3537,7 +3829,8 @@
     "tones": [
       1,
       4
-    ]
+    ],
+    "classifier": "个"
   },
   "word_292.jpg": {
     "pinyin": "qì qiú",
@@ -3549,7 +3842,8 @@
     "tones": [
       4,
       2
-    ]
+    ],
+    "classifier": "个"
   },
   "word_293.jpg": {
     "pinyin": "fēng zhēng",
@@ -3561,7 +3855,8 @@
     "tones": [
       1,
       5
-    ]
+    ],
+    "classifier": "个"
   },
   "word_294.jpg": {
     "pinyin": "zú qiú",
@@ -3573,7 +3868,8 @@
     "tones": [
       2,
       2
-    ]
+    ],
+    "classifier": "个"
   },
   "word_295.jpg": {
     "pinyin": "lán qiú",
@@ -3585,7 +3881,8 @@
     "tones": [
       2,
       2
-    ]
+    ],
+    "classifier": "个"
   },
   "word_296.jpg": {
     "pinyin": "pái qiú",
@@ -3597,7 +3894,8 @@
     "tones": [
       2,
       2
-    ]
+    ],
+    "classifier": "个"
   },
   "word_297.jpg": {
     "pinyin": "yǔ máo qiú",
@@ -3610,7 +3908,8 @@
       3,
       2,
       2
-    ]
+    ],
+    "classifier": "个"
   },
   "word_298.jpg": {
     "pinyin": "hú dié",
@@ -3623,7 +3922,8 @@
     "tones": [
       2,
       2
-    ]
+    ],
+    "classifier": "只"
   },
   "word_299.jpg": {
     "pinyin": "qīng tíng",
@@ -3636,7 +3936,8 @@
     "tones": [
       1,
       2
-    ]
+    ],
+    "classifier": "只"
   },
   "word_300.jpg": {
     "pinyin": "kǒng què",
@@ -3649,7 +3950,8 @@
     "tones": [
       3,
       4
-    ]
+    ],
+    "classifier": "只"
   },
   "word_301.jpg": {
     "pinyin": "xǐ què",
@@ -3662,7 +3964,8 @@
     "tones": [
       3,
       4
-    ]
+    ],
+    "classifier": "只"
   },
   "word_302.jpg": {
     "pinyin": "yuān yāng",
@@ -3675,7 +3978,8 @@
     "tones": [
       1,
       1
-    ]
+    ],
+    "classifier": "对"
   },
   "word_303.jpg": {
     "pinyin": "yīng wǔ",
@@ -3688,7 +3992,8 @@
     "tones": [
       1,
       3
-    ]
+    ],
+    "classifier": "只"
   },
   "word_304.jpg": {
     "pinyin": "gē zi",
@@ -3701,7 +4006,8 @@
     "tones": [
       1,
       5
-    ]
+    ],
+    "classifier": "只"
   },
   "word_305.jpg": {
     "pinyin": "hǎi ōu",
@@ -3714,7 +4020,8 @@
     "tones": [
       3,
       1
-    ]
+    ],
+    "classifier": "只"
   },
   "word_306.jpg": {
     "pinyin": "yàn zi",
@@ -3727,7 +4034,8 @@
     "tones": [
       4,
       5
-    ]
+    ],
+    "classifier": "只"
   },
   "word_307.jpg": {
     "pinyin": "bái hè",
@@ -3740,7 +4048,8 @@
     "tones": [
       2,
       4
-    ]
+    ],
+    "classifier": "只"
   },
   "word_308.jpg": {
     "pinyin": "yīng",
@@ -3752,7 +4061,8 @@
     ],
     "tones": [
       1
-    ]
+    ],
+    "classifier": "只"
   },
   "word_309.jpg": {
     "pinyin": "tí hú",
@@ -3765,7 +4075,8 @@
     "tones": [
       2,
       2
-    ]
+    ],
+    "classifier": "只"
   },
   "word_310.jpg": {
     "pinyin": "māo tóu yīng",
@@ -3779,7 +4090,8 @@
       1,
       2,
       1
-    ]
+    ],
+    "classifier": "只"
   },
   "word_311.jpg": {
     "pinyin": "mì fēng",
@@ -3792,7 +4104,8 @@
     "tones": [
       4,
       1
-    ]
+    ],
+    "classifier": "只"
   },
   "word_312.jpg": {
     "pinyin": "cāng ying",
@@ -3805,7 +4118,8 @@
     "tones": [
       1,
       5
-    ]
+    ],
+    "classifier": "只"
   },
   "word_313.jpg": {
     "pinyin": "huáng chóng",
@@ -3818,7 +4132,8 @@
     "tones": [
       2,
       2
-    ]
+    ],
+    "classifier": "只"
   },
   "word_314.jpg": {
     "pinyin": "zhī zhū",
@@ -3831,7 +4146,8 @@
     "tones": [
       1,
       1
-    ]
+    ],
+    "classifier": "只"
   },
   "word_315.jpg": {
     "pinyin": "chán",
@@ -3843,7 +4159,8 @@
     ],
     "tones": [
       2
-    ]
+    ],
+    "classifier": "只"
   },
   "word_316.jpg": {
     "pinyin": "mǎ yǐ",
@@ -3856,7 +4173,8 @@
     "tones": [
       3,
       3
-    ]
+    ],
+    "classifier": "只"
   },
   "word_317.jpg": {
     "pinyin": "táng láng",
@@ -3869,7 +4187,8 @@
     "tones": [
       2,
       2
-    ]
+    ],
+    "classifier": "只"
   },
   "word_318.jpg": {
     "pinyin": "gōng jī",
@@ -3881,7 +4200,8 @@
     "tones": [
       1,
       1
-    ]
+    ],
+    "classifier": "只"
   },
   "word_319.jpg": {
     "pinyin": "mǔ jī",
@@ -3893,7 +4213,8 @@
     "tones": [
       3,
       1
-    ]
+    ],
+    "classifier": "只"
   },
   "word_320.jpg": {
     "pinyin": "é",
@@ -3904,7 +4225,8 @@
     ],
     "tones": [
       2
-    ]
+    ],
+    "classifier": "只"
   },
   "word_321.jpg": {
     "pinyin": "tù",
@@ -3915,7 +4237,8 @@
     ],
     "tones": [
       4
-    ]
+    ],
+    "classifier": "只"
   },
   "word_322.jpg": {
     "pinyin": "cán",
@@ -3926,7 +4249,8 @@
     ],
     "tones": [
       2
-    ]
+    ],
+    "classifier": "条"
   },
   "word_323.jpg": {
     "pinyin": "wō niú",
@@ -3938,7 +4262,8 @@
     "tones": [
       1,
       2
-    ]
+    ],
+    "classifier": "只"
   },
   "word_324.jpg": {
     "pinyin": "zhū",
@@ -3949,7 +4274,8 @@
     ],
     "tones": [
       1
-    ]
+    ],
+    "classifier": "头"
   },
   "word_325.jpg": {
     "pinyin": "mǎ",
@@ -3960,7 +4286,8 @@
     ],
     "tones": [
       3
-    ]
+    ],
+    "classifier": "匹"
   },
   "word_326.jpg": {
     "pinyin": "nǎi niú",
@@ -3972,7 +4299,8 @@
     "tones": [
       3,
       2
-    ]
+    ],
+    "classifier": "头"
   },
   "word_327.jpg": {
     "pinyin": "shān yáng",
@@ -3984,7 +4312,8 @@
     "tones": [
       1,
       2
-    ]
+    ],
+    "classifier": "只"
   },
   "word_328.jpg": {
     "pinyin": "māo",
@@ -3995,7 +4324,8 @@
     ],
     "tones": [
       1
-    ]
+    ],
+    "classifier": "只"
   },
   "word_329.jpg": {
     "pinyin": "cháng jǐng lù",
@@ -4008,7 +4338,8 @@
       2,
       3,
       4
-    ]
+    ],
+    "classifier": "头"
   },
   "word_330.jpg": {
     "pinyin": "méi huā lù",
@@ -4021,7 +4352,8 @@
       2,
       1,
       4
-    ]
+    ],
+    "classifier": "头"
   },
   "word_331.jpg": {
     "pinyin": "líng yáng",
@@ -4033,7 +4365,8 @@
     "tones": [
       2,
       2
-    ]
+    ],
+    "classifier": "只"
   },
   "word_332.jpg": {
     "pinyin": "mián yáng",
@@ -4045,7 +4378,8 @@
     "tones": [
       2,
       2
-    ]
+    ],
+    "classifier": "只"
   },
   "word_333.jpg": {
     "pinyin": "sōng shǔ",
@@ -4057,7 +4391,8 @@
     "tones": [
       1,
       3
-    ]
+    ],
+    "classifier": "只"
   },
   "word_334.jpg": {
     "pinyin": "bān mǎ",
@@ -4069,7 +4404,8 @@
     "tones": [
       1,
       3
-    ]
+    ],
+    "classifier": "匹"
   },
   "word_335.jpg": {
     "pinyin": "shuǐ niú",
@@ -4081,7 +4417,8 @@
     "tones": [
       3,
       2
-    ]
+    ],
+    "classifier": "头"
   },
   "word_336.jpg": {
     "pinyin": "hóu",
@@ -4092,7 +4429,8 @@
     ],
     "tones": [
       2
-    ]
+    ],
+    "classifier": "只"
   },
   "word_337.jpg": {
     "pinyin": "dài shǔ",
@@ -4104,7 +4442,8 @@
     "tones": [
       4,
       3
-    ]
+    ],
+    "classifier": "只"
   },
   "word_338.jpg": {
     "pinyin": "biān fú",
@@ -4116,7 +4455,8 @@
     "tones": [
       1,
       2
-    ]
+    ],
+    "classifier": "只"
   },
   "word_339.jpg": {
     "pinyin": "cì wei",
@@ -4128,7 +4468,8 @@
     "tones": [
       4,
       5
-    ]
+    ],
+    "classifier": "只"
   },
   "word_340.jpg": {
     "pinyin": "lǎo shǔ",
@@ -4140,7 +4481,8 @@
     "tones": [
       3,
       3
-    ]
+    ],
+    "classifier": "只"
   },
   "word_341.jpg": {
     "pinyin": "chuān shān jiǎ",
@@ -4153,7 +4495,8 @@
       1,
       1,
       3
-    ]
+    ],
+    "classifier": "只"
   },
   "word_342.jpg": {
     "pinyin": "kǒng lóng",
@@ -4165,7 +4508,8 @@
     "tones": [
       3,
       2
-    ]
+    ],
+    "classifier": "条"
   },
   "word_343.jpg": {
     "pinyin": "luò tuo",
@@ -4177,7 +4521,8 @@
     "tones": [
       4,
       5
-    ]
+    ],
+    "classifier": "头"
   },
   "word_344.jpg": {
     "pinyin": "xióng",
@@ -4188,7 +4533,8 @@
     ],
     "tones": [
       2
-    ]
+    ],
+    "classifier": "只"
   },
   "word_345.jpg": {
     "pinyin": "xīng xing",
@@ -4200,7 +4546,8 @@
     "tones": [
       1,
       5
-    ]
+    ],
+    "classifier": "颗"
   },
   "word_346.jpg": {
     "pinyin": "hú li",
@@ -4212,7 +4559,8 @@
     "tones": [
       2,
       5
-    ]
+    ],
+    "classifier": "只"
   },
   "word_347.jpg": {
     "pinyin": "láng",
@@ -4223,7 +4571,8 @@
     ],
     "tones": [
       2
-    ]
+    ],
+    "classifier": "只"
   },
   "word_348.jpg": {
     "pinyin": "shī",
@@ -4234,7 +4583,8 @@
     ],
     "tones": [
       1
-    ]
+    ],
+    "classifier": "只"
   },
   "word_349.jpg": {
     "pinyin": "hǔ",
@@ -4245,7 +4595,8 @@
     ],
     "tones": [
       3
-    ]
+    ],
+    "classifier": "只"
   },
   "word_350.jpg": {
     "pinyin": "dà xiàng",
@@ -4257,7 +4608,8 @@
     "tones": [
       4,
       4
-    ]
+    ],
+    "classifier": "头"
   },
   "word_351.jpg": {
     "pinyin": "bào",
@@ -4268,7 +4620,8 @@
     ],
     "tones": [
       4
-    ]
+    ],
+    "classifier": "只"
   },
   "word_352.jpg": {
     "pinyin": "xī niú",
@@ -4280,7 +4633,8 @@
     "tones": [
       1,
       2
-    ]
+    ],
+    "classifier": "头"
   },
   "word_353.jpg": {
     "pinyin": "gǒu",
@@ -4291,7 +4645,8 @@
     ],
     "tones": [
       3
-    ]
+    ],
+    "classifier": "只"
   },
   "word_354.jpg": {
     "pinyin": "xióng māo",
@@ -4303,7 +4658,8 @@
     "tones": [
       2,
       1
-    ]
+    ],
+    "classifier": "只"
   },
   "word_355.jpg": {
     "pinyin": "zōng xióng",
@@ -4315,7 +4671,8 @@
     "tones": [
       1,
       2
-    ]
+    ],
+    "classifier": "只"
   },
   "word_356.jpg": {
     "pinyin": "è yú",
@@ -4327,7 +4684,8 @@
     "tones": [
       4,
       2
-    ]
+    ],
+    "classifier": "条"
   },
   "word_357.jpg": {
     "pinyin": "shā yú",
@@ -4339,7 +4697,8 @@
     "tones": [
       1,
       2
-    ]
+    ],
+    "classifier": "条"
   },
   "word_358.jpg": {
     "pinyin": "hé mǎ",
@@ -4351,7 +4710,8 @@
     "tones": [
       2,
       3
-    ]
+    ],
+    "classifier": "头"
   },
   "word_359.jpg": {
     "pinyin": "hǎi xiàng",
@@ -4363,7 +4723,8 @@
     "tones": [
       3,
       4
-    ]
+    ],
+    "classifier": "头"
   },
   "word_360.jpg": {
     "pinyin": "qǐ é",
@@ -4375,7 +4736,8 @@
     "tones": [
       3,
       2
-    ]
+    ],
+    "classifier": "只"
   },
   "word_361.jpg": {
     "pinyin": "jīn yú",
@@ -4387,7 +4749,8 @@
     "tones": [
       1,
       2
-    ]
+    ],
+    "classifier": "条"
   },
   "word_362.jpg": {
     "pinyin": "jīng yú",
@@ -4399,7 +4762,8 @@
     "tones": [
       1,
       2
-    ]
+    ],
+    "classifier": "头"
   },
   "word_363.jpg": {
     "pinyin": "hǎi bào",
@@ -4411,7 +4775,8 @@
     "tones": [
       3,
       4
-    ]
+    ],
+    "classifier": "只"
   },
   "word_364.jpg": {
     "pinyin": "jiǎ yú",
@@ -4423,7 +4788,8 @@
     "tones": [
       3,
       2
-    ]
+    ],
+    "classifier": "只"
   },
   "word_365.jpg": {
     "pinyin": "qīng wā",
@@ -4435,7 +4801,8 @@
     "tones": [
       1,
       2
-    ]
+    ],
+    "classifier": "只"
   },
   "word_366.jpg": {
     "pinyin": "dà pào",
@@ -4447,7 +4814,8 @@
     "tones": [
       4,
       4
-    ]
+    ],
+    "classifier": "门"
   },
   "word_367.jpg": {
     "pinyin": "jūn jiàn",
@@ -4459,7 +4827,8 @@
     "tones": [
       1,
       4
-    ]
+    ],
+    "classifier": "艘"
   },
   "word_368.jpg": {
     "pinyin": "huǒ jiàn",
@@ -4471,7 +4840,8 @@
     "tones": [
       3,
       4
-    ]
+    ],
+    "classifier": "枚"
   },
   "word_369.jpg": {
     "pinyin": "shǒu qiāng",
@@ -4483,7 +4853,8 @@
     "tones": [
       3,
       1
-    ]
+    ],
+    "classifier": "把"
   },
   "word_370.jpg": {
     "pinyin": "jǐng chē",
@@ -4495,7 +4866,8 @@
     "tones": [
       3,
       1
-    ]
+    ],
+    "classifier": "辆"
   },
   "word_371.jpg": {
     "pinyin": "jiù hù chē",
@@ -4508,7 +4880,8 @@
       4,
       4,
       1
-    ]
+    ],
+    "classifier": "辆"
   },
   "word_372.jpg": {
     "pinyin": "sān lún chē",
@@ -4521,7 +4894,8 @@
       1,
       2,
       1
-    ]
+    ],
+    "classifier": "辆"
   },
   "word_373.jpg": {
     "pinyin": "zì xíng chē",
@@ -4534,7 +4908,8 @@
       4,
       2,
       1
-    ]
+    ],
+    "classifier": "辆"
   },
   "word_374.jpg": {
     "pinyin": "pèng pèng chē",
@@ -4547,7 +4922,8 @@
       4,
       4,
       1
-    ]
+    ],
+    "classifier": "辆"
   },
   "word_375.jpg": {
     "pinyin": "lǎn chē",
@@ -4559,7 +4935,8 @@
     "tones": [
       3,
       1
-    ]
+    ],
+    "classifier": "辆"
   },
   "word_376.jpg": {
     "pinyin": "mó tuō chē",
@@ -4572,7 +4949,8 @@
       2,
       1,
       1
-    ]
+    ],
+    "classifier": "辆"
   },
   "word_377.jpg": {
     "pinyin": "tóng chē",
@@ -4584,7 +4962,8 @@
     "tones": [
       2,
       1
-    ]
+    ],
+    "classifier": "辆"
   },
   "word_378.jpg": {
     "pinyin": "gōng gòng qì chē",
@@ -4598,7 +4977,8 @@
       4,
       4,
       1
-    ]
+    ],
+    "classifier": "辆"
   },
   "word_379.jpg": {
     "pinyin": "diàn chē",
@@ -4610,7 +4990,8 @@
     "tones": [
       4,
       1
-    ]
+    ],
+    "classifier": "辆"
   },
   "word_380.jpg": {
     "pinyin": "shuāng céng kè chē",
@@ -4624,7 +5005,8 @@
       2,
       4,
       1
-    ]
+    ],
+    "classifier": "辆"
   },
   "word_381.jpg": {
     "pinyin": "jiào chē",
@@ -4636,7 +5018,8 @@
     "tones": [
       4,
       1
-    ]
+    ],
+    "classifier": "辆"
   },
   "word_382.jpg": {
     "pinyin": "miàn bāo chē",
@@ -4649,7 +5032,8 @@
       4,
       1,
       1
-    ]
+    ],
+    "classifier": "辆"
   },
   "word_383.jpg": {
     "pinyin": "sǎ shuǐ chē",
@@ -4662,7 +5046,8 @@
       3,
       3,
       1
-    ]
+    ],
+    "classifier": "辆"
   },
   "word_384.jpg": {
     "pinyin": "gāo sù liè chē",
@@ -4676,7 +5061,8 @@
       4,
       4,
       1
-    ]
+    ],
+    "classifier": "辆"
   },
   "word_385.jpg": {
     "pinyin": "huǒ chē",
@@ -4688,7 +5074,8 @@
     "tones": [
       3,
       1
-    ]
+    ],
+    "classifier": "辆"
   },
   "word_386.jpg": {
     "pinyin": "gōng chéng qiǎng xiǎn chē",
@@ -4703,7 +5090,8 @@
       3,
       3,
       1
-    ]
+    ],
+    "classifier": "辆"
   },
   "word_387.jpg": {
     "pinyin": "huò chē",
@@ -4715,7 +5103,8 @@
     "tones": [
       4,
       1
-    ]
+    ],
+    "classifier": "辆"
   },
   "word_388.jpg": {
     "pinyin": "qì chē",
@@ -4727,7 +5116,8 @@
     "tones": [
       4,
       1
-    ]
+    ],
+    "classifier": "辆"
   },
   "word_389.jpg": {
     "pinyin": "sài chē",
@@ -4739,7 +5129,8 @@
     "tones": [
       4,
       1
-    ]
+    ],
+    "classifier": "辆"
   },
   "word_390.jpg": {
     "pinyin": "zì xiè huò chē",
@@ -4753,7 +5144,8 @@
       4,
       4,
       1
-    ]
+    ],
+    "classifier": "辆"
   },
   "word_391.jpg": {
     "pinyin": "tuī tǔ chē",
@@ -4766,7 +5158,8 @@
       1,
       3,
       1
-    ]
+    ],
+    "classifier": "辆"
   },
   "word_392.jpg": {
     "pinyin": "yā lù chē",
@@ -4779,7 +5172,8 @@
       1,
       4,
       1
-    ]
+    ],
+    "classifier": "辆"
   },
   "word_393.jpg": {
     "pinyin": "wā tǔ chē",
@@ -4792,7 +5186,8 @@
       1,
       3,
       1
-    ]
+    ],
+    "classifier": "辆"
   },
   "word_394.jpg": {
     "pinyin": "jí zhuāng xiāng huò chē",
@@ -4807,7 +5202,8 @@
       1,
       4,
       1
-    ]
+    ],
+    "classifier": "辆"
   },
   "word_395.jpg": {
     "pinyin": "fān dǒu chē",
@@ -4820,7 +5216,8 @@
       1,
       3,
       1
-    ]
+    ],
+    "classifier": "辆"
   },
   "word_396.jpg": {
     "pinyin": "yóu guàn chē",
@@ -4833,7 +5230,8 @@
       2,
       4,
       1
-    ]
+    ],
+    "classifier": "辆"
   },
   "word_397.jpg": {
     "pinyin": "tuō lā jī",
@@ -4846,7 +5244,8 @@
       1,
       1,
       1
-    ]
+    ],
+    "classifier": "辆"
   },
   "word_398.jpg": {
     "pinyin": "fēi jī",
@@ -4858,7 +5257,8 @@
     "tones": [
       1,
       1
-    ]
+    ],
+    "classifier": "架"
   },
   "word_399.jpg": {
     "pinyin": "kè jī",
@@ -4870,7 +5270,8 @@
     "tones": [
       4,
       1
-    ]
+    ],
+    "classifier": "架"
   },
   "word_400.jpg": {
     "pinyin": "zhí shēng fēi jī",
@@ -4884,7 +5285,8 @@
       1,
       1,
       1
-    ]
+    ],
+    "classifier": "架"
   },
   "word_401.jpg": {
     "pinyin": "shuǐ shàng fēi jī",
@@ -4898,7 +5300,8 @@
       4,
       1,
       1
-    ]
+    ],
+    "classifier": "架"
   },
   "word_402.jpg": {
     "pinyin": "cháng jiāng kè lún",
@@ -4912,7 +5315,8 @@
       1,
       4,
       2
-    ]
+    ],
+    "classifier": "艘"
   },
   "word_403.jpg": {
     "pinyin": "dù lún",
@@ -4924,7 +5328,8 @@
     "tones": [
       4,
       2
-    ]
+    ],
+    "classifier": "艘"
   },
   "word_404.jpg": {
     "pinyin": "qì diàn chuán",
@@ -4937,7 +5342,8 @@
       4,
       4,
       2
-    ]
+    ],
+    "classifier": "艘"
   },
   "word_405.jpg": {
     "pinyin": "kuài tǐng",
@@ -4949,7 +5355,8 @@
     "tones": [
       4,
       3
-    ]
+    ],
+    "classifier": "艘"
   },
   "word_406.jpg": {
     "pinyin": "jiāo tōng tǐng",
@@ -4962,7 +5369,8 @@
       1,
       1,
       3
-    ]
+    ],
+    "classifier": "艘"
   },
   "word_407.jpg": {
     "pinyin": "shuǐ yì chuán",
@@ -4975,7 +5383,8 @@
       3,
       4,
       2
-    ]
+    ],
+    "classifier": "艘"
   },
   "word_408.jpg": {
     "pinyin": "tuō lún",
@@ -4987,7 +5396,8 @@
     "tones": [
       1,
       2
-    ]
+    ],
+    "classifier": "艘"
   },
   "word_409.jpg": {
     "pinyin": "yóu lún",
@@ -4999,7 +5409,8 @@
     "tones": [
       2,
       2
-    ]
+    ],
+    "classifier": "艘"
   },
   "word_410.jpg": {
     "pinyin": "yóu chuán",
@@ -5011,7 +5422,8 @@
     "tones": [
       2,
       2
-    ]
+    ],
+    "classifier": "艘"
   },
   "word_411.jpg": {
     "pinyin": "shuāng tǐ chuán",
@@ -5024,7 +5436,8 @@
       1,
       3,
       2
-    ]
+    ],
+    "classifier": "艘"
   },
   "word_412.jpg": {
     "pinyin": "fān chuán",
@@ -5036,7 +5449,8 @@
     "tones": [
       1,
       2
-    ]
+    ],
+    "classifier": "艘"
   },
   "word_413.jpg": {
     "pinyin": "mù chuán",
@@ -5048,6 +5462,8 @@
     "tones": [
       4,
       2
-    ]
+    ],
+    "classifier": "艘"
   }
 }
+;
