@@ -263,10 +263,30 @@ main {
     color: #333;
 }
 
-.word-info p {
-    margin: 0;
+.word-info .pinyin {
+    margin: 0 0 3px 0;
     color: #666;
     font-size: 1em;
+}
+
+.word-info .english {
+    margin: 0;
+    color: #888;
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+.word-number {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.8em;
+    backdrop-filter: blur(4px);
+    z-index: 5;
 }
 
 .toggle-btn.active {
@@ -677,6 +697,7 @@ main {
     font-size: 3em;
     background: linear-gradient(to right, #4a00e0, #8e2de2);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 20px;
 }

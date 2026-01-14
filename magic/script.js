@@ -55,6 +55,7 @@ class WordLearner {
                         id: i,
                         chinese: wordData.hanzi,
                         pinyin: wordData.pinyin,
+                        english: wordData.english,
                         image: `images/${filename}`,
                         audio: `audio/${WORD_PREFIX}${wordNumber}${AUDIO_EXTENSION}`,
                         number: i + 1,
@@ -65,6 +66,7 @@ class WordLearner {
                         id: i,
                         chinese: "???",
                         pinyin: `Word ${i + 1}`,
+                        english: "",
                         image: `images/${filename}`,
                         audio: `audio/${WORD_PREFIX}${wordNumber}${AUDIO_EXTENSION}`,
                         number: i + 1,
@@ -216,11 +218,12 @@ class WordLearner {
 
             return `
                 <div class="word-card" data-id="${word.id}">
+                    <div class="word-number">#${word.number}</div>
                     <img src="${word.image}" alt="Word Image" class="word-image">
                     <div class="word-info">
                         <h3 class="${blurChinese}">${word.chinese}</h3>
-                        <p class="${blurPinyin}">${word.pinyin}</p>
-                        <small>#${word.number}</small>
+                        <p class="pinyin ${blurPinyin}">${word.pinyin}</p>
+                        <p class="english">${word.english || ''}</p>
                     </div>
                 </div>
             `
@@ -415,6 +418,7 @@ class WordLearner {
         const recallImage = document.getElementById('recallImage');
         const chineseDiv = document.getElementById('recallChinese');
         const pinyinDiv = document.getElementById('recallPinyin');
+        const englishDiv = document.getElementById('recallEnglish');
 
         // Reset state
         recallCard.classList.remove('revealed');
@@ -423,14 +427,17 @@ class WordLearner {
         // Settings-based blur
         chineseDiv.classList.remove('blur-text');
         pinyinDiv.classList.remove('blur-text');
+        if (englishDiv) englishDiv.classList.remove('blur-text');
 
         if (document.getElementById('hideChinese').checked) chineseDiv.classList.add('blur-text');
         if (document.getElementById('hidePinyin').checked) pinyinDiv.classList.add('blur-text');
+        if (englishDiv && document.getElementById('hideChinese').checked) englishDiv.classList.add('blur-text');
 
         // Set content
         recallImage.src = word.image;
         chineseDiv.textContent = word.chinese || '???';
         pinyinDiv.textContent = word.pinyin || 'Unknown';
+        if (englishDiv) englishDiv.textContent = word.english || '';
 
         // Handlers
         document.getElementById('recallReveal').onclick = () => {
@@ -468,6 +475,7 @@ class WordLearner {
         const shadowingImage = document.getElementById('shadowingImage');
         const chineseDiv = document.getElementById('shadowingChinese');
         const pinyinDiv = document.getElementById('shadowingPinyin');
+        const englishDiv = document.getElementById('shadowingEnglish');
         const statusDiv = document.getElementById('shadowingStatus');
         const playBtn = document.getElementById('shadowingPlay');
         const recordBtn = document.getElementById('shadowingRecord');
@@ -482,6 +490,7 @@ class WordLearner {
         shadowingImage.src = word.image;
         chineseDiv.textContent = word.chinese || '???';
         pinyinDiv.textContent = word.pinyin || 'Unknown';
+        if (englishDiv) englishDiv.textContent = word.english || '';
 
         // Initial Status
         if (autoPlay) {
@@ -676,6 +685,7 @@ class WordLearner {
         const img = document.getElementById('standardImage');
         const chinese = document.getElementById('standardChinese');
         const pinyin = document.getElementById('standardPinyin');
+        const english = document.getElementById('standardEnglish');
         const playBtn = document.getElementById('standardPlay');
         const autoContinue = document.getElementById('standardAutoContinue');
 
@@ -684,6 +694,7 @@ class WordLearner {
         img.src = word.image;
         chinese.textContent = word.chinese;
         pinyin.textContent = word.pinyin;
+        if (english) english.textContent = word.english || '';
 
         const updatePlayButton = () => {
             if (autoContinue.checked) {
