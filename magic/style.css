@@ -242,6 +242,7 @@ main {
     object-position: 0 100%;
     background: #fff;
     transition: transform 0.3s ease;
+    clip-path: inset(10% 0 0 0);
 }
 
 /* Hide top 20% of image in quiz mode to prevent seeing the hanzi */

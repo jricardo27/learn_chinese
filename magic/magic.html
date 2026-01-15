@@ -43,8 +43,7 @@
                             <option value="quiz">Quiz Mode</option>
                         </optgroup>
                         <optgroup label="Learning Games">
-                            <option value="writingPinyin">Write Pinyin</option>
-                            <option value="writingHanzi">Write Hanzi</option>
+                            <option value="writing">Writing Practice</option>
                             <option value="classifierMatch">Classifier Match</option>
                             <option value="animalMatch">Animal Number Match</option>
                             <option value="categoryMatch">Category Match</option>
@@ -121,7 +120,7 @@
                     <p>{{ currentModeConfig.desc }}</p>
 
                     <div class="mode-settings">
-                        <label class="setting-row">
+                        <label class="setting-row" v-if="currentMode !== 'recall'">
                             <input type="checkbox" v-model="autoContinue">
                             <span>Auto-continue to next word</span>
                         </label>
@@ -133,6 +132,14 @@
                             <input type="checkbox" v-model="autoRecord">
                             <span>Auto-record after audio</span>
                         </label>
+                        <div v-if="currentMode === 'writing'" class="setting-row"
+                            style="justify-content: space-between;">
+                            <span>Target:</span>
+                            <select v-model="writingTarget" style="padding: 5px; border-radius: 5px;">
+                                <option value="hanzi">Write Hanzi</option>
+                                <option value="pinyin">Write Pinyin</option>
+                            </select>
+                        </div>
                     </div>
 
                     <button @click="startSession" class="start-session-btn">
@@ -275,29 +282,38 @@
                         Quiz</button>
                 </div>
 
-                <!-- Writing Practice (Hanzi/Pinyin) -->
-                <div v-if="currentMode === 'writingPinyin' || currentMode === 'writingHanzi'" class="quiz-card">
+                <!-- Writing Practice (Merged Pinyin/Hanzi) -->
+                <div v-if="currentMode === 'writing'" class="quiz-card">
                     <img :src="overlayWord.image" alt="Word Image" class="quiz-image">
                     <div style="text-align: center; margin-bottom: 10px;">
-                        <h3 v-if="currentMode === 'writingPinyin'" style="font-size: 2em; color: #333;">{{
+                        <h3 v-if="writingTarget === 'pinyin'" style="font-size: 2em; color: #333;">{{
                             overlayWord.chinese }}</h3>
                         <h3 v-else style="font-size: 1.2em; color: #666; font-style: italic;">{{ overlayWord.english }}
                         </h3>
+
                         <button @click="replayAudio" class="replay-btn"
-                            style="width: auto; margin-top: 10px; padding: 8px 25px;"><i class="fas fa-volume-up"></i>
-                            Listen</button>
+                            style="width: auto; margin-top: 10px; padding: 8px 25px;">
+                            <i class="fas fa-volume-up"></i> Listen
+                        </button>
                     </div>
 
                     <div class="writing-input-container">
                         <input type="text" v-model="userInput" @keyup.enter="checkWritingAnswer"
                             :class="['writing-input', writingStatus]"
-                            :placeholder="currentMode === 'writingPinyin' ? 'Type Pinyin' : 'Type Hanzi'" autofocus>
+                            :placeholder="writingTarget === 'pinyin' ? 'Type Pinyin' : 'Type Hanzi'" autofocus>
                     </div>
+
+                    <button v-if="!quizAnswered" @click="checkWritingAnswer" class="replay-btn"
+                        style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%); margin-bottom: 15px;">
+                        <i class="fas fa-check-circle"></i> Verify Answer
+                    </button>
 
                     <div v-if="quizAnswered" class="recall-info-container" style="min-height: 60px;">
                         <div class="recall-text"
                             :style="{ color: writingStatus === 'correct' ? '#28a745' : '#dc3545' }">
-                            Correct: {{ currentMode === 'writingPinyin' ? overlayWord.pinyin : overlayWord.chinese }}
+                            {{ writingStatus === 'correct' ? 'Correct!' : 'Try Again!' }} <br>
+                            <span style="font-size: 0.6em; color: #555;">Correct answer: {{ writingTarget === 'pinyin' ?
+                                overlayWord.pinyin : overlayWord.chinese }}</span>
                         </div>
                     </div>
 

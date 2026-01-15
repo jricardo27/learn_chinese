@@ -39,6 +39,9 @@ createApp({
             userInput: '',
             writingStatus: '', // 'correct', 'wrong', ''
 
+            // Writing state
+            writingTarget: 'hanzi', // 'hanzi' or 'pinyin'
+
             // Shadowing state
             shadowingState: 'idle',
             autoRecord: true,
@@ -51,9 +54,9 @@ createApp({
                 { id: 'standard', title: 'Standard Mode', icon: 'fa-book-reader', iconClass: 'standard-icon', desc: 'Focused single-word view with auto-play options.' },
                 { id: 'recall', title: 'Active Recall', icon: 'fa-brain', iconClass: 'recall-icon', desc: 'Test your memory by hiding Pinyin or Mandarin.' },
                 { id: 'shadowing', title: 'Shadowing', icon: 'fa-microphone-alt', iconClass: 'shadowing-icon', desc: 'Perfect your accent with recording feedback.' },
-                { id: 'quiz', title: 'Quiz Mode', icon: 'fa-vial', iconClass: 'quiz-icon', desc: 'Match images to Hanzi with similar character counts.' },
-                { id: 'writingHanzi', title: 'Write Hanzi', icon: 'fa-pen-fancy', iconClass: 'standard-icon', desc: 'Challenge your Hanzi writing skills.' },
-                { id: 'classifierMatch', title: 'Classifier Quiz', icon: 'fa-layer-group', iconClass: 'recall-icon', desc: 'Choose the correct classifier for the object.' }
+                { id: 'quiz', title: 'Quiz Mode', icon: 'fa-question-circle', iconClass: 'quiz-icon', desc: 'Match images to Hanzi with similar character counts.' },
+                { id: 'writing', title: 'Writing Practice', icon: 'fa-pencil-alt', iconClass: 'standard-icon', desc: 'Challenge your writing skills.' },
+                { id: 'classifierMatch', title: 'Classifier Quiz', icon: 'fa-cubes', iconClass: 'recall-icon', desc: 'Choose the correct classifier for the object.' }
             ]
         };
     },
@@ -100,7 +103,7 @@ createApp({
             return '';
         },
         shadowingStatusIcon() {
-            if (this.shadowingState === 'idle') return this.isLooping ? 'fas fa-sync' : 'fas fa-info-circle';
+            if (this.shadowingState === 'idle') return this.isLooping ? 'fas fa-sync' : 'fas fa-check';
             if (this.shadowingState === 'recording') return 'fas fa-microphone';
             if (this.shadowingState === 'playback') return 'fas fa-headphones';
             return 'fas fa-volume-up';
@@ -113,11 +116,11 @@ createApp({
         },
         shadowingMainActionText() {
             if (this.isLooping) return 'Pause Practice';
-            return (this.shadowingState === 'idle' ? 'Start Practice' : 'Play Audio');
+            return 'Start Practice';
         },
         shadowingMainActionIcon() {
             if (this.isLooping) return 'fas fa-pause';
-            return (this.shadowingState === 'idle' ? 'fas fa-play' : 'fas fa-redo');
+            return 'fas fa-play';
         }
     },
     methods: {
@@ -125,13 +128,15 @@ createApp({
             try {
                 let data = (typeof WORDS_DATA !== 'undefined') ? WORDS_DATA : {};
                 const loadedWords = [];
-                const filenames = Object.keys(data);
+                // Sort keys to maintain stable order before shuffle
+                const filenames = Object.keys(data).sort();
 
-                for (let i = 0; i < TOTAL_WORDS; i++) {
-                    const wordNumberStr = i.toString().padStart(3, '0');
-                    const filename = `${WORD_PREFIX}${wordNumberStr}${IMAGE_EXTENSION}`;
+                for (let i = 0; i < filenames.length; i++) {
+                    const filename = filenames[i];
+                    // Verify if filename matches format
+                    if (!filename.startsWith(WORD_PREFIX)) continue;
+
                     const wordData = data[filename];
-
                     if (wordData) {
                         loadedWords.push({
                             id: i,
@@ -139,7 +144,8 @@ createApp({
                             pinyin: wordData.pinyin,
                             english: wordData.english,
                             image: `images/${filename}`,
-                            audio: `audio/${WORD_PREFIX}${wordNumberStr}${AUDIO_EXTENSION}`,
+                            // Extract number from filename for audio mapping
+                            audio: `audio/${filename.replace(IMAGE_EXTENSION, AUDIO_EXTENSION)}`,
                             number: i + 1,
                             categories: wordData.categories || [],
                             tones: wordData.tones || [],
@@ -151,6 +157,13 @@ createApp({
                 this.shuffledWords = [...loadedWords].sort(() => Math.random() - 0.5);
             } catch (error) {
                 console.error('Error loading word data:', error);
+            }
+        },
+        speak(text) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-CN';
+                window.speechSynthesis.speak(utterance);
             }
         },
         setMode(mode) {
@@ -165,10 +178,13 @@ createApp({
             this.writingStatus = '';
             this.recallRevealedId = null;
             this.shadowingState = 'idle';
+            this.writingTarget = 'hanzi'; // default
 
             if (mode === 'recall') {
                 this.hideChinese = true;
                 this.hidePinyin = true;
+                // Auto-continue not relevant for Recall usually, but user said disable it or it's irrelevant.
+                // We'll just leave local state as is, but can hide option in UI.
             }
             if (mode === 'shadowing') {
                 this.initVoiceRecorder();
@@ -186,7 +202,12 @@ createApp({
                 this.shuffledWords = [...this.masterWords].sort(() => Math.random() - 0.5);
             }
             this.currentWordIndex = 0;
-            // Requirement: Standard mode starts audio immediately
+
+            // Start logic logic
+            if (this.currentMode === 'shadowing') {
+                // Shadowing starts loop immediately
+                this.isLooping = true;
+            }
             this.playActiveWord(true);
         },
         onCardClick(word) {
@@ -204,18 +225,25 @@ createApp({
             this.isPlaying = true;
             this.statusText = `Playing: ${word.chinese}`;
 
-            // Reset session sub-state
-            this.quizAnswered = false;
-            this.userInput = '';
-            this.writingStatus = '';
-            this.recallRevealedId = null;
+            // Only Reset sub-state if it's a new word (or full replay), not just "Listen" button in writing mode
+            // We'll detect "Listen" button by checking if we are already on this word content-wise
+            // But simplify: writing mode "Listen" just plays audio.
+            if (this.currentMode !== 'writing') {
+                this.quizAnswered = false;
+                // this.userInput = ''; // Don't clear here, verify button needs it. Clear in playNext.
+                this.writingStatus = '';
+                this.recallRevealedId = null;
+            } else {
+                // In writing mode, if userInitiated (Listen button), don't clear input.
+                // If it's a new word navigation, clear input.
+                // We handle clearing in playNext/Prev
+            }
 
-            if (this.isQuizLikeMode) {
+            if (this.isQuizLikeMode && !this.quizAnswered) { // Only setup if not already answered (prevent reshuffle on replay)
                 this.setupQuiz(word);
-            } else if (this.currentMode === 'classifierMatch') {
+            } else if (this.currentMode === 'classifierMatch' && !this.quizAnswered) {
                 this.setupClassifierQuiz(word);
-            } else if (this.currentMode === 'writingPinyin' || this.currentMode === 'writingHanzi') {
-                // Focus input
+            } else if (this.currentMode === 'writing') {
                 setTimeout(() => {
                     const input = document.querySelector('.writing-input');
                     if (input) input.focus();
@@ -229,11 +257,11 @@ createApp({
 
             try {
                 // Play immediately if standard mode or user initiated
-                if (this.currentMode === 'standard' || userInitiated) {
+                // Also play for writing mode "Listen"
+                if (this.currentMode === 'standard' || this.currentMode === 'shadowing' || userInitiated) {
                     this.currentAudio.play();
-                } else if (this.currentMode !== 'writingPinyin' && this.currentMode !== 'writingHanzi') {
-                    // For others, maybe a slight delay
-                    setTimeout(() => { if (this.currentAudio) this.currentAudio.play(); }, 100);
+                } else if (this.currentMode !== 'writing' && this.currentMode !== 'writingHanzi') {
+                    //
                 }
             } catch (e) {
                 console.error("Audio play failed", e);
@@ -242,7 +270,9 @@ createApp({
         onAudioEnded() {
             if (this.currentMode === 'shadowing' && this.autoRecord) {
                 this.startRecordingSequence();
-            } else if (this.isLooping && this.autoContinue && !this.isQuizLikeMode) {
+            } else if (this.currentMode === 'standard' && this.autoContinue) {
+                this.handleAutoNext();
+            } else if (this.isLooping && this.autoContinue && !this.isQuizLikeMode && this.currentMode !== 'writing') {
                 this.handleAutoNext();
             } else {
                 this.isPlaying = false;
@@ -255,6 +285,8 @@ createApp({
         },
         playNext() {
             if (this.currentWordIndex < this.words.length - 1) {
+                this.userInput = ''; // Clear for next word
+                this.quizAnswered = false;
                 this.currentWordIndex++;
                 this.playActiveWord();
             } else {
@@ -263,6 +295,8 @@ createApp({
         },
         playPrev() {
             if (this.currentWordIndex > 0) {
+                this.userInput = '';
+                this.quizAnswered = false;
                 this.currentWordIndex--;
                 this.playActiveWord();
             }
@@ -309,14 +343,19 @@ createApp({
             const usedIds = new Set([word.id]);
             const targetLength = word.chinese.length;
 
-            // Strategy: Try to find words with similar hanzi length
-            let candidates = this.masterWords.filter(w => Math.abs(w.chinese.length - targetLength) <= 1 && !usedIds.has(w.id));
-            if (candidates.length < 3) candidates = this.masterWords.filter(w => !usedIds.has(w.id));
+            // Strict Filter: Exact same length
+            let candidates = this.masterWords.filter(w => w.chinese.length === targetLength && !usedIds.has(w.id));
+
+            // Fallback: +/- 1 length if exact not found (though user demanded same, safeguard for edge cases)
+            if (candidates.length < 3) {
+                candidates = this.masterWords.filter(w => Math.abs(w.chinese.length - targetLength) <= 1 && !usedIds.has(w.id));
+            }
 
             while (choices.length < 4 && candidates.length > 0) {
                 const idx = Math.floor(Math.random() * candidates.length);
-                choices.push(candidates[idx]);
-                usedIds.add(candidates[idx].id);
+                const chosen = candidates[idx];
+                choices.push(chosen);
+                usedIds.add(chosen.id);
                 candidates.splice(idx, 1);
             }
             this.quizChoices = choices.sort(() => Math.random() - 0.5);
@@ -327,7 +366,6 @@ createApp({
                 return choice.categories[0] || 'Uncategorized';
             }
             if (this.currentMode === 'animalMatch') {
-                // Extract "四只" from "4 四只熊猫"
                 const match = choice.chinese.match(/([一二三四五六七八九十].)/);
                 return match ? match[1] : choice.chinese;
             }
@@ -373,6 +411,9 @@ createApp({
             const correct = this.activeWord.classifier || '个';
             if (choice === correct) {
                 this.quizScore.correct++;
+                // TTS Feedback
+                const textToSpeak = `一${correct} ${this.activeWord.chinese}`; // e.g. "Yi ge ping guo"
+                this.speak(textToSpeak);
             } else {
                 this.quizScore.wrong++;
             }
@@ -389,17 +430,24 @@ createApp({
         // --- Writing Practice ---
         checkWritingAnswer() {
             if (this.quizAnswered) return;
-            const correct = this.currentMode === 'writingPinyin' ? this.activeWord.pinyin : this.activeWord.chinese;
-            // Basic normalization
-            const input = this.userInput.trim().toLowerCase();
-            const target = correct.trim().toLowerCase();
+            // writingTarget can be 'hanzi' or 'pinyin'
+            const correct = this.writingTarget === 'pinyin' ? this.activeWord.pinyin : this.activeWord.chinese;
 
-            if (input === target || target.includes(input) && input.length > 1) { // Leniency for partials if needed
+            // Normalize
+            // Remvoe tones for looser check? User didn't request tones check disable, stick to strict string match first
+            // but trim spaces.
+            const input = this.userInput.trim();
+            const target = correct.trim();
+
+            // Simple validation
+            if (input === target || (target.includes(input) && input.length >= 1 && this.writingTarget === 'hanzi')) {
                 this.writingStatus = 'correct';
                 this.quizScore.correct++;
+                this.statusText = "✅ Correct!";
             } else {
                 this.writingStatus = 'wrong';
                 this.quizScore.wrong++;
+                this.statusText = "❌ Try Again";
             }
             this.quizAnswered = true;
             if (this.autoContinue) setTimeout(() => this.playNext(), 2000);
@@ -425,7 +473,9 @@ createApp({
         },
         handleShadowingMainAction() {
             this.isLooping = !this.isLooping;
-            if (this.isLooping) this.playActiveWord(true);
+            if (this.isLooping) {
+                if (this.shadowingState === 'idle') this.playActiveWord(true);
+            }
             else this.stopAudioOnly();
         },
         startRecordingSequence() {
@@ -459,6 +509,12 @@ createApp({
         setupKeyboardListeners() {
             window.addEventListener('keydown', (e) => {
                 if (this.currentMode === 'home') return;
+                // Allow enter to submit writing
+                if (e.code === 'Enter' && this.currentMode === 'writing') {
+                    this.checkWritingAnswer();
+                    return;
+                }
+
                 if (document.activeElement.tagName === 'INPUT' && e.code !== 'Escape') return;
 
                 if (e.code === 'Space') {
