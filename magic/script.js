@@ -198,6 +198,19 @@ const app = createApp({
                 });
                 return results;
             }
+
+            // Filter by tones for shadowing mode
+            if (this.currentMode === 'shadowing' && this.shadowingToneFilters.length > 0) {
+                const selectedTones = this.shadowingToneFilters.map(t => parseInt(t));
+                let pool = this.masterWords.filter(w => {
+                    if (w.tones && Array.isArray(w.tones)) {
+                        return w.tones.some(tone => selectedTones.includes(tone));
+                    }
+                    return false;
+                });
+                return this.isShuffled ? pool.sort(() => Math.random() - 0.5) : pool;
+            }
+
             return this.isShuffled ? this.shuffledWords : this.masterWords;
         },
         currentModeTitle() {
@@ -216,18 +229,6 @@ const app = createApp({
                     w.english.toLowerCase().includes(q) ||
                     w.number.toString().includes(q)
                 );
-            }
-
-            // Apply tone filter for shadowing mode
-            if (this.currentMode === 'shadowing' && this.shadowingToneFilters.length > 0) {
-                const selectedTones = this.shadowingToneFilters.map(t => parseInt(t));
-                filtered = filtered.filter(word => {
-                    // Check if word has tones array and if any of its tones match the selected filters
-                    if (word.tones && Array.isArray(word.tones)) {
-                        return word.tones.some(tone => selectedTones.includes(tone));
-                    }
-                    return false;
-                });
             }
 
             return filtered;
