@@ -8,9 +8,11 @@ const AUDIO_EXTENSION = ".mp3";
 createApp({
     data() {
         return {
-            words: [],
+            masterWords: [], // Original sequential order
+            shuffledWords: [], // Random order
+            isShuffled: true,
             currentMode: 'home',
-            currentWordIndex: -1, // -1: welcome, -2: grid, >=0: active word
+            currentWordIndex: -1,
             searchQuery: '',
             volume: 80,
             playDelay: 3.5,
@@ -28,15 +30,17 @@ createApp({
             hideChinese: true,
             hidePinyin: true,
 
-            // Quiz state
+            // Quiz/Game state
             quizScore: { correct: 0, wrong: 0 },
             quizChoices: [],
             quizAnswered: false,
             quizCorrectId: null,
             quizSelectedId: null,
+            userInput: '',
+            writingStatus: '', // 'correct', 'wrong', ''
 
             // Shadowing state
-            shadowingState: 'idle', // idle, recording, playback
+            shadowingState: 'idle',
             autoRecord: true,
             mediaRecorder: null,
             audioChunks: [],
@@ -46,12 +50,17 @@ createApp({
             modes: [
                 { id: 'standard', title: 'Standard Mode', icon: 'fa-book-reader', iconClass: 'standard-icon', desc: 'Focused single-word view with auto-play options.' },
                 { id: 'recall', title: 'Active Recall', icon: 'fa-brain', iconClass: 'recall-icon', desc: 'Test your memory by hiding Pinyin or Mandarin.' },
-                { id: 'shadowing', title: 'Shadowing', icon: 'fa-microphone-alt', iconClass: 'shadowing-icon', desc: 'Listen and record yourself to perfect your accent.' },
-                { id: 'quiz', title: 'Quiz Mode', icon: 'fa-vial', iconClass: 'quiz-icon', desc: 'Challenge yourself with a 4-choice quiz.' }
+                { id: 'shadowing', title: 'Shadowing', icon: 'fa-microphone-alt', iconClass: 'shadowing-icon', desc: 'Perfect your accent with recording feedback.' },
+                { id: 'quiz', title: 'Quiz Mode', icon: 'fa-vial', iconClass: 'quiz-icon', desc: 'Match images to Hanzi with similar character counts.' },
+                { id: 'writingHanzi', title: 'Write Hanzi', icon: 'fa-pen-fancy', iconClass: 'standard-icon', desc: 'Challenge your Hanzi writing skills.' },
+                { id: 'classifierMatch', title: 'Classifier Quiz', icon: 'fa-layer-group', iconClass: 'recall-icon', desc: 'Choose the correct classifier for the object.' }
             ]
         };
     },
     computed: {
+        words() {
+            return this.isShuffled ? this.shuffledWords : this.masterWords;
+        },
         filteredWords() {
             if (!this.searchQuery) return this.words;
             const q = this.searchQuery.toLowerCase();
@@ -69,8 +78,6 @@ createApp({
             return null;
         },
         overlayWord() {
-            // In Vue, the overlay is just a view of the activeWord if currentWordIndex >= 0
-            // and we are not in "browse grid first" mode (-2)
             return (this.currentWordIndex >= 0) ? this.activeWord : null;
         },
         activeWordId() {
@@ -80,7 +87,11 @@ createApp({
             return this.recallRevealedId === this.activeWordId;
         },
         currentModeConfig() {
-            return this.modes.find(m => m.id === this.currentMode) || {};
+            return this.modes.find(m => m.id === this.currentMode) || { title: 'Home', icon: 'fa-home', desc: '' };
+        },
+        isQuizLikeMode() {
+            const quizModes = ['quiz', 'animalMatch', 'categoryMatch'];
+            return quizModes.includes(this.currentMode);
         },
         shadowingStatusText() {
             if (this.shadowingState === 'idle') return this.isLooping ? 'Auto-continuing...' : 'Ready to practice';
@@ -113,15 +124,12 @@ createApp({
         async loadWords() {
             try {
                 let data = (typeof WORDS_DATA !== 'undefined') ? WORDS_DATA : {};
-                if (Object.keys(data).length === 0) {
-                    const response = await fetch('all_words.json');
-                    data = await response.json();
-                }
-
                 const loadedWords = [];
+                const filenames = Object.keys(data);
+
                 for (let i = 0; i < TOTAL_WORDS; i++) {
-                    const wordNumber = i.toString().padStart(3, '0');
-                    const filename = `${WORD_PREFIX}${wordNumber}${IMAGE_EXTENSION}`;
+                    const wordNumberStr = i.toString().padStart(3, '0');
+                    const filename = `${WORD_PREFIX}${wordNumberStr}${IMAGE_EXTENSION}`;
                     const wordData = data[filename];
 
                     if (wordData) {
@@ -131,13 +139,16 @@ createApp({
                             pinyin: wordData.pinyin,
                             english: wordData.english,
                             image: `images/${filename}`,
-                            audio: `audio/${WORD_PREFIX}${wordNumber}${AUDIO_EXTENSION}`,
-                            number: i + 1
+                            audio: `audio/${WORD_PREFIX}${wordNumberStr}${AUDIO_EXTENSION}`,
+                            number: i + 1,
+                            categories: wordData.categories || [],
+                            tones: wordData.tones || [],
+                            classifier: wordData.classifier || null
                         });
                     }
                 }
-                // Shuffle by default
-                this.words = loadedWords.sort(() => Math.random() - 0.5);
+                this.masterWords = loadedWords;
+                this.shuffledWords = [...loadedWords].sort(() => Math.random() - 0.5);
             } catch (error) {
                 console.error('Error loading word data:', error);
             }
@@ -147,9 +158,14 @@ createApp({
             this.currentMode = mode;
             this.currentWordIndex = -1;
 
-            if (mode === 'quiz') {
-                this.quizScore = { correct: 0, wrong: 0 };
-            }
+            // Reset state
+            this.quizScore = { correct: 0, wrong: 0 };
+            this.quizAnswered = false;
+            this.userInput = '';
+            this.writingStatus = '';
+            this.recallRevealedId = null;
+            this.shadowingState = 'idle';
+
             if (mode === 'recall') {
                 this.hideChinese = true;
                 this.hidePinyin = true;
@@ -160,11 +176,17 @@ createApp({
             this.statusText = mode === 'home' ? 'Choose a mode to start learning' : `${this.currentModeConfig.title} Initialized`;
         },
         onModeChange() {
-            const mode = this.currentMode;
-            this.setMode(mode);
+            this.setMode(this.currentMode);
+        },
+        toggleOrder() {
+            this.isShuffled = !this.isShuffled;
         },
         startSession() {
+            if (this.isShuffled) {
+                this.shuffledWords = [...this.masterWords].sort(() => Math.random() - 0.5);
+            }
             this.currentWordIndex = 0;
+            // Requirement: Standard mode starts audio immediately
             this.playActiveWord(true);
         },
         onCardClick(word) {
@@ -182,24 +204,37 @@ createApp({
             this.isPlaying = true;
             this.statusText = `Playing: ${word.chinese}`;
 
-            if (this.currentMode === 'quiz') {
+            // Reset session sub-state
+            this.quizAnswered = false;
+            this.userInput = '';
+            this.writingStatus = '';
+            this.recallRevealedId = null;
+
+            if (this.isQuizLikeMode) {
                 this.setupQuiz(word);
+            } else if (this.currentMode === 'classifierMatch') {
+                this.setupClassifierQuiz(word);
+            } else if (this.currentMode === 'writingPinyin' || this.currentMode === 'writingHanzi') {
+                // Focus input
+                setTimeout(() => {
+                    const input = document.querySelector('.writing-input');
+                    if (input) input.focus();
+                }, 100);
             }
 
             // Normal audio playback
             this.currentAudio = new Audio(word.audio);
             this.currentAudio.volume = this.volume / 100;
-
-            this.currentAudio.onended = () => {
-                this.onAudioEnded();
-            };
+            this.currentAudio.onended = () => this.onAudioEnded();
 
             try {
-                // For modes like Standard/Shadowing, we might want to delay start slightly
-                const delay = (this.currentMode === 'standard' || this.currentMode === 'shadowing') ? 100 : 0;
-                setTimeout(() => {
-                    if (this.currentAudio) this.currentAudio.play();
-                }, delay);
+                // Play immediately if standard mode or user initiated
+                if (this.currentMode === 'standard' || userInitiated) {
+                    this.currentAudio.play();
+                } else if (this.currentMode !== 'writingPinyin' && this.currentMode !== 'writingHanzi') {
+                    // For others, maybe a slight delay
+                    setTimeout(() => { if (this.currentAudio) this.currentAudio.play(); }, 100);
+                }
             } catch (e) {
                 console.error("Audio play failed", e);
             }
@@ -207,7 +242,7 @@ createApp({
         onAudioEnded() {
             if (this.currentMode === 'shadowing' && this.autoRecord) {
                 this.startRecordingSequence();
-            } else if (this.isLooping && this.autoContinue) {
+            } else if (this.isLooping && this.autoContinue && !this.isQuizLikeMode) {
                 this.handleAutoNext();
             } else {
                 this.isPlaying = false;
@@ -216,9 +251,7 @@ createApp({
         handleAutoNext() {
             const delay = this.playDelay * 1000;
             this.statusText = `Next in ${this.playDelay}s...`;
-            this.autoNextTimeout = setTimeout(() => {
-                this.playNext();
-            }, delay);
+            this.autoNextTimeout = setTimeout(() => this.playNext(), delay);
         },
         playNext() {
             if (this.currentWordIndex < this.words.length - 1) {
@@ -235,10 +268,10 @@ createApp({
             }
         },
         togglePlayPause() {
-            if (this.isPlaying) {
-                this.pausePlayback();
-            } else {
+            if (this.isPlaying) this.pausePlayback();
+            else {
                 if (this.currentWordIndex < 0) this.startSession();
+                else if (this.currentAudio) this.currentAudio.play();
                 else this.playActiveWord(true);
             }
         },
@@ -251,7 +284,7 @@ createApp({
             this.isLooping = false;
             this.isPlaying = false;
             this.stopAudioOnly();
-            this.currentWordIndex = (this.currentMode === 'home') ? -1 : -1;
+            this.currentWordIndex = -1;
             if (this.autoNextTimeout) clearTimeout(this.autoNextTimeout);
             this.shadowingState = 'idle';
         },
@@ -267,31 +300,38 @@ createApp({
             if (this.autoNextTimeout) clearTimeout(this.autoNextTimeout);
         },
         replayAudio() {
-            if (this.currentMode === 'standard' || this.currentMode === 'shadowing') {
-                this.isLooping = !this.isLooping;
-                if (this.isLooping) this.playActiveWord(true);
-                else this.stopAudioOnly();
-            } else {
-                this.playActiveWord(true);
-            }
+            this.playActiveWord(true);
         },
-        // --- Mode Specific Logic ---
 
-        // Quiz
+        // --- Multi-Choice Games ---
         setupQuiz(word) {
             const choices = [word];
             const usedIds = new Set([word.id]);
-            while (choices.length < 4) {
-                const rand = this.words[Math.floor(Math.random() * this.words.length)];
-                if (!usedIds.has(rand.id)) {
-                    choices.push(rand);
-                    usedIds.add(rand.id);
-                }
+            const targetLength = word.chinese.length;
+
+            // Strategy: Try to find words with similar hanzi length
+            let candidates = this.masterWords.filter(w => Math.abs(w.chinese.length - targetLength) <= 1 && !usedIds.has(w.id));
+            if (candidates.length < 3) candidates = this.masterWords.filter(w => !usedIds.has(w.id));
+
+            while (choices.length < 4 && candidates.length > 0) {
+                const idx = Math.floor(Math.random() * candidates.length);
+                choices.push(candidates[idx]);
+                usedIds.add(candidates[idx].id);
+                candidates.splice(idx, 1);
             }
             this.quizChoices = choices.sort(() => Math.random() - 0.5);
-            this.quizAnswered = false;
             this.quizCorrectId = word.id;
-            this.quizSelectedId = null;
+        },
+        getChoiceLabel(choice) {
+            if (this.currentMode === 'categoryMatch') {
+                return choice.categories[0] || 'Uncategorized';
+            }
+            if (this.currentMode === 'animalMatch') {
+                // Extract "四只" from "4 四只熊猫"
+                const match = choice.chinese.match(/([一二三四五六七八九十].)/);
+                return match ? match[1] : choice.chinese;
+            }
+            return choice.chinese;
         },
         handleQuizAnswer(choice) {
             if (this.quizAnswered) return;
@@ -306,13 +346,7 @@ createApp({
                 this.statusText = "❌ Wrong!";
             }
 
-            setTimeout(() => {
-                if (this.isLooping || this.autoContinue) {
-                    this.playNext();
-                } else {
-                    this.isPlaying = false;
-                }
-            }, 2000);
+            if (this.autoContinue) setTimeout(() => this.playNext(), 2000);
         },
         getQuizBtnClass(choice) {
             if (!this.quizAnswered) return '';
@@ -321,15 +355,63 @@ createApp({
             return '';
         },
 
-        // Recall
-        revealRecall() {
-            this.recallRevealedId = this.activeWordId;
-            const audio = new Audio(this.activeWord.audio);
-            audio.play();
+        // --- Classifier Quiz ---
+        setupClassifierQuiz(word) {
+            const correct = word.classifier || '个';
+            const commonClassifiers = ['个', '只', '棵', '片', '条', '面', '座', '台', '把', '朵', '只'];
+            const choices = new Set([correct]);
+            while (choices.size < 4) {
+                choices.add(commonClassifiers[Math.floor(Math.random() * commonClassifiers.length)]);
+            }
+            this.quizChoices = Array.from(choices).sort(() => Math.random() - 0.5);
+            this.quizAnswered = false;
+        },
+        handleClassifierAnswer(choice) {
+            if (this.quizAnswered) return;
+            this.quizAnswered = true;
+            this.quizSelectedId = choice;
+            const correct = this.activeWord.classifier || '个';
+            if (choice === correct) {
+                this.quizScore.correct++;
+            } else {
+                this.quizScore.wrong++;
+            }
+            if (this.autoContinue) setTimeout(() => this.playNext(), 2000);
+        },
+        getClassifierBtnClass(choice) {
+            if (!this.quizAnswered) return '';
+            const correct = this.activeWord.classifier || '个';
+            if (choice === correct) return 'correct';
+            if (choice === this.quizSelectedId) return 'wrong';
+            return '';
         },
 
-        // Shadowing
+        // --- Writing Practice ---
+        checkWritingAnswer() {
+            if (this.quizAnswered) return;
+            const correct = this.currentMode === 'writingPinyin' ? this.activeWord.pinyin : this.activeWord.chinese;
+            // Basic normalization
+            const input = this.userInput.trim().toLowerCase();
+            const target = correct.trim().toLowerCase();
+
+            if (input === target || target.includes(input) && input.length > 1) { // Leniency for partials if needed
+                this.writingStatus = 'correct';
+                this.quizScore.correct++;
+            } else {
+                this.writingStatus = 'wrong';
+                this.quizScore.wrong++;
+            }
+            this.quizAnswered = true;
+            if (this.autoContinue) setTimeout(() => this.playNext(), 2000);
+        },
+
+        // --- Recall/Shadowing Helpers ---
+        revealRecall() {
+            this.recallRevealedId = this.activeWordId;
+            if (this.currentAudio) this.currentAudio.play();
+        },
         async initVoiceRecorder() {
+            if (this.mediaRecorder) return;
             try {
                 const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
                 this.mediaRecorder = new MediaRecorder(stream);
@@ -339,9 +421,7 @@ createApp({
                     this.userAudio = new Audio(URL.createObjectURL(audioBlob));
                     this.playUserRecording();
                 };
-            } catch (err) {
-                console.error("Mic access denied", err);
-            }
+            } catch (err) { console.error("Mic access denied", err); }
         },
         handleShadowingMainAction() {
             this.isLooping = !this.isLooping;
@@ -353,12 +433,7 @@ createApp({
             this.shadowingState = 'recording';
             this.audioChunks = [];
             this.mediaRecorder.start();
-
-            setTimeout(() => {
-                if (this.mediaRecorder.state === 'recording') {
-                    this.mediaRecorder.stop();
-                }
-            }, 3000);
+            setTimeout(() => { if (this.mediaRecorder.state === 'recording') this.mediaRecorder.stop(); }, 3000);
         },
         playUserRecording() {
             if (!this.userAudio) return;
@@ -366,50 +441,32 @@ createApp({
             this.userAudio.play();
             this.userAudio.onended = () => {
                 this.shadowingState = 'idle';
-                if (this.isLooping && this.autoContinue) {
-                    setTimeout(() => this.playNext(), 500);
-                }
+                if (this.isLooping && this.autoContinue) setTimeout(() => this.playNext(), 800);
             };
         },
-        startManualRecording() {
-            this.startRecordingSequence();
-        },
-        stopManualRecording() {
-            if (this.mediaRecorder && this.mediaRecorder.state === 'recording') {
-                this.mediaRecorder.stop();
-            }
-        },
+        startManualRecording() { this.startRecordingSequence(); },
+        stopManualRecording() { if (this.mediaRecorder && this.mediaRecorder.state === 'recording') this.mediaRecorder.stop(); },
 
-        // --- Utils ---
+        // --- Global Utils ---
         shuffleWords() {
-            this.words.sort(() => Math.random() - 0.5);
+            this.shuffledWords.sort(() => Math.random() - 0.5);
+            this.isShuffled = true;
             if (this.currentWordIndex >= 0) {
-                // If in session, jump to new first word
                 this.currentWordIndex = 0;
                 this.playActiveWord(true);
             }
         },
-        shuffleArray(array) {
-            return array.sort(() => Math.random() - 0.5);
-        },
         setupKeyboardListeners() {
             window.addEventListener('keydown', (e) => {
                 if (this.currentMode === 'home') return;
+                if (document.activeElement.tagName === 'INPUT' && e.code !== 'Escape') return;
 
                 if (e.code === 'Space') {
                     e.preventDefault();
-                    if (this.interactiveLoop && this.isPlaying) {
-                        // Space might act as "Continue" in some modes
-                    } else {
-                        this.togglePlayPause();
-                    }
-                } else if (e.code === 'ArrowRight') {
-                    this.playNext();
-                } else if (e.code === 'ArrowLeft') {
-                    this.playPrev();
-                } else if (e.code === 'Escape') {
-                    this.stopPlayback();
-                }
+                    this.togglePlayPause();
+                } else if (e.code === 'ArrowRight') this.playNext();
+                else if (e.code === 'ArrowLeft') this.playPrev();
+                else if (e.code === 'Escape') this.stopPlayback();
             });
         }
     },

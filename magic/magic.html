@@ -36,17 +36,26 @@
 
                     <select v-model="currentMode" @change="onModeChange"
                         style="padding: 8px 15px; border-radius: 20px; border: none; font-size: 14px; background: rgba(255,255,255,0.95); color: #333; font-weight: 500; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                        <option value="standard">Standard Mode</option>
-                        <option value="recall">Recall Mode</option>
-                        <option value="shadowing">Shadowing Mode</option>
-                        <option value="quiz">Quiz Mode</option>
+                        <optgroup label="Core Modes">
+                            <option value="standard">Standard Mode</option>
+                            <option value="recall">Recall Mode</option>
+                            <option value="shadowing">Shadowing Mode</option>
+                            <option value="quiz">Quiz Mode</option>
+                        </optgroup>
+                        <optgroup label="Learning Games">
+                            <option value="writingPinyin">Write Pinyin</option>
+                            <option value="writingHanzi">Write Hanzi</option>
+                            <option value="classifierMatch">Classifier Match</option>
+                            <option value="animalMatch">Animal Number Match</option>
+                            <option value="categoryMatch">Category Match</option>
+                        </optgroup>
                     </select>
 
-                    <button @click="interactiveLoop = !interactiveLoop"
-                        :class="['control-btn', { active: interactiveLoop }]"
-                        title="Interactive Loop (Space to continue)">
-                        <i class="fas fa-hand-pointer"></i>
-                    </button>
+                    <div :class="['order-toggle', { active: !isShuffled }]" @click="toggleOrder"
+                        title="Toggle Shuffled/Original Order">
+                        <i :class="isShuffled ? 'fas fa-random' : 'fas fa-sort-numeric-down'"></i>
+                        <span>{{ isShuffled ? 'Shuffled' : 'Sequential' }}</span>
+                    </div>
 
                     <div class="volume-controls"
                         style="color: #333; background: rgba(255,255,255,0.95); padding: 5px 12px; border-radius: 20px; display: flex; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
@@ -56,24 +65,12 @@
                         <i class="fas fa-volume-up" style="font-size: 0.9em; margin-left: 5px;"></i>
                     </div>
 
-                    <button @click="shuffleWords" title="Shuffle Words"
-                        style="background: rgba(255,255,255,0.95); color: #4a00e0; border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1);"><i
-                            class="fas fa-random"></i></button>
-
-                    <div class="setting-item" title="Delay between words (Auto-continue)"
-                        style="background: rgba(255,255,255,0.95); padding: 5px 10px; border-radius: 20px; color: #333; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                        <i class="fas fa-clock" style="color: #4a00e0;"></i>
-                        <input type="number" v-model.number="playDelay" min="0" max="10" step="0.5"
-                            style="width: 40px; padding: 3px; border-radius: 4px; border: 1px solid #ddd; text-align: center; color: #333; background: transparent;">
-                        <span>s</span>
-                    </div>
-
                     <span class="word-count-display"
                         style="background: rgba(255,255,255,0.95); color: #333; padding: 5px 12px; border-radius: 20px; font-size: 0.9em; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
                         Total: <span style="font-weight: bold; color: #4a00e0;">{{ filteredWords.length }}</span>
                     </span>
 
-                    <div v-show="currentMode === 'quiz'" class="quiz-score" style="background: rgba(0,0,0,0.2);">
+                    <div v-show="isQuizLikeMode" class="quiz-score" style="background: rgba(0,0,0,0.2);">
                         <span class="score-correct">✅ {{ quizScore.correct }}</span>
                         <span class="score-wrong">❌ {{ quizScore.wrong }}</span>
                     </div>
@@ -101,21 +98,20 @@
             <!-- Home Screen -->
             <div v-if="currentMode === 'home'" class="home-screen">
                 <div class="home-content">
-                    <h2 class="home-title">Choose Your Learning Path</h2>
-                    <p class="home-subtitle">Select a mode to begin your Mandarin mastery journey</p>
+                    <h2 class="home-title">Mandarin Mastery</h2>
+                    <p class="home-subtitle">Choose a mode to begin your journey</p>
 
                     <div class="mode-cards-grid">
                         <div v-for="mode in modes" :key="mode.id" class="mode-card" @click="setMode(mode.id)">
                             <div :class="['mode-icon', mode.iconClass]"><i :class="mode.icon"></i></div>
                             <h3>{{ mode.title }}</h3>
                             <p>{{ mode.desc }}</p>
-                            <button class="mode-start-btn">Start Learning</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Mode Welcome Screen -->
+            <!-- Mode Welcome Screen with Settings -->
             <div v-else-if="currentWordIndex === -1 && !searchQuery" class="welcome-screen-container">
                 <div class="welcome-screen">
                     <div class="welcome-icon-circle">
@@ -123,6 +119,22 @@
                     </div>
                     <h2>{{ currentModeConfig.title }}</h2>
                     <p>{{ currentModeConfig.desc }}</p>
+
+                    <div class="mode-settings">
+                        <label class="setting-row">
+                            <input type="checkbox" v-model="autoContinue">
+                            <span>Auto-continue to next word</span>
+                        </label>
+                        <label class="setting-row">
+                            <input type="checkbox" v-model="isShuffled">
+                            <span>Shuffle words for this session</span>
+                        </label>
+                        <label v-if="currentMode === 'shadowing'" class="setting-row">
+                            <input type="checkbox" v-model="autoRecord">
+                            <span>Auto-record after audio</span>
+                        </label>
+                    </div>
+
                     <button @click="startSession" class="start-session-btn">
                         <i class="fas fa-play" style="margin-right: 12px;"></i> Start Session
                     </button>
@@ -141,8 +153,10 @@
                         <h3 :class="{ 'blur-text': currentMode === 'recall' && hideChinese }">{{ word.chinese }}</h3>
                         <p :class="['pinyin', { 'blur-text': currentMode === 'recall' && hidePinyin }]">{{ word.pinyin
                             }}</p>
-                        <p :class="['english', { 'blur-text': currentMode === 'recall' && hideChinese }]">{{
-                            word.english }}</p>
+                        <p class="english">{{ word.english }}</p>
+                        <div class="categories" style="margin-top: 8px;">
+                            <span v-for="cat in word.categories" :key="cat" class="category-badge">{{ cat }}</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -151,26 +165,17 @@
             <div v-if="overlayWord" class="quiz-overlay">
 
                 <!-- Standard Overlay -->
-                <div v-if="currentMode === 'standard'" class="quiz-card standard-card">
-                    <div class="standard-header">
-                        <label class="mode-toggle">
-                            <input type="checkbox" v-model="autoContinue">
-                            <span>Auto-continue to next word</span>
-                        </label>
-                    </div>
+                <div v-if="currentMode === 'standard'" class="quiz-card">
                     <img :src="overlayWord.image" alt="Word Image" class="quiz-image">
                     <div class="recall-info-container">
-                        <div class="recall-text" style="filter: none; color: #333;">{{ overlayWord.chinese }}</div>
-                        <div class="recall-text" style="filter: none; color: #666; font-size: 1.5em;">{{
-                            overlayWord.pinyin }}</div>
-                        <div class="recall-text" style="filter: none; color: #888; font-size: 1.2em; margin-top: 5px;">
-                            {{ overlayWord.english }}</div>
+                        <div class="recall-text">{{ overlayWord.chinese }}</div>
+                        <div class="recall-text" style="font-size: 1.5em; color: #666;">{{ overlayWord.pinyin }}</div>
+                        <div class="recall-text" style="font-size: 1.2em; color: #888;">{{ overlayWord.english }}</div>
                     </div>
                     <div class="standard-controls">
-                        <button @click="replayAudio" :class="isLooping ? 'pause-btn' : 'replay-btn'"
-                            :style="isLooping ? { background: 'linear-gradient(135deg, #ffa500 0%, #ff8c00 100%)' } : {}">
-                            <i :class="isLooping ? 'fas fa-pause' : 'fas fa-play'"></i>
-                            {{ isLooping ? 'Pause' : 'Play Audio' }}
+                        <button @click="togglePlayPause" :class="isPlaying ? 'pause-btn' : 'replay-btn'">
+                            <i :class="isPlaying ? 'fas fa-pause' : 'fas fa-play'"></i>
+                            {{ isPlaying ? 'Pause' : 'Play Audio' }}
                         </button>
                         <div class="nav-btn-group">
                             <button @click="playPrev" class="quiz-btn"><i class="fas fa-arrow-left"></i> Prev</button>
@@ -191,11 +196,11 @@
                         <div :class="['recall-text', { 'blur-text': hidePinyin && !isRecallRevealed }]">{{
                             overlayWord.pinyin }}</div>
                         <div :class="['recall-text', { 'blur-text': hideChinese && !isRecallRevealed }]"
-                            style="font-size: 1.2em; color: #666; margin-top: 5px;">{{ overlayWord.english }}</div>
+                            style="font-size: 1.2em; color: #666;">{{ overlayWord.english }}</div>
                     </div>
                     <div class="recall-controls">
-                        <button @click="revealRecall" class="replay-btn"><i class="fas fa-eye"></i> Reveal /
-                            Replay</button>
+                        <button @click="revealRecall" class="replay-btn"><i class="fas fa-eye"></i> {{ isRecallRevealed
+                            ? 'Replay' : 'Reveal' }}</button>
                         <div class="nav-btn-group">
                             <button @click="playPrev" class="quiz-btn"><i class="fas fa-arrow-left"></i> Prev</button>
                             <button @click="playNext" class="quiz-btn"><i class="fas fa-arrow-right"></i> Next</button>
@@ -207,32 +212,26 @@
 
                 <!-- Shadowing Overlay -->
                 <div v-if="currentMode === 'shadowing'" class="quiz-card shadowing-card">
-                    <div class="shadowing-header">
-                        <div class="shadowing-mode-toggle">
-                            <label><input type="checkbox" v-model="autoRecord"> Auto-record after playback</label>
-                            <label style="margin-left: 20px;"><input type="checkbox" v-model="autoContinue">
-                                Auto-continue</label>
-                        </div>
-                    </div>
                     <img :src="overlayWord.image" alt="Word Image" class="quiz-image">
                     <div class="shadowing-info-container">
                         <div class="shadowing-text">{{ overlayWord.chinese }}</div>
                         <div class="shadowing-text-pinyin">{{ overlayWord.pinyin }}</div>
-                        <div class="shadowing-text-english"
-                            style="text-align: center; color: #666; font-size: 1.1em; margin-top: 5px;">{{
-                            overlayWord.english }}</div>
+                        <div class="shadowing-text-english">{{ overlayWord.english }}</div>
                     </div>
                     <div :class="['shadowing-status', shadowingStatusClass]">
                         <i :class="shadowingStatusIcon"></i> {{ shadowingStatusText }}
                     </div>
                     <div class="shadowing-controls">
-                        <button @click="handleShadowingMainAction" :class="isLooping ? 'pause-btn' : 'replay-btn'">
-                            <i :class="shadowingMainActionIcon"></i> {{ shadowingMainActionText }}
+                        <button v-show="shadowingState !== 'recording'" @click="handleShadowingMainAction"
+                            :class="isLooping ? 'pause-btn' : 'replay-btn'">
+                            <i :class="shadowingMainActionIcon"></i>
+                            {{ shadowingMainActionText }}
                         </button>
+                        <button v-if="shadowingState === 'recording'" @click="stopManualRecording" class="pause-btn"><i
+                                class="fas fa-pause"></i> Pause Recording</button>
                         <button v-if="!autoRecord && shadowingState === 'idle'" @click="startManualRecording"
                             class="record-btn"><i class="fas fa-microphone"></i> Record</button>
-                        <button v-if="shadowingState === 'recording'" @click="stopManualRecording" class="pause-btn"><i
-                                class="fas fa-pause"></i> Pause</button>
+
                         <div class="nav-btn-group">
                             <button @click="playPrev" class="quiz-btn"><i class="fas fa-arrow-left"></i> Prev</button>
                             <button @click="playNext" class="quiz-btn"><i class="fas fa-arrow-right"></i> Next</button>
@@ -242,24 +241,97 @@
                     </div>
                 </div>
 
-                <!-- Quiz Overlay -->
-                <div v-if="currentMode === 'quiz'" class="quiz-card">
+                <!-- Multiple Choice (Quiz, Animal Match, Category Match) -->
+                <div v-if="isQuizLikeMode" class="quiz-card">
                     <div class="quiz-header">
                         <div class="quiz-score-live">Score: <span class="score-correct">✅ {{ quizScore.correct }}</span>
                             / <span class="score-wrong">❌ {{ quizScore.wrong }}</span></div>
                     </div>
-                    <img :src="overlayWord.image" alt="Word Image" class="quiz-image">
-                    <button @click="replayAudio" class="replay-btn"><i class="fas fa-redo"></i> Replay Audio</button>
+
+                    <div v-if="currentMode === 'animalMatch'" style="text-align: center; margin-bottom: 20px;">
+                        <img :src="overlayWord.image" alt="Animal" class="quiz-image" style="height: 300px;">
+                        <button @click="replayAudio" class="replay-btn" style="width: auto; padding: 10px 30px;"><i
+                                class="fas fa-volume-up"></i> Listen</button>
+                        <h3 style="font-size: 1.5em; color: #4a00e0;">How many animals are there?</h3>
+                    </div>
+
+                    <div v-else-if="currentMode === 'categoryMatch'" style="text-align: center; margin-bottom: 20px;">
+                        <img :src="overlayWord.image" alt="Animal" class="quiz-image" style="height: 300px;">
+                        <h3 style="font-size: 1.5em; color: #4a00e0;">Which category is this?</h3>
+                    </div>
+
+                    <div v-else>
+                        <img :src="overlayWord.image" alt="Word Image" class="quiz-image">
+                    </div>
+
                     <div class="quiz-options-large">
                         <button v-for="choice in quizChoices" :key="choice.id"
                             :class="['quiz-btn', getQuizBtnClass(choice)]" :disabled="quizAnswered"
                             @click="handleQuizAnswer(choice)">
-                            {{ choice.chinese }}
+                            {{ getChoiceLabel(choice) }}
                         </button>
                     </div>
                     <button @click="stopPlayback" class="finish-quiz-btn"><i class="fas fa-times-circle"></i> Finish
                         Quiz</button>
                 </div>
+
+                <!-- Writing Practice (Hanzi/Pinyin) -->
+                <div v-if="currentMode === 'writingPinyin' || currentMode === 'writingHanzi'" class="quiz-card">
+                    <img :src="overlayWord.image" alt="Word Image" class="quiz-image">
+                    <div style="text-align: center; margin-bottom: 10px;">
+                        <h3 v-if="currentMode === 'writingPinyin'" style="font-size: 2em; color: #333;">{{
+                            overlayWord.chinese }}</h3>
+                        <h3 v-else style="font-size: 1.2em; color: #666; font-style: italic;">{{ overlayWord.english }}
+                        </h3>
+                        <button @click="replayAudio" class="replay-btn"
+                            style="width: auto; margin-top: 10px; padding: 8px 25px;"><i class="fas fa-volume-up"></i>
+                            Listen</button>
+                    </div>
+
+                    <div class="writing-input-container">
+                        <input type="text" v-model="userInput" @keyup.enter="checkWritingAnswer"
+                            :class="['writing-input', writingStatus]"
+                            :placeholder="currentMode === 'writingPinyin' ? 'Type Pinyin' : 'Type Hanzi'" autofocus>
+                    </div>
+
+                    <div v-if="quizAnswered" class="recall-info-container" style="min-height: 60px;">
+                        <div class="recall-text"
+                            :style="{ color: writingStatus === 'correct' ? '#28a745' : '#dc3545' }">
+                            Correct: {{ currentMode === 'writingPinyin' ? overlayWord.pinyin : overlayWord.chinese }}
+                        </div>
+                    </div>
+
+                    <div class="nav-btn-group">
+                        <button @click="playPrev" class="quiz-btn"><i class="fas fa-arrow-left"></i> Prev</button>
+                        <button @click="playNext" class="quiz-btn"><i class="fas fa-arrow-right"></i> Next</button>
+                    </div>
+                    <button @click="stopPlayback" class="finish-quiz-btn"><i class="fas fa-times-circle"></i> Finish
+                        Practice</button>
+                </div>
+
+                <!-- Classifier Match -->
+                <div v-if="currentMode === 'classifierMatch'" class="quiz-card">
+                    <img :src="overlayWord.image" alt="Word Image" class="quiz-image">
+                    <div style="text-align: center;">
+                        <h3 style="font-size: 2em; color: #333;">{{ overlayWord.chinese }}</h3>
+                        <p style="color: #666; margin-bottom: 15px;">{{ overlayWord.english }}</p>
+                    </div>
+
+                    <div class="classifier-bubble">
+                        {{ quizAnswered ? (overlayWord.classifier || '无') : '?' }}
+                    </div>
+
+                    <div class="quiz-options-large" style="margin-top: 20px;">
+                        <button v-for="choice in quizChoices" :key="choice"
+                            :class="['quiz-btn', getClassifierBtnClass(choice)]" :disabled="quizAnswered"
+                            @click="handleClassifierAnswer(choice)">
+                            {{ choice }}
+                        </button>
+                    </div>
+                    <button @click="stopPlayback" class="finish-quiz-btn"><i class="fas fa-times-circle"></i> Finish
+                        Quiz</button>
+                </div>
+
             </div>
         </main>
     </div>

@@ -865,48 +865,163 @@ main {
     margin-bottom: 15px;
 }
 
-.mode-card p {
-    color: #666;
-    line-height: 1.6;
-    margin-bottom: 25px;
-    flex-grow: 1;
+/* Writing Practice Styles */
+.writing-input-container {
+    margin: 30px 0;
+    text-align: center;
 }
 
-.mode-start-btn {
-    background: linear-gradient(to right, #4a00e0, #8e2de2);
-    color: white;
-    border: none;
-    padding: 12px 30px;
-    border-radius: 50px;
-    font-weight: bold;
-    font-size: 1em;
-    cursor: pointer;
-    transition: all 0.2s;
-    opacity: 0;
-    transform: translateY(10px);
+.writing-input {
+    width: 100%;
+    padding: 15px 25px;
+    font-size: 1.8em;
+    border: 3px solid #ddd;
+    border-radius: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+    background: #fdfbff;
 }
 
-.mode-card:hover .mode-start-btn {
-    opacity: 1;
-    transform: translateY(0);
+.writing-input:focus {
+    border-color: #4a00e0;
+    outline: none;
+    box-shadow: 0 0 15px rgba(74, 0, 224, 0.2);
 }
 
-.home-btn {
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: white;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.2s;
+.writing-input.correct {
+    border-color: #28a745;
+    background: #f0fff4;
+}
+
+.writing-input.wrong {
+    border-color: #dc3545;
+    background: #fff5f5;
+}
+
+/* Category Badges */
+.category-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(74, 0, 224, 0.1);
+    color: #4a00e0;
+    border-radius: 15px;
+    font-size: 0.85em;
+    font-weight: 600;
+    margin: 2px;
+}
+
+/* Mode-specific Welcomes */
+.mode-settings {
+    margin: 25px 0;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.setting-row {
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 1.2em;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #444;
 }
 
-.home-btn:hover {
-    background: rgba(255, 255, 255, 0.4);
-    transform: scale(1.1);
+.setting-row input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+/* Image Options Grid (Multiple Choice Animals/Objects) */
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.image-option-card {
+    border: 3px solid #eee;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    background: white;
+}
+
+.image-option-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.image-option-card:hover {
+    transform: translateY(-5px);
+    border-color: #4a00e0;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.image-option-card.correct {
+    border-color: #28a745;
+    background: #f0fff4;
+}
+
+.image-option-card.wrong {
+    border-color: #dc3545;
+    opacity: 0.7;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+[v-cloak] {
+    display: none;
+}
+
+.order-toggle {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.order-toggle.active {
+    background: white;
+    color: #4a00e0;
+}
+
+/* Classifier Match */
+.classifier-bubble {
+    font-size: 2em;
+    padding: 15px 30px;
+    background: #f0e6ff;
+    color: #4a00e0;
+    border-radius: 50px;
+    margin: 10px auto;
+    width: fit-content;
+    font-weight: bold;
+    border: 3px solid #8e2de2;
 }
