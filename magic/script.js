@@ -155,6 +155,7 @@ const app = createApp({
             // Shadowing state
             shadowingState: 'idle',
             autoRecord: true,
+            shadowingToneFilters: [], // Array of selected tones (1, 2, 3, 4) to filter words
             mediaRecorder: null,
             audioChunks: [],
             audioContext: null,
@@ -204,14 +205,32 @@ const app = createApp({
             return mode ? mode.title : '';
         },
         filteredWords() {
-            if (!this.searchQuery) return this.words;
-            const q = this.searchQuery.toLowerCase();
-            return this.words.filter(w =>
-                w.chinese.toLowerCase().includes(q) ||
-                w.pinyin.toLowerCase().includes(q) ||
-                w.english.toLowerCase().includes(q) ||
-                w.number.toString().includes(q)
-            );
+            let filtered = this.words;
+
+            // Apply search query filter
+            if (this.searchQuery) {
+                const q = this.searchQuery.toLowerCase();
+                filtered = filtered.filter(w =>
+                    w.chinese.toLowerCase().includes(q) ||
+                    w.pinyin.toLowerCase().includes(q) ||
+                    w.english.toLowerCase().includes(q) ||
+                    w.number.toString().includes(q)
+                );
+            }
+
+            // Apply tone filter for shadowing mode
+            if (this.currentMode === 'shadowing' && this.shadowingToneFilters.length > 0) {
+                const selectedTones = this.shadowingToneFilters.map(t => parseInt(t));
+                filtered = filtered.filter(word => {
+                    // Check if word has tones array and if any of its tones match the selected filters
+                    if (word.tones && Array.isArray(word.tones)) {
+                        return word.tones.some(tone => selectedTones.includes(tone));
+                    }
+                    return false;
+                });
+            }
+
+            return filtered;
         },
         activeWord() {
             if (this.currentWordIndex >= 0 && this.currentWordIndex < this.words.length) {
