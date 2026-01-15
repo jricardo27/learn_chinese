@@ -155,6 +155,7 @@ const app = createApp({
             // Shadowing state
             shadowingState: 'idle',
             autoRecord: true,
+            shadowingTonePractice: false, // Enable tone feedback in shadowing mode
             mediaRecorder: null,
             audioChunks: [],
             audioContext: null,
