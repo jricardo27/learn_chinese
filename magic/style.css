@@ -385,16 +385,82 @@ main {
 .quiz-card {
     background: white;
     border-radius: 20px;
-    padding: 40px;
-    max-width: 600px;
+    padding: 30px;
+    max-width: 700px;
     width: 90%;
+    min-height: 800px;
+    /* Enforce consistent height */
+    display: flex;
+    flex-direction: column;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
 }
 
-.quiz-header {
+/* Welcome Screen Refinements */
+.welcome-screen-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+}
+
+.welcome-screen {
+    background: #fdfbff;
+    border-radius: 30px;
+    padding: 60px;
+    text-align: center;
+    box-shadow: inset 0 0 50px rgba(74, 0, 224, 0.02), 0 10px 30px rgba(0, 0, 0, 0.05);
+    max-width: 600px;
+    width: 100%;
+}
+
+.welcome-icon-circle {
+    width: 120px;
+    height: 120px;
+    background: rgba(74, 0, 224, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 30px;
+}
+
+.welcome-icon-circle i {
+    font-size: 3.5em;
+    color: #4a00e0;
+}
+
+.start-session-btn {
+    background: linear-gradient(135deg, #4a00e0 0%, #8e2de2 100%);
+    color: white;
+    border: none !important;
+    padding: 18px 50px;
+    border-radius: 50px;
+    font-size: 1.3em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 10px 25px rgba(74, 0, 224, 0.3);
     margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 2px solid #f0f0f0;
+    width: auto;
+    display: inline-flex;
+}
+
+.start-session-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(74, 0, 224, 0.4);
+}
+
+.browse-grid-btn {
+    background: none !important;
+    border: none !important;
+    color: #4a00e0 !important;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    display: block;
+    margin: 0 auto;
+    box-shadow: none !important;
 }
 
 .quiz-score-live {
