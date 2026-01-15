@@ -256,12 +256,12 @@ createApp({
             this.currentAudio.onended = () => this.onAudioEnded();
 
             try {
-                // Play immediately if standard mode or user initiated
-                // Also play for writing mode "Listen"
-                if (this.currentMode === 'standard' || this.currentMode === 'shadowing' || userInitiated) {
+                // Play immediately for standard, shadowing, quiz, or user initiated (Listen button)
+                const autoPlayModes = ['standard', 'shadowing', 'quiz'];
+                if (autoPlayModes.includes(this.currentMode) || userInitiated) {
                     this.currentAudio.play();
-                } else if (this.currentMode !== 'writing' && this.currentMode !== 'writingHanzi') {
-                    //
+                } else if (this.currentMode !== 'writing') {
+                    // 
                 }
             } catch (e) {
                 console.error("Audio play failed", e);
@@ -342,22 +342,52 @@ createApp({
             const choices = [word];
             const usedIds = new Set([word.id]);
             const targetLength = word.chinese.length;
+            const targetCategory = word.categories && word.categories.length > 0 ? word.categories[0] : null;
 
-            // Strict Filter: Exact same length
-            let candidates = this.masterWords.filter(w => w.chinese.length === targetLength && !usedIds.has(w.id));
+            // Strategy: 
+            // 1. Same Length + Same Category (Best)
+            // 2. Same Length (Good)
+            // 3. Fallback (Any)
 
-            // Fallback: +/- 1 length if exact not found (though user demanded same, safeguard for edge cases)
-            if (candidates.length < 3) {
-                candidates = this.masterWords.filter(w => Math.abs(w.chinese.length - targetLength) <= 1 && !usedIds.has(w.id));
+            let candidates = this.masterWords.filter(w => !usedIds.has(w.id));
+
+            // 1. Filter by Length
+            let lengthMatches = candidates.filter(w => w.chinese.length === targetLength);
+            // If strictly same length is too few, fallback to strict length being the ONLY pool if we have enough
+            // If we don't have enough, we'll allow +/-1 length from the start
+            if (lengthMatches.length < 3) {
+                lengthMatches = candidates.filter(w => Math.abs(w.chinese.length - targetLength) <= 1);
             }
 
-            while (choices.length < 4 && candidates.length > 0) {
-                const idx = Math.floor(Math.random() * candidates.length);
-                const chosen = candidates[idx];
-                choices.push(chosen);
-                usedIds.add(chosen.id);
-                candidates.splice(idx, 1);
+            // 2. Prioritize Category within Length Matches
+            let categoryMatches = [];
+            if (targetCategory) {
+                categoryMatches = lengthMatches.filter(w => w.categories && w.categories.includes(targetCategory));
             }
+
+            // 3. Other Length Matches (different category)
+            let otherLengthMatches = lengthMatches.filter(w => !categoryMatches.includes(w));
+
+            // Helper to fill choices
+            const fillChoices = (pool) => {
+                while (choices.length < 4 && pool.length > 0) {
+                    const idx = Math.floor(Math.random() * pool.length);
+                    const chosen = pool[idx];
+                    choices.push(chosen);
+                    usedIds.add(chosen.id);
+                    pool.splice(idx, 1);
+                }
+            };
+
+            fillChoices(categoryMatches);      // First priority
+            fillChoices(otherLengthMatches);   // Second priority
+
+            // If still not enough, look at global candidates again (ignoring length if desperate, but typically should be fine)
+            if (choices.length < 4) {
+                let remaining = candidates.filter(w => !usedIds.has(w.id));
+                fillChoices(remaining);
+            }
+
             this.quizChoices = choices.sort(() => Math.random() - 0.5);
             this.quizCorrectId = word.id;
         },
