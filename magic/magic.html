@@ -101,10 +101,6 @@
                             <input type="checkbox" v-model="compareEnabled" @change="onCompareToggle">
                             <span>Compare Pronunciation (Manual review)</span>
                         </label>
-                        <label v-if="currentMode === 'shadowing'" class="setting-row">
-                            <input type="checkbox" v-model="shadowingTonePractice">
-                            <span>Practice Tones (Show tone feedback)</span>
-                        </label>
                         <div v-if="currentMode === 'writing'" class="setting-row"
                             style="justify-content: space-between;">
                             <span>Target:</span>
@@ -232,22 +228,8 @@
                         <div class="shadowing-right">
                             <div class="shadowing-info-container">
                                 <div class="shadowing-text">{{ overlayWord.chinese }}</div>
-                                <div class="shadowing-text-pinyin"
-                                    :style="shadowingTonePractice ? 'font-size: 2em; font-weight: 600; color: #4a00e0;' : ''">
-                                    {{ overlayWord.pinyin }}
-                                </div>
+                                <div class="shadowing-text-pinyin">{{ overlayWord.pinyin }}</div>
                                 <div class="shadowing-text-english">{{ overlayWord.english }}</div>
-
-                                <!-- Tone Practice Info -->
-                                <div v-if="shadowingTonePractice"
-                                    style="margin-top: 15px; padding: 12px; background: #f0f8ff; border-radius: 10px; border-left: 4px solid #4a00e0;">
-                                    <div style="font-size: 0.9em; color: #666; margin-bottom: 5px;">
-                                        <i class="fas fa-music" style="color: #4a00e0;"></i> Focus on the tones
-                                    </div>
-                                    <div style="font-size: 0.85em; color: #888;">
-                                        Listen carefully and try to match the pitch pattern
-                                    </div>
-                                </div>
                             </div>
 
                             <!-- Tone Comparison Results -->
