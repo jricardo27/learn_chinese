@@ -100,7 +100,7 @@ const CLASSIFIER_PINYIN = {
     }
 };
 
-createApp({
+const app = createApp({
     data() {
         return {
             masterWords: [], // Original sequential order
@@ -111,7 +111,9 @@ createApp({
             searchQuery: '',
             volume: 80,
             playDelay: 3.5,
+            playDelay: 3.5,
             interactiveLoop: false,
+            mobileMenuOpen: false,
 
             // Player state
             isPlaying: false,
@@ -603,13 +605,6 @@ createApp({
             this.quizCorrectId = word.id;
         },
         getChoiceLabel(choice) {
-            if (this.currentMode === 'categoryMatch') {
-                return choice.categories[0] || 'Uncategorized';
-            }
-            if (this.currentMode === 'animalMatch') {
-                const match = choice.chinese.match(/([一二三四五六七八九十].)/);
-                return match ? match[1] : choice.chinese;
-            }
             if (!this.hidePinyin) {
                 return `${choice.chinese} (${choice.pinyin})`;
             }
@@ -1001,4 +996,103 @@ createApp({
         this.loadWords();
         this.setupKeyboardListeners();
     }
-}).mount('#app');
+});
+
+app.component('mode-selector', {
+    props: ['mode'],
+    emits: ['change'],
+    data() {
+        return {
+            isOpen: false,
+            groups: [
+                {
+                    label: 'Core Modes',
+                    options: [
+                        { value: 'standard', label: 'Standard Mode', icon: 'fas fa-book-reader' },
+                        { value: 'recall', label: 'Recall Mode', icon: 'fas fa-brain' },
+                        { value: 'shadowing', label: 'Shadowing Mode', icon: 'fas fa-microphone-alt' },
+                        { value: 'quiz', label: 'Quiz Mode', icon: 'fas fa-question-circle' }
+                    ]
+                },
+                {
+                    label: 'Learning Games',
+                    options: [
+                        { value: 'writing', label: 'Writing Practice', icon: 'fas fa-pencil-alt' },
+                        { value: 'tonePractice', label: 'Tone Practice', icon: 'fas fa-music' },
+                        { value: 'classifierMatch', label: 'Classifier Match', icon: 'fas fa-cubes' }
+                    ]
+                }
+            ]
+        }
+    },
+    computed: {
+        currentLabel() {
+            for (const group of this.groups) {
+                const found = group.options.find(o => o.value === this.mode);
+                if (found) return found.label;
+            }
+            return 'Select Mode';
+        }
+    },
+    methods: {
+        toggle() {
+            this.isOpen = !this.isOpen;
+        },
+        select(value) {
+            this.$emit('change', value);
+            this.isOpen = false;
+        },
+        close(e) {
+            if (!this.$el.contains(e.target)) {
+                this.isOpen = false;
+            }
+        }
+    },
+    mounted() {
+        document.addEventListener('click', this.close);
+    },
+    unmounted() {
+        document.removeEventListener('click', this.close);
+    },
+    template: `
+        <div :class="['custom-select-container', { open: isOpen }]">
+            <div class="custom-select-trigger" @click="toggle">
+                <span>{{ currentLabel }}</span>
+                <i class="fas fa-chevron-down arrow"></i>
+            </div>
+            <div class="custom-options">
+                <div v-for="(group, idx) in groups" :key="idx">
+                    <div class="option-group-label">{{ group.label }}</div>
+                    <div v-for="option in group.options" :key="option.value"
+                         :class="['custom-option', { selected: mode === option.value }]"
+                         @click="select(option.value)">
+                        <i :class="option.icon"></i>
+                        {{ option.label }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    `
+});
+
+app.component('mobile-menu', {
+    props: ['isOpen', 'volume', 'mode', 'count'],
+    emits: ['update:volume', 'update:mode'],
+    template: `
+    <div :class="['controls-group', { 'show-mobile': isOpen }]">
+        <mode-selector :mode="mode" @change="$emit('update:mode', $event)"></mode-selector>
+
+        <div class="volume-controls">
+            <i class="fas fa-volume-down"></i>
+            <input type="range" :value="volume" @input="$emit('update:volume', +$event.target.value)" min="0" max="100">
+            <i class="fas fa-volume-up"></i>
+        </div>
+        
+        <div class="word-count-display" style="text-align: center; color: #666; font-size: 0.9em;">
+            Total Words: <span style="font-weight: bold; color: #4a00e0;">{{ count }}</span>
+        </div>
+    </div>
+    `
+});
+
+app.mount('#app');

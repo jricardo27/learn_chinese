@@ -26,73 +26,36 @@
                         <i class="fas fa-home"></i>
                     </button>
                     <h1><i class="fas fa-book-open"></i> Mandarin Learner</h1>
+                    <!-- Mobile Menu Toggle (Moved here) -->
+                    <button class="mobile-menu-btn" @click="mobileMenuOpen = !mobileMenuOpen"
+                        style="margin-left: auto;">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </button>
                 </div>
 
                 <div class="global-controls">
-                    <div class="search-box">
-                        <input type="text" v-model="searchQuery" placeholder="Search words..."
-                            style="padding: 8px 15px; border-radius: 20px; border: none; font-size: 14px; background: rgba(255,255,255,0.95); color: #333; width: 150px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                    </div>
 
-                    <select v-model="currentMode" @change="onModeChange"
-                        style="padding: 8px 15px; border-radius: 20px; border: none; font-size: 14px; background: rgba(255,255,255,0.95); color: #333; font-weight: 500; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                        <optgroup label="Core Modes">
-                            <option value="standard">Standard Mode</option>
-                            <option value="recall">Recall Mode</option>
-                            <option value="shadowing">Shadowing Mode</option>
-                            <option value="quiz">Quiz Mode</option>
-                        </optgroup>
-                        <optgroup label="Learning Games">
-                            <option value="writing">Writing Practice</option>
-                            <option value="tonePractice">Tone Practice</option>
-                            <option value="classifierMatch">Classifier Match</option>
-                            <option value="animalMatch">Animal Number Match</option>
-                            <option value="categoryMatch">Category Match</option>
-                        </optgroup>
-                    </select>
 
-                    <div :class="['order-toggle', { active: !isShuffled }]" @click="toggleOrder"
-                        title="Toggle Shuffled/Original Order">
-                        <i :class="isShuffled ? 'fas fa-random' : 'fas fa-sort-numeric-down'"></i>
-                        <span>{{ isShuffled ? 'Shuffled' : 'Sequential' }}</span>
-                    </div>
 
-                    <div class="volume-controls"
-                        style="color: #333; background: rgba(255,255,255,0.95); padding: 5px 12px; border-radius: 20px; display: flex; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                        <i class="fas fa-volume-down" style="font-size: 0.9em; margin-right: 5px;"></i>
-                        <input type="range" v-model="volume" min="0" max="100"
-                            style="width: 60px; height: 4px; accent-color: #4a00e0;">
-                        <i class="fas fa-volume-up" style="font-size: 0.9em; margin-left: 5px;"></i>
-                    </div>
 
-                    <span class="word-count-display"
-                        style="background: rgba(255,255,255,0.95); color: #333; padding: 5px 12px; border-radius: 20px; font-size: 0.9em; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                        Total: <span style="font-weight: bold; color: #4a00e0;">{{ filteredWords.length }}</span>
-                    </span>
-
-                    <div v-show="isQuizLikeMode" class="quiz-score" style="background: rgba(0,0,0,0.2);">
-                        <span class="score-correct">✅ {{ quizScore.correct }}</span>
-                        <span class="score-wrong">❌ {{ quizScore.wrong }}</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Global Player Controls -->
-            <div class="player-controls">
-                <div class="player-info">
-                    <h4>{{ statusText }}</h4>
-                </div>
-                <div class="player-buttons">
-                    <button @click="playPrev" title="Previous Word (Arrow Left)"><i
-                            class="fas fa-step-backward"></i></button>
-                    <button @click="togglePlayPause" title="Play/Pause (Space)"><i
-                            :class="isPlaying ? 'fas fa-pause' : 'fas fa-play'"></i></button>
-                    <button @click="stopPlayback" title="Stop Playback (Esc)"><i class="fas fa-stop"></i></button>
-                    <button @click="playNext" title="Next Word (Arrow Right)"><i
-                            class="fas fa-step-forward"></i></button>
+                    <!-- Collapsible Controls Component -->
+                    <mobile-menu :is-open="mobileMenuOpen" :volume="volume" :mode="currentMode"
+                        :count="filteredWords.length" @update:volume="volume = $event"
+                        @update:mode="currentMode = $event; $nextTick(() => onModeChange())">
+                    </mobile-menu>
                 </div>
             </div>
         </header>
+
+
+
+        <div v-show="isQuizLikeMode" class="quiz-score"
+            style="position: absolute; top: 100px; right: 20px; z-index: 1001; background: rgba(0,0,0,0.6); color: white; padding: 5px 15px; border-radius: 20px;">
+            <span class="score-correct">✅ {{ quizScore.correct }}</span>
+            <span class="score-wrong">❌ {{ quizScore.wrong }}</span>
+        </div>
+
+
 
         <main>
             <!-- Home Screen -->
@@ -316,7 +279,8 @@
                                         Next</button>
                                 </div>
                                 <button @click="stopPlayback" class="finish-quiz-btn"><i
-                                        class="fas fa-times-circle"></i> Finish
+                                        class="fas fa-times-circle"></i>
+                                    Finish
                                     Practice</button>
                             </div>
                         </div>
@@ -355,19 +319,7 @@
                             / <span class="score-wrong">❌ {{ quizScore.wrong }}</span></div>
                     </div>
 
-                    <div v-if="currentMode === 'animalMatch'" style="text-align: center; margin-bottom: 20px;">
-                        <img :src="overlayWord.image" alt="Animal" class="quiz-image">
-                        <button @click="replayAudio" class="replay-btn" style="width: auto; padding: 10px 30px;"><i
-                                class="fas fa-volume-up"></i> Listen</button>
-                        <h3 style="font-size: 1.5em; color: #4a00e0;">How many animals are there?</h3>
-                    </div>
-
-                    <div v-else-if="currentMode === 'categoryMatch'" style="text-align: center; margin-bottom: 20px;">
-                        <img :src="overlayWord.image" alt="Animal" class="quiz-image">
-                        <h3 style="font-size: 1.5em; color: #4a00e0;">Which category is this?</h3>
-                    </div>
-
-                    <div v-else>
+                    <div style="text-align: center; margin-bottom: 20px;">
                         <img :src="overlayWord.image" alt="Word Image" class="quiz-image">
                         <div style="text-align: center; margin-bottom: 10px;">
                             <button @click="replayAudio" class="replay-btn" style="width: auto; padding: 8px 20px;">

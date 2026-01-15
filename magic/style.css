@@ -1330,3 +1330,283 @@ main {
     justify-content: center;
     height: 100%;
 }
+
+/* --- Mobile Responsive Enhancements --- */
+@media (max-width: 768px) {
+
+    /* Dialogs: Reset fixed sizes to fluid/scrollable */
+    .base-card,
+    .standard-card,
+    .recall-card-base,
+    .shadow-card,
+    .tone-card,
+    .quiz-game-card,
+    .writing-card,
+    .classifier-card {
+        max-width: 95% !important;
+        width: 95% !important;
+        height: auto !important;
+        max-height: 90vh !important;
+        overflow-y: auto !important;
+        padding: 15px;
+    }
+
+    /* Images: Scale down */
+    .quiz-image,
+    .shadow-main-img {
+        width: 200px !important;
+        height: 200px !important;
+        margin-bottom: 10px;
+    }
+
+    /* Layouts: Stack vertically */
+    .shadowing-layout-container,
+    .classifier-layout-container {
+        flex-direction: column;
+        gap: 20px;
+        height: auto;
+    }
+
+    .shadowing-left,
+    .shadowing-right,
+    .classifier-left,
+    .classifier-right {
+        flex: none;
+        width: 100%;
+        padding: 0;
+    }
+
+    .shadowing-right,
+    .classifier-right {
+        padding-left: 0;
+    }
+
+    /* Text resizing */
+    .recall-text,
+    .shadowing-text {
+        font-size: 1.8em;
+    }
+
+    .mode-title {
+        font-size: 1em;
+        margin-bottom: 10px;
+    }
+
+    /* Buttons */
+    .quiz-options-large {
+        grid-template-columns: 1fr;
+        /* Stack buttons on mobile */
+        gap: 10px;
+    }
+
+    .quiz-options-large .quiz-btn {
+        font-size: 1.1em;
+        padding: 10px;
+        height: auto !important;
+        /* Override fixed height if set */
+    }
+
+    /* Adjust classifier answer buttons specifically */
+    .quiz-options-large .quiz-btn div[style*="font-size: 1.5em"] {
+        font-size: 1.2em !important;
+    }
+
+
+    .nav-btn-group {
+        margin-bottom: 10px;
+    }
+
+    /* Header adjustments */
+    .header-top {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-right: 15px;
+        /* Ensure space for button */
+    }
+
+    .header-top h1 {
+        font-size: 1.4em;
+        flex: 1;
+    }
+
+    /* Mobile Menu Logic */
+    .mobile-menu-btn {
+        display: block;
+        /* Visible on mobile */
+        background: transparent;
+        border: none;
+        color: white;
+        font-size: 1.5em;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+
+    /* Hide standard controls by default on mobile */
+    .controls-group {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 15px;
+        background: white;
+        padding: 15px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        flex-direction: column;
+        gap: 15px;
+        z-index: 1002;
+        width: 250px;
+    }
+
+    /* Custom Select Component Styles */
+    .custom-select-container {
+        position: relative;
+        width: 100%;
+        font-family: 'Segoe UI', system-ui, sans-serif;
+    }
+
+    .custom-select-trigger {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #fdfbff;
+        padding: 12px 15px;
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        color: #333;
+        font-weight: 500;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+    }
+
+    .custom-select-trigger:hover {
+        border-color: #4a00e0;
+        background: #fff;
+    }
+
+    .custom-select-trigger .arrow {
+        transition: transform 0.3s ease;
+        color: #666;
+        font-size: 0.8em;
+    }
+
+    .custom-select-container.open .custom-select-trigger .arrow {
+        transform: rotate(180deg);
+    }
+
+    .custom-options {
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        right: 0;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        border: 1px solid #eee;
+        z-index: 2000;
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+        transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        pointer-events: none;
+    }
+
+    .custom-select-container.open .custom-options {
+        max-height: 400px;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .option-group-label {
+        padding: 8px 15px;
+        font-size: 0.85em;
+        color: #888;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        background: #f9f9f9;
+        border-bottom: 1px solid #eee;
+    }
+
+    .custom-option {
+        padding: 12px 20px;
+        cursor: pointer;
+        transition: background 0.2s;
+        color: #444;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .custom-option:hover {
+        background: #f0e6ff;
+        color: #4a00e0;
+    }
+
+    .custom-option.selected {
+        background: #e6f7ff;
+        color: #007bff;
+        font-weight: 600;
+    }
+
+    .custom-option i {
+        width: 20px;
+        text-align: center;
+        opacity: 0.7;
+    }
+
+    /* Show when toggled */
+    .controls-group.show-mobile {
+        display: flex;
+    }
+
+    .controls-group .search-box input {
+        width: 100%;
+        border: 1px solid #eee;
+    }
+
+    .controls-group .volume-controls {
+        background: #f5f5f5 !important;
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Ensure the select is always visible/accessible or moved inside? 
+       For now, let's keep the select visible as it's the main nav, 
+       and just hide search/volume */
+    .global-controls {
+        gap: 5px;
+    }
+
+    .mode-select {
+        flex: 1;
+        max-width: 160px;
+        /* Keep it from taking over */
+    }
+
+    .player-buttons button {
+        width: 36px;
+        height: 36px;
+        font-size: 1em;
+    }
+
+    #playPause {
+        width: 44px;
+        height: 44px;
+    }
+}
+
+/* Desktop styles for controls-group */
+@media (min-width: 769px) {
+    .mobile-menu-btn {
+        display: none;
+    }
+
+    .controls-group {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+}
