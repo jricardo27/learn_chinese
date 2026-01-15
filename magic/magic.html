@@ -44,6 +44,7 @@
                         </optgroup>
                         <optgroup label="Learning Games">
                             <option value="writing">Writing Practice</option>
+                            <option value="tonePractice">Tone Practice</option>
                             <option value="classifierMatch">Classifier Match</option>
                             <option value="animalMatch">Animal Number Match</option>
                             <option value="categoryMatch">Category Match</option>
@@ -96,16 +97,16 @@
         <main>
             <!-- Home Screen -->
             <div v-if="currentMode === 'home'" class="home-screen">
-                <div class="home-content">
-                    <h2 class="home-title">Mandarin Mastery</h2>
-                    <p class="home-subtitle">Choose a mode to begin your journey</p>
+                <h1 class="home-title">Mandarin Mastery</h1>
+                <p class="home-subtitle">Choose a mode to begin your journey</p>
 
-                    <div class="mode-cards-grid">
-                        <div v-for="mode in modes" :key="mode.id" class="mode-card" @click="setMode(mode.id)">
-                            <div :class="['mode-icon', mode.iconClass]"><i :class="mode.icon"></i></div>
-                            <h3>{{ mode.title }}</h3>
-                            <p>{{ mode.desc }}</p>
+                <div class="mode-cards-grid">
+                    <div v-for="mode in modes" :key="mode.id" class="mode-card" @click="setMode(mode.id)">
+                        <div :class="['mode-icon', mode.iconClass]">
+                            <i :class="mode.icon"></i>
                         </div>
+                        <h3>{{ mode.title }}</h3>
+                        <p>{{ mode.desc }}</p>
                     </div>
                 </div>
             </div>
@@ -139,6 +140,16 @@
                                 <option value="hanzi">Write Hanzi</option>
                                 <option value="pinyin">Write Pinyin</option>
                             </select>
+                        </div>
+                        <div v-if="currentMode === 'tonePractice'" class="setting-row"
+                            style="flex-direction: column; align-items: flex-start;">
+                            <span style="margin-bottom: 8px;">Select Tone to Practice:</span>
+                            <div class="tone-selector-group">
+                                <button v-for="t in [1,2,3,4]" :key="t" @click="selectedTone = t"
+                                    :class="['tone-btn', { active: selectedTone === t }]">
+                                    Tone {{ t }}
+                                </button>
+                            </div>
                         </div>
                     </div>
 
@@ -225,6 +236,11 @@
                         <div class="shadowing-text-pinyin">{{ overlayWord.pinyin }}</div>
                         <div class="shadowing-text-english">{{ overlayWord.english }}</div>
                     </div>
+
+                    <div class="waveform-container">
+                        <canvas id="waveform" width="400" height="80"></canvas>
+                    </div>
+
                     <div :class="['shadowing-status', shadowingStatusClass]">
                         <i :class="shadowingStatusIcon"></i> {{ shadowingStatusText }}
                     </div>
@@ -239,6 +255,28 @@
                         <button v-if="!autoRecord && shadowingState === 'idle'" @click="startManualRecording"
                             class="record-btn"><i class="fas fa-microphone"></i> Record</button>
 
+                        <div class="nav-btn-group">
+                            <button @click="playPrev" class="quiz-btn"><i class="fas fa-arrow-left"></i> Prev</button>
+                            <button @click="playNext" class="quiz-btn"><i class="fas fa-arrow-right"></i> Next</button>
+                        </div>
+                        <button @click="stopPlayback" class="finish-quiz-btn"><i class="fas fa-times-circle"></i> Finish
+                            Practice</button>
+                    </div>
+                </div>
+
+                <!-- Tone Practice Overlay (similar to Standard but with length focus) -->
+                <div v-if="currentMode === 'tonePractice'" class="quiz-card">
+                    <img :src="overlayWord.image" alt="Word Image" class="quiz-image">
+                    <div class="recall-info-container">
+                        <div class="recall-text">{{ overlayWord.chinese }}</div>
+                        <div class="recall-text" style="font-size: 1.5em; color: #666;">{{ overlayWord.pinyin }}</div>
+                        <div class="recall-text" style="font-size: 1.2em; color: #888;">{{ overlayWord.english }}</div>
+                    </div>
+                    <div class="standard-controls">
+                        <button @click="togglePlayPause" :class="isPlaying ? 'pause-btn' : 'replay-btn'">
+                            <i :class="isPlaying ? 'fas fa-pause' : 'fas fa-play'"></i>
+                            {{ isPlaying ? 'Pause' : 'Play Audio' }}
+                        </button>
                         <div class="nav-btn-group">
                             <button @click="playPrev" class="quiz-btn"><i class="fas fa-arrow-left"></i> Prev</button>
                             <button @click="playNext" class="quiz-btn"><i class="fas fa-arrow-right"></i> Next</button>

@@ -42,26 +42,53 @@ createApp({
             // Writing state
             writingTarget: 'hanzi', // 'hanzi' or 'pinyin'
 
+            // Tone Practice state
+            selectedTone: 1, // 1, 2, 3, 4
+
             // Shadowing state
             shadowingState: 'idle',
             autoRecord: true,
             mediaRecorder: null,
             audioChunks: [],
+            audioContext: null,
+            analyser: null,
+            dataArray: null,
 
             statusText: 'Choose a mode to start learning',
 
             modes: [
-                { id: 'standard', title: 'Standard Mode', icon: 'fa-book-reader', iconClass: 'standard-icon', desc: 'Focused single-word view with auto-play options.' },
-                { id: 'recall', title: 'Active Recall', icon: 'fa-brain', iconClass: 'recall-icon', desc: 'Test your memory by hiding Pinyin or Mandarin.' },
-                { id: 'shadowing', title: 'Shadowing', icon: 'fa-microphone-alt', iconClass: 'shadowing-icon', desc: 'Perfect your accent with recording feedback.' },
-                { id: 'quiz', title: 'Quiz Mode', icon: 'fa-question-circle', iconClass: 'quiz-icon', desc: 'Match images to Hanzi with similar character counts.' },
-                { id: 'writing', title: 'Writing Practice', icon: 'fa-pencil-alt', iconClass: 'standard-icon', desc: 'Challenge your writing skills.' },
-                { id: 'classifierMatch', title: 'Classifier Quiz', icon: 'fa-cubes', iconClass: 'recall-icon', desc: 'Choose the correct classifier for the object.' }
+                { id: 'standard', title: 'Standard Mode', icon: 'fas fa-book-reader', iconClass: 'standard-icon', desc: 'Focused single-word view with auto-play options.' },
+                { id: 'recall', title: 'Active Recall', icon: 'fas fa-brain', iconClass: 'recall-icon', desc: 'Test your memory by hiding Pinyin or Mandarin.' },
+                { id: 'shadowing', title: 'Shadowing', icon: 'fas fa-microphone-alt', iconClass: 'shadowing-icon', desc: 'Perfect your accent with recording feedback.' },
+                { id: 'tonePractice', title: 'Tone Practice', icon: 'fas fa-music', iconClass: 'quiz-icon', desc: 'Practice specific tones, starting from single characters.' },
+                { id: 'quiz', title: 'Quiz Mode', icon: 'fas fa-question-circle', iconClass: 'quiz-icon', desc: 'Match images to Hanzi with similar character counts.' },
+                { id: 'writing', title: 'Writing Practice', icon: 'fas fa-pencil-alt', iconClass: 'standard-icon', desc: 'Challenge your writing skills.' },
+                { id: 'classifierMatch', title: 'Classifier Quiz', icon: 'fas fa-cubes', iconClass: 'recall-icon', desc: 'Choose the correct classifier for the object.' }
             ]
         };
     },
     computed: {
         words() {
+            if (this.currentMode === 'tonePractice') {
+                // Filter by tones and sort by length
+                let pool = this.masterWords.filter(w => w.tones.includes(this.selectedTone));
+                // Within each length, we'll shuffle if isShuffled is on
+                // but keep the primary order: length 1, then length 2, ...
+                const grouped = {};
+                pool.forEach(w => {
+                    const len = w.chinese.length;
+                    if (!grouped[len]) grouped[len] = [];
+                    grouped[len].push(w);
+                });
+
+                let results = [];
+                Object.keys(grouped).sort().forEach(len => {
+                    let group = grouped[len];
+                    if (this.isShuffled) group.sort(() => Math.random() - 0.5);
+                    results = results.concat(group);
+                });
+                return results;
+            }
             return this.isShuffled ? this.shuffledWords : this.masterWords;
         },
         filteredWords() {
@@ -161,10 +188,80 @@ createApp({
         },
         speak(text) {
             if ('speechSynthesis' in window) {
+                // Cancel previous speech to avoid overlapping
+                window.speechSynthesis.cancel();
+
                 const utterance = new SpeechSynthesisUtterance(text);
                 utterance.lang = 'zh-CN';
+                utterance.rate = 0.75; // Slower for clarity
+                utterance.pitch = 1.0;
+
+                // Try to find a high-quality Chinese voice
+                const voices = window.speechSynthesis.getVoices();
+                const zhVoice = voices.find(v => v.lang.includes('zh') && v.name.includes('Premium')) ||
+                    voices.find(v => v.lang.includes('zh'));
+                if (zhVoice) utterance.voice = zhVoice;
+
                 window.speechSynthesis.speak(utterance);
             }
+        },
+        initVisualizer(streamOrElement) {
+            if (!this.audioContext) {
+                this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (this.audioContext.state === 'suspended') {
+                this.audioContext.resume();
+            }
+
+            this.analyser = this.audioContext.createAnalyser();
+            this.analyser.fftSize = 256;
+            const bufferLength = this.analyser.frequencyBinCount;
+            this.dataArray = new Uint8Array(bufferLength);
+
+            let source;
+            if (streamOrElement instanceof MediaStream) {
+                source = this.audioContext.createMediaStreamSource(streamOrElement);
+            } else {
+                source = this.audioContext.createMediaElementSource(streamOrElement);
+            }
+            source.connect(this.analyser);
+            if (!(streamOrElement instanceof MediaStream)) {
+                this.analyser.connect(this.audioContext.destination);
+            }
+
+            this.drawVisualizer();
+        },
+        drawVisualizer() {
+            const canvas = document.getElementById('waveform');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+
+            const draw = () => {
+                if (this.shadowingState === 'idle' && !this.isPlaying) return;
+                requestAnimationFrame(draw);
+                this.analyser.getByteTimeDomainData(this.dataArray);
+
+                ctx.fillStyle = '#f8f9fa';
+                ctx.fillRect(0, 0, width, height);
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = '#4a00e0';
+                ctx.beginPath();
+
+                const sliceWidth = width * 1.0 / this.analyser.frequencyBinCount;
+                let x = 0;
+                for (let i = 0; i < this.analyser.frequencyBinCount; i++) {
+                    const v = this.dataArray[i] / 128.0;
+                    const y = v * height / 2;
+                    if (i === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                    x += sliceWidth;
+                }
+                ctx.lineTo(width, height / 2);
+                ctx.stroke();
+            };
+            draw();
         },
         setMode(mode) {
             this.stopPlayback();
@@ -198,7 +295,7 @@ createApp({
             this.isShuffled = !this.isShuffled;
         },
         startSession() {
-            if (this.isShuffled) {
+            if (this.isShuffled && this.currentMode !== 'tonePractice') {
                 this.shuffledWords = [...this.masterWords].sort(() => Math.random() - 0.5);
             }
             this.currentWordIndex = 0;
@@ -228,7 +325,7 @@ createApp({
             // Only Reset sub-state if it's a new word (or full replay), not just "Listen" button in writing mode
             // We'll detect "Listen" button by checking if we are already on this word content-wise
             // But simplify: writing mode "Listen" just plays audio.
-            if (this.currentMode !== 'writing') {
+            if (this.currentMode !== 'writing' && !this.quizAnswered) {
                 this.quizAnswered = false;
                 // this.userInput = ''; // Don't clear here, verify button needs it. Clear in playNext.
                 this.writingStatus = '';
@@ -252,14 +349,16 @@ createApp({
 
             // Normal audio playback
             this.currentAudio = new Audio(word.audio);
+            this.currentAudio.crossOrigin = "anonymous"; // Needed for Web Audio API if separate domain, though here it's local
             this.currentAudio.volume = this.volume / 100;
             this.currentAudio.onended = () => this.onAudioEnded();
 
             try {
                 // Play immediately for standard, shadowing, quiz, or user initiated (Listen button)
-                const autoPlayModes = ['standard', 'shadowing', 'quiz'];
+                const autoPlayModes = ['standard', 'shadowing', 'quiz', 'tonePractice'];
                 if (autoPlayModes.includes(this.currentMode) || userInitiated) {
                     this.currentAudio.play();
+                    if (this.currentMode === 'shadowing') this.initVisualizer(this.currentAudio);
                 } else if (this.currentMode !== 'writing') {
                     // 
                 }
@@ -272,7 +371,9 @@ createApp({
                 this.startRecordingSequence();
             } else if (this.currentMode === 'standard' && this.autoContinue) {
                 this.handleAutoNext();
-            } else if (this.isLooping && this.autoContinue && !this.isQuizLikeMode && this.currentMode !== 'writing') {
+            } else if (this.isLooping && this.autoContinue && !this.isQuizLikeMode && this.currentMode !== 'writing' && this.currentMode !== 'tonePractice') {
+                this.handleAutoNext();
+            } else if (this.currentMode === 'tonePractice' && this.autoContinue) {
                 this.handleAutoNext();
             } else {
                 this.isPlaying = false;
@@ -387,7 +488,6 @@ createApp({
                 let remaining = candidates.filter(w => !usedIds.has(w.id));
                 fillChoices(remaining);
             }
-
             this.quizChoices = choices.sort(() => Math.random() - 0.5);
             this.quizCorrectId = word.id;
         },
@@ -409,6 +509,9 @@ createApp({
             if (choice.id === this.quizCorrectId) {
                 this.quizScore.correct++;
                 this.statusText = "✅ Correct!";
+                // Speak the answer
+                const prefix = choice.classifier ? `一${choice.classifier}` : '';
+                this.speak(`${prefix} ${choice.chinese}`);
             } else {
                 this.quizScore.wrong++;
                 this.statusText = "❌ Wrong!";
@@ -518,6 +621,7 @@ createApp({
         playUserRecording() {
             if (!this.userAudio) return;
             this.shadowingState = 'playback';
+            this.initVisualizer(this.userAudio);
             this.userAudio.play();
             this.userAudio.onended = () => {
                 this.shadowingState = 'idle';
