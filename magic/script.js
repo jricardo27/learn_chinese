@@ -138,7 +138,7 @@ const app = createApp({
 
             // Comparison Results
             comparisonResults: {
-                overallScore: 0,
+                overallScore: null,
                 feedback: '',
                 userContour: []
             },
@@ -451,7 +451,7 @@ const app = createApp({
             }
 
             // Clear comparison results and canvas
-            this.comparisonResults = { overallScore: 0, feedback: '', userContour: [] };
+            this.comparisonResults = { overallScore: null, feedback: '', userContour: [] };
             this.recordingProgress = 0;
             const canvas = document.getElementById('toneCanvas');
             if (canvas) {
@@ -765,7 +765,7 @@ const app = createApp({
             else this.stopAudioOnly();
         },
         retryRecordingOnly() {
-            this.comparisonResults = { overallScore: 0, feedback: '', userContour: [] };
+            this.comparisonResults = { overallScore: null, feedback: '', userContour: [] };
             const canvas = document.getElementById('toneCanvas');
             if (canvas) {
                 const ctx = canvas.getContext('2d');
@@ -977,8 +977,8 @@ const app = createApp({
                 ctx.stroke();
             };
 
-            drawPath(ref.pitch_contour, '#10b981', ref.duration); // Reference in Green
-            drawPath(user.pitch_contour, '#3b82f6', user.duration); // User in Blue
+            drawPath(user.pitch_contour, '#3b82f6', user.duration); // User in Blue (drawn first)
+            drawPath(ref.pitch_contour, '#10b981', ref.duration); // Reference in Green (drawn on top)
         },
         startManualRecording() { this.startRecordingSequence(); },
         stopManualRecording() { if (this.mediaRecorder && this.mediaRecorder.state === 'recording') this.mediaRecorder.stop(); },
