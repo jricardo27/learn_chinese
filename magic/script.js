@@ -819,6 +819,13 @@ const app = createApp({
                 this.compareWithReference();
             }
         },
+        playReferenceAudioOnly() {
+            if (this.activeWord && this.activeWord.audio) {
+                const audio = new Audio(this.activeWord.audio);
+                audio.volume = this.volume / 100;
+                audio.play().catch(e => console.error("Play ref failed", e));
+            }
+        },
         async compareWithReference() {
             const wordKey = `word_${this.activeWord.number - 1}`.replace(/word_(\d)$/, 'word_00$1').replace(/word_(\d\d)$/, 'word_0$1');
             // Simplified key match based on filenames in WORDS_ANALYSIS (e.g. word_000)
