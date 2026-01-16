@@ -452,6 +452,7 @@ const app = createApp({
 
             // Clear comparison results and canvas
             this.comparisonResults = { overallScore: null, feedback: '', userContour: [] };
+            this.userAudio = null;
             this.recordingProgress = 0;
             const canvas = document.getElementById('toneCanvas');
             if (canvas) {
@@ -804,7 +805,7 @@ const app = createApp({
                 this.recordingProgress = 100;
             }, recordTime);
         },
-        playUserRecording() {
+        playUserRecording(skipComparison = false) {
             if (!this.userAudio) return;
             this.shadowingState = 'playback';
             this.userAudio.play();
@@ -813,8 +814,8 @@ const app = createApp({
                 if (this.isLooping && this.autoContinue) setTimeout(() => this.playNext(), 800);
             };
 
-            // Trigger Comparison ONLY if enabled
-            if (this.compareEnabled) {
+            // Trigger Comparison ONLY if enabled and not skipped
+            if (this.compareEnabled && !skipComparison) {
                 this.compareWithReference();
             }
         },
