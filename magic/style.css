@@ -20,6 +20,8 @@ body {
     min-height: 100vh;
     box-shadow: 0 0 60px rgba(0, 0, 0, 0.3);
     position: relative;
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
 }
 
 .sticky-header {
@@ -206,8 +208,8 @@ main {
 
 .word-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
 }
 
 /* Word Cards */
@@ -237,7 +239,8 @@ main {
 
 .word-image {
     width: 100%;
-    height: 350px;
+    height: 300px;
+    /* Reduced fixed height for stability */
     object-fit: cover;
     object-position: 0 100%;
     background: #fff;
@@ -404,42 +407,23 @@ main {
 }
 
 /* Specific Mode Card Sizes */
-.standard-card {
-    max-width: 700px;
-    height: 800px;
-}
-
-/* Note: recall-card was already used for blur logic, let's distinguish the container */
-.recall-card-base {
-    max-width: 700px;
-    height: 800px;
-}
-
-.shadow-card {
-    max-width: 1000px;
-    /* Wider for split layout */
-    height: 600px;
-}
-
-.tone-card {
-    max-width: 700px;
-    height: 800px;
-}
-
-.quiz-game-card {
-    max-width: 700px;
-    height: 770px;
-}
-
+.standard-card,
+.recall-card-base,
+.tone-card,
+.quiz-game-card,
 .writing-card {
     max-width: 700px;
-    height: 950px;
+    height: auto;
+    min-height: 600px;
+    max-height: 95vh;
 }
 
+.shadow-card,
 .classifier-card {
     max-width: 1000px;
-    /* Wider for split layout */
-    height: 600px;
+    height: auto;
+    min-height: 600px;
+    max-height: 95vh;
 }
 
 .mode-title {
@@ -537,11 +521,12 @@ main {
 }
 
 .quiz-image {
-    width: 350px;
-    height: 350px;
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    aspect-ratio: 1/1;
     object-fit: cover;
     object-position: 0 110%;
-    /* Crop top */
     border-radius: 12px;
     margin: 0 auto 15px auto;
     display: block;
@@ -1333,9 +1318,50 @@ main {
 
 /* --- Mobile Responsive Enhancements --- */
 @media (max-width: 768px) {
+    main {
+        padding: 15px;
+    }
+
+    .home-screen {
+        padding: 40px 20px;
+    }
+
+    .home-title {
+        font-size: 2.2em;
+    }
+
+    .home-subtitle {
+        font-size: 1.1em;
+        margin-bottom: 30px;
+    }
+
+    .word-container {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 12px;
+    }
+
+    .word-card .word-image {
+        height: 180px;
+    }
+
+    .word-info h3 {
+        font-size: 1.1em;
+    }
+
+    .word-info .pinyin {
+        font-size: 0.9em;
+    }
 
     /* Dialogs: Reset fixed sizes to fluid/scrollable */
-    .base-card,
+    .base-card {
+        width: 98% !important;
+        margin: 0 auto;
+        padding: 20px 15px;
+        max-height: 98vh !important;
+        overflow-y: auto !important;
+        border-radius: 15px;
+    }
+
     .standard-card,
     .recall-card-base,
     .shadow-card,
@@ -1343,27 +1369,23 @@ main {
     .quiz-game-card,
     .writing-card,
     .classifier-card {
-        max-width: 95% !important;
-        width: 95% !important;
         height: auto !important;
-        max-height: 90vh !important;
-        overflow-y: auto !important;
-        padding: 15px;
+        min-height: unset !important;
     }
 
-    /* Images: Scale down */
+    /* Images: Scale down more intelligently */
     .quiz-image,
     .shadow-main-img {
-        width: 200px !important;
-        height: 200px !important;
-        margin-bottom: 10px;
+        max-width: 250px !important;
+        max-height: 250px !important;
+        margin-bottom: 15px;
     }
 
     /* Layouts: Stack vertically */
     .shadowing-layout-container,
     .classifier-layout-container {
         flex-direction: column;
-        gap: 20px;
+        gap: 15px;
         height: auto;
     }
 
@@ -1372,144 +1394,124 @@ main {
     .classifier-left,
     .classifier-right {
         flex: none;
-        width: 100%;
-        padding: 0;
+        width: 100% !important;
+        padding: 0 !important;
     }
 
-    .shadowing-right,
-    .classifier-right {
-        padding-left: 0;
-    }
-
-    /* Text resizing */
-    .recall-text,
     .shadowing-text {
         font-size: 1.8em;
     }
 
-    .mode-title {
-        font-size: 1em;
-        margin-bottom: 10px;
+    .recall-text {
+        font-size: 2.2em;
     }
 
-    /* Buttons */
+    .mode-title {
+        font-size: 0.9em;
+        margin-top: 0;
+    }
+
+    /* Controls */
+    .nav-btn-group {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
     .quiz-options-large {
         grid-template-columns: 1fr;
-        /* Stack buttons on mobile */
-        gap: 10px;
+        gap: 8px;
     }
 
     .quiz-options-large .quiz-btn {
+        padding: 12px;
         font-size: 1.1em;
-        padding: 10px;
-        height: auto !important;
-        /* Override fixed height if set */
     }
 
-    /* Adjust classifier answer buttons specifically */
-    .quiz-options-large .quiz-btn div[style*="font-size: 1.5em"] {
-        font-size: 1.2em !important;
+    .writing-input {
+        font-size: 1.5em;
+        padding: 12px;
     }
 
-
-    .nav-btn-group {
-        margin-bottom: 10px;
-    }
-
-    /* Header adjustments */
+    /* Sticky Header on Mobile */
     .header-top {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding-right: 15px;
-        /* Ensure space for button */
+        padding: 10px 15px;
+        gap: 10px;
     }
 
     .header-top h1 {
-        font-size: 1.4em;
-        flex: 1;
+        font-size: 1.2em;
     }
 
-    /* Mobile Menu Logic */
-    .mobile-menu-btn {
-        display: block;
-        /* Visible on mobile */
-        background: transparent;
-        border: none;
-        color: white;
-        font-size: 1.5em;
-        padding: 5px 10px;
-        cursor: pointer;
-    }
-
-    /* Hide standard controls by default on mobile */
-    .controls-group {
-        display: none;
-        position: absolute;
-        top: 100%;
-        right: 15px;
-        background: white;
-        padding: 15px;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        flex-direction: column;
-        gap: 15px;
-        z-index: 1002;
-        width: 250px;
-    }
-
-    /* Show when toggled */
-    .controls-group.show-mobile {
-        display: flex;
-    }
-
-    .controls-group .search-box input {
-        width: 100%;
-        border: 1px solid #eee;
-    }
-
-    .controls-group .volume-controls {
-        background: #f5f5f5 !important;
-        width: 100%;
+    .home-btn {
+        padding: 8px;
+        min-width: 44px;
+        min-height: 44px;
         justify-content: center;
     }
 
-    /* Ensure the select is always visible/accessible or moved inside? 
-       For now, let's keep the select visible as it's the main nav, 
-       and just hide search/volume */
-    .global-controls {
-        gap: 5px;
+    .mobile-menu-btn {
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    .mode-select {
-        flex: 1;
-        max-width: 160px;
-        /* Keep it from taking over */
+    /* Player Controls at Bottom */
+    .player-controls {
+        padding: 10px 15px;
+        gap: 10px;
+    }
+
+    .player-buttons {
+        gap: 10px;
     }
 
     .player-buttons button {
-        width: 36px;
-        height: 36px;
-        font-size: 1em;
-    }
-
-    #playPause {
         width: 44px;
         height: 44px;
     }
+
+    #playPause {
+        width: 50px;
+        height: 50px;
+    }
+
+    /* Custom Select for Mobile */
+    .custom-select-container {
+        width: 100%;
+    }
 }
 
-/* Desktop styles for controls-group */
-@media (min-width: 769px) {
-    .mobile-menu-btn {
-        display: none;
-    }
+/* Specific button size improvements for touch */
+button,
+.quiz-btn,
+.start-session-btn,
+.replay-btn,
+.finish-quiz-btn,
+.record-btn,
+.pause-btn,
+.retry-btn {
+    min-height: 44px;
+}
 
-    .controls-group {
-        display: flex;
-        gap: 10px;
-    }
+/* Adjustments for the mobile menu */
+.controls-group {
+    background: #fff;
+    border-radius: 0 0 15px 15px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 100%;
+    border-top: 1px solid #eee;
+}
+
+.volume-controls input[type="range"] {
+    flex: 1;
+    height: 30px;
+    /* Thicker track for touch */
 }
 
 /* Custom Select Component Styles (Global) */
