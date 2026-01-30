@@ -1481,6 +1481,36 @@ main {
     .custom-select-container {
         width: 100%;
     }
+
+    /* Adjustments for the mobile menu */
+    .controls-group {
+        display: none;
+        /* Hide by default */
+        position: absolute;
+        z-index: 1001;
+        background: #fff;
+        border-radius: 0 0 15px 15px;
+        padding: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        left: 0;
+        right: 0;
+        top: 100%;
+        border-top: 1px solid #eee;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .controls-group.show-mobile {
+        display: flex;
+        /* Show when open */
+    }
+
+    .volume-controls input[type="range"] {
+        flex: 1;
+        height: 30px;
+        /* Thicker track for touch */
+    }
 }
 
 /* Specific button size improvements for touch */
@@ -1493,25 +1523,6 @@ button,
 .pause-btn,
 .retry-btn {
     min-height: 44px;
-}
-
-/* Adjustments for the mobile menu */
-.controls-group {
-    background: #fff;
-    border-radius: 0 0 15px 15px;
-    padding: 20px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    left: 0;
-    right: 0;
-    top: 100%;
-    border-top: 1px solid #eee;
-}
-
-.volume-controls input[type="range"] {
-    flex: 1;
-    height: 30px;
-    /* Thicker track for touch */
 }
 
 /* Custom Select Component Styles (Global) */
