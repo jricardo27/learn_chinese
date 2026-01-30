@@ -1514,14 +1514,7 @@ main {
 }
 
 /* Specific button size improvements for touch */
-button,
-.quiz-btn,
-.start-session-btn,
-.replay-btn,
-.finish-quiz-btn,
-.record-btn,
-.pause-btn,
-.retry-btn {
+button {
     min-height: 44px;
 }
 
