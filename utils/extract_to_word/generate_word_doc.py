@@ -28,9 +28,8 @@ def parse_js_data(file_path):
     try:
         return json.loads(content)
     except json.JSONDecodeError as e:
-        print(f"Error parsing JSON: {e}")
-        # Very fallback: just try to get the raw content if it's already close to JSON
-        return json.loads(content)
+        print(f"Fatal: Could not parse the JavaScript data file. Error: {e}")
+        raise
 
 def has_sublist(full_list, sub_list):
     """Checks if sub_list appears as a contiguous sequence in full_list."""
