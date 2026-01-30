@@ -112,8 +112,8 @@ def main():
     args = parser.parse_args()
     
     base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../'))
-    words_data_path = os.path.join(base_dir, './magic/words_data.js')
-    images_dir = os.path.join(base_dir, './magic/images')
+    words_data_path = os.path.join(base_dir, 'magic/words_data.js')
+    images_dir = os.path.join(base_dir, 'magic/images')
     
     data = parse_js_data(words_data_path)
     
