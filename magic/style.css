@@ -1353,31 +1353,31 @@ main {
     }
 
     /* Dialogs: Reset fixed sizes to fluid/scrollable */
-    .base-card {
-        width: 98% !important;
+    .app-container .base-card {
+        width: 98%;
         margin: 0 auto;
         padding: 20px 15px;
-        max-height: 98vh !important;
-        overflow-y: auto !important;
+        max-height: 98vh;
+        overflow-y: auto;
         border-radius: 15px;
     }
 
-    .standard-card,
-    .recall-card-base,
-    .shadow-card,
-    .tone-card,
-    .quiz-game-card,
-    .writing-card,
-    .classifier-card {
-        height: auto !important;
-        min-height: unset !important;
+    .app-container .standard-card,
+    .app-container .recall-card-base,
+    .app-container .shadow-card,
+    .app-container .tone-card,
+    .app-container .quiz-game-card,
+    .app-container .writing-card,
+    .app-container .classifier-card {
+        height: auto;
+        min-height: unset;
     }
 
     /* Images: Scale down more intelligently */
-    .quiz-image,
-    .shadow-main-img {
-        max-width: 250px !important;
-        max-height: 250px !important;
+    .app-container .quiz-image,
+    .app-container .shadow-main-img {
+        max-width: 250px;
+        max-height: 250px;
         margin-bottom: 15px;
     }
 
@@ -1389,13 +1389,13 @@ main {
         height: auto;
     }
 
-    .shadowing-left,
-    .shadowing-right,
-    .classifier-left,
-    .classifier-right {
+    .app-container .shadowing-left,
+    .app-container .shadowing-right,
+    .app-container .classifier-left,
+    .app-container .classifier-right {
         flex: none;
-        width: 100% !important;
-        padding: 0 !important;
+        width: 100%;
+        padding: 0;
     }
 
     .shadowing-text {
