@@ -9,9 +9,7 @@ echo "🔄 Syncing assets and Capacitor..."
 npm run sync
 
 echo "🏗️ Building Android APK..."
-cd android
-./gradlew assembleDebug
-cd ..
+(cd android && ./gradlew assembleDebug)
 
 echo "🏗️ Building iOS (CLI)..."
 # Note: iOS build requires valid signing which is usually handled in Xcode
