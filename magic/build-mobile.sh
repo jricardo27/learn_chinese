@@ -5,17 +5,8 @@
 
 set -e
 
-echo "📦 Preparing web assets..."
-# Create/Clean www directory
-mkdir -p www
-rm -rf www/*
-
-# Copy web files
-cp index.html script.js style.css words_data.js words_analysis.js www/
-cp -R audio images www/
-
-echo "🔄 Syncing with Capacitor..."
-npx cap sync
+echo "🔄 Syncing assets and Capacitor..."
+npm run sync
 
 echo "🏗️ Building Android APK..."
 cd android
