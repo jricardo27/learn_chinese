@@ -134,8 +134,8 @@ def main():
     
     data = parse_js_data(words_data_path)
     
-    tones_filter = [int(t) for t in args.tones.split(',')] if args.tones else None
-    cats_filter = args.categories.split(',') if args.categories else None
+    tones_filter = [int(t) for t in args.tones.split(',') if t.strip()] if args.tones else None
+    cats_filter = [c.strip() for c in args.categories.split(',') if c.strip()] if args.categories else None
     
     filtered = filter_words(data, tones=tones_filter, categories=cats_filter, exact_tones=args.exact_tones)
     
