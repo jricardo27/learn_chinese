@@ -45,10 +45,9 @@ def has_sublist(full_list, sub_list):
 def filter_words(data, tones=None, categories=None, exact_tones=False):
     """
     Filters words based on various criteria.
-    - tones: List of tones to match (e.g., [1, 1] for two first tones)
+    - tones: List of tones to match (e.g., [1, 1]). Matches contiguous sequences.
     - categories: List of categories (any match)
-    - exact_tones: If True, the word's tones must EXACTLY match the provided tones list 
-                   (including order and counts).
+    - exact_tones: If True, word_tones must exactly equal tones.
     """
     filtered = []
     for img_name, info in data.items():
@@ -59,25 +58,9 @@ def filter_words(data, tones=None, categories=None, exact_tones=False):
         
         if tones:
             if exact_tones:
-                # Must have exactly these tones in this order
                 if word_tones != tones:
                     match = False
             else:
-                # Must contain this sequence of tones
-                # If the user provides tones like [2, 1], we want to find words that have tones [2, 1] in that order.
-                # However, if the word has tones [2, 1, 1], it should match.
-                # If the word has tones [1, 2, 1], it should match.
-                # If the word has tones [1, 1, 2], it should NOT match.
-                
-                # The previous implementation of has_sublist was correct for contiguous sublist.
-                # Let's verify if the user meant contiguous or just ordered.
-                # "2,1 is different from 1,2" implies order matters.
-                # "2,1 should return words like: guó huī (2, 1), pá shān (2, 1)"
-                # "1,2 should return words like shuā yá (1, 2), gōng rén (1, 2)"
-                # These examples are exact matches for 2-character words.
-                # What if we have a 4-character word with tones [1, 2, 1, 4]?
-                # If we search for [2, 1], it should match.
-
                 if not has_sublist(word_tones, tones):
                     match = False
         
