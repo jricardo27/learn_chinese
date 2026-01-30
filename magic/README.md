@@ -12,39 +12,46 @@ This project uses **Capacitor.js** to run as a native mobile application.
 - **Xcode**: For iOS builds (macOS only).
 - **Android Studio**: For Android builds.
 
-### Setting Up & Syncing
+### Setting Up & Building
 
-If you make any changes to the code (`index.html`, `script.js`, `style.css`), you need to sync those changes to the native platforms:
+You can generate the native distribution files (like the Android APK) directly from the command line:
 
 ```bash
-# Using the provided script
+# This script prepares assets, syncs them, and compiles the apps
 ./build-mobile.sh
-
-# OR using npm
-npm run sync
 ```
 
-### Compiling and Running
+### Generated Files
+
+After running the build script, you can find the outputs at:
+
+- **Android APK**: `android/app/build/outputs/apk/debug/app-debug.apk`
+- **iOS project**: `ios/App/App.xcworkspace` (Ready for Xcode archiving)
+
+### Compiling and Running via CLI
+
+Instead of opening the IDEs, you can also run directly from your terminal:
 
 #### iOS
 
-1. Open the project in Xcode:
-
-   ```bash
-   npx cap open ios
-   ```
-
-2. In Xcode, select your target device/simulator and click the **Play** button to build and run.
+```bash
+npx cap run ios
+```
 
 #### Android
 
-1. Open the project in Android Studio:
+```bash
+npx cap run android
+```
 
-   ```bash
-   npx cap open android
-   ```
+---
 
-2. In Android Studio, click the **Run** button (green arrow) to build and run on your device or emulator.
+### 🛠️ Native IDEs (Alternative)
+
+If you prefer to use the native development environments:
+
+- **iOS Development**: Run `npx cap open ios` to open Xcode. Then build and run via the Play button.
+- **Android Development**: Run `npx cap open android` to open Android Studio. Then build and run via the Run button.
 
 ---
 
