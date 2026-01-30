@@ -4,7 +4,7 @@
   "description": "",
   "main": "script.js",
   "scripts": {
-    "sync": "mkdir -p www && rm -rf www/* && cp index.html script.js style.css words_data.js words_analysis.js www/ && cp -R audio images www/ && npx cap sync",
+    "sync": "rm -rf www && mkdir -p www && cp index.html script.js style.css www/ && cp -R audio images www/ && find . -maxdepth 1 -name 'words_*.js' -exec cp {} www/ \\; && npx cap sync",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
