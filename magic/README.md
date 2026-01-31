@@ -63,6 +63,17 @@ If you prefer to use the native development environments:
 - **iOS Development**: Run `npx cap open ios` to open Xcode. Then build and run via the Play button.
 - **Android Development**: Run `npx cap open android` to open Android Studio. Then build and run via the Run button.
 
+#### ⚠️ Note on iOS Signing (Free Accounts)
+
+If you do not have a paid Apple Developer membership, you can still run the app on your physical iPhone using a **Free Apple ID**:
+
+1. Open the project: `npx cap open ios`.
+2. Click the blue **App** icon at the top of the sidebar.
+3. Select the **App** target and go to **Signing & Capabilities**.
+4. Check **Automatically manage signing** and add your free Apple ID as the **Team**.
+5. On your iPhone, go to **Settings > General > VPN & Device Management** and "Trust" your Apple ID to allow the app to run.
+6. *Note: Free account apps expire after 7 days and must be re-deployed from Xcode.*
+
 ---
 
 ## 🌐 Web Deployment
