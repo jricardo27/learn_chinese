@@ -181,7 +181,11 @@
                 <!-- Standard Overlay -->
                 <!-- Standard Overlay -->
                 <div v-if="currentMode === 'standard'" class="base-card standard-card">
-                    <h2 class="mode-title">{{ currentModeTitle }}</h2>
+                    <div class="mode-header">
+                        <button @click="stopPlayback" class="back-btn"><i class="fas fa-home"></i></button>
+                        <h2 class="mode-title">{{ currentModeTitle }}</h2>
+                        <div style="width: 44px;"></div> <!-- Spacer -->
+                    </div>
                     <img :src="overlayWord.image" alt="Word Image" class="quiz-image">
                     <div class="recall-info-container">
                         <div class="recall-text">{{ overlayWord.chinese }}</div>
@@ -193,13 +197,17 @@
                             <i :class="isPlaying ? 'fas fa-pause' : 'fas fa-play'"></i>
                             {{ isPlaying ? 'Pause' : 'Play Audio' }}
                         </button>
-                        <div class="nav-btn-group">
-                            <button @click="playPrev" class="quiz-btn" :disabled="currentWordIndex === 0"><i
-                                    class="fas fa-arrow-left"></i> Prev</button>
-                            <button @click="playNext" class="quiz-btn"><i class="fas fa-arrow-right"></i> Next</button>
+                        <div class="action-row">
+                            <button @click="playPrev" class="quiz-btn" :disabled="currentWordIndex === 0">
+                                <i class="fas fa-arrow-left"></i> Prev
+                            </button>
+                            <button @click="stopPlayback" class="finish-btn">
+                                <i class="fas fa-times"></i> Finish
+                            </button>
+                            <button @click="playNext" class="quiz-btn">
+                                Next <i class="fas fa-arrow-right"></i>
+                            </button>
                         </div>
-                        <button @click="stopPlayback" class="finish-quiz-btn"><i class="fas fa-times-circle"></i> Finish
-                            View</button>
                     </div>
                 </div>
 
@@ -207,7 +215,11 @@
                 <!-- Recall Overlay -->
                 <div v-if="currentMode === 'recall'"
                     :class="['base-card', 'recall-card-base', 'recall-card', { revealed: isRecallRevealed }]">
-                    <h2 class="mode-title">{{ currentModeTitle }}</h2>
+                    <div class="mode-header">
+                        <button @click="stopPlayback" class="back-btn"><i class="fas fa-home"></i></button>
+                        <h2 class="mode-title">{{ currentModeTitle }}</h2>
+                        <div style="width: 44px;"></div> <!-- Spacer -->
+                    </div>
                     <img :src="overlayWord.image" alt="Word Image" class="quiz-image">
                     <div class="recall-info-container">
                         <div :class="['recall-text', { 'blur-text': hideChinese && !isRecallRevealed }]">{{
@@ -220,19 +232,27 @@
                     <div class="recall-controls">
                         <button @click="revealRecall" class="replay-btn"><i class="fas fa-eye"></i> {{ isRecallRevealed
                             ? 'Replay' : 'Reveal' }}</button>
-                        <div class="nav-btn-group">
-                            <button @click="playPrev" class="quiz-btn" :disabled="currentWordIndex === 0"><i
-                                    class="fas fa-arrow-left"></i> Prev</button>
-                            <button @click="playNext" class="quiz-btn"><i class="fas fa-arrow-right"></i> Next</button>
+                        <div class="action-row">
+                            <button @click="playPrev" class="quiz-btn" :disabled="currentWordIndex === 0">
+                                <i class="fas fa-arrow-left"></i> Prev
+                            </button>
+                            <button @click="stopPlayback" class="finish-btn">
+                                <i class="fas fa-times"></i> Finish
+                            </button>
+                            <button @click="playNext" class="quiz-btn">
+                                Next <i class="fas fa-arrow-right"></i>
+                            </button>
                         </div>
-                        <button @click="stopPlayback" class="finish-quiz-btn"><i class="fas fa-times-circle"></i> Finish
-                            Practice</button>
                     </div>
                 </div>
 
                 <!-- Shadowing Overlay -->
                 <div v-if="currentMode === 'shadowing'" class="base-card shadow-card shadowing-card">
-                    <h2 class="mode-title mobile-hide">{{ currentModeTitle }}</h2>
+                    <div class="mode-header">
+                        <button @click="stopPlayback" class="back-btn"><i class="fas fa-home"></i></button>
+                        <h2 class="mode-title">{{ currentModeTitle }}</h2>
+                        <div style="width: 44px;"></div> <!-- Spacer -->
+                    </div>
                     <div class="shadowing-layout-container">
                         <div class="shadowing-left">
                             <img :src="overlayWord.image" alt="Word Image" class="quiz-image shadow-main-img">
@@ -247,6 +267,14 @@
 
                             <div v-if="shadowingState === 'recording'" class="recording-progress-container">
                                 <div class="recording-progress-bar" :style="{ width: recordingProgress + '%' }"></div>
+                            </div>
+
+                            <!-- Mic Permission Warning -->
+                            <div v-if="!micPermissionGranted && currentMode === 'shadowing'" class="mic-status-warning"
+                                @click="initVoiceRecorder">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>{{ micInitializing ? 'Initializing Mic...' : 'Microphone disabled. Tap to enable.'
+                                    }}</span>
                             </div>
                         </div>
 
@@ -305,17 +333,17 @@
                                 <button v-if="!autoRecord && shadowingState === 'idle'" @click="startManualRecording"
                                     class="record-btn"><i class="fas fa-microphone"></i> Record</button>
 
-                                <div class="nav-btn-group">
-                                    <button @click="playPrev" class="quiz-btn" :disabled="currentWordIndex === 0"><i
-                                            class="fas fa-arrow-left"></i>
-                                        Prev</button>
-                                    <button @click="playNext" class="quiz-btn"><i class="fas fa-arrow-right"></i>
-                                        Next</button>
+                                <div class="action-row">
+                                    <button @click="playPrev" class="quiz-btn" :disabled="currentWordIndex === 0">
+                                        <i class="fas fa-arrow-left"></i> Prev
+                                    </button>
+                                    <button @click="stopPlayback" class="finish-btn">
+                                        <i class="fas fa-times"></i> Finish
+                                    </button>
+                                    <button @click="playNext" class="quiz-btn">
+                                        Next <i class="fas fa-arrow-right"></i>
+                                    </button>
                                 </div>
-                                <button @click="stopPlayback" class="finish-quiz-btn"><i
-                                        class="fas fa-times-circle"></i>
-                                    Finish
-                                    Practice</button>
                             </div>
                         </div>
                     </div>
@@ -323,7 +351,11 @@
 
                 <!-- Tone Practice Overlay (similar to Standard but with length focus) -->
                 <div v-if="currentMode === 'tonePractice'" class="base-card tone-card">
-                    <h2 class="mode-title">{{ currentModeTitle }}</h2>
+                    <div class="mode-header">
+                        <button @click="stopPlayback" class="back-btn"><i class="fas fa-home"></i></button>
+                        <h2 class="mode-title">{{ currentModeTitle }}</h2>
+                        <div style="width: 44px;"></div> <!-- Spacer -->
+                    </div>
                     <img :src="overlayWord.image" alt="Word Image" class="quiz-image">
                     <div class="recall-info-container">
                         <div class="recall-text">{{ overlayWord.chinese }}</div>
@@ -335,19 +367,27 @@
                             <i :class="isPlaying ? 'fas fa-pause' : 'fas fa-play'"></i>
                             {{ isPlaying ? 'Pause' : 'Play Audio' }}
                         </button>
-                        <div class="nav-btn-group">
-                            <button @click="playPrev" class="quiz-btn" :disabled="currentWordIndex === 0"><i
-                                    class="fas fa-arrow-left"></i> Prev</button>
-                            <button @click="playNext" class="quiz-btn"><i class="fas fa-arrow-right"></i> Next</button>
+                        <div class="action-row">
+                            <button @click="playPrev" class="quiz-btn" :disabled="currentWordIndex === 0">
+                                <i class="fas fa-arrow-left"></i> Prev
+                            </button>
+                            <button @click="stopPlayback" class="finish-btn">
+                                <i class="fas fa-times"></i> Finish
+                            </button>
+                            <button @click="playNext" class="quiz-btn">
+                                Next <i class="fas fa-arrow-right"></i>
+                            </button>
                         </div>
-                        <button @click="stopPlayback" class="finish-quiz-btn"><i class="fas fa-times-circle"></i> Finish
-                            Practice</button>
                     </div>
                 </div>
 
                 <!-- Multiple Choice (Quiz, Animal Match, Category Match) -->
                 <div v-if="isQuizLikeMode" class="base-card quiz-game-card">
-                    <h2 class="mode-title">{{ currentModeTitle }}</h2>
+                    <div class="mode-header">
+                        <button @click="stopPlayback" class="back-btn"><i class="fas fa-home"></i></button>
+                        <h2 class="mode-title">{{ currentModeTitle }}</h2>
+                        <div style="width: 44px;"></div> <!-- Spacer -->
+                    </div>
                     <div class="quiz-header">
                         <div class="quiz-score-live">Score: <span class="score-correct">✅ {{ quizScore.correct }}</span>
                             / <span class="score-wrong">❌ {{ quizScore.wrong }}</span></div>

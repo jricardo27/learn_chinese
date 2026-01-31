@@ -163,6 +163,8 @@ const app = createApp({
             dataArray: null,
             animationId: null,
             lastRecordedBlob: null,
+            micPermissionGranted: false,
+            micInitializing: false,
 
             statusText: 'Choose a mode to start learning',
             spokenText: '', // For displaying what is being synthesized
@@ -418,6 +420,7 @@ const app = createApp({
             this.currentWordIndex = 0;
 
             if (this.currentMode === 'shadowing') {
+                this.initVoiceRecorder();
                 // Shadowing starts loop immediately
                 this.isLooping = true;
             }
@@ -427,8 +430,8 @@ const app = createApp({
             const index = this.words.findIndex(w => w.id === word.id);
             if (index !== -1) {
                 this.currentWordIndex = index;
-                if (this.audioContext && this.audioContext.state === 'suspended') {
-                    this.audioContext.resume();
+                if (this.currentMode === 'shadowing') {
+                    this.initVoiceRecorder();
                 }
                 this.playActiveWord(true);
             }
@@ -737,7 +740,9 @@ const app = createApp({
             if (this.currentAudio) this.currentAudio.play();
         },
         async initVoiceRecorder() {
-            if (this.mediaRecorder) return;
+            if (this.mediaRecorder || this.micInitializing) return;
+            this.micInitializing = true;
+            console.log("Initializing microphone...");
             try {
                 const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
                 // iOS support: check mimeTypes
@@ -776,7 +781,15 @@ const app = createApp({
                 this.analyser.fftSize = 256;
                 source.connect(this.analyser);
                 this.visualize();
-            } catch (err) { console.error("Mic access denied or error", err); }
+                this.micPermissionGranted = true;
+                this.statusText = "Microphone Ready";
+            } catch (err) {
+                console.error("Mic access denied or error", err);
+                this.micPermissionGranted = false;
+                this.statusText = "Microphone Error: Please allow access";
+            } finally {
+                this.micInitializing = false;
+            }
         },
         visualize() {
             const draw = () => {

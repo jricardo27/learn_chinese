@@ -577,6 +577,56 @@ main {
     border-radius: 12px;
 }
 
+/* Overlay Controls Layout */
+.action-row {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 10px;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.action-row button {
+    margin: 0 !important;
+    padding: 10px !important;
+    font-size: 0.9em !important;
+}
+
+.finish-btn {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+    transition: all 0.3s ease;
+}
+
+.mode-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: #4a00e0;
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+}
+
 .finish-quiz-btn {
     width: 100%;
     background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
@@ -751,6 +801,27 @@ main {
     height: 100%;
     background: #ff4d4d;
     transition: width 0.1s linear;
+}
+
+.mic-status-warning {
+    background: #fff5f5;
+    color: #c53030;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.8em;
+    font-weight: 600;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #feb2b2;
+    cursor: pointer;
+    width: 100%;
+    justify-content: center;
+}
+
+.mic-status-warning i {
+    color: #fc8181;
 }
 
 /* Shadowing Mode Layout Restructuring */
@@ -1441,6 +1512,8 @@ main {
         border-radius: 0;
         display: flex;
         flex-direction: column;
+        align-items: center;
+        /* Center content on mobile */
     }
 
     .app-container .standard-card,
@@ -1502,15 +1575,19 @@ main {
     }
 
     .mode-title {
-        font-size: 0.8em;
-        margin-top: 0;
-        margin-bottom: 5px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
+        font-size: 1.1em;
+        margin: 0;
+        color: #4a00e0;
+        font-weight: 700;
     }
 
-    .mobile-hide {
-        display: none !important;
+    .mode-header {
+        margin-bottom: 10px;
+        padding-bottom: 5px;
+    }
+
+    .back-btn {
+        padding: 5px;
     }
 
     /* Controls */
