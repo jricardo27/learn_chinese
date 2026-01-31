@@ -12,6 +12,16 @@ This project uses **Capacitor.js** to run as a native mobile application.
 - **Xcode**: For iOS builds (macOS only).
 - **Android Studio**: For Android builds.
 
+### 🎨 Icons & Splash Screens
+
+I have generated a premium app icon for you in the `assets/` folder. To generate all the required sizes for iOS and Android:
+
+```bash
+npm run assets
+```
+
+*Note: This will automatically update your native projects with the new icon and splash screen.*
+
 ### Setting Up & Building
 
 You can generate the native distribution files (like the Android APK) directly from the command line:

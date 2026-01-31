@@ -5,6 +5,7 @@
   "main": "script.js",
   "scripts": {
     "sync": "./scripts/sync.sh",
+    "assets": "npx capacitor-assets generate",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -15,5 +16,8 @@
     "@capacitor/cli": "^8.0.2",
     "@capacitor/core": "^8.0.2",
     "@capacitor/ios": "^8.0.2"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^3.0.5"
   }
 }
