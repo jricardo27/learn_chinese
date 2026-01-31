@@ -12,9 +12,9 @@ echo "🏗️ Building Android APK..."
 (cd android && ./gradlew assembleDebug)
 
 echo "🏗️ Building iOS (CLI)..."
-# Note: iOS build requires valid signing which is usually handled in Xcode
-# This command will attempt to build the project
-npx cap build ios
+# Note: iOS build requires valid signing set up in Xcode first.
+# Using 'debugging' method for local builds.
+npx cap build ios --xcode-export-method debugging || echo "⚠️ iOS Build failed. Please open Xcode to configure signing: npx cap open ios"
 
 echo "✅ Build and Sync complete!"
 echo ""
