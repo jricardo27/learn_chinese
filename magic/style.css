@@ -22,6 +22,7 @@ body {
     position: relative;
     overflow-x: hidden;
     /* Prevent horizontal scroll */
+    padding-top: env(safe-area-inset-top);
 }
 
 .sticky-header {
@@ -30,12 +31,14 @@ body {
     top: 0;
     z-index: 1000;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    /* For iOS Safe area, the header-top handles the color */
 }
 
 .header-top {
     background: linear-gradient(to right, #4a00e0, #8e2de2);
     color: white;
     padding: 15px 25px;
+    padding-top: calc(15px + env(safe-area-inset-top));
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1355,9 +1358,11 @@ main {
     /* Dialogs: Reset fixed sizes to fluid/scrollable */
     .app-container .base-card {
         width: 98%;
-        margin: 0 auto;
+        margin: env(safe-area-inset-top) auto env(safe-area-inset-bottom);
         padding: 20px 15px;
-        max-height: 98vh;
+        padding-top: calc(20px + env(safe-area-inset-top));
+        padding-bottom: calc(20px + env(safe-area-inset-bottom));
+        max-height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
         overflow-y: auto;
         border-radius: 15px;
     }
@@ -1460,6 +1465,7 @@ main {
     /* Player Controls at Bottom */
     .player-controls {
         padding: 10px 15px;
+        padding-bottom: calc(10px + env(safe-area-inset-bottom));
         gap: 10px;
     }
 
