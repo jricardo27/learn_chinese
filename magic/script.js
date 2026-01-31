@@ -1,5 +1,8 @@
 const { createApp } = Vue;
 
+// Capacitor Plugins
+const NativeAudio = (typeof Capacitor !== 'undefined' && Capacitor.Plugins) ? Capacitor.Plugins.NativeAudio : null;
+
 const WORD_PREFIX = "word_";
 const IMAGE_EXTENSION = ".jpg";
 const AUDIO_EXTENSION = ".mp3";
@@ -403,6 +406,7 @@ const app = createApp({
                 // We'll just leave local state as is, but can hide option in UI.
             }
             if (mode === 'shadowing') {
+                // Ensure mic is requested on a clean mode change gesture
                 this.initVoiceRecorder();
             }
             this.statusText = mode === 'home' ? 'Choose a mode to start learning' : `${this.currentModeConfig.title} Initialized`;
@@ -476,8 +480,36 @@ const app = createApp({
             }
 
             // Normal audio playback
+            if (NativeAudio) {
+                try {
+                    // Unique ID for this word's audio
+                    const assetId = `word_${word.id}`;
+                    await NativeAudio.preload({
+                        assetId: assetId,
+                        assetPath: word.audio, // Capacitor path
+                        audioChannelNum: 1,
+                        isUrl: false
+                    });
+
+                    const vol = this.volume / 100;
+                    await NativeAudio.setVolume({ assetId: assetId, volume: vol }).catch(() => { });
+
+                    const autoPlayModes = ['standard', 'shadowing', 'quiz', 'tonePractice'];
+                    if (autoPlayModes.includes(this.currentMode) || userInitiated) {
+                        await NativeAudio.play({ assetId: assetId });
+                        const refDuration = this.getReferenceDuration();
+                        setTimeout(() => this.onAudioEnded(), (refDuration + 0.2) * 1000);
+                    }
+                } catch (e) {
+                    console.error("Native Audio failed, falling back to Web Audio", e);
+                    this.playWebAudio(word, userInitiated);
+                }
+            } else {
+                this.playWebAudio(word, userInitiated);
+            }
+        },
+        playWebAudio(word, userInitiated) {
             this.currentAudio = new Audio(word.audio);
-            // Removed crossOrigin = "anonymous" to avoid CORS blocks on file://
             this.currentAudio.volume = this.volume / 100;
             this.currentAudio.onended = () => this.onAudioEnded();
             this.currentAudio.onerror = (e) => {
@@ -486,16 +518,12 @@ const app = createApp({
             };
 
             try {
-                // Play immediately for standard, shadowing, quiz, or user initiated (Listen button)
                 const autoPlayModes = ['standard', 'shadowing', 'quiz', 'tonePractice'];
                 if (autoPlayModes.includes(this.currentMode) || userInitiated) {
-                    // Resume audio context if needed (browsers require user gesture)
                     if (this.audioContext && this.audioContext.state === 'suspended') {
                         this.audioContext.resume();
                     }
                     this.currentAudio.play();
-                } else if (this.currentMode !== 'writing') {
-                    // 
                 }
             } catch (e) {
                 console.error("Audio play failed", e);
@@ -559,6 +587,10 @@ const app = createApp({
             this.shadowingState = 'idle';
         },
         stopAudioOnly() {
+            if (NativeAudio) {
+                // Stop all managed channels
+                NativeAudio.stop({ assetId: '*' }).catch(() => { });
+            }
             if (this.currentAudio) {
                 this.currentAudio.pause();
                 this.currentAudio = null;
@@ -742,28 +774,20 @@ const app = createApp({
         async initVoiceRecorder() {
             if (this.mediaRecorder || this.micInitializing) return;
             this.micInitializing = true;
-            console.log("Initializing microphone...");
             try {
-                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                // iOS support: check mimeTypes
-                let options = {};
-                if (MediaRecorder.isTypeSupported('audio/webm')) {
-                    options = { mimeType: 'audio/webm' };
-                } else if (MediaRecorder.isTypeSupported('audio/mp4')) {
-                    options = { mimeType: 'audio/mp4' };
-                } else if (MediaRecorder.isTypeSupported('audio/aac')) {
-                    options = { mimeType: 'audio/aac' };
+                if (!this.audioContext) {
+                    this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
                 }
+                await this.audioContext.resume();
 
-                try {
-                    this.mediaRecorder = new MediaRecorder(stream, options);
-                } catch (e) {
-                    console.warn("MediaRecorder with options failed, falling back", e);
-                    this.mediaRecorder = new MediaRecorder(stream);
-                }
-                this.mediaRecorder.ondataavailable = e => {
-                    if (e.data.size > 0) this.audioChunks.push(e.data);
-                };
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+
+                let options = {};
+                if (MediaRecorder.isTypeSupported('audio/webm')) options = { mimeType: 'audio/webm' };
+                else if (MediaRecorder.isTypeSupported('audio/mp4')) options = { mimeType: 'audio/mp4' };
+
+                this.mediaRecorder = new MediaRecorder(stream, options);
+                this.mediaRecorder.ondataavailable = e => { if (e.data.size > 0) this.audioChunks.push(e.data); };
                 this.mediaRecorder.onstop = () => {
                     const audioBlob = new Blob(this.audioChunks, { type: this.mediaRecorder.mimeType });
                     this.lastRecordedBlob = audioBlob;
@@ -771,22 +795,18 @@ const app = createApp({
                     this.playUserRecording();
                 };
 
-                // Setup live visualization
-                if (!this.audioContext) {
-                    this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                }
-                await this.audioContext.resume();
                 const source = this.audioContext.createMediaStreamSource(stream);
                 this.analyser = this.audioContext.createAnalyser();
                 this.analyser.fftSize = 256;
                 source.connect(this.analyser);
                 this.visualize();
+
                 this.micPermissionGranted = true;
                 this.statusText = "Microphone Ready";
             } catch (err) {
-                console.error("Mic access denied or error", err);
+                console.error("Mic error", err);
                 this.micPermissionGranted = false;
-                this.statusText = "Microphone Error: Please allow access";
+                this.statusText = "Microphone Error";
             } finally {
                 this.micInitializing = false;
             }
@@ -882,6 +902,7 @@ const app = createApp({
         playUserRecording(skipComparison = false) {
             if (!this.userAudio) return;
             this.shadowingState = 'playback';
+            this.userAudio.volume = this.volume / 100;
             this.userAudio.play();
             this.userAudio.onended = () => {
                 this.shadowingState = 'idle';
@@ -894,10 +915,8 @@ const app = createApp({
             }
         },
         playReferenceAudioOnly() {
-            if (this.activeWord && this.activeWord.audio) {
-                const audio = new Audio(this.activeWord.audio);
-                audio.volume = this.volume / 100;
-                audio.play().catch(e => console.error("Play ref failed", e));
+            if (this.activeWord) {
+                this.playActiveWord(true);
             }
         },
         async compareWithReference() {
@@ -1102,6 +1121,24 @@ const app = createApp({
     mounted() {
         this.loadWords();
         this.setupKeyboardListeners();
+    },
+    watch: {
+        volume(newVal) {
+            const vol = newVal / 100;
+            if (NativeAudio) {
+                // Apply to active word if it exists
+                if (this.activeWord) {
+                    NativeAudio.setVolume({
+                        assetId: `word_${this.activeWord.id}`,
+                        volume: vol
+                    }).catch(() => { });
+                }
+            }
+            // For Web Audio fallback
+            if (this.currentAudio) {
+                this.currentAudio.volume = vol;
+            }
+        }
     }
 });
 
