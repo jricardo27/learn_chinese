@@ -14,7 +14,7 @@ echo "🏗️ Building Android APK..."
 echo "🏗️ Building iOS (CLI)..."
 # Note: iOS build requires valid signing which is usually handled in Xcode
 # This command will attempt to build the project
-npx cap build ios --no-open
+npx cap build ios
 
 echo "✅ Build and Sync complete!"
 echo ""
