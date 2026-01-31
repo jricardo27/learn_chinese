@@ -161,6 +161,7 @@ const app = createApp({
             audioContext: null,
             analyser: null,
             dataArray: null,
+            animationId: null,
 
             statusText: 'Choose a mode to start learning',
             spokenText: '', // For displaying what is being synthesized
@@ -407,9 +408,7 @@ const app = createApp({
             this.setMode(this.currentMode);
         },
         onCompareToggle() {
-            if (this.compareEnabled) {
-                this.autoContinue = false;
-            }
+            // Both can now be enabled
         },
         startSession() {
             if (this.isShuffled && this.currentMode !== 'tonePractice') {
@@ -418,8 +417,6 @@ const app = createApp({
             this.currentWordIndex = 0;
 
             if (this.currentMode === 'shadowing') {
-                // Ensure mutual exclusivity: Compare is not compatible with auto-continue
-                if (this.compareEnabled) this.autoContinue = false;
                 // Shadowing starts loop immediately
                 this.isLooping = true;
             }
@@ -746,7 +743,42 @@ const app = createApp({
                     this.userAudio = new Audio(URL.createObjectURL(audioBlob));
                     this.playUserRecording();
                 };
+
+                // Setup live visualization
+                if (!this.audioContext) {
+                    this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                const source = this.audioContext.createMediaStreamSource(stream);
+                this.analyser = this.audioContext.createAnalyser();
+                this.analyser.fftSize = 256;
+                source.connect(this.analyser);
+                this.visualize();
             } catch (err) { console.error("Mic access denied", err); }
+        },
+        visualize() {
+            const canvas = document.getElementById('vizCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const bufferLength = this.analyser.frequencyBinCount;
+            this.dataArray = new Uint8Array(bufferLength);
+
+            const draw = () => {
+                this.animationId = requestAnimationFrame(draw);
+                this.analyser.getByteFrequencyData(this.dataArray);
+
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                const barWidth = (canvas.width / bufferLength) * 2.5;
+                let barHeight;
+                let x = 0;
+
+                for (let i = 0; i < bufferLength; i++) {
+                    barHeight = this.dataArray[i] / 2;
+                    ctx.fillStyle = this.shadowingState === 'recording' ? '#ff4d4d' : '#4a00e0';
+                    ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+                    x += barWidth + 1;
+                }
+            };
+            draw();
         },
         getReferenceDuration() {
             if (typeof WORDS_ANALYSIS === 'undefined') return 3;
@@ -782,9 +814,9 @@ const app = createApp({
             this.mediaRecorder.start();
 
             const refDuration = this.getReferenceDuration();
-            let recordTime = 3000;
-            if (refDuration >= 3) {
-                recordTime = (3 + (refDuration - 3) + 1) * 1000;
+            let recordTime = (refDuration + 1) * 1000;
+            if (this.currentAudio && !isNaN(this.currentAudio.duration)) {
+                recordTime = (this.currentAudio.duration + 1) * 1000;
             }
 
             const startTime = Date.now();

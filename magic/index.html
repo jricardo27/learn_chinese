@@ -85,8 +85,7 @@
 
                     <div class="mode-settings">
                         <label class="setting-row" v-if="currentMode !== 'recall'">
-                            <input type="checkbox" v-model="autoContinue"
-                                :disabled="currentMode === 'shadowing' && compareEnabled">
+                            <input type="checkbox" v-model="autoContinue">
                             <span>Auto-continue to next word</span>
                         </label>
                         <label class="setting-row">
@@ -238,12 +237,16 @@
                         <div class="shadowing-left">
                             <img :src="overlayWord.image" alt="Word Image" class="quiz-image shadow-main-img">
 
-                            <div :class="['shadowing-status', shadowingStatusClass]"
-                                style="position: relative; overflow: hidden;">
-                                <div v-if="shadowingState === 'recording'" class="recording-progress-bar"
-                                    :style="{ width: recordingProgress + '%' }"></div>
-                                <i :class="shadowingStatusIcon" style="position: relative; z-index: 1;"></i>
-                                <span style="position: relative; z-index: 1;">{{ shadowingStatusText }}</span>
+                            <!-- Visualizer Histogram -->
+                            <div class="visualizer-container">
+                                <canvas id="vizCanvas" width="280" height="60"></canvas>
+                                <div v-if="shadowingState === 'recording'" class="recording-label">
+                                    <i class="fas fa-circle blink"></i> RECORDING
+                                </div>
+                            </div>
+
+                            <div v-if="shadowingState === 'recording'" class="recording-progress-container">
+                                <div class="recording-progress-bar" :style="{ width: recordingProgress + '%' }"></div>
                             </div>
                         </div>
 
@@ -262,8 +265,9 @@
                                 <div class="feedback-text">{{ comparisonResults.feedback }}</div>
                             </div>
 
-                            <div v-if="compareEnabled && shadowingState === 'idle'" class="retry-options"
-                                style="display: flex; gap: 10px; justify-content: center; margin-bottom: 15px;">
+                            <div v-if="compareEnabled && (shadowingState === 'idle' || shadowingState === 'playback')"
+                                class="retry-options"
+                                style="display: flex; gap: 10px; justify-content: center; margin-bottom: 25px;">
                                 <button @click="playActiveWord(true)" class="retry-btn">
                                     <i class="fas fa-redo"></i> Listen & Record
                                 </button>
