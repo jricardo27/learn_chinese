@@ -425,7 +425,6 @@ const app = createApp({
 
             if (this.currentMode === 'shadowing') {
                 this.initVoiceRecorder();
-                // Shadowing starts loop immediately
                 this.isLooping = true;
             }
             this.playActiveWord(true);
@@ -775,12 +774,14 @@ const app = createApp({
             if (this.mediaRecorder || this.micInitializing) return;
             this.micInitializing = true;
             try {
+                // Request stream IMMEDIATELY to satisfy iOS security
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                console.log("Microphone stream obtained successfully");
+
                 if (!this.audioContext) {
                     this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
                 }
                 await this.audioContext.resume();
-
-                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
 
                 let options = {};
                 if (MediaRecorder.isTypeSupported('audio/webm')) options = { mimeType: 'audio/webm' };
