@@ -32,6 +32,8 @@ body {
     z-index: 1000;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     /* For iOS Safe area, the header-top handles the color */
+    display: flex;
+    flex-direction: column;
 }
 
 .header-top {
@@ -1428,14 +1430,17 @@ main {
 
     /* Dialogs: Reset fixed sizes to fluid/scrollable */
     .app-container .base-card {
-        width: 98%;
-        margin: env(safe-area-inset-top) auto env(safe-area-inset-bottom);
-        padding: 20px 15px;
-        padding-top: calc(20px + env(safe-area-inset-top));
-        padding-bottom: calc(20px + env(safe-area-inset-bottom));
-        max-height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+        width: 100%;
+        margin: 0;
+        padding: 5px 10px;
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: calc(10px + env(safe-area-inset-bottom));
+        max-height: 100vh;
+        height: 100vh;
         overflow-y: auto;
-        border-radius: 15px;
+        border-radius: 0;
+        display: flex;
+        flex-direction: column;
     }
 
     .app-container .standard-card,
@@ -1452,16 +1457,17 @@ main {
     /* Images: Scale down more intelligently */
     .app-container .quiz-image,
     .app-container .shadow-main-img {
-        max-width: 250px;
-        max-height: 250px;
-        margin-bottom: 15px;
+        max-width: 110px;
+        max-height: 110px;
+        margin-bottom: 5px;
+        margin-top: 0;
     }
 
     /* Layouts: Stack vertically */
     .shadowing-layout-container,
     .classifier-layout-container {
         flex-direction: column;
-        gap: 15px;
+        gap: 5px;
         height: auto;
     }
 
@@ -1474,17 +1480,37 @@ main {
         padding: 0;
     }
 
+    .visualizer-container {
+        height: 50px;
+        margin-top: 5px;
+    }
+
     .shadowing-text {
         font-size: 1.8em;
     }
 
     .recall-text {
-        font-size: 2.2em;
+        font-size: 2em;
+    }
+
+    .shadowing-text {
+        font-size: 1.5em;
+    }
+
+    .shadowing-info-container {
+        margin-bottom: 15px;
     }
 
     .mode-title {
-        font-size: 0.9em;
+        font-size: 0.8em;
         margin-top: 0;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .mobile-hide {
+        display: none !important;
     }
 
     /* Controls */
@@ -1535,9 +1561,9 @@ main {
 
     /* Player Controls at Bottom */
     .player-controls {
-        padding: 10px 15px;
-        padding-bottom: calc(10px + env(safe-area-inset-bottom));
-        gap: 10px;
+        padding: 5px 15px;
+        padding-bottom: calc(5px + env(safe-area-inset-bottom));
+        gap: 5px;
     }
 
     .player-buttons {

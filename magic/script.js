@@ -162,6 +162,7 @@ const app = createApp({
             analyser: null,
             dataArray: null,
             animationId: null,
+            lastRecordedBlob: null,
 
             statusText: 'Choose a mode to start learning',
             spokenText: '', // For displaying what is being synthesized
@@ -426,6 +427,9 @@ const app = createApp({
             const index = this.words.findIndex(w => w.id === word.id);
             if (index !== -1) {
                 this.currentWordIndex = index;
+                if (this.audioContext && this.audioContext.state === 'suspended') {
+                    this.audioContext.resume();
+                }
                 this.playActiveWord(true);
             }
         },
@@ -736,10 +740,28 @@ const app = createApp({
             if (this.mediaRecorder) return;
             try {
                 const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                this.mediaRecorder = new MediaRecorder(stream);
-                this.mediaRecorder.ondataavailable = e => this.audioChunks.push(e.data);
+                // iOS support: check mimeTypes
+                let options = {};
+                if (MediaRecorder.isTypeSupported('audio/webm')) {
+                    options = { mimeType: 'audio/webm' };
+                } else if (MediaRecorder.isTypeSupported('audio/mp4')) {
+                    options = { mimeType: 'audio/mp4' };
+                } else if (MediaRecorder.isTypeSupported('audio/aac')) {
+                    options = { mimeType: 'audio/aac' };
+                }
+
+                try {
+                    this.mediaRecorder = new MediaRecorder(stream, options);
+                } catch (e) {
+                    console.warn("MediaRecorder with options failed, falling back", e);
+                    this.mediaRecorder = new MediaRecorder(stream);
+                }
+                this.mediaRecorder.ondataavailable = e => {
+                    if (e.data.size > 0) this.audioChunks.push(e.data);
+                };
                 this.mediaRecorder.onstop = () => {
-                    const audioBlob = new Blob(this.audioChunks, { type: 'audio/wav' });
+                    const audioBlob = new Blob(this.audioChunks, { type: this.mediaRecorder.mimeType });
+                    this.lastRecordedBlob = audioBlob;
                     this.userAudio = new Audio(URL.createObjectURL(audioBlob));
                     this.playUserRecording();
                 };
@@ -748,21 +770,25 @@ const app = createApp({
                 if (!this.audioContext) {
                     this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
                 }
+                await this.audioContext.resume();
                 const source = this.audioContext.createMediaStreamSource(stream);
                 this.analyser = this.audioContext.createAnalyser();
                 this.analyser.fftSize = 256;
                 source.connect(this.analyser);
                 this.visualize();
-            } catch (err) { console.error("Mic access denied", err); }
+            } catch (err) { console.error("Mic access denied or error", err); }
         },
         visualize() {
-            const canvas = document.getElementById('vizCanvas');
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d');
-            const bufferLength = this.analyser.frequencyBinCount;
-            this.dataArray = new Uint8Array(bufferLength);
-
             const draw = () => {
+                const canvas = document.getElementById('vizCanvas');
+                if (!canvas) {
+                    this.animationId = requestAnimationFrame(draw);
+                    return;
+                }
+                const ctx = canvas.getContext('2d');
+                const bufferLength = this.analyser.frequencyBinCount;
+                this.dataArray = new Uint8Array(bufferLength);
+
                 this.animationId = requestAnimationFrame(draw);
                 this.analyser.getByteFrequencyData(this.dataArray);
 
@@ -772,7 +798,7 @@ const app = createApp({
                 let x = 0;
 
                 for (let i = 0; i < bufferLength; i++) {
-                    barHeight = this.dataArray[i] / 2;
+                    barHeight = (this.dataArray[i] / 255) * canvas.height;
                     ctx.fillStyle = this.shadowingState === 'recording' ? '#ff4d4d' : '#4a00e0';
                     ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
                     x += barWidth + 1;
@@ -808,6 +834,9 @@ const app = createApp({
         },
         startRecordingSequence() {
             if (!this.mediaRecorder) return;
+            if (this.audioContext && this.audioContext.state === 'suspended') {
+                this.audioContext.resume();
+            }
             this.shadowingState = 'recording';
             this.audioChunks = [];
             this.recordingProgress = 0;
@@ -859,9 +888,7 @@ const app = createApp({
             }
         },
         async compareWithReference() {
-            const wordKey = `word_${this.activeWord.number - 1}`.replace(/word_(\d)$/, 'word_00$1').replace(/word_(\d\d)$/, 'word_0$1');
-            // Simplified key match based on filenames in WORDS_ANALYSIS (e.g. word_000)
-            const referenceKey = Object.keys(WORDS_ANALYSIS).find(k => k.includes(this.activeWord.number - 1)) || `word_${String(this.activeWord.number - 1).padStart(3, '0')}`;
+            const referenceKey = this.getRefKey(this.activeWord.number - 1);
 
             const referenceAnalysis = (typeof WORDS_ANALYSIS !== 'undefined') ? WORDS_ANALYSIS[referenceKey] : null;
 
@@ -871,9 +898,8 @@ const app = createApp({
             }
 
             try {
-                // Get Blob from userAudio src
-                const response = await fetch(this.userAudio.src);
-                const blob = await response.blob();
+                const blob = this.lastRecordedBlob;
+                if (!blob) throw new Error("No recording found");
                 const userAnalysis = await this.analyzeUserAudio(blob);
 
                 const score = this.comparePitchContours(
@@ -1019,6 +1045,14 @@ const app = createApp({
 
             drawPath(user.pitch_contour, '#3b82f6', user.duration); // User in Blue (drawn first)
             drawPath(ref.pitch_contour, '#10b981', ref.duration); // Reference in Green (drawn on top)
+        },
+        getRefKey(num) {
+            // Support different padding styles 'word_1' vs 'word_001'
+            const searchStr = `word_${num}`;
+            const searchStrPadded = `word_${String(num).padStart(3, '0')}`;
+            return Object.keys(WORDS_ANALYSIS).find(k => k.includes(searchStrPadded)) ||
+                Object.keys(WORDS_ANALYSIS).find(k => k.includes(searchStr)) ||
+                searchStrPadded;
         },
         startManualRecording() { this.startRecordingSequence(); },
         stopManualRecording() { if (this.mediaRecorder && this.mediaRecorder.state === 'recording') this.mediaRecorder.stop(); },
