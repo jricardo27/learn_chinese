@@ -1,4 +1,4 @@
-package com.getcapacitor.myapp;
+package com.learnchinese.magic;
 
 import static org.junit.Assert.*;
 
