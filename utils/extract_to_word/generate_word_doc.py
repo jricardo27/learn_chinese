@@ -17,18 +17,17 @@ def parse_js_data(file_path):
     # Find the first { and the last }
     start_idx = content.find('{')
     end_idx = content.rfind('}')
-    content = content[start_idx:end_idx+1]
     
-    # Handle non-standard JSON (keys without quotes, trailing commas)
-    # This is a bit risky but usually works for simple objects
-    content = re.sub(r'(\w+):', r'"\1":', content)
-    content = re.sub(r',\s*}', '}', content)
-    content = re.sub(r',\s*]', ']', content)
+    if start_idx == -1 or end_idx == -1:
+        raise ValueError("Could not find JSON object in the file")
+        
+    content = content[start_idx:end_idx+1]
     
     try:
         return json.loads(content)
     except json.JSONDecodeError as e:
-        print(f"Fatal: Could not parse the JavaScript data file. Error: {e}")
+        print(f"Fatal: Could not parse the JavaScript data file. The content must be valid JSON.")
+        print(f"Error details: {e}")
         raise
 
 def has_sublist(full_list, sub_list):
