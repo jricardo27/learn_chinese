@@ -49,6 +49,6 @@ try {
     if (servicesJSON.exists()) {
         apply plugin: 'com.google.gms.google-services'
     }
-} catch (FileNotFoundException e) {
+} catch (java.io.FileNotFoundException e) {
     logger.info("google-services.json not found, google-services plugin not applied. Push Notifications won't work")
 }
