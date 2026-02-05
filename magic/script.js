@@ -169,6 +169,14 @@ const app = createApp({
             micPermissionGranted: false,
             micInitializing: false,
 
+            // Shadowing Mastery & Scoring
+            masteryThreshold: 50,
+            requireMastery: true,
+            attemptsCount: 0,
+            shadowingSessionResults: {
+                completedWords: {} // { wordId: lastScore }
+            },
+
             statusText: 'Choose a mode to start learning',
             spokenText: '', // For displaying what is being synthesized
 
@@ -248,6 +256,21 @@ const app = createApp({
         },
         overlayWord() {
             return (this.currentWordIndex >= 0) ? this.activeWord : null;
+        },
+        progressPercentage() {
+            if (this.currentMode === 'home') return 0;
+            const total = this.words.length;
+            if (total === 0) return 0;
+            return Math.max(0, Math.round(((this.currentWordIndex + 1) / total) * 100));
+        },
+        averageShadowingAccuracy() {
+            const scores = Object.values(this.shadowingSessionResults.completedWords);
+            if (scores.length === 0) return 0;
+            const sum = scores.reduce((a, b) => a + b, 0);
+            return Math.round(sum / scores.length);
+        },
+        shadowingWordsCount() {
+            return Object.keys(this.shadowingSessionResults.completedWords).length;
         },
         activeWordId() {
             return this.activeWord ? this.activeWord.id : null;
@@ -398,6 +421,7 @@ const app = createApp({
             this.recallRevealedId = null;
             this.shadowingState = 'idle';
             this.writingTarget = 'hanzi'; // default
+            this.attemptsCount = 0; // Reset mastery attempts
 
             if (mode === 'recall') {
                 this.hideChinese = true;
@@ -550,6 +574,7 @@ const app = createApp({
             if (this.currentWordIndex < this.words.length - 1) {
                 this.userInput = ''; // Clear for next word
                 this.quizAnswered = false;
+                this.attemptsCount = 0;
                 this.currentWordIndex++;
                 this.playActiveWord();
             } else {
@@ -560,6 +585,7 @@ const app = createApp({
             if (this.currentWordIndex > 0) {
                 this.userInput = '';
                 this.quizAnswered = false;
+                this.attemptsCount = 0;
                 this.currentWordIndex--;
                 this.playActiveWord();
             }
@@ -582,6 +608,7 @@ const app = createApp({
             this.isPlaying = false;
             this.stopAudioOnly();
             this.currentWordIndex = -1;
+            this.attemptsCount = 0;
             if (this.autoNextTimeout) clearTimeout(this.autoNextTimeout);
             this.shadowingState = 'idle';
         },
@@ -907,7 +934,24 @@ const app = createApp({
             this.userAudio.play();
             this.userAudio.onended = () => {
                 this.shadowingState = 'idle';
-                if (this.isLooping && this.autoContinue) setTimeout(() => this.playNext(), 800);
+
+                let shouldAdvance = true;
+                if (this.currentMode === 'shadowing' && this.requireMastery && this.compareEnabled) {
+                    const score = this.comparisonResults.overallScore || 0;
+                    if (score < this.masteryThreshold && this.attemptsCount < 3) {
+                        shouldAdvance = false;
+                        this.statusText = `Repeat required: ${score}% (Attempt ${this.attemptsCount}/3)`;
+                        if (this.isLooping) {
+                            setTimeout(() => this.playActiveWord(true), 1500);
+                        }
+                    } else if (this.attemptsCount >= 3 && score < this.masteryThreshold) {
+                        this.statusText = "Advancing after 3 attempts.";
+                    }
+                }
+
+                if (shouldAdvance && this.isLooping && this.autoContinue) {
+                    setTimeout(() => this.playNext(), 800);
+                }
             };
 
             // Trigger Comparison ONLY if enabled and not skipped
@@ -945,6 +989,12 @@ const app = createApp({
                     feedback: this.generateToneFeedback(score),
                     userContour: userAnalysis.pitch_contour
                 };
+
+                // Track Session Results
+                this.attemptsCount++;
+                if (this.activeWord) {
+                    this.shadowingSessionResults.completedWords[this.activeWord.id] = score;
+                }
 
                 this.$nextTick(() => {
                     this.drawToneContour(referenceAnalysis, userAnalysis);

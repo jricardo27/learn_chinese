@@ -409,6 +409,7 @@ main {
     display: flex;
     flex-direction: column;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
 }
 
 /* Specific Mode Card Sizes */
@@ -837,6 +838,9 @@ main {
     display: flex;
     gap: 30px;
     height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 .shadowing-left {
@@ -1379,6 +1383,49 @@ main {
 
 .legend-reference::before {
     background-color: #10b981;
+}
+
+.legend-user::before {
+    background-color: #3b82f6;
+}
+
+/* Session Progress bar */
+.session-progress-container {
+    height: 6px;
+    width: 100%;
+    background: #f0f0f0;
+    overflow: hidden;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.session-progress-bar {
+    height: 100%;
+    background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+    transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Mastery settings */
+.mastery-settings-group {
+    background: rgba(74, 0, 224, 0.05);
+    padding: 15px;
+    border-radius: 12px;
+    margin: 10px 0;
+    border: 1px dashed rgba(74, 0, 224, 0.2);
+    text-align: left;
+}
+
+/* Session stats */
+.session-stats-mini {
+    background: #fdfbff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: #444;
+    text-align: center;
+    margin: 10px auto;
+    border: 1px solid #f0e6ff;
+    width: fit-content;
+    box-shadow: 0 2px 8px rgba(74, 0, 224, 0.05);
 }
 
 /* Spoken Text Toast */

@@ -45,6 +45,10 @@
                     </mobile-menu>
                 </div>
             </div>
+            <!-- Session Progress Bar -->
+            <div v-show="currentMode !== 'home' && currentWordIndex >= 0" class="session-progress-container">
+                <div class="session-progress-bar" :style="{ width: progressPercentage + '%' }"></div>
+            </div>
         </header>
 
 
@@ -98,8 +102,22 @@
                         </label>
                         <label v-if="currentMode === 'shadowing'" class="setting-row">
                             <input type="checkbox" v-model="compareEnabled" @change="onCompareToggle">
-                            <span>Compare Pronunciation (Manual review)</span>
+                            <span>Compare Pronunciation</span>
                         </label>
+                        <!-- Mastery Settings -->
+                        <div v-if="currentMode === 'shadowing' && compareEnabled" class="mastery-settings-group">
+                            <label class="setting-row">
+                                <input type="checkbox" v-model="requireMastery">
+                                <span>Require mastery before auto-advance</span>
+                            </label>
+                            <label class="setting-row" style="flex-direction: column; align-items: flex-start;">
+                                <div style="display: flex; justify-content: space-between; width: 100%;">
+                                    <span>Mastery Threshold: {{ masteryThreshold }}%</span>
+                                </div>
+                                <input type="range" v-model="masteryThreshold" min="10" max="95" step="5"
+                                    style="width: 100%; margin-top: 5px;">
+                            </label>
+                        </div>
                         <div v-if="currentMode === 'shadowing'" class="setting-row"
                             style="flex-direction: column; align-items: flex-start; gap: 8px;">
                             <span style="font-weight: 600; margin-bottom: 5px;">Practice specific tones:</span>
@@ -291,6 +309,12 @@
                                     {{ comparisonResults.overallScore }}%
                                 </div>
                                 <div class="feedback-text">{{ comparisonResults.feedback }}</div>
+                            </div>
+
+                            <!-- Session Stats -->
+                            <div v-if="shadowingWordsCount > 0" class="session-stats-mini">
+                                <span>Session: <strong>{{ shadowingWordsCount }}</strong> words | Accuracy: <strong>{{
+                                        averageShadowingAccuracy }}%</strong></span>
                             </div>
 
                             <div v-if="compareEnabled && (shadowingState === 'idle' || shadowingState === 'playback')"
