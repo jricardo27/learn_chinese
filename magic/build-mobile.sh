@@ -6,7 +6,7 @@
 set -e
 
 echo "🔄 Syncing assets and Capacitor..."
-npm run sync
+./scripts/sync.sh
 
 echo "🏗️ Building Android APK..."
 (cd android && ./gradlew assembleDebug)
