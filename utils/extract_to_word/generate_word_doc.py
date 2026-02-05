@@ -95,7 +95,7 @@ def generate_doc(filtered_words, output_path, title, images_dir):
                 run = paragraph.add_run()
                 run.add_picture(img_path, width=Inches(2.5))
             else:
-                cell.add_paragraph(f"[Image not found: {img_name}]")
+                print(f"Warning: Image not found: {img_name}")
 
     doc.save(output_path)
     print(f"Generated document with {len(filtered_words)} words at: {output_path}")
