@@ -528,6 +528,8 @@ const app = createApp({
                     if (autoPlayModes.includes(this.currentMode) || userInitiated) {
                         await NativeAudio.play({ assetId: assetId });
                         const refDuration = this.getReferenceDuration();
+                        // Workaround: NativeAudio plugin doesn't have a reliable cross-platform 'onended' event.
+                        // We use a timeout based on the reference duration to trigger the next sequence.
                         setTimeout(() => this.onAudioEnded(), (refDuration + 0.2) * 1000);
                     }
                 } catch (e) {
