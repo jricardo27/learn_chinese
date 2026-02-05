@@ -59,6 +59,36 @@
             <span class="score-wrong">❌ {{ quizScore.wrong }}</span>
         </div>
 
+        <!-- Session Summary Modal -->
+        <div v-if="showSessionSummary" class="session-summary-overlay">
+            <div class="session-summary-card">
+                <h2><i class="fas fa-flag-checkered"></i> Session Complete!</h2>
+                <p>You mastered {{ shadowingWordsCount - failedWords.length }} out of {{ shadowingWordsCount +
+                    (failedWords.length > 0 && shadowingWordsCount===0 ? failedWords.length : 0) }} words.</p>
+
+                <div v-if="failedWords.length > 0" class="failed-words-section">
+                    <h3>Focus required ({{ failedWords.length }}):</h3>
+                    <div class="failed-words-list">
+                        <div v-for="word in failedWords" :key="word.id" class="failed-word-item">
+                            <span class="fw-chinese">{{ word.chinese }}</span>
+                            <span class="fw-pinyin">{{ word.pinyin }}</span>
+                            <span class="fw-score"
+                                :style="{ color: (shadowingSessionResults.completedWords[word.id] || 0) < 50 ? '#e74c3c' : '#f39c12' }">
+                                {{ shadowingSessionResults.completedWords[word.id] || 0 }}%
+                            </span>
+                        </div>
+                    </div>
+                    <button @click="retryFailedSession" class="retry-session-btn">
+                        <i class="fas fa-redo"></i> Retry Failed Words Only
+                    </button>
+                </div>
+
+                <button @click="exitSessionSummary" class="exit-btn">
+                    <i class="fas fa-home"></i> Back to Menu
+                </button>
+            </div>
+        </div>
+
 
 
         <main>

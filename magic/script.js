@@ -176,6 +176,9 @@ const app = createApp({
             shadowingSessionResults: {
                 completedWords: {} // { wordId: lastScore }
             },
+            showSessionSummary: false,
+            failedWords: [],
+            customSessionWords: null,
 
             statusText: 'Choose a mode to start learning',
             spokenText: '', // For displaying what is being synthesized
@@ -193,6 +196,10 @@ const app = createApp({
     },
     computed: {
         words() {
+            if (this.customSessionWords && this.customSessionWords.length > 0) {
+                return this.customSessionWords;
+            }
+
             if (this.currentMode === 'tonePractice') {
                 // Filter by tones and sort by length
                 let pool = this.masterWords.filter(w => w.tones.includes(this.selectedTone));
@@ -578,7 +585,7 @@ const app = createApp({
                 this.currentWordIndex++;
                 this.playActiveWord();
             } else {
-                this.stopPlayback();
+                this.handleSessionEnd();
             }
         },
         playPrev() {
@@ -632,6 +639,60 @@ const app = createApp({
         },
         replayAudio() {
             this.playActiveWord(true);
+        },
+        handleSessionEnd() {
+            this.stopPlayback();
+
+            if (this.currentMode === 'shadowing' && this.compareEnabled) {
+                // Calculate failed words based on mastery threshold
+                // Only consider words that were actually attempted/completed
+                const completedIds = Object.keys(this.shadowingSessionResults.completedWords);
+                // Also include active word if it has a score but wasn't fully "completed" by navigating away
+
+                // We'll iterate over all words in the current session list
+                this.failedWords = this.words.filter(word => {
+                    const score = this.shadowingSessionResults.completedWords[word.id] || 0;
+                    // If word was in the list but not attempted (score 0), count as failed? 
+                    // Or only if attempted and failed? Let's say if score < threshold.
+                    // If it wasn't attempted, score is 0, so it fails.
+                    return score < this.masteryThreshold;
+                });
+
+                if (this.failedWords.length > 0) {
+                    this.showSessionSummary = true;
+                    this.statusText = "Session Complete. Review needed.";
+                } else {
+                    this.statusText = "Session Complete! All words mastered.";
+                    setTimeout(() => {
+                        this.currentWordIndex = -1;
+                        this.shadowingSessionResults = { completedWords: {} };
+                    }, 1500);
+                }
+            } else {
+                this.statusText = "Session Finished";
+                this.currentWordIndex = -1;
+            }
+        },
+        retryFailedSession() {
+            if (this.failedWords.length === 0) return;
+
+            // Set custom words to failed words
+            this.customSessionWords = [...this.failedWords];
+            this.failedWords = [];
+            this.showSessionSummary = false;
+
+            // Reset tracking for new session
+            this.shadowingSessionResults = { completedWords: {} };
+            this.currentWordIndex = 0;
+            this.playActiveWord();
+        },
+        exitSessionSummary() {
+            this.showSessionSummary = false;
+            this.failedWords = [];
+            this.customSessionWords = null;
+            this.currentWordIndex = -1;
+            this.statusText = "Session finished.";
+            this.shadowingSessionResults = { completedWords: {} };
         },
 
         // --- Multi-Choice Games ---
