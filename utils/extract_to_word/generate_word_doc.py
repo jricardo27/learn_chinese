@@ -116,7 +116,11 @@ def main():
     
     data = parse_js_data(words_data_path)
     
-    tones_filter = [int(t) for t in args.tones.split(',') if t.strip()] if args.tones else None
+    try:
+        tones_filter = [int(t) for t in args.tones.split(',') if t.strip()] if args.tones else None
+    except ValueError:
+        print("Error: Tones must be comma-separated integers.")
+        exit(1)
     cats_filter = [c.strip() for c in args.categories.split(',') if c.strip()] if args.categories else None
     
     filtered = filter_words(data, tones=tones_filter, categories=cats_filter, exact_tones=args.exact_tones)
