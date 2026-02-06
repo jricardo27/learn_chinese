@@ -1,5 +1,8 @@
 const { createApp } = Vue;
 
+// Capacitor Plugins
+const NativeAudio = (typeof Capacitor !== 'undefined' && Capacitor.Plugins) ? Capacitor.Plugins.NativeAudio : null;
+
 const WORD_PREFIX = "word_";
 const IMAGE_EXTENSION = ".jpg";
 const AUDIO_EXTENSION = ".mp3";
@@ -161,6 +164,21 @@ const app = createApp({
             audioContext: null,
             analyser: null,
             dataArray: null,
+            animationId: null,
+            lastRecordedBlob: null,
+            micPermissionGranted: false,
+            micInitializing: false,
+
+            // Shadowing Mastery & Scoring
+            masteryThreshold: 50,
+            requireMastery: true,
+            attemptsCount: 0,
+            shadowingSessionResults: {
+                completedWords: {} // { wordId: lastScore }
+            },
+            showSessionSummary: false,
+            failedWords: [],
+            customSessionWords: null,
 
             statusText: 'Choose a mode to start learning',
             spokenText: '', // For displaying what is being synthesized
@@ -178,6 +196,10 @@ const app = createApp({
     },
     computed: {
         words() {
+            if (this.customSessionWords && this.customSessionWords.length > 0) {
+                return this.customSessionWords;
+            }
+
             if (this.currentMode === 'tonePractice') {
                 // Filter by tones and sort by length
                 let pool = this.masterWords.filter(w => w.tones.includes(this.selectedTone));
@@ -241,6 +263,21 @@ const app = createApp({
         },
         overlayWord() {
             return (this.currentWordIndex >= 0) ? this.activeWord : null;
+        },
+        progressPercentage() {
+            if (this.currentMode === 'home') return 0;
+            const total = this.words.length;
+            if (total === 0) return 0;
+            return Math.max(0, Math.round(((this.currentWordIndex + 1) / total) * 100));
+        },
+        averageShadowingAccuracy() {
+            const scores = Object.values(this.shadowingSessionResults.completedWords);
+            if (scores.length === 0) return 0;
+            const sum = scores.reduce((a, b) => a + b, 0);
+            return Math.round(sum / scores.length);
+        },
+        shadowingWordsCount() {
+            return Object.keys(this.shadowingSessionResults.completedWords).length;
         },
         activeWordId() {
             return this.activeWord ? this.activeWord.id : null;
@@ -391,6 +428,7 @@ const app = createApp({
             this.recallRevealedId = null;
             this.shadowingState = 'idle';
             this.writingTarget = 'hanzi'; // default
+            this.attemptsCount = 0; // Reset mastery attempts
 
             if (mode === 'recall') {
                 this.hideChinese = true;
@@ -399,6 +437,7 @@ const app = createApp({
                 // We'll just leave local state as is, but can hide option in UI.
             }
             if (mode === 'shadowing') {
+                // Ensure mic is requested on a clean mode change gesture
                 this.initVoiceRecorder();
             }
             this.statusText = mode === 'home' ? 'Choose a mode to start learning' : `${this.currentModeConfig.title} Initialized`;
@@ -407,9 +446,7 @@ const app = createApp({
             this.setMode(this.currentMode);
         },
         onCompareToggle() {
-            if (this.compareEnabled) {
-                this.autoContinue = false;
-            }
+            // Both can now be enabled
         },
         startSession() {
             if (this.isShuffled && this.currentMode !== 'tonePractice') {
@@ -418,9 +455,7 @@ const app = createApp({
             this.currentWordIndex = 0;
 
             if (this.currentMode === 'shadowing') {
-                // Ensure mutual exclusivity: Compare is not compatible with auto-continue
-                if (this.compareEnabled) this.autoContinue = false;
-                // Shadowing starts loop immediately
+                this.initVoiceRecorder();
                 this.isLooping = true;
             }
             this.playActiveWord(true);
@@ -429,6 +464,9 @@ const app = createApp({
             const index = this.words.findIndex(w => w.id === word.id);
             if (index !== -1) {
                 this.currentWordIndex = index;
+                if (this.currentMode === 'shadowing') {
+                    this.initVoiceRecorder();
+                }
                 this.playActiveWord(true);
             }
         },
@@ -472,8 +510,38 @@ const app = createApp({
             }
 
             // Normal audio playback
+            if (NativeAudio) {
+                try {
+                    // Unique ID for this word's audio
+                    const assetId = `word_${word.id}`;
+                    await NativeAudio.preload({
+                        assetId: assetId,
+                        assetPath: word.audio, // Capacitor path
+                        audioChannelNum: 1,
+                        isUrl: false
+                    });
+
+                    const vol = this.volume / 100;
+                    await NativeAudio.setVolume({ assetId: assetId, volume: vol }).catch(() => { });
+
+                    const autoPlayModes = ['standard', 'shadowing', 'quiz', 'tonePractice'];
+                    if (autoPlayModes.includes(this.currentMode) || userInitiated) {
+                        await NativeAudio.play({ assetId: assetId });
+                        const refDuration = this.getReferenceDuration();
+                        // Workaround: NativeAudio plugin doesn't have a reliable cross-platform 'onended' event.
+                        // We use a timeout based on the reference duration to trigger the next sequence.
+                        setTimeout(() => this.onAudioEnded(), (refDuration + 0.2) * 1000);
+                    }
+                } catch (e) {
+                    console.error("Native Audio failed, falling back to Web Audio", e);
+                    this.playWebAudio(word, userInitiated);
+                }
+            } else {
+                this.playWebAudio(word, userInitiated);
+            }
+        },
+        playWebAudio(word, userInitiated) {
             this.currentAudio = new Audio(word.audio);
-            // Removed crossOrigin = "anonymous" to avoid CORS blocks on file://
             this.currentAudio.volume = this.volume / 100;
             this.currentAudio.onended = () => this.onAudioEnded();
             this.currentAudio.onerror = (e) => {
@@ -482,16 +550,12 @@ const app = createApp({
             };
 
             try {
-                // Play immediately for standard, shadowing, quiz, or user initiated (Listen button)
                 const autoPlayModes = ['standard', 'shadowing', 'quiz', 'tonePractice'];
                 if (autoPlayModes.includes(this.currentMode) || userInitiated) {
-                    // Resume audio context if needed (browsers require user gesture)
                     if (this.audioContext && this.audioContext.state === 'suspended') {
                         this.audioContext.resume();
                     }
                     this.currentAudio.play();
-                } else if (this.currentMode !== 'writing') {
-                    // 
                 }
             } catch (e) {
                 console.error("Audio play failed", e);
@@ -519,16 +583,18 @@ const app = createApp({
             if (this.currentWordIndex < this.words.length - 1) {
                 this.userInput = ''; // Clear for next word
                 this.quizAnswered = false;
+                this.attemptsCount = 0;
                 this.currentWordIndex++;
                 this.playActiveWord();
             } else {
-                this.stopPlayback();
+                this.handleSessionEnd();
             }
         },
         playPrev() {
             if (this.currentWordIndex > 0) {
                 this.userInput = '';
                 this.quizAnswered = false;
+                this.attemptsCount = 0;
                 this.currentWordIndex--;
                 this.playActiveWord();
             }
@@ -551,10 +617,15 @@ const app = createApp({
             this.isPlaying = false;
             this.stopAudioOnly();
             this.currentWordIndex = -1;
+            this.attemptsCount = 0;
             if (this.autoNextTimeout) clearTimeout(this.autoNextTimeout);
             this.shadowingState = 'idle';
         },
         stopAudioOnly() {
+            if (NativeAudio) {
+                // Stop all managed channels
+                NativeAudio.stop({ assetId: '*' }).catch(() => { });
+            }
             if (this.currentAudio) {
                 this.currentAudio.pause();
                 this.currentAudio = null;
@@ -570,6 +641,60 @@ const app = createApp({
         },
         replayAudio() {
             this.playActiveWord(true);
+        },
+        handleSessionEnd() {
+            this.stopPlayback();
+
+            if (this.currentMode === 'shadowing' && this.compareEnabled) {
+                // Calculate failed words based on mastery threshold
+                // Only consider words that were actually attempted/completed
+                const completedIds = Object.keys(this.shadowingSessionResults.completedWords);
+                // Also include active word if it has a score but wasn't fully "completed" by navigating away
+
+                // We'll iterate over all words in the current session list
+                this.failedWords = this.words.filter(word => {
+                    const score = this.shadowingSessionResults.completedWords[word.id] || 0;
+                    // If word was in the list but not attempted (score 0), count as failed? 
+                    // Or only if attempted and failed? Let's say if score < threshold.
+                    // If it wasn't attempted, score is 0, so it fails.
+                    return score < this.masteryThreshold;
+                });
+
+                if (this.failedWords.length > 0) {
+                    this.showSessionSummary = true;
+                    this.statusText = "Session Complete. Review needed.";
+                } else {
+                    this.statusText = "Session Complete! All words mastered.";
+                    setTimeout(() => {
+                        this.currentWordIndex = -1;
+                        this.shadowingSessionResults = { completedWords: {} };
+                    }, 1500);
+                }
+            } else {
+                this.statusText = "Session Finished";
+                this.currentWordIndex = -1;
+            }
+        },
+        retryFailedSession() {
+            if (this.failedWords.length === 0) return;
+
+            // Set custom words to failed words
+            this.customSessionWords = [...this.failedWords];
+            this.failedWords = [];
+            this.showSessionSummary = false;
+
+            // Reset tracking for new session
+            this.shadowingSessionResults = { completedWords: {} };
+            this.currentWordIndex = 0;
+            this.playActiveWord();
+        },
+        exitSessionSummary() {
+            this.showSessionSummary = false;
+            this.failedWords = [];
+            this.customSessionWords = null;
+            this.currentWordIndex = -1;
+            this.statusText = "Session finished.";
+            this.shadowingSessionResults = { completedWords: {} };
         },
 
         // --- Multi-Choice Games ---
@@ -736,17 +861,74 @@ const app = createApp({
             if (this.currentAudio) this.currentAudio.play();
         },
         async initVoiceRecorder() {
-            if (this.mediaRecorder) return;
+            if (this.mediaRecorder || this.micInitializing) return;
+            this.micInitializing = true;
             try {
+                // Request stream IMMEDIATELY to satisfy iOS security
                 const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                this.mediaRecorder = new MediaRecorder(stream);
-                this.mediaRecorder.ondataavailable = e => this.audioChunks.push(e.data);
+                console.log("Microphone stream obtained successfully");
+
+                if (!this.audioContext) {
+                    this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                await this.audioContext.resume();
+
+                let options = {};
+                if (MediaRecorder.isTypeSupported('audio/webm')) options = { mimeType: 'audio/webm' };
+                else if (MediaRecorder.isTypeSupported('audio/mp4')) options = { mimeType: 'audio/mp4' };
+
+                this.mediaRecorder = new MediaRecorder(stream, options);
+                this.mediaRecorder.ondataavailable = e => { if (e.data.size > 0) this.audioChunks.push(e.data); };
                 this.mediaRecorder.onstop = () => {
-                    const audioBlob = new Blob(this.audioChunks, { type: 'audio/wav' });
+                    const audioBlob = new Blob(this.audioChunks, { type: this.mediaRecorder.mimeType });
+                    this.lastRecordedBlob = audioBlob;
                     this.userAudio = new Audio(URL.createObjectURL(audioBlob));
                     this.playUserRecording();
                 };
-            } catch (err) { console.error("Mic access denied", err); }
+
+                const source = this.audioContext.createMediaStreamSource(stream);
+                this.analyser = this.audioContext.createAnalyser();
+                this.analyser.fftSize = 256;
+                source.connect(this.analyser);
+                this.visualize();
+
+                this.micPermissionGranted = true;
+                this.statusText = "Microphone Ready";
+            } catch (err) {
+                console.error("Mic error", err);
+                this.micPermissionGranted = false;
+                this.statusText = "Microphone Error";
+            } finally {
+                this.micInitializing = false;
+            }
+        },
+        visualize() {
+            const draw = () => {
+                const canvas = document.getElementById('vizCanvas');
+                if (!canvas) {
+                    this.animationId = requestAnimationFrame(draw);
+                    return;
+                }
+                const ctx = canvas.getContext('2d');
+                const bufferLength = this.analyser.frequencyBinCount;
+                this.dataArray = new Uint8Array(bufferLength);
+
+                this.animationId = requestAnimationFrame(draw);
+                this.analyser.getByteFrequencyData(this.dataArray);
+
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                const barWidth = (canvas.width / bufferLength) * 2.5;
+                let barHeight;
+                let x = 0;
+
+                for (let i = 0; i < bufferLength; i++) {
+                    barHeight = (this.dataArray[i] / 255) * canvas.height;
+                    ctx.fillStyle = this.shadowingState === 'recording' ? '#ff4d4d' : '#4a00e0';
+                    ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+                    x += barWidth + 1;
+                }
+            };
+            draw();
         },
         getReferenceDuration() {
             if (typeof WORDS_ANALYSIS === 'undefined') return 3;
@@ -776,15 +958,18 @@ const app = createApp({
         },
         startRecordingSequence() {
             if (!this.mediaRecorder) return;
+            if (this.audioContext && this.audioContext.state === 'suspended') {
+                this.audioContext.resume();
+            }
             this.shadowingState = 'recording';
             this.audioChunks = [];
             this.recordingProgress = 0;
             this.mediaRecorder.start();
 
             const refDuration = this.getReferenceDuration();
-            let recordTime = 3000;
-            if (refDuration >= 3) {
-                recordTime = (3 + (refDuration - 3) + 1) * 1000;
+            let recordTime = (refDuration + 1) * 1000;
+            if (this.currentAudio && !isNaN(this.currentAudio.duration)) {
+                recordTime = (this.currentAudio.duration + 1) * 1000;
             }
 
             const startTime = Date.now();
@@ -808,10 +993,28 @@ const app = createApp({
         playUserRecording(skipComparison = false) {
             if (!this.userAudio) return;
             this.shadowingState = 'playback';
+            this.userAudio.volume = this.volume / 100;
             this.userAudio.play();
             this.userAudio.onended = () => {
                 this.shadowingState = 'idle';
-                if (this.isLooping && this.autoContinue) setTimeout(() => this.playNext(), 800);
+
+                let shouldAdvance = true;
+                if (this.currentMode === 'shadowing' && this.requireMastery && this.compareEnabled) {
+                    const score = this.comparisonResults.overallScore || 0;
+                    if (score < this.masteryThreshold && this.attemptsCount < 3) {
+                        shouldAdvance = false;
+                        this.statusText = `Repeat required: ${score}% (Attempt ${this.attemptsCount}/3)`;
+                        if (this.isLooping) {
+                            setTimeout(() => this.playActiveWord(true), 1500);
+                        }
+                    } else if (this.attemptsCount >= 3 && score < this.masteryThreshold) {
+                        this.statusText = "Advancing after 3 attempts.";
+                    }
+                }
+
+                if (shouldAdvance && this.isLooping && this.autoContinue) {
+                    setTimeout(() => this.playNext(), 800);
+                }
             };
 
             // Trigger Comparison ONLY if enabled and not skipped
@@ -820,16 +1023,12 @@ const app = createApp({
             }
         },
         playReferenceAudioOnly() {
-            if (this.activeWord && this.activeWord.audio) {
-                const audio = new Audio(this.activeWord.audio);
-                audio.volume = this.volume / 100;
-                audio.play().catch(e => console.error("Play ref failed", e));
+            if (this.activeWord) {
+                this.playActiveWord(true);
             }
         },
         async compareWithReference() {
-            const wordKey = `word_${this.activeWord.number - 1}`.replace(/word_(\d)$/, 'word_00$1').replace(/word_(\d\d)$/, 'word_0$1');
-            // Simplified key match based on filenames in WORDS_ANALYSIS (e.g. word_000)
-            const referenceKey = Object.keys(WORDS_ANALYSIS).find(k => k.includes(this.activeWord.number - 1)) || `word_${String(this.activeWord.number - 1).padStart(3, '0')}`;
+            const referenceKey = this.getRefKey(this.activeWord.number - 1);
 
             const referenceAnalysis = (typeof WORDS_ANALYSIS !== 'undefined') ? WORDS_ANALYSIS[referenceKey] : null;
 
@@ -839,9 +1038,8 @@ const app = createApp({
             }
 
             try {
-                // Get Blob from userAudio src
-                const response = await fetch(this.userAudio.src);
-                const blob = await response.blob();
+                const blob = this.lastRecordedBlob;
+                if (!blob) throw new Error("No recording found");
                 const userAnalysis = await this.analyzeUserAudio(blob);
 
                 const score = this.comparePitchContours(
@@ -854,6 +1052,12 @@ const app = createApp({
                     feedback: this.generateToneFeedback(score),
                     userContour: userAnalysis.pitch_contour
                 };
+
+                // Track Session Results
+                this.attemptsCount++;
+                if (this.activeWord) {
+                    this.shadowingSessionResults.completedWords[this.activeWord.id] = score;
+                }
 
                 this.$nextTick(() => {
                     this.drawToneContour(referenceAnalysis, userAnalysis);
@@ -988,6 +1192,14 @@ const app = createApp({
             drawPath(user.pitch_contour, '#3b82f6', user.duration); // User in Blue (drawn first)
             drawPath(ref.pitch_contour, '#10b981', ref.duration); // Reference in Green (drawn on top)
         },
+        getRefKey(num) {
+            // Support different padding styles 'word_1' vs 'word_001'
+            const searchStr = `word_${num}`;
+            const searchStrPadded = `word_${String(num).padStart(3, '0')}`;
+            return Object.keys(WORDS_ANALYSIS).find(k => k.includes(searchStrPadded)) ||
+                Object.keys(WORDS_ANALYSIS).find(k => k.includes(searchStr)) ||
+                searchStrPadded;
+        },
         startManualRecording() { this.startRecordingSequence(); },
         stopManualRecording() { if (this.mediaRecorder && this.mediaRecorder.state === 'recording') this.mediaRecorder.stop(); },
 
@@ -1023,6 +1235,24 @@ const app = createApp({
     mounted() {
         this.loadWords();
         this.setupKeyboardListeners();
+    },
+    watch: {
+        volume(newVal) {
+            const vol = newVal / 100;
+            if (NativeAudio) {
+                // Apply to active word if it exists
+                if (this.activeWord) {
+                    NativeAudio.setVolume({
+                        assetId: `word_${this.activeWord.id}`,
+                        volume: vol
+                    }).catch(() => { });
+                }
+            }
+            // For Web Audio fallback
+            if (this.currentAudio) {
+                this.currentAudio.volume = vol;
+            }
+        }
     }
 });
 

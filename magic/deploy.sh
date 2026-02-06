@@ -5,7 +5,7 @@ set -e
 
 # Configuration
 DIST_FOLDER="gh-pages-deploy"
-MAIN_HTML="magic.html"
+MAIN_HTML="index.html"
 
 echo "🚀 Starting deployment to GitHub Pages..."
 

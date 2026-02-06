@@ -20,6 +20,9 @@ body {
     min-height: 100vh;
     box-shadow: 0 0 60px rgba(0, 0, 0, 0.3);
     position: relative;
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
+    padding-top: env(safe-area-inset-top);
 }
 
 .sticky-header {
@@ -28,12 +31,16 @@ body {
     top: 0;
     z-index: 1000;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    /* For iOS Safe area, the header-top handles the color */
+    display: flex;
+    flex-direction: column;
 }
 
 .header-top {
     background: linear-gradient(to right, #4a00e0, #8e2de2);
     color: white;
     padding: 15px 25px;
+    padding-top: calc(15px + env(safe-area-inset-top));
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -206,8 +213,8 @@ main {
 
 .word-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
 }
 
 /* Word Cards */
@@ -237,7 +244,8 @@ main {
 
 .word-image {
     width: 100%;
-    height: 350px;
+    height: 300px;
+    /* Reduced fixed height for stability */
     object-fit: cover;
     object-position: 0 100%;
     background: #fff;
@@ -401,45 +409,27 @@ main {
     display: flex;
     flex-direction: column;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
 }
 
 /* Specific Mode Card Sizes */
-.standard-card {
-    max-width: 700px;
-    height: 800px;
-}
-
-/* Note: recall-card was already used for blur logic, let's distinguish the container */
-.recall-card-base {
-    max-width: 700px;
-    height: 800px;
-}
-
-.shadow-card {
-    max-width: 1000px;
-    /* Wider for split layout */
-    height: 600px;
-}
-
-.tone-card {
-    max-width: 700px;
-    height: 800px;
-}
-
-.quiz-game-card {
-    max-width: 700px;
-    height: 770px;
-}
-
+.standard-card,
+.recall-card-base,
+.tone-card,
+.quiz-game-card,
 .writing-card {
     max-width: 700px;
-    height: 950px;
+    height: auto;
+    min-height: 600px;
+    max-height: 95vh;
 }
 
+.shadow-card,
 .classifier-card {
     max-width: 1000px;
-    /* Wider for split layout */
-    height: 600px;
+    height: auto;
+    min-height: 600px;
+    max-height: 95vh;
 }
 
 .mode-title {
@@ -537,11 +527,12 @@ main {
 }
 
 .quiz-image {
-    width: 350px;
-    height: 350px;
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    aspect-ratio: 1/1;
     object-fit: cover;
     object-position: 0 110%;
-    /* Crop top */
     border-radius: 12px;
     margin: 0 auto 15px auto;
     display: block;
@@ -585,6 +576,60 @@ main {
     padding: 15px;
     font-size: 1.3em;
     border-radius: 12px;
+}
+
+/* Overlay Controls Layout */
+.action-row {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 10px;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.action-row button {
+    margin: 0 !important;
+    padding: 10px !important;
+    font-size: 0.9em !important;
+}
+
+.finish-btn {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+    transition: all 0.3s ease;
+}
+
+.mode-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.header-spacer {
+    width: 44px;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: #4a00e0;
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
 }
 
 .finish-quiz-btn {
@@ -706,6 +751,84 @@ main {
     color: inherit !important;
 }
 
+/* Shadowing Visualizer */
+.visualizer-container {
+    width: 100%;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.03);
+    border-radius: 12px;
+    margin-top: 15px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.visualizer-container canvas {
+    width: 100%;
+    height: 60px;
+}
+
+.recording-label {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    font-size: 0.7em;
+    font-weight: bold;
+    color: #ff4d4d;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.blink {
+    animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+.recording-progress-container {
+    width: 100%;
+    height: 4px;
+    background: #eee;
+    margin-top: 5px;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.recording-progress-bar {
+    height: 100%;
+    background: #ff4d4d;
+    transition: width 0.1s linear;
+}
+
+.mic-status-warning {
+    background: #fff5f5;
+    color: #c53030;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.8em;
+    font-weight: 600;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #feb2b2;
+    cursor: pointer;
+    width: 100%;
+    justify-content: center;
+}
+
+.mic-status-warning i {
+    color: #fc8181;
+}
+
 /* Shadowing Mode Layout Restructuring */
 .shadowing-card {
     max-width: 1000px !important;
@@ -715,6 +838,9 @@ main {
     display: flex;
     gap: 30px;
     height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 .shadowing-left {
@@ -1259,6 +1385,49 @@ main {
     background-color: #10b981;
 }
 
+.legend-user::before {
+    background-color: #3b82f6;
+}
+
+/* Session Progress bar */
+.session-progress-container {
+    height: 6px;
+    width: 100%;
+    background: #f0f0f0;
+    overflow: hidden;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.session-progress-bar {
+    height: 100%;
+    background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+    transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Mastery settings */
+.mastery-settings-group {
+    background: rgba(74, 0, 224, 0.05);
+    padding: 15px;
+    border-radius: 12px;
+    margin: 10px 0;
+    border: 1px dashed rgba(74, 0, 224, 0.2);
+    text-align: left;
+}
+
+/* Session stats */
+.session-stats-mini {
+    background: #fdfbff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: #444;
+    text-align: center;
+    margin: 10px auto;
+    border: 1px solid #f0e6ff;
+    width: fit-content;
+    box-shadow: 0 2px 8px rgba(74, 0, 224, 0.05);
+}
+
 /* Spoken Text Toast */
 .toast-notification {
     position: fixed;
@@ -1333,183 +1502,251 @@ main {
 
 /* --- Mobile Responsive Enhancements --- */
 @media (max-width: 768px) {
+    body {
+        padding: 0;
+        margin: 0;
+    }
 
-    /* Dialogs: Reset fixed sizes to fluid/scrollable */
-    .base-card,
-    .standard-card,
-    .recall-card-base,
-    .shadow-card,
-    .tone-card,
-    .quiz-game-card,
-    .writing-card,
-    .classifier-card {
-        max-width: 95% !important;
-        width: 95% !important;
-        height: auto !important;
-        max-height: 90vh !important;
-        overflow-y: auto !important;
+    .app-container {
+        max-width: none;
+        width: 100vw;
+        border-radius: 0;
+        box-shadow: none;
+        min-height: 100vh;
+        margin: 0;
+    }
+
+    main {
         padding: 15px;
     }
 
-    /* Images: Scale down */
-    .quiz-image,
-    .shadow-main-img {
-        width: 200px !important;
-        height: 200px !important;
-        margin-bottom: 10px;
+    .home-screen {
+        padding: 40px 20px;
+    }
+
+    .home-title {
+        font-size: 2.2em;
+    }
+
+    .home-subtitle {
+        font-size: 1.1em;
+        margin-bottom: 30px;
+    }
+
+    .word-container {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 12px;
+    }
+
+    .word-card .word-image {
+        height: 180px;
+    }
+
+    .word-info h3 {
+        font-size: 1.1em;
+    }
+
+    .word-info .pinyin {
+        font-size: 0.9em;
+    }
+
+    /* Dialogs: Reset fixed sizes to fluid/scrollable */
+    .app-container .base-card {
+        width: 100%;
+        margin: 0;
+        padding: 5px 10px;
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: calc(10px + env(safe-area-inset-bottom));
+        max-height: 100vh;
+        height: 100vh;
+        overflow-y: auto;
+        border-radius: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* Center content on mobile */
+    }
+
+    .app-container .standard-card,
+    .app-container .recall-card-base,
+    .app-container .shadow-card,
+    .app-container .tone-card,
+    .app-container .quiz-game-card,
+    .app-container .writing-card,
+    .app-container .classifier-card {
+        height: auto;
+        min-height: unset;
+    }
+
+    /* Images: Scale down more intelligently */
+    .app-container .quiz-image,
+    .app-container .shadow-main-img {
+        max-width: 110px;
+        max-height: 110px;
+        margin-bottom: 5px;
+        margin-top: 0;
     }
 
     /* Layouts: Stack vertically */
     .shadowing-layout-container,
     .classifier-layout-container {
         flex-direction: column;
-        gap: 20px;
+        gap: 5px;
         height: auto;
     }
 
-    .shadowing-left,
-    .shadowing-right,
-    .classifier-left,
-    .classifier-right {
+    .app-container .shadowing-left,
+    .app-container .shadowing-right,
+    .app-container .classifier-left,
+    .app-container .classifier-right {
         flex: none;
         width: 100%;
         padding: 0;
     }
 
-    .shadowing-right,
-    .classifier-right {
-        padding-left: 0;
+    .visualizer-container {
+        height: 50px;
+        margin-top: 5px;
     }
 
-    /* Text resizing */
-    .recall-text,
     .shadowing-text {
         font-size: 1.8em;
     }
 
-    .mode-title {
-        font-size: 1em;
-        margin-bottom: 10px;
+    .recall-text {
+        font-size: 2em;
     }
 
-    /* Buttons */
+    .shadowing-text {
+        font-size: 1.5em;
+    }
+
+    .shadowing-info-container {
+        margin-bottom: 15px;
+    }
+
+    .mode-title {
+        font-size: 1.1em;
+        margin: 0;
+        color: #4a00e0;
+        font-weight: 700;
+    }
+
+    .mode-header {
+        margin-bottom: 10px;
+        padding-bottom: 5px;
+    }
+
+    .back-btn {
+        padding: 5px;
+    }
+
+    /* Controls */
+    .nav-btn-group {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
     .quiz-options-large {
         grid-template-columns: 1fr;
-        /* Stack buttons on mobile */
-        gap: 10px;
+        gap: 8px;
     }
 
     .quiz-options-large .quiz-btn {
+        padding: 12px;
         font-size: 1.1em;
-        padding: 10px;
-        height: auto !important;
-        /* Override fixed height if set */
     }
 
-    /* Adjust classifier answer buttons specifically */
-    .quiz-options-large .quiz-btn div[style*="font-size: 1.5em"] {
-        font-size: 1.2em !important;
+    .writing-input {
+        font-size: 1.5em;
+        padding: 12px;
     }
 
-
-    .nav-btn-group {
-        margin-bottom: 10px;
-    }
-
-    /* Header adjustments */
+    /* Sticky Header on Mobile */
     .header-top {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding-right: 15px;
-        /* Ensure space for button */
+        padding: 10px 15px;
+        gap: 10px;
     }
 
     .header-top h1 {
-        font-size: 1.4em;
-        flex: 1;
+        font-size: 1.2em;
     }
 
-    /* Mobile Menu Logic */
-    .mobile-menu-btn {
-        display: block;
-        /* Visible on mobile */
-        background: transparent;
-        border: none;
-        color: white;
-        font-size: 1.5em;
-        padding: 5px 10px;
-        cursor: pointer;
-    }
-
-    /* Hide standard controls by default on mobile */
-    .controls-group {
-        display: none;
-        position: absolute;
-        top: 100%;
-        right: 15px;
-        background: white;
-        padding: 15px;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        flex-direction: column;
-        gap: 15px;
-        z-index: 1002;
-        width: 250px;
-    }
-
-    /* Show when toggled */
-    .controls-group.show-mobile {
-        display: flex;
-    }
-
-    .controls-group .search-box input {
-        width: 100%;
-        border: 1px solid #eee;
-    }
-
-    .controls-group .volume-controls {
-        background: #f5f5f5 !important;
-        width: 100%;
+    .home-btn {
+        padding: 8px;
+        min-width: 44px;
+        min-height: 44px;
         justify-content: center;
     }
 
-    /* Ensure the select is always visible/accessible or moved inside? 
-       For now, let's keep the select visible as it's the main nav, 
-       and just hide search/volume */
-    .global-controls {
+    .mobile-menu-btn {
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Player Controls at Bottom */
+    .player-controls {
+        padding: 5px 15px;
+        padding-bottom: calc(5px + env(safe-area-inset-bottom));
         gap: 5px;
     }
 
-    .mode-select {
-        flex: 1;
-        max-width: 160px;
-        /* Keep it from taking over */
+    .player-buttons {
+        gap: 10px;
     }
 
     .player-buttons button {
-        width: 36px;
-        height: 36px;
-        font-size: 1em;
-    }
-
-    #playPause {
         width: 44px;
         height: 44px;
     }
+
+    #playPause {
+        width: 50px;
+        height: 50px;
+    }
+
+    /* Custom Select for Mobile */
+    .custom-select-container {
+        width: 100%;
+    }
+
+    /* Adjustments for the mobile menu */
+    .controls-group {
+        display: none;
+        /* Hide by default */
+        position: absolute;
+        z-index: 1001;
+        background: #fff;
+        border-radius: 0 0 15px 15px;
+        padding: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        left: 0;
+        right: 0;
+        top: 100%;
+        border-top: 1px solid #eee;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .controls-group.show-mobile {
+        display: flex;
+        /* Show when open */
+    }
+
+    .volume-controls input[type="range"] {
+        flex: 1;
+        height: 30px;
+        /* Thicker track for touch */
+    }
 }
 
-/* Desktop styles for controls-group */
-@media (min-width: 769px) {
-    .mobile-menu-btn {
-        display: none;
-    }
-
-    .controls-group {
-        display: flex;
-        gap: 10px;
-    }
+/* Specific button size improvements for touch */
+button {
+    min-height: 44px;
 }
 
 /* Custom Select Component Styles (Global) */
@@ -1627,4 +1864,121 @@ main {
         border-radius: 12px;
         padding: 12px 15px;
     }
+}
+/* Session Summary Modal */
+.session-summary-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease;
+}
+
+.session-summary-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+    animation: slideUp 0.3s ease;
+}
+
+.session-summary-card h2 {
+    color: #4a00e0;
+    margin-bottom: 10px;
+}
+
+.failed-words-section {
+    margin-top: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.failed-words-list {
+    flex: 1;
+    overflow-y: auto;
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #eee;
+    max-height: 300px;
+}
+
+.failed-word-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.failed-word-item:last-child {
+    border-bottom: none;
+}
+
+.fw-chinese {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #333;
+}
+
+.fw-pinyin {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.fw-score {
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.retry-session-btn {
+    background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 15px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 65, 108, 0.3);
+    transition: transform 0.2s;
+}
+
+.retry-session-btn:active {
+    transform: scale(0.98);
+}
+
+.exit-btn {
+    background: #f1f3f5;
+    color: #495057;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
