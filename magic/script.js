@@ -183,6 +183,9 @@ const app = createApp({
             statusText: 'Choose a mode to start learning',
             spokenText: '', // For displaying what is being synthesized
 
+            // Apple Watch Integration
+            isWatchConnected: false,
+
             modes: [
                 { id: 'standard', title: 'Standard Mode', icon: 'fas fa-book-reader', iconClass: 'standard-icon', desc: 'Listening practice' },
                 { id: 'recall', title: 'Active Recall', icon: 'fas fa-brain', iconClass: 'recall-icon', desc: 'Test your memory by hiding Pinyin or Mandarin.' },
@@ -441,6 +444,9 @@ const app = createApp({
                 this.initVoiceRecorder();
             }
             this.statusText = mode === 'home' ? 'Choose a mode to start learning' : `${this.currentModeConfig.title} Initialized`;
+
+            // Sync to Watch when mode changes
+            this.syncWordsToWatch();
         },
         onModeChange() {
             this.setMode(this.currentMode);
@@ -459,6 +465,9 @@ const app = createApp({
                 this.isLooping = true;
             }
             this.playActiveWord(true);
+
+            // Sync session to Watch
+            this.syncWordsToWatch();
         },
         onCardClick(word) {
             const index = this.words.findIndex(w => w.id === word.id);
@@ -586,6 +595,7 @@ const app = createApp({
                 this.attemptsCount = 0;
                 this.currentWordIndex++;
                 this.playActiveWord();
+                this.syncCurrentIndexToWatch();
             } else {
                 this.handleSessionEnd();
             }
@@ -597,6 +607,7 @@ const app = createApp({
                 this.attemptsCount = 0;
                 this.currentWordIndex--;
                 this.playActiveWord();
+                this.syncCurrentIndexToWatch();
             }
         },
         togglePlayPause() {
@@ -1230,11 +1241,69 @@ const app = createApp({
                 else if (e.code === 'ArrowLeft') this.playPrev();
                 else if (e.code === 'Escape') this.stopPlayback();
             });
+        },
+
+        // --- Apple Watch Integration ---
+        async initWatchSync() {
+            if (!window.WatchSync) {
+                console.log('WatchSync not available (web or Android)');
+                return;
+            }
+
+            const isConnected = await WatchSync.isConnected();
+            if (isConnected) {
+                console.log('✅ Apple Watch connected');
+                this.isWatchConnected = true;
+            } else {
+                console.log('⌚ Apple Watch not connected');
+                this.isWatchConnected = false;
+            }
+        },
+
+        async syncWordsToWatch() {
+            if (!window.WatchSync || !this.isWatchConnected) return;
+
+            try {
+                // Only sync filtered/active words to avoid overwhelming the watch
+                const wordsToSync = this.filteredWords.slice(0, 100); // Limit to 100 words
+                await WatchSync.syncWords(wordsToSync);
+                console.log(`📱→⌚ Synced ${wordsToSync.length} words to Watch`);
+            } catch (error) {
+                console.error('Error syncing words to watch:', error);
+            }
+        },
+
+        async syncCurrentIndexToWatch() {
+            if (!window.WatchSync || !this.isWatchConnected) return;
+
+            try {
+                await WatchSync.syncCurrentIndex(this.currentWordIndex);
+            } catch (error) {
+                console.error('Error syncing index to watch:', error);
+            }
+        },
+
+        setupWatchListeners() {
+            if (!window.Capacitor) return;
+
+            // Listen for notifications from iOS
+            window.addEventListener('watchIndexChanged', (event) => {
+                const newIndex = event.detail?.index;
+                if (newIndex !== undefined && newIndex !== this.currentWordIndex) {
+                    console.log(`⌚→📱 Watch changed to word ${newIndex}`);
+                    this.currentWordIndex = newIndex;
+                    if (this.currentWordIndex >= 0) {
+                        this.playActiveWord();
+                    }
+                }
+            });
         }
     },
     mounted() {
         this.loadWords();
         this.setupKeyboardListeners();
+        this.initWatchSync();
+        this.setupWatchListeners();
     },
     watch: {
         volume(newVal) {
