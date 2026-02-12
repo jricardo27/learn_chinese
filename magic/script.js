@@ -841,24 +841,36 @@ const app = createApp({
             if (this.autoContinue) setTimeout(() => this.playNext(), 2000);
         },
         toggleTone(t) {
-            const index = this.selectedTones.indexOf(t);
-            if (index > -1) {
-                this.selectedTones.splice(index, 1);
+            const first = this.selectedTones.indexOf(t);
+            const last = this.selectedTones.lastIndexOf(t);
+
+            if (first !== -1 && first === last && this.selectedTones.length === 1) {
+                // Tone exists once and it's alone, add it again for repetition
+                this.selectedTones.push(t);
+            } else if (first !== -1 && first !== last) {
+                // Tone exists twice, remove all
+                this.selectedTones = this.selectedTones.filter(item => item !== t);
+            } else if (first !== -1 && this.selectedTones.length === 2) {
+                // Tone exists once in a pair of different tones, remove it
+                this.selectedTones.splice(first, 1);
             } else {
-                if (this.selectedTones.length >= 2) {
-                    this.selectedTones.shift();
-                }
+                // Not in list or adding to a different tone
+                if (this.selectedTones.length >= 2) this.selectedTones.shift();
                 this.selectedTones.push(t);
             }
         },
         toggleShadowingTone(t) {
-            const index = this.shadowingToneFilters.indexOf(t);
-            if (index > -1) {
-                this.shadowingToneFilters.splice(index, 1);
+            const first = this.shadowingToneFilters.indexOf(t);
+            const last = this.shadowingToneFilters.lastIndexOf(t);
+
+            if (first !== -1 && first === last && this.shadowingToneFilters.length === 1) {
+                this.shadowingToneFilters.push(t);
+            } else if (first !== -1 && first !== last) {
+                this.shadowingToneFilters = this.shadowingToneFilters.filter(item => item !== t);
+            } else if (first !== -1 && this.shadowingToneFilters.length === 2) {
+                this.shadowingToneFilters.splice(first, 1);
             } else {
-                if (this.shadowingToneFilters.length >= 2) {
-                    this.shadowingToneFilters.shift();
-                }
+                if (this.shadowingToneFilters.length >= 2) this.shadowingToneFilters.shift();
                 this.shadowingToneFilters.push(t);
             }
         },

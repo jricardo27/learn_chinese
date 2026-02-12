@@ -155,9 +155,12 @@
                                 <button v-for="t in [1,2,3,4,5]" :key="t" @click="toggleShadowingTone(t)"
                                     :class="['tone-btn', { active: shadowingToneFilters.includes(t) }]">
                                     <span class="tone-label">Tone {{ t === 5 ? 'Neutral' : t }}</span>
-                                    <span v-if="shadowingToneFilters.includes(t)" class="tone-order">
-                                        {{ shadowingToneFilters.indexOf(t) + 1 }}
-                                    </span>
+                                    <div class="tone-order-container">
+                                        <span v-for="(toneVal, idx) in shadowingToneFilters" v-show="toneVal === t"
+                                            :key="idx" class="tone-order-badge">
+                                            {{ idx + 1 }}
+                                        </span>
+                                    </div>
                                 </button>
                             </div>
                             <p v-if="shadowingToneFilters.length === 2"
@@ -181,9 +184,12 @@
                                 <button v-for="t in [1,2,3,4,5]" :key="t" @click="toggleTone(t)"
                                     :class="['tone-btn', { active: selectedTones.includes(t) }]">
                                     <span class="tone-label">Tone {{ t === 5 ? 'Neutral' : t }}</span>
-                                    <span v-if="selectedTones.includes(t)" class="tone-order">
-                                        {{ selectedTones.indexOf(t) + 1 }}
-                                    </span>
+                                    <div class="tone-order-container">
+                                        <span v-for="(toneVal, idx) in selectedTones" v-show="toneVal === t" :key="idx"
+                                            class="tone-order-badge">
+                                            {{ idx + 1 }}
+                                        </span>
+                                    </div>
                                 </button>
                             </div>
                             <p v-if="selectedTones.length === 2"
