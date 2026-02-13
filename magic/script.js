@@ -1121,11 +1121,45 @@ const app = createApp({
                     this.shadowingSessionResults.completedWords[this.activeWord.id] = score;
                 }
 
+                // Play success sound if threshold reached
+                if (score >= this.masteryThreshold) {
+                    this.playSuccessSound();
+                }
+
                 this.$nextTick(() => {
                     this.drawToneContour(referenceAnalysis, userAnalysis);
                 });
             } catch (err) {
                 console.error("Comparison failed", err);
+            }
+        },
+        playSuccessSound() {
+            try {
+                if (!this.audioContext) {
+                    this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                const ctx = this.audioContext;
+                if (ctx.state === 'suspended') ctx.resume();
+
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+
+                osc.type = 'sine';
+                // A short pleasant "ding"
+                osc.frequency.setValueAtTime(880, ctx.currentTime); // A5
+                osc.frequency.exponentialRampToValueAtTime(1320, ctx.currentTime + 0.1); // E6
+
+                gain.gain.setValueAtTime(0, ctx.currentTime);
+                gain.gain.linearRampToValueAtTime(0.1, ctx.currentTime + 0.02);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2);
+
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                osc.start();
+                osc.stop(ctx.currentTime + 0.2);
+            } catch (e) {
+                console.warn("Failed to play success sound", e);
             }
         },
         async analyzeUserAudio(blob) {
