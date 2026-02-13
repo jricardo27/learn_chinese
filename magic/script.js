@@ -153,7 +153,7 @@ const app = createApp({
             writingTarget: 'hanzi', // 'hanzi' or 'pinyin'
 
             // Tone Practice state
-            selectedTone: 1, // 1, 2, 3, 4
+            selectedTones: [1], // Array of selected tones (1, 2, 3, 4) to filter words
 
             // Shadowing state
             shadowingState: 'idle',
@@ -202,7 +202,24 @@ const app = createApp({
 
             if (this.currentMode === 'tonePractice') {
                 // Filter by tones and sort by length
-                let pool = this.masterWords.filter(w => w.tones.includes(this.selectedTone));
+                let pool = this.masterWords.filter(w => {
+                    if (!w.tones || w.tones.length === 0) return false;
+                    if (this.selectedTones.length === 0) return true;
+                    if (this.selectedTones.length === 1) {
+                        return w.tones.includes(this.selectedTones[0]);
+                    }
+                    if (this.selectedTones.length === 2) {
+                        // For 2 tones, we look for words that have the first tone and then the second tone sequentially
+                        // This matches bisyllabic words like T1-T2
+                        for (let i = 0; i < w.tones.length - 1; i++) {
+                            if (w.tones[i] === this.selectedTones[0] && w.tones[i + 1] === this.selectedTones[1]) {
+                                return true;
+                            }
+                        }
+                        return false;
+                    }
+                    return false;
+                });
                 // Within each length, we'll shuffle if isShuffled is on
                 // but keep the primary order: length 1, then length 2, ...
                 const grouped = {};
@@ -225,10 +242,22 @@ const app = createApp({
             if (this.currentMode === 'shadowing' && this.shadowingToneFilters.length > 0) {
                 const selectedTones = this.shadowingToneFilters.map(t => parseInt(t));
                 let pool = this.masterWords.filter(w => {
-                    if (w.tones && Array.isArray(w.tones)) {
-                        return w.tones.some(tone => selectedTones.includes(tone));
+                    if (!w.tones || w.tones.length === 0) return false;
+
+                    if (selectedTones.length === 1) {
+                        return w.tones.includes(selectedTones[0]);
                     }
-                    return false;
+                    if (selectedTones.length === 2) {
+                        // Sequential check for 2 tones
+                        for (let i = 0; i < w.tones.length - 1; i++) {
+                            if (w.tones[i] === selectedTones[0] && w.tones[i + 1] === selectedTones[1]) {
+                                return true;
+                            }
+                        }
+                        return false;
+                    }
+                    // For more than 2 (if ever allowed), just inclusion
+                    return w.tones.some(tone => selectedTones.includes(tone));
                 });
                 return this.isShuffled ? pool.sort(() => Math.random() - 0.5) : pool;
             }
@@ -799,18 +828,51 @@ const app = createApp({
             if (this.quizAnswered) return;
             this.quizAnswered = true;
             this.quizSelectedId = choice;
-            const correct = this.activeWord.classifier || '个';
 
-            // Always speak the correct combination
-            const textToSpeak = `一${correct} ${this.activeWord.chinese}`; // e.g. "Yi ge ping guo"
-            this.speak(textToSpeak);
-
-            if (choice === correct) {
+            if (choice === this.overlayWord.classifier || (!this.overlayWord.classifier && choice === '个')) {
                 this.quizScore.correct++;
+                this.statusText = "✅ Correct!";
+                this.speak(`一${choice} ${this.overlayWord.chinese}`);
             } else {
                 this.quizScore.wrong++;
+                this.statusText = "❌ Wrong!";
             }
+
             if (this.autoContinue) setTimeout(() => this.playNext(), 2000);
+        },
+        toggleTone(t) {
+            const first = this.selectedTones.indexOf(t);
+            const last = this.selectedTones.lastIndexOf(t);
+
+            if (first !== -1 && first === last && this.selectedTones.length === 1) {
+                // Tone exists once and it's alone, add it again for repetition
+                this.selectedTones.push(t);
+            } else if (first !== -1 && first !== last) {
+                // Tone exists twice, remove all
+                this.selectedTones = this.selectedTones.filter(item => item !== t);
+            } else if (first !== -1 && this.selectedTones.length === 2) {
+                // Tone exists once in a pair of different tones, remove it
+                this.selectedTones.splice(first, 1);
+            } else {
+                // Not in list or adding to a different tone
+                if (this.selectedTones.length >= 2) this.selectedTones.shift();
+                this.selectedTones.push(t);
+            }
+        },
+        toggleShadowingTone(t) {
+            const first = this.shadowingToneFilters.indexOf(t);
+            const last = this.shadowingToneFilters.lastIndexOf(t);
+
+            if (first !== -1 && first === last && this.shadowingToneFilters.length === 1) {
+                this.shadowingToneFilters.push(t);
+            } else if (first !== -1 && first !== last) {
+                this.shadowingToneFilters = this.shadowingToneFilters.filter(item => item !== t);
+            } else if (first !== -1 && this.shadowingToneFilters.length === 2) {
+                this.shadowingToneFilters.splice(first, 1);
+            } else {
+                if (this.shadowingToneFilters.length >= 2) this.shadowingToneFilters.shift();
+                this.shadowingToneFilters.push(t);
+            }
         },
         repeatClassifierAudio() {
             if (!this.activeWord) return;
@@ -1059,11 +1121,45 @@ const app = createApp({
                     this.shadowingSessionResults.completedWords[this.activeWord.id] = score;
                 }
 
+                // Play success sound if threshold reached
+                if (score >= this.masteryThreshold) {
+                    this.playSuccessSound();
+                }
+
                 this.$nextTick(() => {
                     this.drawToneContour(referenceAnalysis, userAnalysis);
                 });
             } catch (err) {
                 console.error("Comparison failed", err);
+            }
+        },
+        playSuccessSound() {
+            try {
+                if (!this.audioContext) {
+                    this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                const ctx = this.audioContext;
+                if (ctx.state === 'suspended') ctx.resume();
+
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+
+                osc.type = 'sine';
+                // A short pleasant "ding"
+                osc.frequency.setValueAtTime(880, ctx.currentTime); // A5
+                osc.frequency.exponentialRampToValueAtTime(1320, ctx.currentTime + 0.1); // E6
+
+                gain.gain.setValueAtTime(0, ctx.currentTime);
+                gain.gain.linearRampToValueAtTime(0.1, ctx.currentTime + 0.02);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2);
+
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                osc.start();
+                osc.stop(ctx.currentTime + 0.2);
+            } catch (e) {
+                console.warn("Failed to play success sound", e);
             }
         },
         async analyzeUserAudio(blob) {
