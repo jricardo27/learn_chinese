@@ -150,25 +150,24 @@
                         </div>
                         <div v-if="currentMode === 'shadowing'" class="setting-row"
                             style="flex-direction: column; align-items: flex-start; gap: 8px;">
-                            <span style="font-weight: 600; margin-bottom: 5px;">Practice specific tones:</span>
-                            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                                <label style="display: flex; align-items: center; gap: 5px; cursor: pointer;">
-                                    <input type="checkbox" v-model="shadowingToneFilters" value="1">
-                                    <span>1st Tone (ā)</span>
-                                </label>
-                                <label style="display: flex; align-items: center; gap: 5px; cursor: pointer;">
-                                    <input type="checkbox" v-model="shadowingToneFilters" value="2">
-                                    <span>2nd Tone (á)</span>
-                                </label>
-                                <label style="display: flex; align-items: center; gap: 5px; cursor: pointer;">
-                                    <input type="checkbox" v-model="shadowingToneFilters" value="3">
-                                    <span>3rd Tone (ǎ)</span>
-                                </label>
-                                <label style="display: flex; align-items: center; gap: 5px; cursor: pointer;">
-                                    <input type="checkbox" v-model="shadowingToneFilters" value="4">
-                                    <span>4th Tone (à)</span>
-                                </label>
+                            <span style="font-weight: 600; margin-bottom: 5px;">Practice specific tones (Max 2):</span>
+                            <div class="tone-selector-group">
+                                <button v-for="t in [1,2,3,4,5]" :key="t" @click="toggleShadowingTone(t)"
+                                    :class="['tone-btn', { active: shadowingToneFilters.includes(t) }]">
+                                    <span class="tone-label">Tone {{ t === 5 ? 'Neutral' : t }}</span>
+                                    <div class="tone-order-container">
+                                        <span v-for="(toneVal, idx) in shadowingToneFilters" v-show="toneVal === t"
+                                            :key="idx" class="tone-order-badge">
+                                            {{ idx + 1 }}
+                                        </span>
+                                    </div>
+                                </button>
                             </div>
+                            <p v-if="shadowingToneFilters.length === 2"
+                                style="font-size: 0.8em; color: #666; margin-top: 5px; font-style: italic;">
+                                <i class="fas fa-info-circle"></i> Searching for sequence: Tone {{
+                                shadowingToneFilters[0] }} → Tone {{ shadowingToneFilters[1] }}
+                            </p>
                         </div>
                         <div v-if="currentMode === 'writing'" class="setting-row"
                             style="justify-content: space-between;">
@@ -180,13 +179,24 @@
                         </div>
                         <div v-if="currentMode === 'tonePractice'" class="setting-row"
                             style="flex-direction: column; align-items: flex-start;">
-                            <span style="margin-bottom: 8px;">Select Tone to Practice:</span>
+                            <span style="margin-bottom: 8px;">Select Tone(s) to Practice (Max 2):</span>
                             <div class="tone-selector-group">
-                                <button v-for="t in [1,2,3,4]" :key="t" @click="selectedTone = t"
-                                    :class="['tone-btn', { active: selectedTone === t }]">
-                                    Tone {{ t }}
+                                <button v-for="t in [1,2,3,4,5]" :key="t" @click="toggleTone(t)"
+                                    :class="['tone-btn', { active: selectedTones.includes(t) }]">
+                                    <span class="tone-label">Tone {{ t === 5 ? 'Neutral' : t }}</span>
+                                    <div class="tone-order-container">
+                                        <span v-for="(toneVal, idx) in selectedTones" v-show="toneVal === t" :key="idx"
+                                            class="tone-order-badge">
+                                            {{ idx + 1 }}
+                                        </span>
+                                    </div>
                                 </button>
                             </div>
+                            <p v-if="selectedTones.length === 2"
+                                style="font-size: 0.8em; color: #666; margin-top: 10px; font-style: italic;">
+                                <i class="fas fa-info-circle"></i> Filtering for Tone {{ selectedTones[0] }} followed by
+                                Tone {{ selectedTones[1] }}
+                            </p>
                         </div>
                     </div>
 
