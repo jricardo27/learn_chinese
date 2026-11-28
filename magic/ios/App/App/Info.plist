@@ -49,5 +49,7 @@
 	<string>This app needs access to your microphone for shadowing practice and pronunciation comparison.</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+    <key>NSSupportsWatchConnectivity</key>
+    <true/>
 </dict>
 </plist>

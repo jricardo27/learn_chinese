@@ -89,8 +89,42 @@ To deploy the application to GitHub Pages:
 
    *For more details, see [DEPLOY.md](./DEPLOY.md).*
 
+## ⌚ Apple Watch Companion App
+
+This project includes a **native Apple Watch companion app** that displays flashcards synchronized with your iPhone!
+
+### Features
+
+- ✅ Real-time sync with iPhone
+- ✅ Display flashcards with images
+- ✅ Bidirectional navigation
+- ✅ Toggle Pinyin/English visibility
+- ✅ Progress tracking
+
+### Setup
+
+All documentation and setup instructions are in the `docs/` directory:
+
+```bash
+# Start here for step-by-step setup
+cat docs/WATCH_CHECKLIST.md
+```
+
+**Quick links:**
+
+- [Setup Checklist](docs/WATCH_CHECKLIST.md) - Step-by-step Xcode setup
+- [Implementation Summary](docs/WATCH_IMPLEMENTATION_SUMMARY.md) - Complete overview
+- [Quick Start Guide](docs/WATCH_QUICK_START.md) - Quick reference
+- [Architecture Diagram](docs/images/watch_app_architecture.png)
+- [Interface Mockup](docs/images/watch_interface_mockup.png)
+
+**Estimated setup time:** 30-45 minutes
+
+---
+
 ## 🛠️ Tech Stack
 
 - **Core**: HTML5, Vanilla CSS, Vue.js (v3)
 - **Mobile**: Capacitor.js
+- **Watch**: SwiftUI + WatchConnectivity
 - **Audio Analysis**: Custom JS for tone comparison and shadowing.
