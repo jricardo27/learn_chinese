@@ -1,6 +1,6 @@
 ---
 name: learn-chinese-app
-description: Use when editing, reviewing, testing, or deploying the Mandarin Learner app in magic/, its word data, image or audio assets, Capacitor iOS and Android shell, or GitHub Pages deployment.
+description: Use when editing, reviewing, testing, or deploying the Mandarin Learner app in magic/, its word or pitch data, recording or pronunciation features, image or audio assets, Capacitor iOS and Android shell, or GitHub Pages deployment.
 ---
 
 # Learn Chinese app
@@ -17,19 +17,20 @@ Read `docs/improvements/README.md` before non-trivial product work. Pick one sma
 - `magic/script.js` owns state, learning modes, audio, recording, pitch comparison, quizzes, and inline component templates.
 - `magic/style.css` owns styling.
 - `magic/words_data.js` defines `WORDS_DATA`. Each key is a zero-padded image filename such as `word_000.jpg`. The matching audio file uses the same base name and `.mp3`.
-- `magic/words_analysis.js` is auto-generated pitch analysis data. Regenerate it with `cd utils/pitch_extractor && python3 extract_pitch.py` when audio changes.
+- `magic/words_analysis.js` is auto-generated pitch analysis data. Its keys omit the file extension, such as `word_000`, while `WORDS_DATA` keys include `.jpg`; `script.js` matches them with substring search. Keep both derivable from the same base name when adding or renaming a word.
+- Regenerate `words_analysis.js` with `cd utils/pitch_extractor && python3 extract_pitch.py` when audio changes. Install dependencies with `pip3 install -r requirements.txt` first on a fresh machine.
 - `magic/images/` and `magic/audio/` contain paired assets. Add, rename, or delete the image, audio, and data entry together.
 - `utils/extract_to_word/generate_word_doc.py` reads `WORDS_DATA` to create Word documents. It does not update word data.
 
 ## Capacitor and mobile
 
-`magic/capacitor.config.json` points `webDir` at `www`. `magic/scripts/sync.sh` rebuilds `www` from the static app and assets, then runs Capacitor sync. Never edit `magic/www`, `android/app/src/main/assets/public`, or `ios/App/App/public` because sync overwrites them.
+`magic/capacitor.config.json` points `webDir` at `www`. On a fresh checkout, run `cd magic && npm install` first because `magic/scripts/sync.sh` uses the local Capacitor binary. The script rebuilds `www` from the static app and assets, then runs Capacitor sync. Never edit `magic/www`, `android/app/src/main/assets/public`, or `ios/App/App/public` because sync overwrites them.
 
 Use `capacitor-best-practices` for config, plugin, sync, permission, and release questions. Use `mobile-native` for touch, safe-area, viewport, scrolling, and mobile feel. Feature-detect native plugins and keep a browser fallback.
 
 ## Deployment and cost
 
-`magic/deploy.sh` force-pushes the `gh-pages` branch. Do not run it for verification. Run it only when the user explicitly asks for deployment and confirms the force push. GitHub Pages is the web deployment target. Vercel, Neon, and backend services are not part of the current architecture.
+`magic/deploy.sh` force-pushes the `gh-pages` branch. Do not run it for verification. Run it from `magic/` only when the user explicitly asks for deployment and confirms the force push. GitHub Pages is the web deployment target. Vercel, Neon, and backend services are not part of the current architecture.
 
 Follow the cost rule in `docs/improvements/README.md`. Prefer local files, browser APIs, open-source software, GitHub Pages, and GitHub Actions. Require a cost-benefit analysis before a paid service without a renewable free tier.
 
